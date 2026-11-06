@@ -2,19 +2,19 @@ openmausbot open-source edition (enterprise layer present but OMB_LICENSE_KEY is
 local requests: owner trust (self-hosted default)
 local requests: OMB_DEV_TRUST_LOCAL_BROWSER=1: browsers on this machine act as the owner (development only)
 brand: default
-openmausbot server on http://127.0.0.1:21632
+openmausbot server on http://127.0.0.1:22304
 Official Super Agent: original UI and memory are active; legacy executors are suspended.
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="echo original-ui-official-runtime" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="memory jasmine tea" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="memory green bicycle" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="memory blue bicycle" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="remember The person prefers concise architecture reviews." images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="forget concise architecture reviews" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="memory concise architecture reviews" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="task write official-proof.txt" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="task memory jasmine tea" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="task approval" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="task approval" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="task question" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="task hold" images=0 depth=0 card=false
-[omb-turn] bot=d2ac4a74-a418-4a6a-b05f-411d63e8718e text="echo after-official-stop" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="echo original-ui-official-runtime" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="memory jasmine tea" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="memory green bicycle" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="memory blue bicycle" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="remember The person prefers concise architecture reviews." images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="forget concise architecture reviews" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="memory concise architecture reviews" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="task write official-proof.txt" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="task memory jasmine tea" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="task approval" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="task approval" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="task question" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="task hold" images=0 depth=0 card=false
+[omb-turn] bot=307c2f69-d39b-4f87-a663-98f425313b16 text="echo after-official-stop" images=0 depth=0 card=false

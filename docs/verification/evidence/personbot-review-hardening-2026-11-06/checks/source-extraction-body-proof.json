@@ -1,0 +1,10 @@
+{
+  "settings": true,
+  "driver": true,
+  "lifecycle": true,
+  "original_product_bridge": true,
+  "model_switch": true,
+  "allowed_differences": "Only explicit late singleton getters and callback aliases; every other original executable body byte preserved.",
+  "index_lines": 15757,
+  "index_limit": 15777
+}

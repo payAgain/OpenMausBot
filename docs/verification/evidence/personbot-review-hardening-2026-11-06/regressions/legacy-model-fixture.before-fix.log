@@ -1,0 +1,149 @@
+
+ RUN  v4.1.11 <repo>
+
+ ❯ server/default-model-selection.test.ts (44 tests | 8 failed) 23ms
+     × honors a disabled configured provider in both automatic and saved selection 5ms
+     × uses configured custom credentials instead of an unrelated account's sign-in state 2ms
+     × uses a supplied inventory without probing the provider a second time 2ms
+     × on a Cloud home, the trial's Claude credit runs a new bot only while nothing of the person's own can 1ms
+     × passes the enrolment into the choice, and is the plain choice without one 1ms
+     × leaves the saved default out only when asked, for a bot moved off a removed engine 0ms
+     × passes what each AI's test message showed into the choice, and never past a saved default 0ms
+     × passes the organisation's policy into the choice 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/default-model-selection.test.ts > new bot default model selection wiring in index.ts > honors a disabled configured provider in both automatic and saved selection
+AssertionError: promise rejected "ReferenceError: SUPERAGENT_PRIMARY is not…" instead of resolving
+ ❯ server/default-model-selection.test.ts:279:44
+    277|   it("honors a disabled configured provider in both automatic and save…
+    278|     const fixture = server([claude, codex], { configs: { claude: { ena…
+    279|     await expect(fixture.defaultSelection()).resolves.toEqual({ instan…
+       |                                            ^
+    280|     await expect(fixture.defaultSelection({ instanceId: "claude", mode…
+    281|     fixture.close();
+
+Caused by: ReferenceError: SUPERAGENT_PRIMARY is not defined
+ ❯ Object.defaultSelection server/default-model-selection.test.ts:270:30
+ ❯ server/default-model-selection.test.ts:279:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  server/default-model-selection.test.ts > new bot default model selection wiring in index.ts > uses configured custom credentials instead of an unrelated account's sign-in state
+AssertionError: promise rejected "ReferenceError: SUPERAGENT_PRIMARY is not…" instead of resolving
+ ❯ server/default-model-selection.test.ts:286:93
+    284|   it("uses configured custom credentials instead of an unrelated accou…
+    285|     const fixture = server([signedOut], { configs: { claude: { access:…
+    286|     await expect(fixture.defaultSelection({ instanceId: "claude", mode…
+       |                                                                                             ^
+    287|     fixture.close();
+    288|   });
+
+Caused by: ReferenceError: SUPERAGENT_PRIMARY is not defined
+ ❯ Object.defaultSelection server/default-model-selection.test.ts:270:30
+ ❯ server/default-model-selection.test.ts:286:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  server/default-model-selection.test.ts > new bot default model selection wiring in index.ts > uses a supplied inventory without probing the provider a second time
+AssertionError: promise rejected "ReferenceError: SUPERAGENT_PRIMARY is not…" instead of resolving
+ ❯ server/default-model-selection.test.ts:292:57
+    290|   it("uses a supplied inventory without probing the provider a second …
+    291|     const fixture = server([claude]);
+    292|     await expect(fixture.defaultSelection(null, [codex])).resolves.toE…
+       |                                                         ^
+    293|     expect(fixture.describe).not.toHaveBeenCalled();
+    294|     fixture.close();
+
+Caused by: ReferenceError: SUPERAGENT_PRIMARY is not defined
+ ❯ Object.defaultSelection server/default-model-selection.test.ts:270:30
+ ❯ server/default-model-selection.test.ts:292:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  server/default-model-selection.test.ts > new bot default model selection wiring in index.ts > on a Cloud home, the trial's Claude credit runs a new bot only while nothing of the person's own can
+AssertionError: promise rejected "ReferenceError: SUPERAGENT_PRIMARY is not…" instead of resolving
+ ❯ server/default-model-selection.test.ts:301:92
+    299|       models: { default: "claude-haiku-4-5", options: [{ id: "claude-h…
+    300|     // Their Claude is signed out: the credit, not a sign-in screen.
+    301|     await expect(server([signedOut, credit], { credit: "trial-credit" …
+       |                                                                                            ^
+    302|     await expect(server([credit, claude], { credit: "trial-credit" }).…
+    303|     await expect(server([credit, codex], { credit: "trial-credit" }).d…
+
+Caused by: ReferenceError: SUPERAGENT_PRIMARY is not defined
+ ❯ Object.defaultSelection server/default-model-selection.test.ts:270:30
+ ❯ server/default-model-selection.test.ts:301:74
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  server/default-model-selection.test.ts > new bot default model selection wiring in index.ts > passes the enrolment into the choice, and is the plain choice without one
+AssertionError: promise rejected "ReferenceError: SUPERAGENT_PRIMARY is not…" instead of resolving
+ ❯ server/default-model-selection.test.ts:309:48
+    307|     // Not enrolled, the Company id is an ordinary engine that can run.
+    308|     const notEnrolled = server([signedOut, companyClaude]);
+    309|     await expect(notEnrolled.defaultSelection()).resolves.toEqual({ in…
+       |                                                ^
+    310|     const nothingReady = server([signedOut]);
+    311|     await expect(nothingReady.defaultSelection()).resolves.toEqual({ i…
+
+Caused by: ReferenceError: SUPERAGENT_PRIMARY is not defined
+ ❯ Object.defaultSelection server/default-model-selection.test.ts:270:30
+ ❯ server/default-model-selection.test.ts:309:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  server/default-model-selection.test.ts > new bot default model selection wiring in index.ts > leaves the saved default out only when asked, for a bot moved off a removed engine
+AssertionError: promise rejected "ReferenceError: SUPERAGENT_PRIMARY is not…" instead of resolving
+ ❯ server/default-model-selection.test.ts:318:42
+    316|   it("leaves the saved default out only when asked, for a bot moved of…
+    317|     const saved = server([claude, codex], { saved: { instanceId: "comp…
+    318|     await expect(saved.defaultSelection()).resolves.toEqual({ instance…
+       |                                          ^
+    319|     await expect(saved.defaultSelection(null)).resolves.toEqual({ inst…
+    320|     saved.close();
+
+Caused by: ReferenceError: SUPERAGENT_PRIMARY is not defined
+ ❯ Object.defaultSelection server/default-model-selection.test.ts:270:30
+ ❯ server/default-model-selection.test.ts:318:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  server/default-model-selection.test.ts > new bot default model selection wiring in index.ts > passes what each AI's test message showed into the choice, and never past a saved default
+AssertionError: promise rejected "ReferenceError: SUPERAGENT_PRIMARY is not…" instead of resolving
+ ❯ server/default-model-selection.test.ts:325:88
+    323|   it("passes what each AI's test message showed into the choice, and n…
+    324|     const claudeSilent = (instance: SelectableInstance) => instance.in…
+    325|     await expect(server([claude, codex], { answered: claudeSilent }).d…
+       |                                                                                        ^
+    326|     await expect(server([claude, codex], { answered: claudeSilent, sav…
+    327|       .resolves.toEqual({ instanceId: "claude", model: "claude-default…
+
+Caused by: ReferenceError: SUPERAGENT_PRIMARY is not defined
+ ❯ Object.defaultSelection server/default-model-selection.test.ts:270:30
+ ❯ server/default-model-selection.test.ts:325:70
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  server/default-model-selection.test.ts > new bot default model selection wiring in index.ts > passes the organisation's policy into the choice
+AssertionError: promise rejected "ReferenceError: SUPERAGENT_PRIMARY is not…" instead of resolving
+ ❯ server/default-model-selection.test.ts:332:43
+    330|   it("passes the organisation's policy into the choice", async () => {
+    331|     const policy = server([claude, companyRouter], { enrolled: true, c…
+    332|     await expect(policy.defaultSelection()).resolves.toEqual({ instanc…
+       |                                           ^
+    333|     const saved = server([claude, companyRouter], { enrolled: true, co…
+    334|     await expect(saved.defaultSelection()).resolves.toEqual({ instance…
+
+Caused by: ReferenceError: SUPERAGENT_PRIMARY is not defined
+ ❯ Object.defaultSelection server/default-model-selection.test.ts:270:30
+ ❯ server/default-model-selection.test.ts:332:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  8 failed | 52 passed (60)
+   Start at  17:20:52
+   Duration  9.97s (transform 949ms, setup 650ms, import 1.10s, tests 7.79s, environment 0ms)
+

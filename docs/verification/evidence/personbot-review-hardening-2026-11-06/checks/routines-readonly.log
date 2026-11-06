@@ -1,0 +1,1 @@
+PASS: read-only constructor preserves running state; start/tick stay inert; create/adopt reject 409; exact saved bytes remain unchanged.

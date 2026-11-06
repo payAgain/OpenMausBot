@@ -5,12 +5,12 @@
 
  RUN  v4.1.11 <repo>
 
-(node:91971) TimeoutNaNWarning: NaN is not a number.
+(node:2509) TimeoutNaNWarning: NaN is not a number.
 Timeout duration was set to 1.
 (Use `node --trace-warnings ...` to show where the warning was created)
 
  Test Files  5 passed (5)
       Tests  12 passed (12)
-   Start at  16:37:57
-   Duration  147.04s (transform 723ms, setup 872ms, import 1.30s, tests 144.19s, environment 0ms)
+   Start at  17:23:47
+   Duration  149.90s (transform 719ms, setup 913ms, import 1.48s, tests 146.80s, environment 0ms)
 

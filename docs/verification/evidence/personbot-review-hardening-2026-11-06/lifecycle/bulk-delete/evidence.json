@@ -1,9 +1,9 @@
 {
   "fixture": {
-    "url": "http://127.0.0.1:20960",
-    "pid": 91047,
-    "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87",
-    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793950760356-90569.log"
+    "url": "http://127.0.0.1:19904",
+    "pid": 1745,
+    "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5",
+    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793953512335-921.log"
   },
   "scenario": "bulk-delete",
   "api": [
@@ -17,37 +17,37 @@
       "status": 201,
       "result": {
         "bot": {
-          "id": "6293babb-8f7f-45bc-a7ce-111684372212",
-          "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+          "id": "941d2899-ced8-4cec-8bdb-12b0dcaa882d",
+          "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
           "name": "Lifecycle bulk-delete",
           "title": "",
           "description": "",
           "soul": "",
           "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "notifications": true,
-          "color": "orange",
+          "color": "red",
           "mascotBody": "cursor",
           "unread": false,
           "modelSelection": {
             "instanceId": "dsh-superagent",
             "model": "fixture"
           },
-          "createdAt": 1793950761599,
+          "createdAt": 1793953513741,
           "avatarUrl": null,
           "autoApprove": false,
           "approvalMode": "full",
           "waitingForTeammates": false,
-          "mainThreadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+          "mainThreadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
           "tasks": [
             {
-              "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+              "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
               "title": "New thread",
-              "createdAt": 1793950761599,
-              "updatedAt": 1793950761616,
+              "createdAt": 1793953513741,
+              "updatedAt": 1793953513756,
               "unread": false,
               "activity": "idle",
               "busy": false,
-              "lastThreadOrderAt": 1793950761616,
+              "lastThreadOrderAt": 1793953513756,
               "modelSelection": {
                 "instanceId": "dsh-superagent",
                 "model": "fixture"
@@ -58,8 +58,8 @@
           ],
           "messages": [
             {
-              "id": "ff1ee645-0c47-4b35-9768-8918af541061",
-              "at": 1793950761616,
+              "id": "0ec23367-25d7-48e9-97b3-0dfafd1498b5",
+              "at": 1793953513756,
               "parentId": null,
               "role": "bot",
               "kind": "text",
@@ -74,55 +74,55 @@
               ]
             }
           ],
-          "activeLeafId": "ff1ee645-0c47-4b35-9768-8918af541061"
+          "activeLeafId": "0ec23367-25d7-48e9-97b3-0dfafd1498b5"
         }
       }
     },
     {
       "method": "PATCH",
-      "path": "/api/bots/6293babb-8f7f-45bc-a7ce-111684372212",
+      "path": "/api/bots/941d2899-ced8-4cec-8bdb-12b0dcaa882d",
       "body": {
         "memoryUpkeep": false,
-        "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87/lifecycle-workspace",
+        "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5/lifecycle-workspace",
         "approvalMode": "ask",
         "applyToAllThreads": true
       },
       "status": 200,
       "result": {
         "bot": {
-          "id": "6293babb-8f7f-45bc-a7ce-111684372212",
-          "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+          "id": "941d2899-ced8-4cec-8bdb-12b0dcaa882d",
+          "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
           "name": "Lifecycle bulk-delete",
           "title": "",
           "description": "",
           "soul": "",
           "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "notifications": true,
-          "color": "orange",
+          "color": "red",
           "mascotBody": "cursor",
           "unread": false,
           "modelSelection": {
             "instanceId": "dsh-superagent",
             "model": "fixture"
           },
-          "createdAt": 1793950761599,
+          "createdAt": 1793953513741,
           "avatarUrl": null,
-          "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87/lifecycle-workspace",
+          "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5/lifecycle-workspace",
           "autoApprove": false,
           "memoryUpkeep": false,
           "approvalMode": "ask",
           "waitingForTeammates": false,
-          "mainThreadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+          "mainThreadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
           "tasks": [
             {
-              "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+              "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
               "title": "New thread",
-              "createdAt": 1793950761599,
-              "updatedAt": 1793950761616,
+              "createdAt": 1793953513741,
+              "updatedAt": 1793953513756,
               "unread": false,
               "activity": "idle",
               "busy": false,
-              "lastThreadOrderAt": 1793950761616,
+              "lastThreadOrderAt": 1793953513756,
               "approvalMode": "ask",
               "autoApprove": false,
               "modelSelection": {
@@ -138,19 +138,19 @@
     },
     {
       "method": "POST",
-      "path": "/api/bots/6293babb-8f7f-45bc-a7ce-111684372212/messages",
+      "path": "/api/bots/941d2899-ced8-4cec-8bdb-12b0dcaa882d/messages",
       "body": {
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
         "text": "echo baseline-bulk-delete"
       },
       "status": 202,
       "result": {
         "ok": true,
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
         "message": {
-          "id": "955b575f-373c-4500-8ded-3518226cd02f",
-          "at": 1793950761642,
-          "parentId": "ff1ee645-0c47-4b35-9768-8918af541061",
+          "id": "bd3cb1d5-21eb-4a39-a062-2e6226592ad2",
+          "at": 1793953513785,
+          "parentId": "0ec23367-25d7-48e9-97b3-0dfafd1498b5",
           "role": "user",
           "kind": "text",
           "text": "echo baseline-bulk-delete"
@@ -159,19 +159,19 @@
     },
     {
       "method": "POST",
-      "path": "/api/bots/6293babb-8f7f-45bc-a7ce-111684372212/messages",
+      "path": "/api/bots/941d2899-ced8-4cec-8bdb-12b0dcaa882d/messages",
       "body": {
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
         "text": "task background approval"
       },
       "status": 202,
       "result": {
         "ok": true,
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
         "message": {
-          "id": "2014f218-691e-44db-b46c-59c673c62298",
-          "at": 1793950763305,
-          "parentId": "eba6ffc0-2d23-46b1-bc32-a7a3b2f6e2a0",
+          "id": "98b5408b-9c38-4585-b114-177f0ce27d0a",
+          "at": 1793953515902,
+          "parentId": "609d7007-f789-43d5-8ae6-13218ce58fc8",
           "role": "user",
           "kind": "text",
           "text": "task background approval"
@@ -180,47 +180,47 @@
     },
     {
       "method": "POST",
-      "path": "/api/bots/6293babb-8f7f-45bc-a7ce-111684372212/tasks/delete",
+      "path": "/api/bots/941d2899-ced8-4cec-8bdb-12b0dcaa882d/tasks/delete",
       "body": {
         "threadIds": [
-          "518430e9-65f7-4398-9549-92bc96c27ea7",
+          "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
           "missing-thread"
         ]
       },
       "status": 200,
       "result": {
         "bot": {
-          "id": "6293babb-8f7f-45bc-a7ce-111684372212",
-          "threadId": "383c66ed-ee83-4a15-9f9c-46dd5e9113f1",
+          "id": "941d2899-ced8-4cec-8bdb-12b0dcaa882d",
+          "threadId": "5b4aaa72-5b01-446c-bba8-f039c7c3324b",
           "name": "Lifecycle bulk-delete",
           "title": "",
           "description": "",
           "soul": "",
           "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "notifications": true,
-          "color": "orange",
+          "color": "red",
           "mascotBody": "cursor",
           "unread": false,
           "modelSelection": {
             "instanceId": "dsh-superagent",
             "model": "fixture"
           },
-          "createdAt": 1793950761599,
+          "createdAt": 1793953513741,
           "avatarUrl": null,
-          "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87/lifecycle-workspace",
+          "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5/lifecycle-workspace",
           "autoApprove": false,
           "memoryUpkeep": false,
           "approvalMode": "ask",
           "activity": "idle",
           "busy": false,
           "waitingForTeammates": false,
-          "mainThreadId": "383c66ed-ee83-4a15-9f9c-46dd5e9113f1",
+          "mainThreadId": "5b4aaa72-5b01-446c-bba8-f039c7c3324b",
           "tasks": [
             {
-              "threadId": "383c66ed-ee83-4a15-9f9c-46dd5e9113f1",
+              "threadId": "5b4aaa72-5b01-446c-bba8-f039c7c3324b",
               "title": "New thread",
-              "createdAt": 1793950764401,
-              "updatedAt": 1793950764401,
+              "createdAt": 1793953517156,
+              "updatedAt": 1793953517156,
               "approvalMode": "ask",
               "autoApprove": false,
               "alwaysAllow": [],
@@ -240,7 +240,7 @@
           "activeLeafId": null
         },
         "deleted": [
-          "518430e9-65f7-4398-9549-92bc96c27ea7"
+          "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2"
         ],
         "refused": [
           {
@@ -258,7 +258,7 @@
   "before": {
     "bindings": [
       {
-        "id": "a68a2fe3a03051c59433f58a070a3c23dc8b1e7b6c175c705b8d022cc9375eb0",
+        "id": "3811356cf1da366a29d451264eb349c29b66fbd888f42bb66008891b81d336b1",
         "active": 1,
         "needs_recovery": 1,
         "next_wake": 0,
@@ -267,13 +267,13 @@
     ],
     "requests": [
       {
-        "request_id": "494038ac-b226-4890-8569-c0cdc14adb53",
+        "request_id": "0a82fa5f-d77e-44c3-abd4-c7990f3d4f5c",
         "revoked": 0,
         "status": "completed",
         "authorization_version": 1
       },
       {
-        "request_id": "b4fbd67b-4bc5-4287-806c-82effe2eb64e",
+        "request_id": "a95b0b20-c527-4509-996d-a1c17f92ffae",
         "revoked": 0,
         "status": "completed",
         "authorization_version": 1
@@ -282,34 +282,34 @@
     "tasks": [
       {
         "type": "task",
-        "requestId": "494038ac-b226-4890-8569-c0cdc14adb53",
-        "ticketId": "65066d6787edd80e6903573f5f68e49f",
+        "requestId": "0a82fa5f-d77e-44c3-abd4-c7990f3d4f5c",
+        "ticketId": "46f96db580471593fea2e3fb463faf33",
         "title": "background approval",
         "state": "working",
         "ended": false,
-        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87/lifecycle-workspace",
-        "sessionId": "worker-65066d6787edd80e6903573f5f68e49f",
-        "sourceMessageId": "2014f218-691e-44db-b46c-59c673c62298",
-        "botId": "6293babb-8f7f-45bc-a7ce-111684372212",
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
-        "contextId": "842d7a79-9b4c-4ea3-b48b-35b3b6aed9d7"
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5/lifecycle-workspace",
+        "sessionId": "worker-46f96db580471593fea2e3fb463faf33",
+        "sourceMessageId": "98b5408b-9c38-4585-b114-177f0ce27d0a",
+        "botId": "941d2899-ced8-4cec-8bdb-12b0dcaa882d",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
+        "contextId": "8d6af390-052a-4c3a-b204-c20dec29219f"
       }
     ],
     "decisions": [
       {
         "type": "approval",
-        "requestId": "494038ac-b226-4890-8569-c0cdc14adb53",
-        "sourceMessageId": "2014f218-691e-44db-b46c-59c673c62298",
+        "requestId": "0a82fa5f-d77e-44c3-abd4-c7990f3d4f5c",
+        "sourceMessageId": "98b5408b-9c38-4585-b114-177f0ce27d0a",
         "authorizationVersion": 1,
-        "agentId": "worker-65066d6787edd80e6903573f5f68e49f",
+        "agentId": "worker-46f96db580471593fea2e3fb463faf33",
         "role": "worker",
-        "ticketId": "65066d6787edd80e6903573f5f68e49f",
-        "decisionId": "5a3ce29b-e90f-48ca-bb85-37ff53dad1f8",
-        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87/lifecycle-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-23cb2b50-7b2b-4f82-86de-da75c7306990\"}",
-        "callId": "official-fixture-23cb2b50-7b2b-4f82-86de-da75c7306990",
-        "botId": "6293babb-8f7f-45bc-a7ce-111684372212",
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
-        "contextId": "842d7a79-9b4c-4ea3-b48b-35b3b6aed9d7",
+        "ticketId": "46f96db580471593fea2e3fb463faf33",
+        "decisionId": "be7aa303-9196-486d-a022-af3d423e314c",
+        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5/lifecycle-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-7c1300b6-df3b-4249-8d33-17e46212ef28\"}",
+        "callId": "official-fixture-7c1300b6-df3b-4249-8d33-17e46212ef28",
+        "botId": "941d2899-ced8-4cec-8bdb-12b0dcaa882d",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
+        "contextId": "8d6af390-052a-4c3a-b204-c20dec29219f",
         "kind": "approval",
         "status": "pending"
       }
@@ -318,7 +318,7 @@
   "stopped": {
     "bindings": [
       {
-        "id": "a68a2fe3a03051c59433f58a070a3c23dc8b1e7b6c175c705b8d022cc9375eb0",
+        "id": "3811356cf1da366a29d451264eb349c29b66fbd888f42bb66008891b81d336b1",
         "active": 0,
         "needs_recovery": 0,
         "next_wake": 0,
@@ -327,13 +327,13 @@
     ],
     "requests": [
       {
-        "request_id": "494038ac-b226-4890-8569-c0cdc14adb53",
+        "request_id": "0a82fa5f-d77e-44c3-abd4-c7990f3d4f5c",
         "revoked": 1,
         "status": "stopped",
         "authorization_version": 2
       },
       {
-        "request_id": "b4fbd67b-4bc5-4287-806c-82effe2eb64e",
+        "request_id": "a95b0b20-c527-4509-996d-a1c17f92ffae",
         "revoked": 1,
         "status": "stopped",
         "authorization_version": 2
@@ -342,34 +342,34 @@
     "tasks": [
       {
         "type": "task",
-        "requestId": "494038ac-b226-4890-8569-c0cdc14adb53",
-        "ticketId": "65066d6787edd80e6903573f5f68e49f",
+        "requestId": "0a82fa5f-d77e-44c3-abd4-c7990f3d4f5c",
+        "ticketId": "46f96db580471593fea2e3fb463faf33",
         "title": "background approval",
         "state": "stopped",
         "ended": true,
-        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87/lifecycle-workspace",
-        "sessionId": "worker-65066d6787edd80e6903573f5f68e49f",
-        "sourceMessageId": "2014f218-691e-44db-b46c-59c673c62298",
-        "botId": "6293babb-8f7f-45bc-a7ce-111684372212",
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
-        "contextId": "842d7a79-9b4c-4ea3-b48b-35b3b6aed9d7"
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5/lifecycle-workspace",
+        "sessionId": "worker-46f96db580471593fea2e3fb463faf33",
+        "sourceMessageId": "98b5408b-9c38-4585-b114-177f0ce27d0a",
+        "botId": "941d2899-ced8-4cec-8bdb-12b0dcaa882d",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
+        "contextId": "8d6af390-052a-4c3a-b204-c20dec29219f"
       }
     ],
     "decisions": [
       {
         "type": "approval",
-        "requestId": "494038ac-b226-4890-8569-c0cdc14adb53",
-        "sourceMessageId": "2014f218-691e-44db-b46c-59c673c62298",
+        "requestId": "0a82fa5f-d77e-44c3-abd4-c7990f3d4f5c",
+        "sourceMessageId": "98b5408b-9c38-4585-b114-177f0ce27d0a",
         "authorizationVersion": 1,
-        "agentId": "worker-65066d6787edd80e6903573f5f68e49f",
+        "agentId": "worker-46f96db580471593fea2e3fb463faf33",
         "role": "worker",
-        "ticketId": "65066d6787edd80e6903573f5f68e49f",
-        "decisionId": "5a3ce29b-e90f-48ca-bb85-37ff53dad1f8",
-        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87/lifecycle-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-23cb2b50-7b2b-4f82-86de-da75c7306990\"}",
-        "callId": "official-fixture-23cb2b50-7b2b-4f82-86de-da75c7306990",
-        "botId": "6293babb-8f7f-45bc-a7ce-111684372212",
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
-        "contextId": "842d7a79-9b4c-4ea3-b48b-35b3b6aed9d7",
+        "ticketId": "46f96db580471593fea2e3fb463faf33",
+        "decisionId": "be7aa303-9196-486d-a022-af3d423e314c",
+        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5/lifecycle-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-7c1300b6-df3b-4249-8d33-17e46212ef28\"}",
+        "callId": "official-fixture-7c1300b6-df3b-4249-8d33-17e46212ef28",
+        "botId": "941d2899-ced8-4cec-8bdb-12b0dcaa882d",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
+        "contextId": "8d6af390-052a-4c3a-b204-c20dec29219f",
         "kind": "approval",
         "status": "expired"
       }
@@ -378,7 +378,7 @@
   "afterRestart": {
     "bindings": [
       {
-        "id": "a68a2fe3a03051c59433f58a070a3c23dc8b1e7b6c175c705b8d022cc9375eb0",
+        "id": "3811356cf1da366a29d451264eb349c29b66fbd888f42bb66008891b81d336b1",
         "active": 0,
         "needs_recovery": 0,
         "next_wake": 0,
@@ -387,13 +387,13 @@
     ],
     "requests": [
       {
-        "request_id": "494038ac-b226-4890-8569-c0cdc14adb53",
+        "request_id": "0a82fa5f-d77e-44c3-abd4-c7990f3d4f5c",
         "revoked": 1,
         "status": "stopped",
         "authorization_version": 2
       },
       {
-        "request_id": "b4fbd67b-4bc5-4287-806c-82effe2eb64e",
+        "request_id": "a95b0b20-c527-4509-996d-a1c17f92ffae",
         "revoked": 1,
         "status": "stopped",
         "authorization_version": 2
@@ -402,34 +402,34 @@
     "tasks": [
       {
         "type": "task",
-        "requestId": "494038ac-b226-4890-8569-c0cdc14adb53",
-        "ticketId": "65066d6787edd80e6903573f5f68e49f",
+        "requestId": "0a82fa5f-d77e-44c3-abd4-c7990f3d4f5c",
+        "ticketId": "46f96db580471593fea2e3fb463faf33",
         "title": "background approval",
         "state": "stopped",
         "ended": true,
-        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87/lifecycle-workspace",
-        "sessionId": "worker-65066d6787edd80e6903573f5f68e49f",
-        "sourceMessageId": "2014f218-691e-44db-b46c-59c673c62298",
-        "botId": "6293babb-8f7f-45bc-a7ce-111684372212",
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
-        "contextId": "842d7a79-9b4c-4ea3-b48b-35b3b6aed9d7"
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5/lifecycle-workspace",
+        "sessionId": "worker-46f96db580471593fea2e3fb463faf33",
+        "sourceMessageId": "98b5408b-9c38-4585-b114-177f0ce27d0a",
+        "botId": "941d2899-ced8-4cec-8bdb-12b0dcaa882d",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
+        "contextId": "8d6af390-052a-4c3a-b204-c20dec29219f"
       }
     ],
     "decisions": [
       {
         "type": "approval",
-        "requestId": "494038ac-b226-4890-8569-c0cdc14adb53",
-        "sourceMessageId": "2014f218-691e-44db-b46c-59c673c62298",
+        "requestId": "0a82fa5f-d77e-44c3-abd4-c7990f3d4f5c",
+        "sourceMessageId": "98b5408b-9c38-4585-b114-177f0ce27d0a",
         "authorizationVersion": 1,
-        "agentId": "worker-65066d6787edd80e6903573f5f68e49f",
+        "agentId": "worker-46f96db580471593fea2e3fb463faf33",
         "role": "worker",
-        "ticketId": "65066d6787edd80e6903573f5f68e49f",
-        "decisionId": "5a3ce29b-e90f-48ca-bb85-37ff53dad1f8",
-        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-I7SX87/lifecycle-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-23cb2b50-7b2b-4f82-86de-da75c7306990\"}",
-        "callId": "official-fixture-23cb2b50-7b2b-4f82-86de-da75c7306990",
-        "botId": "6293babb-8f7f-45bc-a7ce-111684372212",
-        "threadId": "518430e9-65f7-4398-9549-92bc96c27ea7",
-        "contextId": "842d7a79-9b4c-4ea3-b48b-35b3b6aed9d7",
+        "ticketId": "46f96db580471593fea2e3fb463faf33",
+        "decisionId": "be7aa303-9196-486d-a022-af3d423e314c",
+        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-l02ff5/lifecycle-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-7c1300b6-df3b-4249-8d33-17e46212ef28\"}",
+        "callId": "official-fixture-7c1300b6-df3b-4249-8d33-17e46212ef28",
+        "botId": "941d2899-ced8-4cec-8bdb-12b0dcaa882d",
+        "threadId": "d3c04a0f-ecf9-42f5-819d-c270bb5af1e2",
+        "contextId": "8d6af390-052a-4c3a-b204-c20dec29219f",
         "kind": "approval",
         "status": "expired"
       }

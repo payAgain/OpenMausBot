@@ -1590,9 +1590,24 @@
     "sha256": "a9145a995bf85c15efa84abd00000a9fb2cf3ad30a3e22b53e25d01dfe1f5f42"
   },
   {
+    "path": "server/default-model-selection.test.ts",
+    "bytes": 25604,
+    "sha256": "749bb340c65ec0583f9de0f1e5aa95d1c3298fcbc8c8d586bbbbb0164f011fd6"
+  },
+  {
+    "path": "server/host/model-switch.ts",
+    "bytes": 9646,
+    "sha256": "09af2c56021bd25094c2e03f6994d22ec2e8486c4006ade49c899a9a84905d67"
+  },
+  {
+    "path": "server/host/superagent.ts",
+    "bytes": 10568,
+    "sha256": "fb542804422b65402d0b411b559bf27e932aea7c199e6078781f773ce26cd45c"
+  },
+  {
     "path": "server/index.ts",
-    "bytes": 991743,
-    "sha256": "3d08e032dd945d24d22ebdaa9a519c8c8534b6979955fde4de840116dd0981e7"
+    "bytes": 977505,
+    "sha256": "0d0aeb07f58e4b1548f36ccd5c9f4d8da77246aeeb50020018bd530af0b688a6"
   },
   {
     "path": "server/personbot-legacy.test.ts",
@@ -1675,9 +1690,14 @@
     "sha256": "07ea23d571ef1cc77da3a435dc5d4019266e75d162c1b596fc0769151e71913a"
   },
   {
+    "path": "server/routine-file.ts",
+    "bytes": 958,
+    "sha256": "a21f0dbb9354e9a131473d5630d6f80df319221ce144fabfcc9ef0a4c01d6514"
+  },
+  {
     "path": "server/routines.ts",
-    "bytes": 75220,
-    "sha256": "722cd97a7ffbd4654e4f748a6329bb1726fc45b64bbee27e719c1e0646abd31d"
+    "bytes": 74780,
+    "sha256": "6ddca99b983909e765379947276b3c25e8eec5f405ecfcfe149049b47ca14c4e"
   },
   {
     "path": "server/superagent-delivery.node-test.ts",
@@ -1745,6 +1765,11 @@
     "sha256": "648831748b34b3c3840765cb33275789371f75c448b374bb5dca8b672dc7455d"
   },
   {
+    "path": "shared/option-card.ts",
+    "bytes": 6002,
+    "sha256": "b700a1cd43395ea50808d3b37a15768e99c1615c864de9059799b863977f23c6"
+  },
+  {
     "path": "shared/personbot-legacy.ts",
     "bytes": 1265,
     "sha256": "90e88aa5384e81bec4915777a05ca0f1730d7ab647be75f17e6bbdcd3da83f78"
@@ -1771,8 +1796,8 @@
   },
   {
     "path": "shared/wire.ts",
-    "bytes": 50335,
-    "sha256": "8f7f06c82040f587ee6e73f4eaa7e32b8e53873890f6ec43e68024d222ffb1e6"
+    "bytes": 44601,
+    "sha256": "a58fd6bc95b9f76d4f2fba293b042059464f00ced7204da9d52fb146cd02fb78"
   },
   {
     "path": "src/components/SettingsModal.tsx",

@@ -43,10 +43,19 @@
 | `pnpm personbot:official:e2e`，5 个文件 | 12/12 通过 | [完整日志](evidence/personbot-review-hardening-2026-11-06/checks/official-e2e.log) |
 | 官方 core-engine/store/outbox/delivery/runtime/runtime-concurrency/model-surface，7 套 | 309/309 通过 | [上游日志](evidence/personbot-review-hardening-2026-11-06/checks/upstream-tests.log) |
 | 原 bot/task/channel 批量删除，显式 legacy fixture | 10/10 通过 | [原接口日志](evidence/personbot-review-hardening-2026-11-06/checks/legacy-bulk-e2e.log) |
+| 卡片、wire、routine 持久化，8 个原回归文件 | 289/289 通过 | [结构整理回归](evidence/personbot-review-hardening-2026-11-06/checks/source-refactor-tests.log) |
+| 原默认模型、线程回退、真实 custom ACP/RPC/重启，3 个文件 | 60/60 通过 | [模型回归](evidence/personbot-review-hardening-2026-11-06/checks/model-selection-tests.log) |
+| 原文件大小与词汇检查 | 7/7 通过 | [发布检查](evidence/personbot-review-hardening-2026-11-06/checks/source-guards.log) |
 | `pnpm personbot:build`，含原产品与 native 两套类型检查、独立前端构建 | 通过 | [构建日志](evidence/personbot-review-hardening-2026-11-06/checks/build.log) |
 | `pnpm lint` | 通过 | [lint 日志](evidence/personbot-review-hardening-2026-11-06/checks/lint.log) |
 
 子集的 35 个 native package 用例、3 个 plugin 用例等已经包含在上表中，不重复相加。这里只声明列出的检查，不声明整个上游产品、全部 CLI 或桌面打包测试通过。
+
+发布前保留了两个独立提交：先保存已经通过功能验收的集成与加固，再整理文件结构。运行时装配与原模型切换策略分别移入 `server/host/superagent.ts`、`server/host/model-switch.ts`，卡片契约和 routine 文件结构也提取为独立模块。原入口保留网关赋值、driver 连接和恢复启动顺序；延后创建的 Store 和网关通过 getter 读取。没有提高文件大小阈值，也没有跳过推送钩子。
+
+整理后的 `server/index.ts` 为 15,757 行，低于原 15,777 行限制；`shared/wire.ts` 为 905 行，`server/routines.ts` 为 1,559 行。五段移动代码的[原文比对](evidence/personbot-review-hardening-2026-11-06/checks/source-extraction-body-proof.json)仅允许显式依赖 getter 和回调别名的变化。完整官方集成、端到端工作流、构建和 lint 均在这些最终源文件上重新运行；本记录中的三组扩展回归互有覆盖，不能相加作为独立场景总数。
+
+额外以隔离目录调用真实 RoutineManager，确认只读构造保留已有运行状态，`start/tick` 不触发执行，`create/adopt` 返回 409，原持久文件字节保持一致。[只读检查日志](evidence/personbot-review-hardening-2026-11-06/checks/routines-readonly.log)单独保存，不计入上表的 289 项。
 
 12 个端到端工作流为：原界面完整连续会话、attention/clarification 恢复、崩溃审批与原 Stop、后台授权/目录/记忆/用量、无新输入自动恢复、六种产品生命周期，以及原设置中的真实隔离与解除。
 
@@ -70,6 +79,7 @@
 - [原连续会话停止失败](evidence/personbot-review-hardening-2026-11-06/regressions/original-product-request-stop.before-fix.json)：实际只有两个 ticket；不是“已证明创建第三个任务”，而是旧完成任务仍保留订阅，后续消息没有正式回复。
 - [单任务停止失败](evidence/personbot-review-hardening-2026-11-06/regressions/task-stop.before-fix.log)：停止后连续两次新输入的回归。
 - [旧投影恢复失败](evidence/personbot-review-hardening-2026-11-06/regressions/legacy-projection-recovery.before-fix.log)与[相同加强用例的通过结果](evidence/personbot-review-hardening-2026-11-06/checks/legacy-projection-recovery.log)。
+- [旧模型选择测试夹具失败](evidence/personbot-review-hardening-2026-11-06/regressions/legacy-model-fixture.before-fix.log)：八项源码提取测试没有绑定 `SUPERAGENT_PRIMARY`。实际模型选择函数没有因结构整理而改变；夹具显式传入 legacy 模式后，原断言全部保留，三套模型测试 60/60 通过。
 
 [环境信息](evidence/personbot-review-hardening-2026-11-06/environment.json)、[源码散列清单](evidence/personbot-review-hardening-2026-11-06/source-manifest.json)和[12 组工作流证据索引](evidence/personbot-review-hardening-2026-11-06/evidence-index.json)随源码保存。文本日志中的仓库绝对路径统一写作 `<repo>`；临时 fixture 路径与合成数据保留。运行数据库、实际凭据、node_modules、构建产物与根研究 checkout 不作为发布文件。
 

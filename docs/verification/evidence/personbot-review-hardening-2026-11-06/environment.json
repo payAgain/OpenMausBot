@@ -1,12 +1,13 @@
 {
   "version": "personbot-2026.11.06.1",
-  "collectedAt": "2026-11-06T07:56:36.391432+00:00",
+  "collectedAt": "2026-11-06T08:33:45.312940+00:00",
   "platform": "Darwin",
   "architecture": "arm64",
   "node": "v26.10.0",
   "pnpm": "10.33.0",
   "dsh": "0.2.2-rc.1",
   "baseCommit": "7117517bcfb6e4e688ba6bb02db8fda68e6fe828",
+  "functionalCommit": "aa0df96e3",
   "fixtureModel": "deterministic; actual official Runtime and native DSH",
   "normalization": "Repository absolute paths in text logs are replaced by <repo>; temporary fixture paths and synthetic test data are retained."
 }

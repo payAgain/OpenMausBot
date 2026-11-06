@@ -2,13 +2,13 @@ openmausbot open-source edition (enterprise layer present but OMB_LICENSE_KEY is
 local requests: owner trust (self-hosted default)
 local requests: OMB_DEV_TRUST_LOCAL_BROWSER=1: browsers on this machine act as the owner (development only)
 brand: default
-openmausbot server on http://127.0.0.1:22464
+openmausbot server on http://127.0.0.1:21856
 Official Super Agent: original UI and memory are active; legacy executors are suspended.
-[omb-turn] bot=3b2d22c5-c96e-4acf-ae62-264a109467ca text="echo first-workspace" images=0 depth=0 card=false
-[omb-turn] bot=3b2d22c5-c96e-4acf-ae62-264a109467ca text="probe forget jasmine tea" images=0 depth=0 card=false
-[omb-turn] bot=3b2d22c5-c96e-4acf-ae62-264a109467ca text="task background approval" images=0 depth=0 card=false
-[omb-turn] bot=3b2d22c5-c96e-4acf-ae62-264a109467ca text="echo ordinary-followup" images=0 depth=0 card=false
-[omb-turn] bot=3b2d22c5-c96e-4acf-ae62-264a109467ca text="task background approval" images=0 depth=0 card=false
-[omb-turn] bot=3b2d22c5-c96e-4acf-ae62-264a109467ca text="echo changed-to-second-workspace" images=0 depth=0 card=false
-[omb-turn] bot=3b2d22c5-c96e-4acf-ae62-264a109467ca text="echo continued-second-workspace" images=0 depth=0 card=false
-[omb-turn] bot=3b2d22c5-c96e-4acf-ae62-264a109467ca text="task write second-workspace-proof.txt" images=0 depth=0 card=false
+[omb-turn] bot=528be9bc-2dfc-4c51-8371-0ac69476dae2 text="echo first-workspace" images=0 depth=0 card=false
+[omb-turn] bot=528be9bc-2dfc-4c51-8371-0ac69476dae2 text="probe forget jasmine tea" images=0 depth=0 card=false
+[omb-turn] bot=528be9bc-2dfc-4c51-8371-0ac69476dae2 text="task background approval" images=0 depth=0 card=false
+[omb-turn] bot=528be9bc-2dfc-4c51-8371-0ac69476dae2 text="echo ordinary-followup" images=0 depth=0 card=false
+[omb-turn] bot=528be9bc-2dfc-4c51-8371-0ac69476dae2 text="task background approval" images=0 depth=0 card=false
+[omb-turn] bot=528be9bc-2dfc-4c51-8371-0ac69476dae2 text="echo changed-to-second-workspace" images=0 depth=0 card=false
+[omb-turn] bot=528be9bc-2dfc-4c51-8371-0ac69476dae2 text="echo continued-second-workspace" images=0 depth=0 card=false
+[omb-turn] bot=528be9bc-2dfc-4c51-8371-0ac69476dae2 text="task write second-workspace-proof.txt" images=0 depth=0 card=false

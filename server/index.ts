@@ -100,7 +100,7 @@ import { createDataRoutes } from "./data/routes.ts";
 import { DataSheetRegistry } from "./data/sheet.ts";
 import { DataFailure } from "./data/types.ts";
 import { TeamComputers, teamComputerOwner, type TeamComputerRecord } from "./team-computers.ts";
-import { isEffortLevel, type CardAnswerer, type ResolvedSender, type SignInRequestCardData, type WireBot, type WireGroup, type WireTask } from "../shared/wire.ts";
+import { type CardAnswerer, type ResolvedSender, type SignInRequestCardData, type WireBot, type WireGroup, type WireTask } from "../shared/wire.ts";
 import { isPersistentQuestionCard, shouldSettleRequestCard } from "../shared/ask-question.ts";
 import { parseToolScope } from "../shared/tool-scope.ts";
 import type { TeamComputersPayload } from "../shared/team-computer.ts";
@@ -194,7 +194,6 @@ import { HOSTED_CONTRACT_HEADER, HOSTED_CONTRACT_METADATA, HOSTED_CONTRACT_VERSI
 import { cliProbeEnvironment, testCliBinary } from "./cli-probe.ts";
 import { buildMentionNotification, buildNoticeNotification, buildNotification, buildSpendNotification, type Notification } from "./notify.ts";
 import {
-  isModelVariant,
   TurnNotStartedError, TurnAuthenticationRefusedError, TurnUsageLimitRefusedError,
   type ModelSelection,
   type RequestOutcome,
@@ -283,7 +282,6 @@ import { createCreditMoves } from "./cloud-credit-moves.ts"; import { createRout
 import { TRIAL_CREDIT_OWN_AI, TRIAL_KEY_HELD } from "./trial-credit.ts"; import { createHeldKeys } from "./cloud-held-keys.ts";
 import type { ProviderInstance } from "./contracts.ts";
 import { readyToRun, selectDefaultModelSelection, withInstanceConfig, withNewBotEffort, type SelectableInstance } from "./default-model-selection.ts"; import { configIdentity, createTestedAi } from "./tested-ai.ts"; import { instanceIcon } from "./provider-icon.ts";
-import { threadModelFallback, type ThreadEngine } from "./thread-model.ts";
 import { computerEngineMoveText, removedComputerInstanceIds, writeComputerEngineMoveLines } from "./computer-engine-removal.ts";
 import { cancelPeerApprovalsFor, cancelPeerApprovalsForThread, dismissStalePeerCards, peerApprovalFailure, requestPeerApproval, resolvePeerComms, type ApprovalBus } from "./peer-approval.ts";
 import { peerDeliveryReceipt, type PeerDeliveryReceipt } from "./peer-delivery.ts";
@@ -622,17 +620,13 @@ import { createLiveRoutes } from "./routes/live.ts";
 import { createPersonbotIngress, createPersonbotRoutes } from "./routes/personbot.ts";
 import { PersonbotGateway } from "../packages/personbot-gateway/src/index.ts";
 import { assertLegacyExecutionAllowed, PERSONBOT_PRIMARY_REFUSAL, SUPERAGENT_PRIMARY_REFUSAL, primaryMutationRefused, resolvePersonbotMode } from "./personbot-mode.ts";
-import { PersonbotSettings } from "./personbot-settings.ts";
 import { createPersonbotSetupRoutes } from "./routes/personbot-setup.ts";
 import { PersonbotLegacy } from "./personbot-legacy.ts";
 import { createPersonbotLegacyRoutes } from "./routes/personbot-legacy.ts";
-import { createSuperagentGateway } from "../packages/personbot-superagent/src/index.ts";
 import type { SuperagentGateway } from "../shared/superagent.ts";
-import { createSuperagentDriver, SUPERAGENT_INSTANCE_ID } from "./superagent-driver.ts";
-import { createSuperagentDelivery } from "./superagent-delivery.ts";
-import { createSuperagentMemory } from "./superagent-memory.ts";
-import { createSuperagentProjection } from "./superagent-projection.ts";
-import { createSuperagentUsage } from "./superagent-usage.ts";
+import { SUPERAGENT_INSTANCE_ID } from "./superagent-driver.ts";
+import { createPersonbotSettingsHost, createSuperagentDriverHost, createNativeContextLifecycle, createSuperagentHost } from "./host/superagent.ts";
+import { createModelSwitchHost } from "./host/model-switch.ts";
 import { superagentTaskUsage } from "./superagent-task-usage.ts";
 import { createSuperagentRoutes } from "./routes/superagent.ts";
 import { createNotificationRoutes } from "./routes/notifications.ts";
@@ -792,15 +786,7 @@ let desktopMutationToken: string | undefined = DESKTOP_MANAGED ? "" : undefined;
 let companionMutationToken: string | undefined = DESKTOP_MANAGED ? "" : undefined;
 const FALLBACK_PUBLIC_URL = process.env.OMB_PUBLIC_URL?.trim().replace(/\/+$/, "") || null;
 const cfg = loadConfig();
-const personbotHome = process.env.PERSONBOT_HOME || join(homedir(), ".personbot");
-const personbotFixture = process.env.PERSONBOT_FIXTURE === "1" && process.env.OMB_TEST_SEALED_PATH === "1";
-const personbotWorkspace = process.env.PERSONBOT_WORKSPACE || join(personbotHome, "workspace");
-const personbotSettings = new PersonbotSettings({
-  home: personbotHome, workspace: personbotWorkspace,
-  provider: personbotFixture ? "personbot-fixture" : process.env.PERSONBOT_PROVIDER || "deepseek-official",
-  model: personbotFixture ? "fixture" : process.env.PERSONBOT_MODEL || "deepseek-flash",
-  fixture: personbotFixture,
-});
+const { personbotHome, personbotFixture, personbotWorkspace, personbotSettings } = createPersonbotSettingsHost();
 let officialSuperagentGateway: SuperagentGateway | undefined;
 const officialSelection = (): ModelSelection => ({ instanceId: SUPERAGENT_INSTANCE_ID, model: personbotSettings.launch().model });
 function effectiveBot(bot: BotRecord): BotRecord {
@@ -837,27 +823,17 @@ function customDomainStatus() {
     serverIpv4: DESKTOP_MANAGED ? null : customDomainIpv4(),
   };
 }
-const superagentDriver = createSuperagentDriver({
-  gateway: () => {
-    if (!officialSuperagentGateway) throw new Error("Super Agent is still starting");
-    return officialSuperagentGateway;
-  },
-  model: () => personbotSettings.launch().model,
-  configured: () => personbotFixture || Boolean(personbotSettings.launch().env.DEEPSEEK_API_KEY),
-  currentBinding: threadId => {
-    const bot = store.botByThread(threadId);
-    const task = bot && store.taskByThread(bot.id, threadId);
-    const cursor = task?.resumeCursors[SUPERAGENT_INSTANCE_ID];
-    if (!bot || !task || task.rewound || typeof cursor !== "string" || !/^omb-superagent:[A-Za-z0-9_-]{1,128}$/.test(cursor)) return undefined;
-    const path = store.activePath(threadId);
-    const owner = directRequestOwners.get(threadId);
-    const source = path.findLast(message => message.role === "user" && message.kind === "text");
-    const requestId = owner?.messageId && path.some(message => message.id === owner.messageId) && owner.turnId
-      ? owner.turnId : source ? path.findLast(message => message.role === "bot" && message.requestMessageId === source.id && message.turnId)?.turnId : undefined;
-    return { botId: bot.id, threadId, contextId: cursor.slice("omb-superagent:".length), ...(requestId ? { requestId } : {}) };
-  },
+const superagentDriver = createSuperagentDriverHost({
+  gateway: () => officialSuperagentGateway, settings: personbotSettings, fixture: personbotFixture,
+  store: () => store, request: threadId => directRequestOwners.get(threadId),
 });
 const registry = new ProviderRegistry(SUPERAGENT_PRIMARY ? [superagentDriver] : BUILT_IN_DRIVERS, { statusFile: join(DATA_DIR, "providers", "engine-status.json") });
+const { checkedModelSelection, engineSwitchNeedsAsk, checkedTaskModelSwitch, threadEngine,
+  turnSelection, healThreadModel } = createModelSwitchHost({
+  registry, SUPERAGENT_PRIMARY, personbotSettings, hostedModels, officialSelection, providerConfigs,
+  providerInstanceChanging: id => providerInstancesChanging.has(id), policyModelRefusal,
+  store: () => store, threadBusy, activeGroupTurnForBot,
+});
 const supportsApprovalMode = createApprovalModeSupport(registry);
 registerEnginesBinDir();
 
@@ -1967,7 +1943,8 @@ function boatNotConfigured(bot: { name: string }, source: PlaceSource): PlaceUna
   return placeUnavailable("cloud", { state: CLOUD_HOME ? "cc-unavailable" : "cc-needs-key", params: { bot: bot.name }, source }, Boolean(CLOUD_HOME));
 }
 const directTurnDispatchClaims = new Map<string, DirectTurnDispatchClaim>();
-const nativeLifecycleThreads = new Map<string, number>();
+const nativeContextLifecycle = createNativeContextLifecycle({ gateway: () => officialSuperagentGateway, store: () => store });
+const { stopNativeTasks, revokeNativeContext, teardownNativeContexts } = nativeContextLifecycle;
 const directTurnGenerationByThread = new Map<string, string>();
 // Latest direct request per thread, kept past Stop until completion or failure cleanup; unknown continuations deliberately lose proof.
 const directRequestOwners = new Map<string, {
@@ -2269,7 +2246,7 @@ function botForThread(botId: string, threadId: string): BotRecord | null {
 
 function threadBusy(botId: string, threadId: string): boolean {
   return store.taskByThread(botId, threadId)?.busy === true || directTurnDispatchClaims.has(threadId)
-    || nativeLifecycleThreads.has(threadId);
+    || nativeContextLifecycle.pending(threadId);
 }
 
 function parksBehindCoordination(botId: string, threadId: string): boolean {
@@ -2359,40 +2336,6 @@ async function interruptAllDirectThreads(botId: string): Promise<void> {
   await Promise.all([nativeStop, ...threads.map((task) => interruptDirectThread(botId, task.threadId))]);
 }
 
-async function teardownNativeContexts(botId?: string, threadId?: string, retire = false): Promise<void> {
-  const gateway = officialSuperagentGateway;
-  if (!gateway?.inspect) return;
-  const threads = threadId ? [threadId] : botId ? store.tasks(botId).map(task => task.threadId) : [];
-  for (const id of threads) nativeLifecycleThreads.set(id, (nativeLifecycleThreads.get(id) ?? 0) + 1);
-  try {
-    const snapshot = await gateway.inspect();
-    const bindings = snapshot.bindings.filter(binding => binding.active
-      && (botId === undefined || binding.botId === botId) && (threadId === undefined || binding.threadId === threadId));
-    const targets = new Map(bindings.map(binding => [JSON.stringify([binding.botId, binding.threadId]),
-      { botId: binding.botId, threadId: binding.threadId }]));
-    if (botId) for (const id of threads) targets.set(JSON.stringify([botId, id]), { botId, threadId: id });
-    await Promise.all([...targets.values()].map(binding => retire
-      ? gateway.revoke!(binding)
-      : gateway.interrupt(binding, { scope: "conversation" })));
-    if (retire) for (const binding of targets.values()) {
-      if (store.taskByThread(binding.botId, binding.threadId)) store.patchTask(binding.botId, binding.threadId, { rewound: true });
-    }
-  } finally {
-    for (const id of threads) {
-      const remaining = (nativeLifecycleThreads.get(id) ?? 1) - 1;
-      if (remaining) nativeLifecycleThreads.set(id, remaining);
-      else nativeLifecycleThreads.delete(id);
-    }
-  }
-}
-
-function stopNativeTasks(botId: string, threadId?: string): Promise<void> {
-  return teardownNativeContexts(botId, threadId);
-}
-
-function revokeNativeContext(botId: string, threadId?: string): Promise<void> {
-  return teardownNativeContexts(botId, threadId, true);
-}
 const retiredProviderTurns = new RetiredTurnRegistry();
 const pendingCancelledProviderHandshakes = new PendingTurnCancellations();
 
@@ -2678,163 +2621,6 @@ function retryComputerEngineMove(): Promise<void> {
     .catch((error) => console.warn(`[engines] moving bots off the removed Computer engine failed: ${error instanceof Error ? error.message : String(error)}`))
     .finally(() => { computerEngineMoveRunning = null; });
   return computerEngineMoveRunning;
-}
-
-function checkedModelSelection(
-  raw: unknown,
-  current?: { selection: ModelSelection; busy: boolean },
-  requireAvailableModel = false,
-): { ok: true; selection: ModelSelection } | { ok: false; status: number; error: string } {
-  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
-    return { ok: false, status: 400, error: "modelSelection must be an object" };
-  }
-  const value = raw as { instanceId?: unknown; model?: unknown; effort?: unknown; variant?: unknown };
-  if (typeof value.instanceId !== "string" || !value.instanceId.trim()) {
-    return { ok: false, status: 400, error: "modelSelection.instanceId is required" };
-  }
-  if (typeof value.model !== "string" || !value.model.trim()) {
-    return { ok: false, status: 400, error: "modelSelection.model is required" };
-  }
-  const selection: ModelSelection = {
-    instanceId: value.instanceId.trim(),
-    model: value.model.trim(),
-  };
-  if (SUPERAGENT_PRIMARY && (selection.instanceId !== SUPERAGENT_INSTANCE_ID || selection.model !== personbotSettings.launch().model)) {
-    return { ok: false, status: 400, error: "This system uses the official DSH Super Agent. Configure its model in Settings → Connections." };
-  }
-  if (hostedModels && !hostedModels.allows(selection)) return { ok: false, status: 400, error: hostedModels.error() };
-  if (value.effort !== undefined) {
-    if (!isEffortLevel(value.effort)) {
-      return { ok: false, status: 400, error: `effort "${String(value.effort)}" is not recognized` };
-    }
-    selection.effort = value.effort;
-  }
-  if (value.variant !== undefined) {
-    if (!isModelVariant(value.variant)) {
-      return { ok: false, status: 400, error: "variant must be a non-empty model variant ID" };
-    }
-    if (value.effort !== undefined) {
-      return { ok: false, status: 400, error: "choose either a model variant or an effort level" };
-    }
-    selection.variant = value.variant;
-  }
-  const changed = current && (
-    selection.instanceId !== current.selection.instanceId ||
-    selection.model !== current.selection.model ||
-    selection.effort !== current.selection.effort ||
-    selection.variant !== current.selection.variant
-  );
-  if (current?.busy && changed) {
-    return { ok: false, status: 409, error: "the bot is working — stop it before changing models" };
-  }
-  const target = registry.get(selection.instanceId);
-  if (providerInstancesChanging.has(selection.instanceId)) {
-    return { ok: false, status: 409, error: "this provider account is being updated — try again shortly" };
-  }
-    // Free-form model ids: custom engines accept ids outside their catalog, and some drivers learn the catalog only at turn start.
-  if (requireAvailableModel) {
-    if (!target) {
-      return { ok: false, status: 400, error: `model instance "${selection.instanceId}" is unavailable` };
-    }
-    const offered =
-      selection.model === target.models.default ||
-      target.models.options.some((option) => option.id === selection.model);
-    if (!offered) {
-      return {
-        ok: false,
-        status: 400,
-        error: `model "${selection.model}" is not offered by instance "${selection.instanceId}"`,
-      };
-    }
-  }
-  const allowed: readonly string[] = target?.adapter.capabilities.effortLevels ?? [];
-  if (target && selection.effort !== undefined && !allowed.includes(selection.effort)) {
-    return { ok: false, status: 400, error: `effort "${selection.effort}" is not offered by this bot's engine` };
-  }
-  if (target && selection.variant !== undefined && !target.adapter.capabilities.modelVariants) {
-    return { ok: false, status: 400, error: "model variants are not offered by this bot's engine" };
-  }
-  return { ok: true, selection };
-}
-
-function engineSwitchNeedsAsk(mode: ApprovalMode, from: ModelSelection, to: ModelSelection): boolean {
-  return modelSwitchNeedsAsk(mode, registry.cliTarget(from.instanceId)?.driverKind, registry.cliTarget(to.instanceId)?.driverKind);
-}
-
-function checkedTaskModelSwitch(current: BotRecord, raw: unknown, updateBotDefault: boolean,
-  resetApprovalToAsk: boolean, requireAvailableModel = false, trusted = false) {
-  if (current.approvalGrant) return { ok: false as const, status: 409, error: "Wait for the approval change to finish before switching models" };
-  const checked = checkedModelSelection(raw, {
-    selection: current.modelSelection, busy: threadBusy(current.id, current.threadId),
-  }, requireAvailableModel);
-  if (!checked.ok) return checked;
-  const profile = store.bot(current.id)!;
-  if (updateBotDefault) {
-    const defaults = checkedModelSelection(checked.selection, {
-      selection: profile.modelSelection, busy: Boolean(activeGroupTurnForBot(current.id)),
-    });
-    if (!defaults.ok) return defaults;
-  }
-  for (const target of updateBotDefault ? [current, profile] : [current]) {
-    const mode = approvalModeFor(target);
-    if (resetApprovalToAsk && mode === "custom" && !trusted) {
-      return { ok: false as const, status: 403, error: "Leaving Custom approval requires confirmation in the packaged desktop app" };
-    }
-    if (!resetApprovalToAsk && modelSwitchNeedsAsk(mode,
-      registry.cliTarget(target.modelSelection.instanceId)?.driverKind,
-      registry.cliTarget(checked.selection.instanceId)?.driverKind)) {
-      return { ok: false as const, status: 400, error: "Confirm switching this model with Ask permissions first (resetApprovalToAsk)" };
-    }
-  }
-  if (resetApprovalToAsk && (threadBusy(current.id, current.threadId) ||
-    (updateBotDefault && activeGroupTurnForBot(current.id)))) {
-    return { ok: false as const, status: 409, error: "Stop work in the selected scope before switching its permissions" };
-  }
-  return checked;
-}
-
-function threadEngine(instanceId: string): ThreadEngine | undefined {
-  const live = registry.get(instanceId);
-  if (!live) return undefined;
-  return {
-    instanceId, driverKind: live.driverKind, enabled: live.enabled, models: live.models,
-    capabilities: { modelVariants: live.adapter.capabilities.modelVariants === true },
-    snapshot: registry.lastSnapshot(instanceId) ?? { state: "available" },
-    access: providerConfigs()[instanceId]?.access ?? registry.access(instanceId),
-  };
-}
-
-function threadModelGivingWay(botId: string, threadId: string): ModelSelection | null {
-  if (SUPERAGENT_PRIMARY) return null;
-  const bot = store.bot(botId);
-  const own = store.taskByThread(botId, threadId)?.modelSelection;
-  if (!bot || !own) return null;
-  return threadModelFallback(own, bot.modelSelection, threadEngine, {
-    refusal: policyModelRefusal,
-    ...(hostedModels ? { allows: (selection: ModelSelection) => hostedModels!.allows(selection) } : {}),
-  }) ? own : null;
-}
-
-function turnSelection(botId: string, threadId: string): ModelSelection | undefined {
-  if (SUPERAGENT_PRIMARY) return officialSelection();
-  return threadModelGivingWay(botId, threadId) ? store.bot(botId)?.modelSelection : store.projectBotForTask(botId, threadId)?.modelSelection;
-}
-
-function modelName(selection: ModelSelection): string {
-  const instance = registry.get(selection.instanceId);
-  const label = instance?.models.options.find((option) => option.id === selection.model)?.label ?? selection.model;
-  return instance ? `${instance.displayName || instance.driverKind} · ${label}` : label;
-}
-
-function healThreadModel(botId: string, threadId: string): void {
-  const bot = store.bot(botId);
-  const own = threadModelGivingWay(botId, threadId);
-  if (!bot || !own || bot.approvalGrant || threadBusy(botId, threadId)) return;
-  if (!store.followBotModel(botId, [threadId], (from, to) => hostedModels?.resetTask(from, to) ?? {}).length) return;
-  store.appendMessage(threadId, { role: "bot", kind: "activity", tool: {
-    name: `notice: This thread's model (${modelName(own)}) isn't available, so it now uses ${bot.name}'s model (${modelName(bot.modelSelection)}).`,
-    ok: true,
-  } });
 }
 
 function starterNotes(botId: string): Array<{ path: string; text: string }> {
@@ -12774,72 +12560,13 @@ ROUTES.push(createLiveRoutes({
   },
 }));
 
-const currentNativeMemoryBinding = (binding: { botId: string; threadId: string; contextId?: string }) =>
-  Boolean(binding.contextId && !store.taskByThread(binding.botId, binding.threadId)?.rewound
-    && (store.taskByThread(binding.botId, binding.threadId)?.resumeCursors[SUPERAGENT_INSTANCE_ID] === `omb-superagent:${binding.contextId}`
-      || officialSuperagentGateway?.isActiveBinding?.(binding)));
-const originalSuperagentMemory = createSuperagentMemory({
-  store, aboutMe: aboutMeFacts,
-  readAboutMe: () => CLOUD_TEAM ? null : cfg.profile?.aboutMe ?? "",
-  canRead: (binding, purpose) => purpose === "recall" || currentNativeMemoryBinding(binding),
-  canWrite: (binding, request) => currentNativeMemoryBinding(binding) && request.caller?.role === "master"
-    && officialSuperagentGateway?.authorizeMemory?.(request) === true
-    && !isInternalTurn(binding.threadId) && !isUnattended(binding.botId, binding.threadId),
+const { currentNativeMemoryBinding, originalSuperagentProjection, gateway: assembledSuperagentGateway } = createSuperagentHost({
+  store, aboutMeFacts, CLOUD_TEAM: Boolean(CLOUD_TEAM), cfg, SUPERAGENT_PRIMARY,
+  personbotHome, personbotWorkspace, personbotFixture, personbotSettings,
+  isInternalTurn, isUnattended, threadBusy, request: threadId => directRequestOwners.get(threadId),
+  setLastReply: (threadId, text) => { lastReply.set(threadId, text); }, notify, DATA_DIR,
 });
-const originalSuperagentProjection = createSuperagentProjection({
-  store, currentContext: currentNativeMemoryBinding,
-  attention: (binding, kind, summary) => {
-    const bot = store.bot(binding.botId);
-    if (bot) {
-      store.patchTask(bot.id, binding.threadId, { unread: true });
-      notify(buildNotification(kind, bot, binding.threadId, summary, { avatarUrl: bot.avatarUrl }));
-    }
-  },
-});
-const originalSuperagentDelivery = createSuperagentDelivery({
-  store, currentContext: currentNativeMemoryBinding,
-  onPersist: (delivery, message) => {
-    if (threadBusy(delivery.botId, delivery.threadId) && directRequestOwners.get(delivery.threadId)?.turnId === delivery.requestId) {
-      lastReply.set(delivery.threadId, message.text ?? "");
-    } else if (delivery.purpose === "result") {
-      const bot = store.bot(delivery.botId);
-      if (bot) {
-        store.patchTask(bot.id, delivery.threadId, { unread: true });
-        notify(buildNotification("done", bot, delivery.threadId, message.text ?? "", { avatarUrl: bot.avatarUrl }));
-      }
-    }
-  },
-});
-const originalSuperagentUsage = createSuperagentUsage({
-  dataDir: DATA_DIR,
-  bot: id => store.bot(id),
-  onBooked: row => {
-    if (store.botByThread(row.threadId)?.id === row.botId) store.addTaskUsage(row.botId, row.threadId, {
-      input: row.input, output: row.output, cachedInput: row.cachedInput, costUsd: row.costUsd,
-    });
-    noteSpend(DATA_DIR, row, Promise.resolve(true));
-  },
-});
-if (SUPERAGENT_PRIMARY) officialSuperagentGateway = createSuperagentGateway({
-  home: personbotHome, workspace: personbotWorkspace,
-  provider: personbotSettings.launch().provider, model: personbotSettings.launch().model, fixture: personbotFixture,
-  memory: request => originalSuperagentMemory.handle(request),
-  deliver: async delivery => { originalSuperagentDelivery(delivery); },
-  usage: async event => { await originalSuperagentUsage.handle(event); },
-  canRecover: (binding, input) => {
-    const task = store.taskByThread(binding.botId, binding.threadId);
-    const bot = store.projectBotForTask(binding.botId, binding.threadId);
-    return Boolean(task && bot && !task.rewound
-      && (input.approvalMode !== "full" || approvalModeFor(bot) === "full"));
-  },
-  resolveLaunch: async () => personbotSettings.launch(),
-  onLaunch: configuration => personbotSettings.applied(configuration),
-  maxModelCalls: Number(process.env.PERSONBOT_MAX_MODEL_CALLS ?? 4),
-  ...(process.env.PERSONBOT_MAX_MODEL_REQUESTS ? { maxModelRequests: Number(process.env.PERSONBOT_MAX_MODEL_REQUESTS) } : {}),
-  ...(process.env.PERSONBOT_MAX_TOKENS ? { tokenLimit: Number(process.env.PERSONBOT_MAX_TOKENS) } : {}),
-  ...(process.env.PERSONBOT_MAX_COST_USD ? { costLimitUsd: Number(process.env.PERSONBOT_MAX_COST_USD) } : {}),
-  onModelAdmission: () => assertWithinBudget(cfg, DATA_DIR, new Date(), () => true),
-});
+officialSuperagentGateway = assembledSuperagentGateway;
 if (officialSuperagentGateway) {
   superagentDriver.connect();
   void officialSuperagentGateway.start().catch(error => console.error("Super Agent recovery could not start:", String(error)));

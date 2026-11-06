@@ -34,6 +34,7 @@ import { applyHolds, holdCauses, type AppliedHolds } from "./routine-holds.ts";
 import { sanitizeInput } from "./routine-input.ts";
 import { checkHold, CHECK_BOOT_HOLD_MS, type CheckHold } from "./routine-check-pacing.ts";
 import { resolveRoutineResultsThread, routineRunDefinition, type ResultsThreadAllocation } from "./routine-run-definition.ts";
+import { assertRoutineFileWritable, type RoutineFile } from "./routine-file.ts";
 
 export type { RoutineContextAttachment, RoutineIntervalWindow, RoutineRunStatus, RoutineRunTrigger };
 export { intervalHasRestrictions } from "./routine-intervals.ts";
@@ -182,19 +183,6 @@ export interface RoutineInput {
   deliver?: RoutineDelivery | null;
   resultsThreadId?: string | null;
 }
-
-interface RoutineFile {
-  version: 1;
-  frozenResultsCleared?: true;
-  routines: Routine[];
-  runs: RoutineRun[];
-  routineRequestReceipts?: RoutineRequestReceipt[];
-  webhookRunReceipts?: EventRunReceipt[];
-  startupLaunchId?: string;
-  ownerNotices?: RoutineOwnerNotice[];
-  holds?: RoutineHoldCause[];
-}
-
 
 export type RoutineRequestOwner = Pick<RoutineRequestReceipt, "requestId" | "messageId" | "botId" | "threadId">;
 
@@ -1517,8 +1505,7 @@ export class RoutineManager {
   }
 
   private assertWritable(): void {
-    if (this.options.readOnly) throw Object.assign(new Error("Saved routines are read-only in this runtime."), { status: 409 });
-    if (this.unreadable) throw Object.assign(new Error("Saved routines could not be read. Repair routines.json before changing them."), { status: 503 });
+    assertRoutineFileWritable(this.options.readOnly, this.unreadable);
   }
 
   /** Rolls memory back when the write fails, so a retry never mistakes an uncommitted action for a durable one. */

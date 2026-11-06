@@ -8,23 +8,23 @@
   "layouts": [
     {
       "documentWidth": 1440,
-      "left": 421.0010986328125,
-      "right": 1218.9981689453125,
-      "text": "模型调用 0/4 · 排队 0刷新输入 74 tokens · 输出 26 tokens · 6 次调用尚无可靠费用此目录的写入已隔离/private/tmp/openmausbot-verify-data-85o8On/personbot-workspaceThe native runtime ended unexpectedly while holding a workspace write window; the owner must reconcile any surviving external work.检查后解除隔离",
+      "left": 421.0372314453125,
+      "right": 1218.937744140625,
+      "text": "模型调用 0/4 · 排队 0刷新输入 74 tokens · 输出 26 tokens · 6 次调用尚无可靠费用此目录的写入已隔离/private/tmp/openmausbot-verify-data-NEeV3W/personbot-workspaceThe native runtime ended unexpectedly while holding a workspace write window; the owner must reconcile any surviving external work.检查后解除隔离",
       "viewport": 1440
     },
     {
       "documentWidth": 768,
       "left": 245,
       "right": 723,
-      "text": "模型调用 0/4 · 排队 0刷新输入 74 tokens · 输出 26 tokens · 6 次调用尚无可靠费用此目录的写入已隔离/private/tmp/openmausbot-verify-data-85o8On/personbot-workspaceThe native runtime ended unexpectedly while holding a workspace write window; the owner must reconcile any surviving external work.检查后解除隔离",
+      "text": "模型调用 0/4 · 排队 0刷新输入 74 tokens · 输出 26 tokens · 6 次调用尚无可靠费用此目录的写入已隔离/private/tmp/openmausbot-verify-data-NEeV3W/personbot-workspaceThe native runtime ended unexpectedly while holding a workspace write window; the owner must reconcile any surviving external work.检查后解除隔离",
       "viewport": 768
     },
     {
       "documentWidth": 390,
       "left": 13,
       "right": 377,
-      "text": "模型调用 0/4 · 排队 0刷新输入 74 tokens · 输出 26 tokens · 6 次调用尚无可靠费用此目录的写入已隔离/private/tmp/openmausbot-verify-data-85o8On/personbot-workspaceThe native runtime ended unexpectedly while holding a workspace write window; the owner must reconcile any surviving external work.检查后解除隔离",
+      "text": "模型调用 0/4 · 排队 0刷新输入 74 tokens · 输出 26 tokens · 6 次调用尚无可靠费用此目录的写入已隔离/private/tmp/openmausbot-verify-data-NEeV3W/personbot-workspaceThe native runtime ended unexpectedly while holding a workspace write window; the owner must reconcile any surviving external work.检查后解除隔离",
       "viewport": 390
     }
   ],
@@ -41,20 +41,20 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/bots/e9c4dcee-7ca0-4796-9e95-33ad46563081",
+      "path": "/api/bots/36081c6e-36b8-4c51-8d17-0db8ea4fb0f8",
       "status": 200
     },
     {
       "method": "POST",
-      "path": "/api/bots/e9c4dcee-7ca0-4796-9e95-33ad46563081/messages",
+      "path": "/api/bots/36081c6e-36b8-4c51-8d17-0db8ea4fb0f8/messages",
       "status": 202
     }
   ],
   "fixture": {
-    "url": "http://127.0.0.1:22336",
-    "pid": 91973,
-    "dataDir": "/tmp/openmausbot-verify-data-85o8On",
-    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793950813076-91971.log"
+    "url": "http://127.0.0.1:21344",
+    "pid": 2510,
+    "dataDir": "/tmp/openmausbot-verify-data-NEeV3W",
+    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793953565928-2509.log"
   },
   "quarantineBefore": {
     "activeCalls": 0,
@@ -67,10 +67,10 @@
     "unreportedCalls": 0,
     "quarantinedWorkspaces": [
       {
-        "id": "ffb5225d-a42a-4bf3-801a-3e55b9880aec",
-        "workspace": "/private/tmp/openmausbot-verify-data-85o8On/personbot-workspace",
+        "id": "645de207-1599-4a75-bb11-091b2fd86551",
+        "workspace": "/private/tmp/openmausbot-verify-data-NEeV3W/personbot-workspace",
         "reason": "The native runtime ended unexpectedly while holding a workspace write window; the owner must reconcile any surviving external work.",
-        "at": "2026-11-06T07:40:17.245Z"
+        "at": "2026-11-06T08:26:10.112Z"
       }
     ]
   },
