@@ -1,0 +1,25 @@
+✔ writes original notes, reads them through both ports, indexes FTS and records source identity (74.552542ms)
+✔ appends original topic notes and journals main-note archival (90.68475ms)
+✔ searches only this bot and eligible conversations, with agent reports labeled as context (90.816ms)
+✔ room memory requires an audience opt-in and never grants a room a personal-fact write (107.888291ms)
+✔ reads and searches the original owner profile live without copying it into bot facts (42.177375ms)
+✔ never reads the personal profile for rooms, delegated sources, retired contexts or disabled memory (33.68125ms)
+✔ bounds and redacts live profile output and suppresses forgotten profile lines (38.21325ms)
+✔ rechecks foreign bindings, visibility and memory disabling on every request (35.792375ms)
+✔ rejects delegated and relayed writers using the latest author, including writes after revocation (26.645ms)
+✔ requires owner source evidence, permits quoted paraphrases and refuses stale or fabricated quotes (36.316958ms)
+✔ preserves native context identity so product callbacks can retire a branch (37.415708ms)
+✔ checks multiword forget tombstones against raw SQLite sources rather than FTS highlight markup (61.638584ms)
+✔ never labels indexed daily logs as durable personal facts (37.838292ms)
+✔ forgets original main, topic and archive notes, About me and stale learned candidates (72.715375ms)
+✔ keeps forget tombstones without About me and clears them only after a valid explicit remember (46.792416ms)
+✔ constrains file paths and refuses symlinks without touching their target (32.966ms)
+✔ bounds retrieved files, search snippets and queries (371.753625ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1532.944417

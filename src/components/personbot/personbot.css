@@ -1,0 +1,185 @@
+.personbot-view {
+  overflow: hidden;
+}
+
+.personbot-view button,
+.personbot-view select,
+.personbot-view summary,
+.personbot-view input {
+  touch-action: manipulation;
+}
+
+.personbot-message,
+.personbot-message > div,
+.personbot-tool,
+.personbot-tool > div,
+.personbot-tasks,
+.personbot-task,
+.personbot-task > div,
+.personbot-personal,
+.personbot-personal > div,
+.personbot-integrations,
+.personbot-integrations > div,
+.personbot-artifacts,
+.personbot-artifacts > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.personbot-task summary::-webkit-details-marker {
+  display: none;
+}
+
+.personbot-task > summary::before {
+  content: "+";
+  flex: 0 0 auto;
+  width: 12px;
+  color: var(--color-ink-secondary);
+}
+
+.personbot-task[open] > summary::before {
+  content: "−";
+}
+
+.personbot-task pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.personbot-message pre,
+.personbot-question-detail pre,
+.personbot-tool pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.personbot-message img,
+.personbot-message video {
+  max-width: 100%;
+}
+
+.personbot-transcript {
+  scrollbar-gutter: stable;
+}
+
+.personbot-tool summary::-webkit-details-marker {
+  display: none;
+}
+
+.personbot-product {
+  overflow: hidden;
+}
+
+.personbot-product-sidebar {
+  display: flex;
+  flex: 0 0 228px;
+  flex-direction: column;
+  min-width: 0;
+  padding: 24px 12px;
+  border-right: 1px solid var(--color-hairline);
+}
+
+.personbot-product-canvas {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.personbot-product-page {
+  width: 100%;
+  max-width: 1100px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 32px;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+}
+
+.personbot-product-settings {
+  max-width: 744px;
+}
+
+.personbot-product-mobile,
+.personbot-product-close,
+.personbot-product-scrim {
+  display: none;
+}
+
+.personbot-primary-view > header > div:first-child {
+  padding-left: 0;
+}
+
+.personbot-primary-view [data-personbot-personal] > summary,
+.personbot-primary-view [data-personbot-integrations] > summary {
+  display: none;
+}
+
+.personbot-primary-view [data-personbot-personal] > div,
+.personbot-primary-view [data-personbot-integrations] > div {
+  border-top: 0;
+}
+
+@media (max-width: 900px) {
+  .personbot-product-mobile {
+    display: flex;
+    min-height: 60px;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--color-hairline);
+  }
+
+  .personbot-product-sidebar {
+    display: none;
+    position: absolute;
+    z-index: 40;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(300px, 90vw);
+    overflow-y: auto;
+    background: var(--color-app);
+  }
+
+  .personbot-product-sidebar.is-open {
+    display: flex;
+  }
+
+  .personbot-product-close {
+    display: inline-flex;
+    min-height: 44px;
+    min-width: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .personbot-product-scrim {
+    display: block;
+    position: absolute;
+    z-index: 30;
+    inset: 0;
+    background: rgb(0 0 0 / 35%);
+  }
+
+  .personbot-product-page {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .personbot-view footer {
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .personbot-view textarea {
+    resize: none;
+    font-size: 16px;
+  }
+}

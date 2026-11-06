@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-05",
+  "branch": "personbot/dsh-foundation",
+  "environment": {
+    "platform": "macOS arm64",
+    "node": "26.10.0",
+    "pnpm": "10.33.0",
+    "dsh": "0.2.2-rc.1"
+  },
+  "checks": [
+    {
+      "name": "Personbot packages and actual native dsh runtime",
+      "command": "pnpm personbot:test",
+      "passed": 199,
+      "failed": 0,
+      "log": "native-tests.txt"
+    },
+    {
+      "name": "client components HTTP navigation fixture and documentation",
+      "passed": 115,
+      "failed": 0,
+      "files": 9,
+      "log": "client-routes-fixture-docs.txt"
+    },
+    {
+      "name": "W2-W4 unchanged real-browser regressions",
+      "passed": 5,
+      "failed": 0,
+      "files": 3,
+      "log": "browser-compatibility.txt"
+    },
+    {
+      "name": "W5 full event/channel App browser",
+      "passed": 1,
+      "failed": 0,
+      "evidence": "evidence.json",
+      "widths": [
+        1440,
+        768,
+        390
+      ],
+      "consoleErrors": 0
+    },
+    {
+      "name": "eager server startup without post-restart HTTP",
+      "passed": 1,
+      "failed": 0,
+      "postRestartHttpRequests": 0,
+      "evidence": "background-evidence.json",
+      "log": "background-test.txt"
+    },
+    {
+      "name": "Personbot TypeScript",
+      "result": "passed",
+      "log": "typecheck.txt"
+    },
+    {
+      "name": "frontend and server TypeScript plus Vite build",
+      "result": "passed",
+      "log": "frontend-build.txt"
+    },
+    {
+      "name": "packaged server build",
+      "result": "passed",
+      "log": "server-build.txt"
+    },
+    {
+      "name": "focused production and test lint",
+      "result": "passed",
+      "log": "lint.txt"
+    },
+    {
+      "name": "frozen offline install",
+      "result": "passed",
+      "log": "frozen-install.txt"
+    },
+    {
+      "name": "documentation after final evidence links",
+      "command": "pnpm exec vitest run scripts/testing/verification-docs.test.ts",
+      "passed": 7,
+      "failed": 0,
+      "log": "documentation-final.txt"
+    },
+    {
+      "name": "whitespace validation",
+      "command": "git diff --check",
+      "result": "passed",
+      "log": "whitespace-check.txt"
+    }
+  ],
+  "reviewRemediations": [
+    "initial burst reserves one task per unbound thread",
+    "retained event fairness and per-task ordering",
+    "live source and subscription checks after native drain",
+    "immutable subscription bindings and reenable result history floor",
+    "shutdown retains pending input without new execution",
+    "outbox full queues stable prefix while existing deliveries can drain",
+    "old manual delivery decisions remain visible under count and byte pressure"
+  ],
+  "limits": [
+    "deterministic model and local HTTP services only; no real external account or model quality validation",
+    "generic webhook, no GitHub/Feishu/Slack provider-specific signature validation",
+    "fixed interval events continue same thread/task; closed tasks ignore subsequent events",
+    "no cron, DST wall-time rules, historical pagination, automatic retention or production capacity qualification",
+    "remote exactly-once requires cooperating idempotent receiver; uncertain at-most-once outcomes need human decision",
+    "already queued callback effects retain frozen lifecycle after source disable",
+    "existing CSS highlight optimization and large chunk build warnings"
+  ],
+  "committed": false,
+  "pushed": false,
+  "files": {
+    "background-evidence.json": "6922006bb442d741d6e9fae67c0c4375dae1d9b2fe9bf78b95508f0edf617ec7",
+    "background-result.md": "aa7b46e1d1aa67954f6aa7ec14e916082f49b548a178d5ac861ae4943463dfb6",
+    "background-test.txt": "a2fb33551efb76a9130c0e25ed4b9a53d4baf0e48c40ef7140175e96df6d2d9a",
+    "background-verification.txt": "38471f24a7bac4feda3d080c03f21c1a64d6f9ff403d4fda8af9b7da84969c17",
+    "browser-compatibility.txt": "bc6706dc1d9562ee30856d8433ab37846475271858589dc7d700de9c5c75d01c",
+    "callback-uncertain-confirmation.png": "84598426e19729d6950eca2e4b2bc4b46cb89b0ffa9af1c83d1e2192b555d43b",
+    "client-routes-fixture-docs.txt": "7716d75e00f34dbe284a2995b468da571b302eb52ecf930de71e49bb99e676a5",
+    "documentation-final.txt": "5e6c4d7ff4685c7d58591fe34bd82ced44d7722eb4b70e54516e86eeb3fb4838",
+    "evidence.json": "d7e44f1ba16eb81f4e1e515942112fe9f26bc32eabf552f770fa8944076356a0",
+    "frontend-build.txt": "01e58a13701ac4e01a01c2a7f62f7b72fa3f9e8864a54d18a06eb22ac645704d",
+    "frozen-install.txt": "4b02055f27fb5954dd0d9de2ea4adffc88736a864314eb8ad1ab5a42401974ec",
+    "lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-tests.txt": "546e2230f0f76dc00f14122822ee166ff59426b94270cbac2dfd3d43cca25af0",
+    "personbot-event-schedule-1440.png": "56b8ebc75c7217735f9ba2379c446e29ab9b37c523fa91bf5eeff0452ab3f2f1",
+    "personbot-event-schedule-390.png": "1775d711df794a6062fc7982f7a4171ac9cd7fe5a5aca0ab93aca89f814e7e17",
+    "personbot-event-schedule-768.png": "dc7718547950f4c9e20a2afd57614ea9850cfe8f6ef4c2874beda94763912e24",
+    "personbot-events-1440.png": "c5b1a54fa05dba5a4cf7f389bbc0c2a8aafc6eb61c78d89bc3a7a5a33dc1f369",
+    "personbot-events-390.png": "935defd742a1fa79e9256090c9dc7bac0f1f9c3d1b4a462bb9349090191e75e6",
+    "personbot-events-768.png": "1893986c8a778cf82724341ac54f8450d400205338884d049366d4018191ae6a",
+    "review-after-fixes.txt": "9b60995c6664068c40a3c5dbbec7708f83b8e9700c19ad431a5cccf78b30458e",
+    "review-before-fixes.txt": "845abca2b6ba14df2470a386a34c5bd68f64edaac47fcf545391dc43bc6dd422",
+    "review-result.md": "44b23c13e1163c3d5b915759d4cff01e770d7860a6eac699e2f8cfced67ea336",
+    "server-build.txt": "0f0043e394181e02f776a90aeabdeb48d1bf9572924ffd7fbca9438548614f4d",
+    "typecheck.txt": "7104aed0017a470920cff86c7e6d8238c8ae8a37a44ae1fbbacc7e0396f54acf",
+    "ui-result.md": "9242c07146f0c5357609404edecd4e93d9ba571a73c7f1f614b1d3585c0adc16",
+    "whitespace-check.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

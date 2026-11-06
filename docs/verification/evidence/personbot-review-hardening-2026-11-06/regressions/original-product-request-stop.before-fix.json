@@ -1,0 +1,287 @@
+{
+  "evidenceSha256": "efa8995795d0d70103c7a9f4169b037a678a0499aad84fd9f42addea03a29d0b",
+  "observed": "No third ticket was created. An executor-completed older ticket retained resumable subscriptions after conversation Stop; the later request-owned ticket was human-stopped, and the new echo had no Outbox reply.",
+  "checksBeforeFailure": [
+    "reads do not launch DSH; only the official driver is registered",
+    "original sidebar, composer and transcript send through official runtime without duplicate worker text",
+    "native memory retrieval reads notes edited through the original memory API",
+    "About me is retrieved live from the original profile and reflects edits within an existing native conversation",
+    "remember updates the original MEMORY.md and original memory journal",
+    "forget removes the active fact and suppresses historical recall",
+    "the official Engine starts a real worker that executes native DSH tools and retrieves the same original memory",
+    "original approval API denies and allows the exact native request; an old decision cannot approve new work",
+    "native user questions round-trip through the original product question card"
+  ],
+  "tickets": [
+    {
+      "id": "5f804880850529448963fcbae447b9c9",
+      "title": "write official-proof.txt",
+      "ended": {
+        "at": "2026-11-06T06:55:50.249Z",
+        "by": "executor",
+        "outcome": "completed"
+      },
+      "origin": {
+        "triggerId": "7ca8decdeabf620199a424703daf76c8164e99cd4ee5dbedbbedcb0a09dcb321",
+        "triggerIds": [
+          "7ca8decdeabf620199a424703daf76c8164e99cd4ee5dbedbbedcb0a09dcb321"
+        ]
+      },
+      "inputs": [
+        {
+          "id": "37df6be3d99b30b3b14144bf448741b3",
+          "kind": "trigger",
+          "triggerId": "1ea19b269faacc53edc8258b237dfb7f883c8e39a0ffa1a4a5de420219ae9e0e",
+          "at": "2026-11-06T06:55:50.014Z",
+          "human": true,
+          "readAt": "2026-11-06T06:55:50.141Z",
+          "deliveredTo": "466032899211440d77224fddd46de454"
+        },
+        {
+          "id": "9e56c5448c464b202320c567c7ab0c76",
+          "kind": "resumed",
+          "triggerId": "1ea19b269faacc53edc8258b237dfb7f883c8e39a0ffa1a4a5de420219ae9e0e",
+          "at": "2026-11-06T06:55:50.015Z"
+        },
+        {
+          "id": "4c7ce4393be22d784b582e15f6b2af5e",
+          "kind": "trigger",
+          "triggerId": "e1db9416db80b98f2455c131a9a0baa472f9efc83c9dac5521de26cc5a881dd3",
+          "at": "2026-11-06T06:55:50.515Z",
+          "human": true
+        },
+        {
+          "id": "5bb6788ecc874a891764dc541e6f0cd4",
+          "kind": "trigger",
+          "triggerId": "ad570919720ca8d09be5d67522a5f6f10f617fa396ca58ae28e0377a401ddb1f",
+          "at": "2026-11-06T06:55:51.340Z",
+          "human": true
+        },
+        {
+          "id": "9dfac3fad95bed4a85889899a35fbdc5",
+          "kind": "trigger",
+          "triggerId": "0f949aa875e75100d9318009e0931009b3118217b925587cfbedaa4db0234aa7",
+          "at": "2026-11-06T06:55:52.049Z",
+          "human": true
+        },
+        {
+          "id": "9b7c36809eaf74cbee155d115198807b",
+          "kind": "trigger",
+          "triggerId": "9aa9eb4acf2de2d5838fdda2b021009b4b1977d9e256d1c1f48e4c01d3c999bc",
+          "at": "2026-11-06T06:55:52.707Z",
+          "human": true
+        },
+        {
+          "id": "61734242c92ce4570d84b5d2531c6456",
+          "kind": "trigger",
+          "triggerId": "03b2fa9e3725406f7afb9668afcec1f17af6752b33557e3facb0a2f2bccae1f3",
+          "at": "2026-11-06T06:55:52.968Z",
+          "human": true
+        }
+      ]
+    },
+    {
+      "id": "acfb33a6f1304c270d92f357023ad2e5",
+      "title": "approval",
+      "ended": {
+        "at": "2026-11-06T06:55:52.873Z",
+        "by": "human",
+        "outcome": "stopped",
+        "reason": "Stopped from the original conversation"
+      },
+      "origin": {
+        "triggerId": "e1db9416db80b98f2455c131a9a0baa472f9efc83c9dac5521de26cc5a881dd3",
+        "triggerIds": [
+          "e1db9416db80b98f2455c131a9a0baa472f9efc83c9dac5521de26cc5a881dd3"
+        ]
+      },
+      "inputs": [
+        {
+          "id": "60a552680f03f97d96a4092e9bed46e0",
+          "kind": "trigger",
+          "triggerId": "ad570919720ca8d09be5d67522a5f6f10f617fa396ca58ae28e0377a401ddb1f",
+          "at": "2026-11-06T06:55:51.340Z",
+          "human": true,
+          "readAt": "2026-11-06T06:55:51.508Z",
+          "deliveredTo": "2f3a2b98b2063352f5a236a29e8936fc"
+        },
+        {
+          "id": "8252dff87aa240f422933de57e0e9809",
+          "kind": "resumed",
+          "triggerId": "ad570919720ca8d09be5d67522a5f6f10f617fa396ca58ae28e0377a401ddb1f",
+          "at": "2026-11-06T06:55:51.342Z"
+        },
+        {
+          "id": "efbbd68c9eeb0fdb470dae2a218b6ae8",
+          "kind": "trigger",
+          "triggerId": "0f949aa875e75100d9318009e0931009b3118217b925587cfbedaa4db0234aa7",
+          "at": "2026-11-06T06:55:52.049Z",
+          "human": true,
+          "readAt": "2026-11-06T06:55:52.233Z",
+          "deliveredTo": "70f0a17cbc58f4e702850cf0f838354f"
+        },
+        {
+          "id": "d5a7aaae3f576d5d4d5dd0f945b7114d",
+          "kind": "resumed",
+          "triggerId": "0f949aa875e75100d9318009e0931009b3118217b925587cfbedaa4db0234aa7",
+          "at": "2026-11-06T06:55:52.050Z"
+        },
+        {
+          "id": "92804f49ac044fc548d8f575d7c0fe71",
+          "kind": "trigger",
+          "triggerId": "9aa9eb4acf2de2d5838fdda2b021009b4b1977d9e256d1c1f48e4c01d3c999bc",
+          "at": "2026-11-06T06:55:52.707Z",
+          "human": true,
+          "readAt": "2026-11-06T06:55:52.849Z",
+          "deliveredTo": "5039c277469680e9f1577af2b1bbd044"
+        },
+        {
+          "id": "1cc6e0be41686ede99de1febb80436a7",
+          "kind": "resumed",
+          "triggerId": "9aa9eb4acf2de2d5838fdda2b021009b4b1977d9e256d1c1f48e4c01d3c999bc",
+          "at": "2026-11-06T06:55:52.708Z"
+        }
+      ]
+    }
+  ],
+  "lastTriggers": [
+    {
+      "id": "bb809c73a63d937c939c2cec56b72bb54d83359e28162ee6f0e6419604c05b49",
+      "text": "memory concise architecture reviews",
+      "requestId": "77c2ef41-6967-4de6-a799-dcbe1591649a"
+    },
+    {
+      "id": "7ca8decdeabf620199a424703daf76c8164e99cd4ee5dbedbbedcb0a09dcb321",
+      "text": "task write official-proof.txt",
+      "requestId": "46c7ee91-6a40-48d4-b53a-3e628ef8d485"
+    },
+    {
+      "id": "1ea19b269faacc53edc8258b237dfb7f883c8e39a0ffa1a4a5de420219ae9e0e",
+      "text": "task memory jasmine tea",
+      "requestId": "5da8caa6-73f7-4174-8c93-161b46829cc5"
+    },
+    {
+      "id": "e1db9416db80b98f2455c131a9a0baa472f9efc83c9dac5521de26cc5a881dd3",
+      "text": "task approval",
+      "requestId": "d9258bf6-8241-43c9-824d-5d7caf7ac91a"
+    },
+    {
+      "id": "ad570919720ca8d09be5d67522a5f6f10f617fa396ca58ae28e0377a401ddb1f",
+      "text": "task approval",
+      "requestId": "4a33714b-0462-4f84-bc1b-450085579abd"
+    },
+    {
+      "id": "0f949aa875e75100d9318009e0931009b3118217b925587cfbedaa4db0234aa7",
+      "text": "task question",
+      "requestId": "98e6b683-66ba-417e-8524-51de02f9e095"
+    },
+    {
+      "id": "9aa9eb4acf2de2d5838fdda2b021009b4b1977d9e256d1c1f48e4c01d3c999bc",
+      "text": "task hold",
+      "requestId": "f2487be1-86bd-4894-9fd7-e2f80003c587"
+    },
+    {
+      "id": "03b2fa9e3725406f7afb9668afcec1f17af6752b33557e3facb0a2f2bccae1f3",
+      "text": "echo after-official-stop",
+      "requestId": "8f567b22-bd04-48e7-ace3-94e3c788145c"
+    }
+  ],
+  "lastRequests": [
+    {
+      "binding_id": "6be91bd1c47167a9d4667f2bcf5142bef6d5fe4f2361895c72defe75825aee4d",
+      "request_id": "77c2ef41-6967-4de6-a799-dcbe1591649a",
+      "source_message_id": "291f65e7-8901-4deb-9b8b-1bdcbf011254",
+      "text_hash": "d752b4014a129be27e9c18c5fb40bdbdc7933c7751370c59c4dc7345270d1e5a",
+      "status": "stopped",
+      "authorization_version": 2,
+      "revoked": 1,
+      "admitted": 1,
+      "write_revoked": 0,
+      "admission_revoked": 0
+    },
+    {
+      "binding_id": "6be91bd1c47167a9d4667f2bcf5142bef6d5fe4f2361895c72defe75825aee4d",
+      "request_id": "46c7ee91-6a40-48d4-b53a-3e628ef8d485",
+      "source_message_id": "d30f0a2b-f177-43f7-a67d-340b3c652e0a",
+      "text_hash": "be007240a72e5d4353668f918c794512e440e1b2013ff292dcc60186e00ee4be",
+      "status": "stopped",
+      "authorization_version": 2,
+      "revoked": 1,
+      "admitted": 1,
+      "write_revoked": 0,
+      "admission_revoked": 0
+    },
+    {
+      "binding_id": "6be91bd1c47167a9d4667f2bcf5142bef6d5fe4f2361895c72defe75825aee4d",
+      "request_id": "5da8caa6-73f7-4174-8c93-161b46829cc5",
+      "source_message_id": "1fab92ac-57cd-4957-8604-9a89ee841340",
+      "text_hash": "73053194b2ab52fd987f96242351679c6ade7c5569e09fa58820983cae703b81",
+      "status": "stopped",
+      "authorization_version": 2,
+      "revoked": 1,
+      "admitted": 1,
+      "write_revoked": 0,
+      "admission_revoked": 0
+    },
+    {
+      "binding_id": "6be91bd1c47167a9d4667f2bcf5142bef6d5fe4f2361895c72defe75825aee4d",
+      "request_id": "d9258bf6-8241-43c9-824d-5d7caf7ac91a",
+      "source_message_id": "c3f6a554-9f09-40cf-b3e5-68d8857ce70d",
+      "text_hash": "1daea2faea1e928acc9f70d1c905d9d5b4b47ce7ba1f920d846216ad7c17c71f",
+      "status": "completed",
+      "authorization_version": 1,
+      "revoked": 0,
+      "admitted": 1,
+      "write_revoked": 0,
+      "admission_revoked": 0
+    },
+    {
+      "binding_id": "6be91bd1c47167a9d4667f2bcf5142bef6d5fe4f2361895c72defe75825aee4d",
+      "request_id": "4a33714b-0462-4f84-bc1b-450085579abd",
+      "source_message_id": "ee0183c0-10af-462c-bf13-88e1519e9e66",
+      "text_hash": "1daea2faea1e928acc9f70d1c905d9d5b4b47ce7ba1f920d846216ad7c17c71f",
+      "status": "completed",
+      "authorization_version": 1,
+      "revoked": 0,
+      "admitted": 1,
+      "write_revoked": 0,
+      "admission_revoked": 0
+    },
+    {
+      "binding_id": "6be91bd1c47167a9d4667f2bcf5142bef6d5fe4f2361895c72defe75825aee4d",
+      "request_id": "98e6b683-66ba-417e-8524-51de02f9e095",
+      "source_message_id": "52e7f29d-29b4-42bb-b6a7-39c863b92c3b",
+      "text_hash": "34bd96ffddf49ee7a5739ad21e02fea705b4eca2eb9b7d6581c32bcfc7f3d66c",
+      "status": "completed",
+      "authorization_version": 1,
+      "revoked": 0,
+      "admitted": 1,
+      "write_revoked": 0,
+      "admission_revoked": 0
+    },
+    {
+      "binding_id": "6be91bd1c47167a9d4667f2bcf5142bef6d5fe4f2361895c72defe75825aee4d",
+      "request_id": "f2487be1-86bd-4894-9fd7-e2f80003c587",
+      "source_message_id": "f9589081-5335-48fb-b2d1-005226f53441",
+      "text_hash": "6fbf6c8afab1d029fa9531a2473ba86ac4b48c7dd51b900e4fe52b3f8f14a4c3",
+      "status": "stopped",
+      "authorization_version": 2,
+      "revoked": 1,
+      "admitted": 1,
+      "write_revoked": 0,
+      "admission_revoked": 0
+    },
+    {
+      "binding_id": "6be91bd1c47167a9d4667f2bcf5142bef6d5fe4f2361895c72defe75825aee4d",
+      "request_id": "8f567b22-bd04-48e7-ace3-94e3c788145c",
+      "source_message_id": "5edf2a6e-53c5-4223-9505-21bf5ec3d6d8",
+      "text_hash": "8658381828b8af9210c32fd40fac7bf20bc9e54f9ebba684cd53fece7b21350b",
+      "status": "active",
+      "authorization_version": 1,
+      "revoked": 0,
+      "admitted": 1,
+      "write_revoked": 0,
+      "admission_revoked": 0
+    }
+  ]
+}

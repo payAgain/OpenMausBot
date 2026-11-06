@@ -1,0 +1,9 @@
+
+ RUN  v4.1.11 /Users/yimingd/AI/personbot/OpenMausBot
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  22:53:37
+   Duration  9.62s (transform 669ms, setup 368ms, import 580ms, tests 8.52s, environment 0ms)
+

@@ -115,6 +115,8 @@ export interface SendTurnInput {
   threadId: ThreadId;
   /** Drivers namespace process-level resources (broker socket, CLI session) by botId too: threadIds may coincide across bots. */
   botId?: string;
+  /** Original product user message authorizing this input, supplied by the host rather than a model. */
+  sourceMessageId?: string;
   text: string;
   /** The recall block the harness put in front of `text`; it informs this turn only, so a replay can leave it out. */
   recalled?: string;

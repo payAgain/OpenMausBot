@@ -34,6 +34,17 @@ export interface RuntimeEventBase {
    * error it reports as a reply). Rendered like any other item, but not a
    * sign that the model received or acted on the prompt. */
   synthetic?: boolean;
+  /** Persistent native work is independent of the input turn and retains its original source identity. */
+  nativeTask?: {
+    botId: string;
+    contextId: string;
+    sourceMessageId?: string;
+    ticketId?: string;
+    agentId?: string;
+    callId?: string;
+    authorizationVersion?: number;
+  };
+  background?: boolean;
 }
 
 export type RuntimeEvent = RuntimeEventBase &

@@ -130,7 +130,7 @@ export interface VerificationServer {
 
 /** A temporary home in `dataDir`, the fake engine's knobs from `parentEnv`, node
  * on PATH, and nothing else from the parent shell or this machine's CLIs. */
-export function verificationServerEnvironment(parentEnv: NodeJS.ProcessEnv, dataDir: string, port: number): NodeJS.ProcessEnv {
+export function verificationServerEnvironment(parentEnv: NodeJS.ProcessEnv, dataDir: string, port: number, personbotFixture = false, personbotPrimaryFixture = false, superagentFixture = false): NodeJS.ProcessEnv {
   const childEnv: NodeJS.ProcessEnv = {};
   const platformKeys = new Set(["SYSTEMROOT", "WINDIR", "COMSPEC", "PATHEXT", "LANG", "LC_ALL", "TZ"]);
   for (const [key, value] of Object.entries(parentEnv)) {
@@ -162,6 +162,16 @@ export function verificationServerEnvironment(parentEnv: NodeJS.ProcessEnv, data
     // Without it the server also scans /opt/homebrew/bin, /usr/local/bin and the
     // login shell's PATH, finding a developer's own engine CLIs that CI lacks.
     OMB_TEST_SEALED_PATH: "1",
+    PERSONBOT_ENABLED: personbotFixture === true ? "1" : "0",
+    PERSONBOT_PRIMARY: personbotFixture === true && personbotPrimaryFixture === true ? "1" : "0",
+    PERSONBOT_SUPERAGENT: personbotFixture === true && personbotPrimaryFixture === true && superagentFixture === true ? "1" : "0",
+  });
+  if (personbotFixture === true) Object.assign(childEnv, {
+    PERSONBOT_FIXTURE: "1",
+    PERSONBOT_HOME: join(dataDir, "personbot"),
+    PERSONBOT_WORKSPACE: join(dataDir, "personbot-workspace"),
+    PERSONBOT_PROVIDER: "personbot-fixture",
+    PERSONBOT_MODEL: "fixture",
   });
   // The fake engines' knobs are the one thing a caller may script into the child.
   for (const [key, value] of Object.entries(parentEnv)) {
@@ -273,6 +283,12 @@ export async function launchVerificationServer(
   boatFixtureApi?: string,
   /** Programmatic web UI qualification against the fixture's static server. */
   staticDir?: string,
+  /** Deterministic dsh runtime confined to this fixture's home and workspace. */
+  personbotFixture = false,
+  /** Programmatic qualification of the primary Personbot product, never inherited from a developer's shell. */
+  personbotPrimaryFixture = false,
+  /** Real upstream Super Agent in the original product, with a deterministic native model. */
+  superagentFixture = false,
 ): Promise<VerificationServer> {
   if (boatFixtureApi) {
     if (!/^http:\/\/127\.0\.0\.1:[1-9]\d{0,4}$/.test(boatFixtureApi)) {
@@ -298,6 +314,7 @@ export async function launchVerificationServer(
   const fixtureTemp = join(dataDir, "tmp");
   const fixtureDumpPath = join(dataDir, "fake-claude-dump.json");
   mkdirSync(fixtureTemp, { recursive: true });
+  if (personbotFixture === true) mkdirSync(join(dataDir, "personbot-workspace"), { recursive: true });
   const evidenceDir = join(tmpdir(), "openmausbot-verification-evidence");
   mkdirSync(evidenceDir, { recursive: true });
   const logPath = join(evidenceDir, `server-${Date.now()}-${process.pid}.log`);
@@ -336,7 +353,7 @@ export async function launchVerificationServer(
   }, null, 2));
 
   const log = openSync(logPath, "a", 0o600);
-  const childEnv = verificationServerEnvironment(parentEnv, dataDir, port);
+  const childEnv = verificationServerEnvironment(parentEnv, dataDir, port, personbotFixture, personbotPrimaryFixture, superagentFixture);
   // Opt-in live Local VM fixture: keep the temporary home and fake engine,
   // granting only the explicitly selected machine connection and static UI.
   if (localVm) Object.assign(childEnv, {
@@ -393,7 +410,7 @@ export async function launchVerificationServer(
   }
 
   // Pinned: the random starter name shares a pool with names e2e suites plan.
-  try {
+  if (childEnv.PERSONBOT_PRIMARY !== "1") try {
     // First-run filesystem work can exceed a second on Windows.
     const timeout = AbortSignal.timeout(Math.max(1, deadline - Date.now()));
     const list = await fetch(`${url}/api/bots`, {

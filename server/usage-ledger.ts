@@ -1,8 +1,8 @@
 // Append-only usage rows under <data>/usage/ (0600): bookkeeping never fails the turn, and rows never carry message text.
 import { personOf } from "./usage-attribution.ts";
-import { readFileSync } from "node:fs";
-import { appendFile, mkdir } from "node:fs/promises";
-import { join } from "node:path";
+import { readFileSync, type Dirent } from "node:fs";
+import { appendFile, mkdir, open, readdir, readFile } from "node:fs/promises";
+import { join, resolve } from "node:path";
 import type { TraceParent, TraceStatus, TraceUsageStatus } from "../shared/usage-trace.ts";
 import type { ResolvedSender } from "../shared/wire.ts";
 import type { CostSource } from "./model-prices.ts";
@@ -51,6 +51,14 @@ export interface UsageRow {
   contextTokens?: number;
   contextWindow?: number;
   usageStatus?: TraceUsageStatus;
+  /** Stable native call identity. Replays carrying it append at most one row in the original ledger. */
+  usageId?: string;
+  requestId?: string;
+  agentId?: string;
+  agentRole?: "master" | "worker" | "upkeep";
+  ticketId?: string;
+  contextId?: string;
+  provider?: string;
 }
 
 export type UsageGroupBy = "bot" | "model" | "user" | "day" | "engine" | "routine" | "department";
@@ -78,6 +86,7 @@ const DIR = "usage";
 const MAX_RANGE_DAYS = 366;
 const DAY_MS = 24 * 60 * 60_000;
 const writeQueues = new Map<string, Promise<void>>();
+const bookedUsageIds = new Map<string, Set<string>>();
 
 const clean = (value: unknown): number =>
   typeof value === "number" && Number.isFinite(value) ? Math.max(0, Math.trunc(value)) : 0;
@@ -100,11 +109,20 @@ export function usageFileFor(dataDir: string, at: Date): string {
   return join(dataDir, DIR, `${monthKey(at)}.jsonl`);
 }
 
-export function usageRowKey(row: Pick<UsageRow, "at" | "threadId" | "botId">): string {
-  return `${row.at}|${row.threadId}|${row.botId}`;
+export function usageRowKey(row: Pick<UsageRow, "at" | "threadId" | "botId" | "usageId">): string {
+  return row.usageId ? `native:${row.usageId}` : `${row.at}|${row.threadId}|${row.botId}`;
 }
 
+/** True after the row is stored or was already stored; logging errors keep the legacy turn bookkeeping nonterminal. */
 export function appendUsage(dataDir: string, row: Omit<UsageRow, "at"> & { at?: string }): Promise<boolean> {
+  return appendUsageOnce(dataDir, row).then(() => true, () => false);
+}
+
+/** True for a new row, false for an existing usageId. Native rows are synced before acknowledgement; errors reject. */
+export function appendUsageOnce(dataDir: string, row: Omit<UsageRow, "at"> & { at?: string }): Promise<boolean> {
+  if (row.usageId !== undefined && (typeof row.usageId !== "string" || !/^[\w.:/-]{1,512}$/.test(row.usageId))) {
+    return Promise.reject(new TypeError("usageId must be a bounded opaque native call identifier"));
+  }
   const { promptBytes: rawPromptBytes, ...rest } = row;
   const promptBytes = promptBytesOf(rawPromptBytes);
   const record: UsageRow = {
@@ -118,27 +136,70 @@ export function appendUsage(dataDir: string, row: Omit<UsageRow, "at"> & { at?: 
   };
   if (record.costUsd === null) delete record.costSource;
   else record.costSource = row.costSource === "estimated" ? "estimated" : "reported";
-  const previous = writeQueues.get(dataDir) ?? Promise.resolve();
+  const key = resolve(dataDir);
+  const previous = writeQueues.get(key) ?? Promise.resolve();
   const attempt = previous.then(() => write(dataDir, record));
   const queued = attempt.then(
     () => undefined,
     () => {
     },
   );
-  writeQueues.set(dataDir, queued);
+  writeQueues.set(key, queued);
   void queued.finally(() => {
-    if (writeQueues.get(dataDir) === queued) writeQueues.delete(dataDir);
+    if (writeQueues.get(key) === queued) writeQueues.delete(key);
   });
-  return attempt.then(() => true, () => false);
+  return attempt;
 }
 
-async function write(dataDir: string, record: UsageRow): Promise<void> {
+async function nativeUsageIds(dataDir: string): Promise<Set<string>> {
+  const key = resolve(dataDir);
+  const existing = bookedUsageIds.get(key);
+  if (existing) return existing;
+  const ids = new Set<string>();
+  const directory = join(dataDir, DIR);
+  let files: Dirent[];
+  try { files = await readdir(directory, { withFileTypes: true }); }
+  catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+    files = [];
+  }
+  for (const file of files) {
+    if (!file.isFile() || !/^\d{4}-\d{2}\.jsonl$/.test(file.name)) continue;
+    const text = await readFile(join(directory, file.name), "utf8");
+    for (const line of text.split("\n")) {
+      if (!line.trim()) continue;
+      try {
+        const value: unknown = JSON.parse(line);
+        if (isUsageRow(value) && typeof value.usageId === "string") ids.add(value.usageId);
+      } catch {}
+    }
+  }
+  bookedUsageIds.set(key, ids);
+  return ids;
+}
+
+async function write(dataDir: string, record: UsageRow): Promise<boolean> {
+  const ids = record.usageId ? await nativeUsageIds(dataDir) : undefined;
+  if (record.usageId && ids?.has(record.usageId)) return false;
   await mkdir(join(dataDir, DIR), { recursive: true, mode: 0o700 });
-  await appendFile(usageFileFor(dataDir, new Date(record.at)), JSON.stringify(record) + "\n", { mode: 0o600 });
+  const path = usageFileFor(dataDir, new Date(record.at));
+  const text = JSON.stringify(record) + "\n";
+  if (record.usageId) {
+    const file = await open(path, "a+", 0o600);
+    try {
+      const { size } = await file.stat();
+      const last = Buffer.alloc(1);
+      if (size) await file.read(last, 0, 1, size - 1);
+      await file.writeFile(size && last[0] !== 10 ? `\n${text}` : text);
+      await file.sync();
+    } finally { await file.close(); }
+    ids!.add(record.usageId);
+  } else await appendFile(path, text, { mode: 0o600 });
+  return true;
 }
 
 export async function flushUsageLedger(dataDir: string): Promise<void> {
-  await writeQueues.get(dataDir);
+  await writeQueues.get(resolve(dataDir));
 }
 
 const isTrigger = (value: unknown): value is UsageTrigger =>

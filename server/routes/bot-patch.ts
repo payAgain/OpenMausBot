@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { approvalModeFor, isApprovalMode, type ApprovalMode } from "../../shared/approval-mode.ts";
+import { approvalModeFor, isApprovalMode, isEmergencyApprovalDowngrade, type ApprovalMode } from "../../shared/approval-mode.ts";
 import { normalizeConnectorScopes } from "../../shared/connector-scopes.ts";
 import { normalizeOutboundPolicy } from "../../shared/outbound.ts";
 import { normalizePhoneApps } from "../../shared/phone-apps.ts";
@@ -66,6 +66,7 @@ export interface BotPatchRouteDeps {
   engineSwitchNeedsAsk(mode: ApprovalMode, from: ModelSelection, to: ModelSelection): boolean;
   currentBrowserSession(botId: string, profile: string | undefined): string;
   interruptAllDirectThreads(botId: string): Promise<void>;
+  stopForApprovalDowngrade?(botId: string): Promise<void>;
   cancelGroupTurnOperations(groupId: string, threadId: string): void;
   revokeInternalCapabilitiesForThread(threadId: string): void;
   runningTurnInstance(bot: BotRecord | null | undefined, threadId: string): ReturnType<ProviderRegistry["get"]>;
@@ -721,6 +722,11 @@ export function createBotPatchRoutes(deps: BotPatchRouteDeps): RouteHandler {
       }
       if (!bot) return json(res, 404, { error: "no such bot" });
       if (body.applyToAllThreads === true && requestedApprovalMode !== "custom") store.setAllThreadApprovalMode(bot.id, requestedApprovalMode);
+      if ((body.approvalMode !== undefined || body.autoApprove !== undefined)
+        && (isEmergencyApprovalDowngrade(currentApprovalMode, requestedApprovalMode)
+          || body.applyToAllThreads === true && requestedApprovalMode === "ask")) {
+        await deps.stopForApprovalDowngrade?.(bot.id);
+      }
       if (body.memoryUpkeep === false || body.memoryEnabled === false) memoryUpkeep.dropBot(bot.id);
       if (body.cacheKeepWarm !== undefined) cacheKeepWarm.refresh();
       if (computerSpecified && requestedComputer !== undefined) store.clearAutoSurfacePins(m[1], requestedComputer);

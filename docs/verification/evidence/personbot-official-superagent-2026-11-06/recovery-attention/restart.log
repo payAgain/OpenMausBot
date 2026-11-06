@@ -1,0 +1,7 @@
+openmausbot open-source edition (enterprise layer present but OMB_LICENSE_KEY is not set)
+local requests: owner trust (self-hosted default)
+local requests: OMB_DEV_TRUST_LOCAL_BROWSER=1: browsers on this machine act as the owner (development only)
+brand: default
+openmausbot server on http://127.0.0.1:19680
+Official Super Agent: original UI and memory are active; legacy executors are suspended.
+[omb-turn] bot=9f248761-a076-46d9-a44d-d28e8c7a4ef6 text="echo after-attention-restart" images=0 depth=0 card=false

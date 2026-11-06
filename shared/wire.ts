@@ -676,6 +676,15 @@ export interface OptionCardData extends WaitCardField, ComputerAskField, AccessR
   answeredBy?: CardAnswerer;
   /** Present when this card is a live provider ask (approval/question). */
   requestId?: string;
+  /** Native task identity survives the input turn; resolving this card cannot authorize a different call. */
+  superagent?: {
+    contextId: string;
+    requestId: string;
+    ticketId?: string;
+    agentId?: string;
+    callId?: string;
+    authorizationVersion?: number;
+  };
   /** permission cards: the tool being requested. */
   tool?: string;
   /** why this card is waiting: guard, mode, sandbox or delivery error. */

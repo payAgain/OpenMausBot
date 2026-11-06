@@ -1,0 +1,13 @@
+
+> openmausbot@0.1.140 personbot:official:e2e /Users/yimingd/AI/personbot/OpenMausBot
+> vitest run scripts/testing/superagent-product.e2e.test.ts scripts/testing/superagent-recovery.test.ts
+
+
+ RUN  v4.1.11 /Users/yimingd/AI/personbot/OpenMausBot
+
+
+ Test Files  2 passed (2)
+      Tests  3 passed (3)
+   Start at  12:34:21
+   Duration  30.58s (transform 687ms, setup 540ms, import 737ms, tests 29.01s, environment 0ms)
+

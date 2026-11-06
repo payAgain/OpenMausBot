@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.server.json",
+  "compilerOptions": { "erasableSyntaxOnly": false, "jsx": "react-jsx" },
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": []
+}

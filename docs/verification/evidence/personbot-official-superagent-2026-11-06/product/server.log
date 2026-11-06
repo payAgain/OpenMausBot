@@ -1,0 +1,20 @@
+openmausbot open-source edition (enterprise layer present but OMB_LICENSE_KEY is not set)
+local requests: owner trust (self-hosted default)
+local requests: OMB_DEV_TRUST_LOCAL_BROWSER=1: browsers on this machine act as the owner (development only)
+brand: default
+openmausbot server on http://127.0.0.1:22368
+Official Super Agent: original UI and memory are active; legacy executors are suspended.
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="echo original-ui-official-runtime" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="memory jasmine tea" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="memory green bicycle" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="memory blue bicycle" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="remember The person prefers concise architecture reviews." images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="forget concise architecture reviews" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="memory concise architecture reviews" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="task write official-proof.txt" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="task memory jasmine tea" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="task approval" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="task approval" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="task question" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="task hold" images=0 depth=0 card=false
+[omb-turn] bot=93fc7cac-8bcd-4350-9eb8-2805946b94d6 text="echo after-official-stop" images=0 depth=0 card=false

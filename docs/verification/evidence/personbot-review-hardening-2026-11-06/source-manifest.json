@@ -1,0 +1,1902 @@
+[
+  {
+    "path": ".gitattributes",
+    "bytes": 2819,
+    "sha256": "53c8b95b24347116b4cbcc94fad25a0e6fa6287e4edd48e20fd49602620fb919"
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 1149,
+    "sha256": "a05e7330f8f62bebc2846771ab0bcd9c20ab921918ed3f87cf5e66491fc72f4a"
+  },
+  {
+    "path": "package.json",
+    "bytes": 9458,
+    "sha256": "886ff95afb1f1a9a48a2a0dfb204c97040f3e1a12ee50ded964e5c8bd44846e1"
+  },
+  {
+    "path": "packages/personbot-artifacts/package.json",
+    "bytes": 195,
+    "sha256": "7afe742453cd50950b27295180da383f394cfedaa52b77d4b3931a52614034fe"
+  },
+  {
+    "path": "packages/personbot-artifacts/src/index.ts",
+    "bytes": 152,
+    "sha256": "80f75635edbefc9cbd998c1cc63d9965d56986fd2d3d6b1e6075e0730425933e"
+  },
+  {
+    "path": "packages/personbot-artifacts/src/store.ts",
+    "bytes": 14221,
+    "sha256": "f5f604c62fb507cc8c1430303074b6a8324284f6d67b40bfdabdb894df37b9fd"
+  },
+  {
+    "path": "packages/personbot-artifacts/test/store.node-test.ts",
+    "bytes": 14080,
+    "sha256": "1bba48623f52eb14ecc7153ebd56816ae3a0ccef5c7711a3602c48990fd63b39"
+  },
+  {
+    "path": "packages/personbot-gateway/package.json",
+    "bytes": 127,
+    "sha256": "2bdf5759828775c129a54a78900c73822e61bf74e57a9b237bb49863e2fe3081"
+  },
+  {
+    "path": "packages/personbot-gateway/src/index.ts",
+    "bytes": 8231,
+    "sha256": "d0808e84cfe94f102628102a2b674977ab2391afd8f47ebc41abadaac00f4ce7"
+  },
+  {
+    "path": "packages/personbot-gateway/test/gateway.node-test.ts",
+    "bytes": 18715,
+    "sha256": "aafaab64c676328a6f0e210229f78f422c014e2b8cf5776d1cdaad91e76e8411"
+  },
+  {
+    "path": "packages/personbot-gateway/test/legacy-import.node-test.ts",
+    "bytes": 7081,
+    "sha256": "e1a94a1f6c4f16e708abd70c3fc60d715ee89fe54b30efb2a5852473e58ff813"
+  },
+  {
+    "path": "packages/personbot-integrations/package.json",
+    "bytes": 198,
+    "sha256": "dcd4439b67df1f66dc1e67346bc4c767149e841ab49e731087c3d1d6d3959c89"
+  },
+  {
+    "path": "packages/personbot-integrations/src/delivery.ts",
+    "bytes": 2941,
+    "sha256": "eb032bd0cef1cfd401a21f0ee91cd80c99748d0277a4a14f26d06c0ec19a411b"
+  },
+  {
+    "path": "packages/personbot-integrations/src/index.ts",
+    "bytes": 234,
+    "sha256": "963639bcbc69da5b1ca328c2ea6d8f00bfabd5856bb94154f9587fe7511eda11"
+  },
+  {
+    "path": "packages/personbot-integrations/src/store.ts",
+    "bytes": 37871,
+    "sha256": "8883b28d7471ac3398f579e318dd269e728a2c6d484fe6c7352965c274a1cd4c"
+  },
+  {
+    "path": "packages/personbot-integrations/test/delivery.node-test.ts",
+    "bytes": 5843,
+    "sha256": "c9db4beb9d052603de758603d0c79329b04f20d3840f52be983fd14fddcf64aa"
+  },
+  {
+    "path": "packages/personbot-integrations/test/store.node-test.ts",
+    "bytes": 30202,
+    "sha256": "17de0bf8d388e1c649f3bfaeaf326f61a5548cc68ce6b2706ceadb816fbfff38"
+  },
+  {
+    "path": "packages/personbot-personal/package.json",
+    "bytes": 194,
+    "sha256": "e1085368c6da3b54532d99d14e236e10b536a46c8709676be7f0cfcece7c857b"
+  },
+  {
+    "path": "packages/personbot-personal/src/git.ts",
+    "bytes": 684,
+    "sha256": "c8714fc7a3b8864d4b51c137df3831b6644a4a675e75ae6fb7a7549b73e86af7"
+  },
+  {
+    "path": "packages/personbot-personal/src/index.ts",
+    "bytes": 162,
+    "sha256": "685f76172ecf61e9c3f72f23619693f819d4472a3a7317047e286cc4b3f3ed25"
+  },
+  {
+    "path": "packages/personbot-personal/src/store.ts",
+    "bytes": 17980,
+    "sha256": "0418d804c50aae3fe0e12244ce1f4fb495b71b18da5ec11e100e7d7e6bd2e310"
+  },
+  {
+    "path": "packages/personbot-personal/src/workspaces.ts",
+    "bytes": 6869,
+    "sha256": "09811f84e3aee67351210c07a0d650485865309ca888ee42c0018f5709e695f7"
+  },
+  {
+    "path": "packages/personbot-personal/test/store.node-test.ts",
+    "bytes": 10330,
+    "sha256": "9df94541a487408b6d41342ff7450fe81ba7784ce76d8e3e0d95b2ea9f1c9a22"
+  },
+  {
+    "path": "packages/personbot-personal/test/workspaces.node-test.ts",
+    "bytes": 7207,
+    "sha256": "cc33bc00b8d126a9e286d50b0b02eb18fe78893cc27a00276b7b166e651aa6d0"
+  },
+  {
+    "path": "packages/personbot-projection/package.json",
+    "bytes": 244,
+    "sha256": "768996316bb7f2c8bf43acdca591f49ab10fd42d0fa80d88eecd201e746e00eb"
+  },
+  {
+    "path": "packages/personbot-projection/src/index.ts",
+    "bytes": 11520,
+    "sha256": "0fbfc5425350a60696a8a0c0b7b60c15f9a103106248e57649296f8b9d2dba29"
+  },
+  {
+    "path": "packages/personbot-projection/src/transcript.ts",
+    "bytes": 11249,
+    "sha256": "6c7cff96ddf5e3f5d1d92e9cfe1e15dd5fca8eff5b9743fecae8bfc115a967ec"
+  },
+  {
+    "path": "packages/personbot-projection/src/types.ts",
+    "bytes": 5005,
+    "sha256": "1040cb4c6a8078e0d13177720bc35e67f4a29a07547d7364859a6389300f0616"
+  },
+  {
+    "path": "packages/personbot-projection/test/projection.node-test.ts",
+    "bytes": 22719,
+    "sha256": "fec4cdad5626f5b3246389ba4f19a0ae52cfabce502d95c95befe62962a3fd99"
+  },
+  {
+    "path": "packages/personbot-projection/tsconfig.json",
+    "bytes": 93,
+    "sha256": "6633dd94d3c6edb5c132b97886caaa624de49290e1e91495d0b9080c08af312a"
+  },
+  {
+    "path": "packages/personbot-protocol/package.json",
+    "bytes": 242,
+    "sha256": "cc3edbaa9dc09f3bd89eb494bb57c17e9b27f7ce10acd4c29932b98761e5c4e2"
+  },
+  {
+    "path": "packages/personbot-protocol/src/index.ts",
+    "bytes": 26886,
+    "sha256": "8d55caa1b2d3ed092760bb3c8bf227ed4d62c4da3b85381cd110d86fc5e92535"
+  },
+  {
+    "path": "packages/personbot-protocol/test/protocol.node-test.ts",
+    "bytes": 6778,
+    "sha256": "c4dc4344fc919008f538c5235e2829ec59eb44ca4c1944afeeaee29826da81d4"
+  },
+  {
+    "path": "packages/personbot-protocol/tsconfig.json",
+    "bytes": 93,
+    "sha256": "6633dd94d3c6edb5c132b97886caaa624de49290e1e91495d0b9080c08af312a"
+  },
+  {
+    "path": "packages/personbot-runtime-host/README.md",
+    "bytes": 1917,
+    "sha256": "373a2a21fb7d2ba670abe2353b1331b23b59ffd1e42f544293da34eb50b9b788"
+  },
+  {
+    "path": "packages/personbot-runtime-host/package.json",
+    "bytes": 237,
+    "sha256": "c890cf32ffc092cb52aef9495e4dfaabc26dcf358af3a6ce42f5843f489ccc1f"
+  },
+  {
+    "path": "packages/personbot-runtime-host/src/index.ts",
+    "bytes": 12249,
+    "sha256": "5d7c7b554545fbd9c243f64ef7f8bff36ed3912d72ea65387185bcb13f4ba3c6"
+  },
+  {
+    "path": "packages/personbot-runtime-host/test/fixture.mjs",
+    "bytes": 2013,
+    "sha256": "37e36fdc2657947dc64a92b470272d48e848041e7f4b7849f2ef90bf96813ea9"
+  },
+  {
+    "path": "packages/personbot-runtime-host/test/host.node-test.ts",
+    "bytes": 6480,
+    "sha256": "7538ba9de36b909285ac1ee26cb070d74be5133d45101a06fca7f1ef7d576804"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/package.json",
+    "bytes": 882,
+    "sha256": "0c8d35952b525827e95e2eeee0a907808f631b664b6435da57cd8ea1d23e4017"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/src/index.ts",
+    "bytes": 33258,
+    "sha256": "db8179aae93f75d5714ac3d3ef87cc99d1e364e9031d907396686f3c7ef0975b"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/src/launch.ts",
+    "bytes": 3202,
+    "sha256": "347fd3079e1da9a1c2e0964b66c2f1dcc6f1fd47f43b0f098a472d1702f2c9ec"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/src/lease.ts",
+    "bytes": 1345,
+    "sha256": "d39c3b40a501bd25951849acb3e1188a2d9166f4e9ff282b633398897de43fa7"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/src/personal.ts",
+    "bytes": 10297,
+    "sha256": "e4c7569a0d0127f22fd84ed24c12744bbc57c6d045bcf185f2ed95451e29499f"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/src/store.ts",
+    "bytes": 14263,
+    "sha256": "19be7f9175e9d959d39d0bf24eea147cef419812ef78388a77d33e3a68e26eed"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/src/tasks.ts",
+    "bytes": 28759,
+    "sha256": "7d4114140dbc25618471302b1dbf18d1e999d870a019e03613425da0879280ea"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/src/transport.ts",
+    "bytes": 6953,
+    "sha256": "53692e73791b751bf17ba7fb24d23c0ce0c4da773b48257e68dcf8026cb8b5f5"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/event-effects.node-test.ts",
+    "bytes": 9087,
+    "sha256": "00351e7fdea781b393cfe03516a6aefcff028237605c65d11b076810eb4f0b14"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/events.node-test.ts",
+    "bytes": 16116,
+    "sha256": "2a4053da4bf3db3aef3c0443e4e5d1d0baa9998296dcce7d02c25af165a93130"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/fixture-notes.md",
+    "bytes": 3451,
+    "sha256": "44884d7319b872cd037aa25dbffeb189c065fca46e66c006ddfbfee1c3e5654c"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/fixture-plugin.ts",
+    "bytes": 16172,
+    "sha256": "ef5bd52c270d4961af20bbb7c568a83a5aa7afd5aab4db5cc8c4e0862bdc4486"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/personal.node-test.ts",
+    "bytes": 19872,
+    "sha256": "f1fc22668c7fd8828376c011a17797a341938f0bc8f6fce8fd2247aa43f1bea0"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/recovery-fixture.ts",
+    "bytes": 1660,
+    "sha256": "f6141fa1fd19fd2db837ed8c627801c57ff77fea84b5c39dd81bfee9566220ea"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/recovery.node-test.ts",
+    "bytes": 15566,
+    "sha256": "15713a447f49453bb42e204944e485735aea250751675d45da384d25f3db3877"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/runtime.node-test.ts",
+    "bytes": 26213,
+    "sha256": "cb06e6cccdd62e5fe3a4e970f976217dd56a7f9edabd5277fb8914ab4f2523ee"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/store.node-test.ts",
+    "bytes": 9184,
+    "sha256": "38ac11480ad789a176a481078766b10c23a53b544a4c3c85c62aeb9f51651e9c"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/task-effects.node-test.ts",
+    "bytes": 8335,
+    "sha256": "24806469b1fc97b8c676098690de7938499d2977329ecc724856981c846f7da3"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/task.node-test.ts",
+    "bytes": 35524,
+    "sha256": "35589076e8e5e9edcc76c7c5c87f9c9238a924adb3033e03aba9177939ea3043"
+  },
+  {
+    "path": "packages/personbot-runtime-plugin/test/transport.node-test.ts",
+    "bytes": 9443,
+    "sha256": "dc0a033a6b4be38ec295cb6978b942e1515278b349af047423bbc4ae52cf5410"
+  },
+  {
+    "path": "packages/personbot-superagent/README.md",
+    "bytes": 1389,
+    "sha256": "ed63e760dab55d1597fc59def0f5ab2f5412339ceda03c1590b19ab2ccb4fc1b"
+  },
+  {
+    "path": "packages/personbot-superagent/UPSTREAM.md",
+    "bytes": 13677,
+    "sha256": "b3bfb0bb7ff7553f8c709e8f26f8a7af40767a9fd23dc1a372d07717333dc9a5"
+  },
+  {
+    "path": "packages/personbot-superagent/package.json",
+    "bytes": 1302,
+    "sha256": "96b5ab163519bc09a97947044fb8483a43391ea858b14da084a6b83fe1eee784"
+  },
+  {
+    "path": "packages/personbot-superagent/src/host-resources.ts",
+    "bytes": 17497,
+    "sha256": "bc364b0c5a71a97c5db068fac171564864c3bd5c35521557fcc216e0beb0cccc"
+  },
+  {
+    "path": "packages/personbot-superagent/src/index.ts",
+    "bytes": 65342,
+    "sha256": "d1ed0d5489d18102ebeb8a95cac8eb1844b83e1dc894f7e7f237a37098f5422b"
+  },
+  {
+    "path": "packages/personbot-superagent/src/launch.ts",
+    "bytes": 3428,
+    "sha256": "fb081ba9f6ccb1fe767b1069d118f1a197972f85fec0e7089de26e15d90e8281"
+  },
+  {
+    "path": "packages/personbot-superagent/src/plugin.ts",
+    "bytes": 39562,
+    "sha256": "aeabdda2f080790790a71191a44b1ea03e4849e0994711d0d9ec3c961aa8a50b"
+  },
+  {
+    "path": "packages/personbot-superagent/src/proper-lockfile.d.ts",
+    "bytes": 157,
+    "sha256": "6e4bf0881b53bb91d406516ebceeb46385d04579a74c05f555d6686847841abf"
+  },
+  {
+    "path": "packages/personbot-superagent/src/rpc.ts",
+    "bytes": 3973,
+    "sha256": "236e6cded65a8a70c2bd922472bd42d338539e32d590fa44e8c4d6c86fafea68"
+  },
+  {
+    "path": "packages/personbot-superagent/src/runtime-loader.mjs",
+    "bytes": 836,
+    "sha256": "34dd251460c828b341c87981ec59741f62be7875196c9e3aa39e4921d830e7e9"
+  },
+  {
+    "path": "packages/personbot-superagent/test/fixture-plugin.ts",
+    "bytes": 12418,
+    "sha256": "9a0e1747d55b4220f5f337a641f47e548b6b6df2d1b1edeba42d644ca6deb0a9"
+  },
+  {
+    "path": "packages/personbot-superagent/test/gateway.node-test.ts",
+    "bytes": 20784,
+    "sha256": "31153352bd0d54442ec71ae0ebffee64c36d8717d5b873e58991bff1e24d35d5"
+  },
+  {
+    "path": "packages/personbot-superagent/test/review-gateway.node-test.ts",
+    "bytes": 25730,
+    "sha256": "44b5410cd6691730fb531bfa4506119ddf9d2bc4994846c3ec2d9a8bbddad529"
+  },
+  {
+    "path": "packages/personbot-superagent/test/review-host-resources.node-test.ts",
+    "bytes": 16150,
+    "sha256": "552702fb6aa925d21b337b221509af03ef2e473ed6e4f4aa3efb5d98656d5b53"
+  },
+  {
+    "path": "packages/personbot-superagent/test/review-plugin.node-test.ts",
+    "bytes": 15724,
+    "sha256": "97faa3436ab0add70557a34867d7ca294e48fd9bb230e0cb41d422c5a7e90b50"
+  },
+  {
+    "path": "packages/personbot-superagent/tsconfig.json",
+    "bytes": 183,
+    "sha256": "c5ac3967c3455cc722427df8e9f0280e80860f12ed795c09f0b1eec581ad9bf5"
+  },
+  {
+    "path": "packages/personbot-superagent/tsconfig.runtime.json",
+    "bytes": 233,
+    "sha256": "b58169533f65c2d78abc845b22c91fdbd5c13fe6672dca9561e28f8933c26bbb"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/LICENSE",
+    "bytes": 1078,
+    "sha256": "6d66f91815b720e18cfb2b3552043a0359236aec9a1a6917787900546f6ce550"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/README.md",
+    "bytes": 2571,
+    "sha256": "737997cf5b7d4129f12ed5485ebbdd5e9d2ce3859a82ded6ac535d222327b713"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/SETUP.md",
+    "bytes": 7894,
+    "sha256": "75ff78359142dad8bf257b732c1b11313a96c8d1bf0621c73fd4f160460a25ba"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/cordis.patch.yml",
+    "bytes": 8398,
+    "sha256": "fc9271cdf9b3d96bcb7febffe194f92cb427a88044168f83b3fb7522ab5c9bce"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/docs/000-philosophy.md",
+    "bytes": 3251,
+    "sha256": "0a12126843556fde2bcc2ca52dae2c297b9b5ca9170c3e33d624b2a4d85ca76b"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/docs/001-domain.md",
+    "bytes": 12442,
+    "sha256": "cd010379e65cc428ffb335aee46529f2a524b8f573fc72359223060fb5a5111b"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/docs/002-authorization.md",
+    "bytes": 13372,
+    "sha256": "85f559708ac7faef89f88fcad30a405ca62a582a15764a7293686071e609dea0"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/docs/003-execution.md",
+    "bytes": 17389,
+    "sha256": "049aa22a717f75b9dec4cd6969356db6f736c127de4501c3ce1f6d846217f6eb"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/docs/004-prompts.md",
+    "bytes": 9603,
+    "sha256": "186ec9307249deae11f7aec68ff21bf58fb0601a204ada0d2688253d58627bf7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/docs/005-panel.md",
+    "bytes": 6218,
+    "sha256": "f1f40a19be353933affef35f85428a5be4a3225045ab60bbbc307d35adf652bd"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/docs/006-deployment.md",
+    "bytes": 23244,
+    "sha256": "92c5a1c6aecab6782a64b3847a2d6f36a48dc9865fa7b04b892fcdaf04f7de9d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/docs/007-architecture.md",
+    "bytes": 70507,
+    "sha256": "e3747665587fdf88b28d4e9c1a1f8ac40cbc2c65a9999be1fce14b69ec44d748"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/docs/008-cookbook.md",
+    "bytes": 29826,
+    "sha256": "adbdaa519f56bc7987ca6394950802cffcb855acff4ee715d10a26a9b0ccefec"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/examples/profile.cordis.patch.yml",
+    "bytes": 474,
+    "sha256": "db41555406a3f2dd7a77f7c40f565d0b9572984db8b9dcd6dcb9c6dce7004067"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/locale/en.json",
+    "bytes": 177,
+    "sha256": "5ec166f3eb0ae253fb56c7dc571cf81199bdedcd3f8509820a7cebf5b0de469d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/locale/zh.json",
+    "bytes": 173,
+    "sha256": "35328461f46521f6771f33de477a1ac09411f23ddc53f9f494e8c22744decc6a"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/package.json",
+    "bytes": 4693,
+    "sha256": "f5170d812137dd370c568decb481e19f4da9a3d1fd7bad341a0f07942020a559"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/pnpm-lock.yaml",
+    "bytes": 172084,
+    "sha256": "ba6b997c448984a04b28eeb5b620c14c7cfeff5eb170e1abd6e0734007405c39"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/admission.md",
+    "bytes": 8452,
+    "sha256": "cdd96f7626a89d5709377c178aa732cf6c247f5b371a07539975a4713c4c52b0"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/cli.md",
+    "bytes": 1597,
+    "sha256": "a47ab1126c241ede5383de358d1421279791d582c722547f1b542154ad3fd51e"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/dispatch.md",
+    "bytes": 6814,
+    "sha256": "c34fce83efd114cb5bb725673f1249f092b4e57205cac7cdc45d51160d94ec2a"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/handoff-orchestrator.md",
+    "bytes": 439,
+    "sha256": "6b283162d4fbc7274a8b17815fdc62ed57eff314d35a60031e90561805ca3282"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/handoff-worker.md",
+    "bytes": 1019,
+    "sha256": "ff68068b528ae8f0140965d73f24af6be8e3462506aae40efbc4e054becf7f94"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/handoff.md",
+    "bytes": 767,
+    "sha256": "19af7408d146d5a03ff81f155a5582acccd008f608692bcdd4babe8ffb3b6a41"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/orchestrator.md",
+    "bytes": 1021,
+    "sha256": "0d3a2eda1156ebbc841987f22cd930a16934defef96e8a6eff5210b8eee0edf9"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/replies.md",
+    "bytes": 4071,
+    "sha256": "d570755d3959d061b13223441c4ce8a5c23ffefccf3427ab852bf3c5267b33e4"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/shared.md",
+    "bytes": 840,
+    "sha256": "c14dbc2c8176271e7165a4c0dca14dd608134c0e5a5c6eb7274d71db571e4d02"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/subscriptions.md",
+    "bytes": 1930,
+    "sha256": "9e5bc9920a508eabc29bba4d2d63b3d46bccf70562389a2ff694b1b9feb578b1"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/team/communication.md",
+    "bytes": 9629,
+    "sha256": "af77247e0c757bc136f77fae23be79a887b4d250bbf86579bb9a1a44da833653"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/team/delivery.md",
+    "bytes": 4104,
+    "sha256": "aff7c953ce8dfc6e6838f843a5980b4d7c844a517e2d05f89560e8984a9bf55d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/team/scope.md",
+    "bytes": 2289,
+    "sha256": "46cb796cabdb960373cf213c43b5e35bd8954ec3072e20350c4904a4dc231425"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/work.md",
+    "bytes": 5885,
+    "sha256": "b36fbc7ed4cf2d6f91ef2981a31fd5a70e11e2f3304afb921ab94ba135c69a2e"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/prompts/worker.md",
+    "bytes": 996,
+    "sha256": "3c6e02fbd2050bb17d4adf644909acc9903b603bfc7248d46df5ef0aa9ef846e"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/scripts/dsh-superagent",
+    "bytes": 12223,
+    "sha256": "e561ea08c2e017467562cfa55012147c2dd0d20fe872dcbb241be8cfee8985da"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/skills/dsh-superagent-feishu/SKILL.md",
+    "bytes": 2376,
+    "sha256": "5cd538eef17f39d3a7c8beb0ff12ab2fff6e405139e59e8667009fd16ebd23c8"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/skills/dsh-superagent-github/SKILL.md",
+    "bytes": 2949,
+    "sha256": "5081401e53813652f0afa3d73651147e0e7620577360f57cc43dd1c74fb41507"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/admission.ts",
+    "bytes": 1066,
+    "sha256": "62f54fe63762a347e54cec2aed098e1b28a0a547a4133b5e3fc2e91a10b94afd"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/api.ts",
+    "bytes": 3544,
+    "sha256": "ceb0c76cb2d8680e2be4edf0f6ac42c90e6a4ff78e0e14ce4aa277357606ff04"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/assessment.ts",
+    "bytes": 20781,
+    "sha256": "5b2c2cf71093fd560f1f3a57cc476f122241b780fbeb2f6007e727943142b545"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/cache.ts",
+    "bytes": 1096,
+    "sha256": "7489f68ca2889b981975b7ced0aa13094a08f6b15008a928981bb3c03cda5a5d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/cards.ts",
+    "bytes": 7432,
+    "sha256": "9d3522b787612ba129058b89f8a4c5f9a4e980321f69c3cc68607c5b111d8ef6"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/context.ts",
+    "bytes": 2285,
+    "sha256": "7442ebc5acc1267fc801665e36351e13a91d0bb97c2674b045330b5b8bb6d2cd"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/delivery.ts",
+    "bytes": 4575,
+    "sha256": "2a4f531e6ceca4fc98ed0203247f4abeaa10776e5b26909eb93f347b479f7a73"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/effects.ts",
+    "bytes": 9993,
+    "sha256": "d350590473299398b17c50dd641c72e1995dd95920c5138699491ab77e3ae481"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/execution-environment.ts",
+    "bytes": 3935,
+    "sha256": "82aae39bd65141df80f6a85991e35d05c9f0dfc748be88f78b7520ce97883b3f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/http.ts",
+    "bytes": 16159,
+    "sha256": "c6c0e4bd3a4881db6ceadb87a6e1b6959dd4a151f59e2589a4f5e806cac156d3"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/links.ts",
+    "bytes": 4551,
+    "sha256": "7d17aef4fb89936467ad99d6c25417b03d7b4a66ad02e3b0981aed3cb2f0ffc2"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/migration.ts",
+    "bytes": 46222,
+    "sha256": "b479546845852ac670ae8fe592b8564f96bb78d30dd2370f767ba2050bab8d9b"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/notices.ts",
+    "bytes": 9030,
+    "sha256": "c6d464a69809719408b6f279490d22e98e00901cba3058a84c76cfe73aa69022"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/outbox.ts",
+    "bytes": 3314,
+    "sha256": "48d20062dd8c34c2b95e851c78265c9e403d1040894e97c7d9d0fa190d54415e"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/passes.ts",
+    "bytes": 3101,
+    "sha256": "79688aeb8c43396b9f122b3feba0ce1c422f1bfbca3b32919cd764a217b67ea9"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/prompts.ts",
+    "bytes": 19438,
+    "sha256": "fd22f1b1e7c1571f2eae4299995a13cc0b04cb212e18ef23e9b27ed28a1a1de6"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/resources.ts",
+    "bytes": 22185,
+    "sha256": "2b8199f6262d4748e83af70cc6a2a3c9fcd782341d12acb8b6d45ec91b6d0769"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/retry-health.ts",
+    "bytes": 5739,
+    "sha256": "f7478818946e6e8ed8508152803eb7262a01f1d10a436549e3a867e0724eda3a"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/role-models.ts",
+    "bytes": 2563,
+    "sha256": "cdb07d492a3edf3e5f49c313136b706b95b9f6a8982930737b032a7f181333c6"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/runtime.ts",
+    "bytes": 18135,
+    "sha256": "603632c504e7881379f4b653552943e178d297a1d8fbee6c280683449753038b"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/sessions.ts",
+    "bytes": 24444,
+    "sha256": "18521738a0479e888c3515ae1055531c20e06330bb13cbf387bd8531289e15c0"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/settings-history.ts",
+    "bytes": 8031,
+    "sha256": "a20acbb1e121b41f355970c738047b3b89a75979d216079657f40bdbd2366023"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/settings.ts",
+    "bytes": 17642,
+    "sha256": "2c7cd780dd24ab6a99ddfd30f80b921db035e0d56e3e1d42a86371fe20423f3f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/setup.ts",
+    "bytes": 5871,
+    "sha256": "720a1e5ffc5bcea2a5962b5b52ae8a75d9d56f296d2fa68656ca12bb057e8cee"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/skill-files.ts",
+    "bytes": 1724,
+    "sha256": "c95a1bb606bb9c7d932c807c4a9597ed7e0f8a02dbb1e16adb4133c0f1bfccf1"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/source-context.ts",
+    "bytes": 3526,
+    "sha256": "909ad5cb9739e4143ddc9ad1d38a6b1b46b18d52c0bcd2b4f8e25b691d0b9047"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/store-read.ts",
+    "bytes": 8266,
+    "sha256": "610916ed23ce62bd60c6ebdfa4f59510b1f8f842399fff0dac6aeed96a9c93ef"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/store.ts",
+    "bytes": 21181,
+    "sha256": "c34876bf2d661cf3d007cc1182891205830c0b61312d565efa347fb87fdd40f9"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/tools/executor.ts",
+    "bytes": 7076,
+    "sha256": "9869d8a5043725847f18814e23b29c11ae93aa974defa72d2eab62c61a6def47"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/tools/main.ts",
+    "bytes": 20366,
+    "sha256": "88603eb5a94c67e93141e07bd09bde85d65f980a1f42503c53ab9c22ec5c538d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/tools/tool.ts",
+    "bytes": 1984,
+    "sha256": "172dd8f1a3da82b8a6cfe966befd5204476cc44ac0a4d7fe278518e970b7f054"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/versions.ts",
+    "bytes": 1900,
+    "sha256": "9ed9929bc48fff940457f4494f266c1e5b8f83dc8f993e9c2ba622c0eb89a32f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/views/overview.ts",
+    "bytes": 5585,
+    "sha256": "c8eb087eb5e3586e924ff5df659aa1535d64e6723f2f5ffa8e721f4abbfabef8"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/views/records.ts",
+    "bytes": 14333,
+    "sha256": "5ed48ab5dfaaa729f0520c1dfc30d962f6a716d11d71088fd43ce9bedaa3cd39"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/views/settings.ts",
+    "bytes": 2765,
+    "sha256": "5740ad427457aa501fa6cc706573ce5b6882c53d4cdc646f1ac6f02787cd25a3"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/views/sources.ts",
+    "bytes": 4594,
+    "sha256": "d81bbdba84c2a7bc49a53c95b0b96a340cc2231135f065eff59da648d0ec6798"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/views/text.ts",
+    "bytes": 2678,
+    "sha256": "aa577b5171ae15dc3905207ed7dbe36c6c1a3567d07599a81bc8b0bb28413aa6"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/views/threads.ts",
+    "bytes": 6306,
+    "sha256": "e0a0caa5364754a7d45426cafaacf315bda5124e39171f90fe67a26849931b5f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/app/views/tickets.ts",
+    "bytes": 6421,
+    "sha256": "7345a63859a81e525ba4341d8a7091053b8825f73215a028e144cd0dc8da5ccc"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/api.ts",
+    "bytes": 8200,
+    "sha256": "800b0347183c39601b8b7cd33607dee2538eb8da5feb5f1c7e13a1a7c2268f36"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/app.tsx",
+    "bytes": 12026,
+    "sha256": "23cca247e0a67fb581df6fc517522ccf0026a4897cda109c9e57c367cb2b1051"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/client.css",
+    "bytes": 40558,
+    "sha256": "8de57c24e782831b713dd5221900ee3a45172285f8598b80b27797cd9799db32"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/controls.tsx",
+    "bytes": 14522,
+    "sha256": "be4d4eae4e1d811c027c04fdebfa55ef40e38d6a5b0711cfb2b0d30a9b646d79"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/css.d.ts",
+    "bytes": 130,
+    "sha256": "7338d8afb4dd785405772c7e5265268efde3e2607b2ae04619c443ebb5a346b7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/deployment.tsx",
+    "bytes": 6213,
+    "sha256": "c37ebd5a24d0319a28d3d98a76dde23d9694b0fad4a7900df0eff85de82afb4b"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/draft.tsx",
+    "bytes": 12352,
+    "sha256": "e29c5acfd0edacb022bdffe13f6225d2a824fbd01af6554120567dd7beede4d1"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/eval.tsx",
+    "bytes": 13751,
+    "sha256": "44350064a4a7649e418ea5db25d98a58e31f77b8171393589c5b4644d03b8cc8"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/execution.tsx",
+    "bytes": 8237,
+    "sha256": "8d9200aab40f092972234fc5712a78f1db0c1ad581517d574f8b8143c289959c"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/index.tsx",
+    "bytes": 3626,
+    "sha256": "6a7e5a0295ecbbd047dbb619e0cdf9d1489a46c8dfcc56dbfd1cfe6f6d866529"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/locales.ts",
+    "bytes": 73161,
+    "sha256": "d172c86d672b9244effe3590bc7c25ac71b80d3ccbb7d6c5fe76848ce31eba12"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/markdown.ts",
+    "bytes": 2285,
+    "sha256": "5993337bd0b5c9672eab57628e1f94ecb6db5be4f1e13174d7f6336d60eb8a51"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/marks.ts",
+    "bytes": 3809,
+    "sha256": "e7e05436be442342fa6a2ba43a702563a88a46cdd07da50760d8b5ecd2fc06f6"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/overview.tsx",
+    "bytes": 7050,
+    "sha256": "316efe735bdfd6e109483916a5a2ba2f78a10618eff0caff59389af541c98f48"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/prompt-config.ts",
+    "bytes": 5917,
+    "sha256": "1e1c6a00d03cfa3c6c7d3c07c638d423aeac2d040bce24d0049557dbfe0a98d7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/prompts.tsx",
+    "bytes": 20391,
+    "sha256": "ddc92a0db7d994c019e2efcb707dbbc04acb53e421ca04e9878d52de83ce6eff"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/provider.tsx",
+    "bytes": 5419,
+    "sha256": "5639db28e87c1fa0752a30b5280c2e492685bea0593809f72c975b5274d12a8f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/route.ts",
+    "bytes": 4361,
+    "sha256": "457b3cf37c9678c085cf4685ae412ff92bc5510b4a5401e805e4762ad12a3a4c"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/rows.tsx",
+    "bytes": 8092,
+    "sha256": "905d0859ac8f7d7b6bf9375b30a9c1bcf2744c11f171e6e9070c6b0328490458"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/settings-kit.tsx",
+    "bytes": 17921,
+    "sha256": "4a75031188c08fb54fd8f45725a3530b3005920412004f5d9817757a72eb87a9"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/settings.tsx",
+    "bytes": 2019,
+    "sha256": "cd1a57e27ac0d8d3a968c6abb0093ddd48a2b5e36b3d16fcb1f9be3930885ee4"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/source.tsx",
+    "bytes": 9209,
+    "sha256": "0e0d24f6b0695283d47f2127f71ab132533c64e21ac772f1f033a9ef77d29a5d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/text.ts",
+    "bytes": 3972,
+    "sha256": "b5c4a264ea799f40598b66d175b434dcb37e2033cddffad8f3e0c8ec1e080c92"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/thread.tsx",
+    "bytes": 10744,
+    "sha256": "6870694d97c1c1e75bbd43f0ed7efbf6e6eba50a19a27c60fef7b052a5a979f6"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/ticket.tsx",
+    "bytes": 13342,
+    "sha256": "0d78ec9067cb1e11169ae283b038ffa43859fe2380557a90ea980a492f28bc73"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/trigger.tsx",
+    "bytes": 1401,
+    "sha256": "934de63606db7721bbd18b829900a3b158f40330ad51b5223346477fba0794aa"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/client/widgets.tsx",
+    "bytes": 8486,
+    "sha256": "6aa900da1203bb7c05a81f1aa8f98376ef6c5edbc6b8f6adce2719d18b1995f4"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/assignments.ts",
+    "bytes": 8959,
+    "sha256": "6acf4b858b35d95c875680e39b1e3c41557bbe6d39f65031bb26927289327065"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/engine.ts",
+    "bytes": 16298,
+    "sha256": "625a36258ebfa06eba228d1c41e5784a6b1d8938d10669edde51eb2ee8a293f1"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/errors.ts",
+    "bytes": 5722,
+    "sha256": "aa7532a2d1f8c443608683ef1231bf3d81b842f67a87d9b77742b5c76d515009"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/evals.ts",
+    "bytes": 22992,
+    "sha256": "ca87cb1fe2bdae33bfd093d52fac717925dd253e9c07804ce48a0cc419542fe4"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/ids.ts",
+    "bytes": 266,
+    "sha256": "bc4bc6fd43ea1377087ff2815706c57f0200666aeb4a7711a40489c377f141ab"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/index.ts",
+    "bytes": 713,
+    "sha256": "a5a1cf43f02eafaf520a5bfaf5e76b71ba521d04ee648cfcf12b3843cc474a3e"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/intake.ts",
+    "bytes": 3799,
+    "sha256": "323aadefea69436ba23ed2de3bdbaad673d61915be9e239f3233ecf551a74179"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/memory.ts",
+    "bytes": 2863,
+    "sha256": "36cefca987a4e533369a414e52e3fb4754945ae942bb021f8e5cf23c186cf536"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/model.ts",
+    "bytes": 19758,
+    "sha256": "982155fe6a03c887a7ac4475c6d1592d12aa23c5fe3698403c93bbfd6469d44a"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/part.ts",
+    "bytes": 4753,
+    "sha256": "437c4f4bcc05e836c056cdb45bbf451e55242d62b602b489f4df902be112e73e"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/ports.ts",
+    "bytes": 7473,
+    "sha256": "29666be2cc7eb72cf1521028ca09432240a0e2c49d972cd0080c2f0cffdd3d36"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/reasons.ts",
+    "bytes": 2233,
+    "sha256": "dc29e0c3c52e4ffd6e8f27a618cbe704a83fdbd9c5a1b99a1e0c4184d5c33af4"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/replies.ts",
+    "bytes": 8012,
+    "sha256": "85d72d15e8e666357f9981ae3f8e56fb301ae3e1ec7ef4245d104304249ea5d6"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/stage.ts",
+    "bytes": 1684,
+    "sha256": "b935012a654d2a68ca20cb27909ddc8dceafb704b56a16a23a08036a546141df"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/core/tickets.ts",
+    "bytes": 27191,
+    "sha256": "ac9d86e80cafa7b81cebe4fd87383555c50c3a390b4ad1b1cf8cf70ec153e604"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/deployment.ts",
+    "bytes": 9839,
+    "sha256": "cde46b10074e371d98ac002f4203bd5508dfae946b8016480320a94de11579d2"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/executor/background.ts",
+    "bytes": 9288,
+    "sha256": "60b98302d412426cda7df12ed69d750183f60fb00ac802a01ae2c963cfc79420"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/executor/dsh.ts",
+    "bytes": 48545,
+    "sha256": "7a3592e6420017ef89eb4f39865589bcc0c7d2c187bdfe5bc8cb46b54f806ddc"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/index.ts",
+    "bytes": 1990,
+    "sha256": "fbe2a1290be6f92f641592754e813a1fc0ffc164072a8ef2f1e57f8c151d44ec"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/infra/commands.ts",
+    "bytes": 7652,
+    "sha256": "9d7593c5022e0c1813731c1f1cd8471b1536b0b5f42974a08ef2b2930c1e62b2"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/infra/environment.ts",
+    "bytes": 11138,
+    "sha256": "2db5133c846910c8d3da25906a977a779a6c54bb2fc8da5ce955440a2be24456"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/infra/health.ts",
+    "bytes": 1322,
+    "sha256": "dcd84306e795866ffb66ecb5274edf50114ba77052d260b4b530a1a81022d76e"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/infra/paths.ts",
+    "bytes": 927,
+    "sha256": "9ec0187b5f937fb9f803a1821e598eb77fd0878d56d269821f5b73e0f5d8f9ab"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/infra/text.ts",
+    "bytes": 1300,
+    "sha256": "70c9edb98139e3091d5e63d2ccf31d308c045f0510087a87517fbb3635cdd9e7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/kv.ts",
+    "bytes": 4413,
+    "sha256": "c6dd38e1ef7b19ae5a0440e11c4a713103a318e0df3fc2fc3b12cbd9a8f4eea7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/limits.ts",
+    "bytes": 415,
+    "sha256": "78e4171e6624580038996e3931888cd1cdbefa5c0e1035235c4dffdbb4af236f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/navigation.ts",
+    "bytes": 1217,
+    "sha256": "0185810fbfed59fb7c9d40936d36cb4746e6ce469948199d815f7f736ffcc13f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/policy.ts",
+    "bytes": 19082,
+    "sha256": "01cff8c333b341ee2943e644046f0da3ed9675af1c0029489b5f4bc8226d293d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/setup.ts",
+    "bytes": 2715,
+    "sha256": "eae13507edd63c331ccde9e979835202e742378cca2eb35fcd12af60e48fc6f2"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/admission-context.ts",
+    "bytes": 2179,
+    "sha256": "c13b421c479f02dfc5846ef266081586afe33d685c742c37e62d69ccd182557f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/feishu-channel.ts",
+    "bytes": 2357,
+    "sha256": "c6fa722414256df055ae09e935ec402ccec9b63bdb5f73d2b5ff3f34d6d1abf7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/feishu-image.ts",
+    "bytes": 3499,
+    "sha256": "6dd5cee8d8b00802b7e211fa536e44eaa7965a7b2bebb11c169c2512cd7ce4e5"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/feishu-loops.ts",
+    "bytes": 15573,
+    "sha256": "5a1dae9297f491fda39ff3950de843b2464a6e223ccf496deba80ba1935f7a6f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/feishu-read.ts",
+    "bytes": 12785,
+    "sha256": "4c8fa546db21c8cf2dbc2b7dc7533e06eff3dfb41ee05a9657bd9a7975671907"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/feishu-trigger.ts",
+    "bytes": 7146,
+    "sha256": "d605d1381da26509020f743b5945a768276aa81f9604ef0b5879aab3e535bf08"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/feishu.ts",
+    "bytes": 12839,
+    "sha256": "b8830aa06caa7ee13ffb7f5d31f8707392174e9e2920323582ee150a3abc6560"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/github-channel.ts",
+    "bytes": 3389,
+    "sha256": "6de9657465b8bae9a7cb4748d469fedff3c8d27fec6ed6b4dd52e620a239a0d1"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/github-pull.ts",
+    "bytes": 7617,
+    "sha256": "615856e7a6958eade1dbf28c9628adc7a8c7bb5392bee71346e471fb571595ec"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/github-read.ts",
+    "bytes": 12732,
+    "sha256": "4951cbcdf4079c28666972b7964f1121cafd691d1cc76970583f2c57ef9dc52b"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/github-trigger.ts",
+    "bytes": 8024,
+    "sha256": "bd5891725f18a24166b0effee8a4ef46a889408b40b2b21eddd5bea25a2cde23"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/github.ts",
+    "bytes": 34812,
+    "sha256": "a418ea90190637eab34599e4bf757dbae2384239a0b1d985068c03a8c5e945db"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/host.ts",
+    "bytes": 4475,
+    "sha256": "df1b226fb8eaacbb11a79ccf67cd0f7b220ad06a443c93bef7f0538b30439f94"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/kind.ts",
+    "bytes": 8378,
+    "sha256": "4ea3d8eee14707e0ee9b67289a62b1a568bab64732bd04041da5ad89bc9a7e98"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/poll.ts",
+    "bytes": 2412,
+    "sha256": "bc4ac0428ce3b379353dd5e02607a4d79b7c9e18d7d13e179cc5b6ba8626d6c8"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/src/sources/registry.ts",
+    "bytes": 9557,
+    "sha256": "fe8a8fce0b00b65d4fb69b7cd2e5fbf4950b8dc32f0891169f9150c4a16eb5cd"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/admission-context.spec.ts",
+    "bytes": 4555,
+    "sha256": "10d4febfefb890dcef404e3119bb1b4a27c78ff913c8d5b178170ef7be92c12d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/assessment.spec.ts",
+    "bytes": 12615,
+    "sha256": "3d1c5c2dd12bfd5ae2e7545d602231e0145dc66d3cc135b0eee76283a26d9a60"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/background.spec.ts",
+    "bytes": 3776,
+    "sha256": "d74c22ea95a8596523c6f87815e86e50bb015526766a6fdbae832e4c90e45dbf"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/bundle-patch.spec.ts",
+    "bytes": 6047,
+    "sha256": "308b71e4ae4096b03ad18541e5775a86e44979987f081ad8c1b679a3c517af35"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/cache.spec.ts",
+    "bytes": 694,
+    "sha256": "3f3d3170ad71d91d1e776bdefdc4ba454f5c136c78a9a17b6e6e4f1677c699b0"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/cards.spec.ts",
+    "bytes": 19984,
+    "sha256": "cc5a8b75490bef2f91af7f6ccfe58a9093b13d815277a6886bbcd8ddb21041e7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/class-docs.spec.ts",
+    "bytes": 970,
+    "sha256": "a48777f613c42ab1be33c16ebf09f51a344bdfa86fc732a055d5d62b44fb69fd"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/client.spec.tsx",
+    "bytes": 8712,
+    "sha256": "d461100292003de600d2154c5273212cb07e571c03870ff5200b95c205fca99e"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/commands.spec.ts",
+    "bytes": 15690,
+    "sha256": "1737430c702b23685c4820fc0878354b615f8b885c69faccdaaa52a9e352b1fb"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/controls.spec.tsx",
+    "bytes": 5274,
+    "sha256": "ce04bb9da35f61cb2de567326d0d65231b0893468af3ab0ccd5b5f17b7140c23"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/core-engine.spec.ts",
+    "bytes": 113602,
+    "sha256": "beb850477cfae72a2e2553b5b969f1dbeec9e2e55320d2c94a125ecf4edd8b67"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/delivery.spec.ts",
+    "bytes": 7810,
+    "sha256": "506cf7183fb1b1cceca58961de5fe1687e9256b8293a92f16ae05064da3b0d74"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/deployment.spec.ts",
+    "bytes": 8868,
+    "sha256": "8fcb5c03a8ff3212850c3d1c668f8506413e0e73ba0233d5b7f5320024496e55"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/docs.spec.ts",
+    "bytes": 3885,
+    "sha256": "097b973c5fc8c5a7496f8aed66f11da2e612f0af36c5bcd2f8bfbebc64d96b03"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/draft.spec.ts",
+    "bytes": 8042,
+    "sha256": "a16a8df0bece6c42733e5e56dcb811aa17f6748a488a86d29d91ac9587178caf"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/effects.spec.ts",
+    "bytes": 10307,
+    "sha256": "2f43ec3af1da76c933aba941f4bf6525c973308646cd0ea9811bb9cc5b0ffb3b"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/environment.spec.ts",
+    "bytes": 14221,
+    "sha256": "4d1ae4142389b47aa816b87bccd2ffa43401dddb12a4eaf6a12aaf25035bd423"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/feishu-image.spec.ts",
+    "bytes": 4939,
+    "sha256": "3bc0e9b4a6cc06c492a161506994c8686167cbfb903c15a5aecc5f715a1ff7e4"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/feishu-read.spec.ts",
+    "bytes": 8627,
+    "sha256": "46f536a53b91d435da1b8731f7183dd4d9dc24195cfc91bd9283f0ddef03edb9"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/fixtures/async.ts",
+    "bytes": 915,
+    "sha256": "de7b1818f2e7fbd09bc014f12cd72d8d1931e5a86e2408c97a1bcd4dbb02447f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/fixtures/deployment.ts",
+    "bytes": 1053,
+    "sha256": "48a7af52fa153b2da58e952cce726bb40f4a4f5b59dbf41b0409fa581425faf7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/fixtures/git.ts",
+    "bytes": 587,
+    "sha256": "e879982ff0c5a745c9d114073dd67e9a2e0624f1e08434176ef5bc299bea0dca"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/fixtures/host.ts",
+    "bytes": 19715,
+    "sha256": "ea4c9efb615ead0249f4cbcdf3096d58b1cff6d77b5a682dfbeabe486ff0fb6b"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/fixtures/panel-server.ts",
+    "bytes": 34103,
+    "sha256": "02ea5bca9c55e17da1d88af7bd835a1c59a9ca099a9f2f9a05c7a490595d472c"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/fixtures/panel.tsx",
+    "bytes": 4019,
+    "sha256": "c6ce5095b92dc5c0e9af1f1c19688ffae79240cd8cf201faaf2d3792d7e314f7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/followups.spec.ts",
+    "bytes": 20258,
+    "sha256": "22e8ba70885a70a1673a1ddfd9f17d491308dc6a586b3a0e114b1106de9e093d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/github-read.spec.ts",
+    "bytes": 5578,
+    "sha256": "237fcef412823686fb1c3f1f509377039b73ae932a64ae197e92a2346b3ad239"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/health.spec.ts",
+    "bytes": 3769,
+    "sha256": "afae82f2f5699e5c420542436c6bd0456f743f2a52eaea55c8f512633f4116ea"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/http.spec.ts",
+    "bytes": 6874,
+    "sha256": "3d6d8d222d67f3903a882914edca981bde03cce5015a620ccc4451d3765e0ada"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/index.spec.ts",
+    "bytes": 3119,
+    "sha256": "35e540ddfbd679ba458d4f42bea7e96891b1df4f2fdbebf1dc4377fe82d364f5"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/locales.spec.ts",
+    "bytes": 2897,
+    "sha256": "18d918f19e0fa5c129f51027d13fc1b7980f751bd31cbbe5b5db1e5e60684545"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/markdown.spec.ts",
+    "bytes": 2133,
+    "sha256": "099ae419c0000432ef13e83f7383a6c74297cd7f8f6f6d70949caa1a22fa8af9"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/marks.spec.ts",
+    "bytes": 3306,
+    "sha256": "22cf8ea8cf16d80389d12946828d110af12820dda9a2b18d6fbb0e312b7759ef"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/migration.spec.ts",
+    "bytes": 43151,
+    "sha256": "5c8fa242dc206ddfca61d3d2aee84ff1e462f64d6f950c7f50730a20be0ef7b1"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/model-surface.spec.ts",
+    "bytes": 30758,
+    "sha256": "08be46abe3cf3009ccdd74096b4af49a771f9399b76d0bb60e71740cf2ada2a8"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/navigation.spec.ts",
+    "bytes": 4832,
+    "sha256": "d0e6190ef0a7831c793d0776a951015c918cf5777c4e3e1b79fc1683eab282ae"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/outbox.spec.ts",
+    "bytes": 2435,
+    "sha256": "a06314b88277b6db5d24debc38dca291a73641945b1b4e931c0d700db42a1973"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/panel-deployment.spec.tsx",
+    "bytes": 8262,
+    "sha256": "7635cf0906d308ced62532dc2b5e80e8c227a3d1f347364f5397c06365b8421c"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/panel-eval.spec.tsx",
+    "bytes": 14470,
+    "sha256": "c082a28400a3dc29c26ee1be8f699d57400d21e7ec655df3b446c13b685f91c4"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/panel-execution.spec.tsx",
+    "bytes": 14820,
+    "sha256": "081dcef113d52003adb61b6ac1a6cc910344416e77086452e4188e7d728252ba"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/panel-overview.spec.tsx",
+    "bytes": 10315,
+    "sha256": "7f8a9c395aa9577702b90e18c756c06fbb0a12f205f85ce78c36c2c7ac2bf1ce"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/panel-panel.spec.tsx",
+    "bytes": 5358,
+    "sha256": "6adbde04601057e2cc513374f46e58609e17c4d1eb766eb0f2211e0b3a6ee913"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/panel-prompts.spec.tsx",
+    "bytes": 15195,
+    "sha256": "d2bc0198f2fa5f0ee69a94f341e6b1787aad08bf1a179e1b9ef32ae727c7a932"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/panel-settings.spec.tsx",
+    "bytes": 9218,
+    "sha256": "927742c31e22e769fd5d8cfc6419b2cf9233086054cee19efea5b13683fc7dd5"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/panel-source.spec.tsx",
+    "bytes": 19428,
+    "sha256": "d4fa5c3d4bbcf2189021824f08be4d7aaca9006711995aa86fc63f93f75049a7"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/panel-trigger.spec.tsx",
+    "bytes": 9362,
+    "sha256": "27da19a6a9dad80967215a5dc3efb847e8ae1b4af277b4ff92b355299f7b548f"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/passes.spec.ts",
+    "bytes": 2683,
+    "sha256": "08f2b57d4676672aaa3dd9e5896c1654fe16a6c42ff3323d4d8f3ed3296b5743"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/policy.spec.ts",
+    "bytes": 44984,
+    "sha256": "a558a71492d90c200cc9dd59926ab6255894816c7e29f2eb177bdcf9d7654214"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/prompt-config.spec.ts",
+    "bytes": 3187,
+    "sha256": "e21dd7f2add599536aef767056ff10ab4ba3e06399f10f0ec814463e21e5d4af"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/prompts.spec.ts",
+    "bytes": 18045,
+    "sha256": "5c9e26761d1fde35f7153a3fb95e89f72ab69e5eb97c52413f53838210ef4f40"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/queue.spec.ts",
+    "bytes": 2583,
+    "sha256": "3271c31da2e00b9d5bc41dd602b3239ca87336c424bef3e45377d9967d2e044d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/registry.spec.ts",
+    "bytes": 11849,
+    "sha256": "2eb3101a681ff53508c748bff53c9283d3d14421609866e8f1ab27079c097d8c"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/retry-health.spec.ts",
+    "bytes": 9085,
+    "sha256": "a549241ee55f456e7e82676039dd9669d534f43f70655587b5c4a698ba0e4053"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/role-models.spec.ts",
+    "bytes": 4446,
+    "sha256": "5143e10b5b10556e53eac202584501248d4d648a9568c67cd8f47032a9e6c0b5"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/runtime-concurrency.spec.ts",
+    "bytes": 64083,
+    "sha256": "90910a6ef86c285fa83c8b202c8ad3416192615feb55c51386fd717ba550acfa"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/runtime.spec.ts",
+    "bytes": 141971,
+    "sha256": "21a355610ae8b6c534c19ef8fb608bd0b4b4f422795c492400b6b86845ffb713"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/service-script.spec.ts",
+    "bytes": 15646,
+    "sha256": "57bf507d5bb7e8fd98beb6d250c7f459ff042eacbc39491d678138e07beaa84d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/settings.spec.ts",
+    "bytes": 5961,
+    "sha256": "119d7c86e03c5a14f585f58d257f3d590ee02dc3564391ecde2560107b8d7079"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/sources.spec.ts",
+    "bytes": 102892,
+    "sha256": "00c7357043ba3f36e6e708163eae2354eb4e0e92830e647f61db4ebdf7ace506"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/stage.spec.ts",
+    "bytes": 5625,
+    "sha256": "3df130eae87d70643f0c924caf66fbca8cb27ced50467e0c7283dee0a39436be"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/store.spec.ts",
+    "bytes": 18164,
+    "sha256": "69ff17950416234bd158f95bf83e9caa3f4b0dcf6d6b5c6fc531c011e1ecfa84"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/styles.spec.ts",
+    "bytes": 1625,
+    "sha256": "d36eeb02ac1c72f4e3ef77a1821eb5eedd277dc2978f3d3032b0df5c4f812e95"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/timeline.spec.ts",
+    "bytes": 4114,
+    "sha256": "d7a66e76f09ed1021645fa8af26aaf25f36e447f53489ed15d983efbb91295d8"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/tools.spec.ts",
+    "bytes": 39342,
+    "sha256": "44b163705d397c18ec8fda277ed0bf6f91aea1228a47c6e15cc1918a87ff55a5"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tests/views.spec.ts",
+    "bytes": 22176,
+    "sha256": "d9a149c90e71ee5718237bfa33858ff584c892a672f26b098c99516565fb576d"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tsconfig.json",
+    "bytes": 576,
+    "sha256": "bdcfde2b4ea9b69252536b4293b60a8167f0c46d50244fa6dc15678764a93ad2"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/tsdown.config.ts",
+    "bytes": 1392,
+    "sha256": "39163d8b6b8bd8e7eb723e535da60ce6840fa83930f4c92e1de916d3cfdfd211"
+  },
+  {
+    "path": "packages/personbot-superagent/upstream/vitest.config.ts",
+    "bytes": 237,
+    "sha256": "66f7272b1ef34f418444b88ff3173adb4c15d210ad676819416f1d68d6ce3e35"
+  },
+  {
+    "path": "packages/personbot-supervisor/THIRD_PARTY.md",
+    "bytes": 2080,
+    "sha256": "b0ad8eba17db573047ad4a3e2a9deaf24b98a97dc6f54d26d5eb4b21ab46de55"
+  },
+  {
+    "path": "packages/personbot-supervisor/package.json",
+    "bytes": 196,
+    "sha256": "d7bbcf0ff2d16a446a8372ba1e646eed2d3915e839f2bcc2432754ec88b20f46"
+  },
+  {
+    "path": "packages/personbot-supervisor/src/index.ts",
+    "bytes": 88,
+    "sha256": "6bd50f23e32faab90e2ab0909df4bb3b619b945e75a5e1a90806fc01e931970d"
+  },
+  {
+    "path": "packages/personbot-supervisor/src/store.ts",
+    "bytes": 34047,
+    "sha256": "e3740301859bc296af2b2c4942ffb94bc9f63e94a5aeb8acae6ba1d00c7a90df"
+  },
+  {
+    "path": "packages/personbot-supervisor/test/store.node-test.ts",
+    "bytes": 36889,
+    "sha256": "200b2a9988b21ec003a18f6c8c76c8a899484d69bd8f326da869a2df334924fb"
+  },
+  {
+    "path": "pnpm-lock.yaml",
+    "bytes": 1098467,
+    "sha256": "e5d1a4c8ca8e6291a0175ceaecd32dd5ae78bcc9f68a4a0ec40b157afa344977"
+  },
+  {
+    "path": "pnpm-workspace.yaml",
+    "bytes": 1077,
+    "sha256": "931193fa8dc5a367851b476b983cc457524234c912aeacbf5a8ee351bbcb345f"
+  },
+  {
+    "path": "scripts/control-omb.test.ts",
+    "bytes": 5330,
+    "sha256": "da928476f354979d7037210c2f5d6571830bd0df621e44aa36b476a5b5e3d258"
+  },
+  {
+    "path": "scripts/control-omb.ts",
+    "bytes": 26975,
+    "sha256": "9f3aafdadf1cd647118630a39baa10410a0aa212a1b1a8dcd3be60b1fe3206f6"
+  },
+  {
+    "path": "scripts/personbot-start.ts",
+    "bytes": 11771,
+    "sha256": "e9ab9f2a2a75000f13b124058c54991ed5f57682587df879d9a6f7385f280736"
+  },
+  {
+    "path": "scripts/personbot.ts",
+    "bytes": 6709,
+    "sha256": "39791909269093426e830489350473af00626a04d78d89e3370336bc535fb2c0"
+  },
+  {
+    "path": "scripts/testing/personbot-background.test.ts",
+    "bytes": 9879,
+    "sha256": "5e7d0dd5d501ccbd62680077e4abd00adf07d8ab45c92ae48413c91437ef5f9a"
+  },
+  {
+    "path": "scripts/testing/personbot-cutover.test.ts",
+    "bytes": 13571,
+    "sha256": "8f6f6a0fde3b673a9b00ae33522ab41341b62f1eaddbf6d82f4fa4231b1565bc"
+  },
+  {
+    "path": "scripts/testing/personbot-events-ui.e2e.test.ts",
+    "bytes": 22519,
+    "sha256": "1f54a2fc0ddae9aff00cbbdef212f2fbcecc808d006ab1a5b63ffb62249ad62f"
+  },
+  {
+    "path": "scripts/testing/personbot-personal-ui.e2e.test.ts",
+    "bytes": 22443,
+    "sha256": "95806c7bd90f2e677c2084cbe3f6dc15acb424fd235e881a6cd93a22a528afda"
+  },
+  {
+    "path": "scripts/testing/personbot-product-ui.e2e.test.ts",
+    "bytes": 15972,
+    "sha256": "4833cc2f06a0a0c0c4d1f3167f35b7997508fdbcf18e351f641968ecae0fb54b"
+  },
+  {
+    "path": "scripts/testing/personbot-start.test.ts",
+    "bytes": 15546,
+    "sha256": "0ed2ecb9cde10e773296846fbc435c53c9272b034c0985f9ddd80e105fe9caa8"
+  },
+  {
+    "path": "scripts/testing/personbot-tasks-ui.e2e.test.ts",
+    "bytes": 20076,
+    "sha256": "c16da5aa9df51c1592cdfb2a1717def7b5d5761ec1af04f0f4ae9ef792c34c2e"
+  },
+  {
+    "path": "scripts/testing/personbot-ui.e2e.test.ts",
+    "bytes": 17927,
+    "sha256": "497eec63c4a9250714d80ec7dda46d7149c734e424dec05de5f396839b4530cc"
+  },
+  {
+    "path": "scripts/testing/superagent-hardening.e2e.test.ts",
+    "bytes": 13226,
+    "sha256": "f945f760a157ff0787c7d4054634506c1fae67316211ef5a32fdf3633dac9140"
+  },
+  {
+    "path": "scripts/testing/superagent-lifecycle.e2e.test.ts",
+    "bytes": 12188,
+    "sha256": "83d1c7dbcd34155b09391799461462b3c92550f809c8e17fd7c25892159929f0"
+  },
+  {
+    "path": "scripts/testing/superagent-product.e2e.test.ts",
+    "bytes": 19019,
+    "sha256": "494a596ba477e4b85a55c1fed7ffe0b4a55ec655a6dc30173c8365d208234cf5"
+  },
+  {
+    "path": "scripts/testing/superagent-recovery.test.ts",
+    "bytes": 17137,
+    "sha256": "dea5ce92f35ad99ffbf44b60040729c67b4dea4d53fc8a64f7760bc91201f4dc"
+  },
+  {
+    "path": "scripts/testing/superagent-settings.e2e.test.ts",
+    "bytes": 7887,
+    "sha256": "20bdde9215562c47c4a14156fb6cd1fcb152f90c6ed28a7165a8c04b70b60cb0"
+  },
+  {
+    "path": "server/bulk-delete-tasks.e2e.test.ts",
+    "bytes": 11855,
+    "sha256": "62d51116ef0c1e1dbe4cff054188dfa637973c1f26eb0c9be1aefb613e0ff009"
+  },
+  {
+    "path": "server/calendar-calls.ts",
+    "bytes": 13879,
+    "sha256": "61a6167b2b42f6333ec31371b308715a550eb656cb8dc8192e8a6af6b3089d39"
+  },
+  {
+    "path": "server/contracts.ts",
+    "bytes": 29823,
+    "sha256": "a9145a995bf85c15efa84abd00000a9fb2cf3ad30a3e22b53e25d01dfe1f5f42"
+  },
+  {
+    "path": "server/index.ts",
+    "bytes": 991743,
+    "sha256": "3d08e032dd945d24d22ebdaa9a519c8c8534b6979955fde4de840116dd0981e7"
+  },
+  {
+    "path": "server/personbot-legacy.test.ts",
+    "bytes": 16379,
+    "sha256": "21b2b65acbdea96bb64936b2576e820f0a6fec6410d6e204e4a8246aef8c44ee"
+  },
+  {
+    "path": "server/personbot-legacy.ts",
+    "bytes": 16102,
+    "sha256": "8d5c68427f9dfd8977fae81402ab2ae9cb0c5df68f06494cd95c9d36ee6ced3a"
+  },
+  {
+    "path": "server/personbot-mode.test.ts",
+    "bytes": 3703,
+    "sha256": "28c676e83fa9f3ea0ec16ce690022d7c4d796180be7125c23dfb04f72f82be33"
+  },
+  {
+    "path": "server/personbot-mode.ts",
+    "bytes": 2615,
+    "sha256": "655e523ba3d7f07fb74832192a6c6a8c075a8c607d2d0a7235479f16b701b2bc"
+  },
+  {
+    "path": "server/personbot-settings.test.ts",
+    "bytes": 8146,
+    "sha256": "9e2bbd4e049bdadeb8dae279bc4f802b66875f90d5d4fbfa3cb559ea6bdcf427"
+  },
+  {
+    "path": "server/personbot-settings.ts",
+    "bytes": 8649,
+    "sha256": "4b051524fdd7532fbd08189b2ff5d4d352ecae85cd643997bbd532aa0d262501"
+  },
+  {
+    "path": "server/routes/bot-messages.ts",
+    "bytes": 53745,
+    "sha256": "99119586a771f456007101bd756edbaeb6b899d187dbad214bfb856d97165554"
+  },
+  {
+    "path": "server/routes/bot-patch.ts",
+    "bytes": 48274,
+    "sha256": "b846f16eb399e93317880816489d2ab81401b91025c9a06f0a794395422b7ba0"
+  },
+  {
+    "path": "server/routes/personbot-legacy.ts",
+    "bytes": 2567,
+    "sha256": "f568da573c14ab024ba2e25fa638cddde92c8adbb613aece0179eade9ce588b3"
+  },
+  {
+    "path": "server/routes/personbot-setup.test.ts",
+    "bytes": 5907,
+    "sha256": "35d936fe40bf6994537929b4df228e371389f9a9e308d171820ba91916d1670a"
+  },
+  {
+    "path": "server/routes/personbot-setup.ts",
+    "bytes": 2477,
+    "sha256": "81c8492018b3569d58656ebdfbc0e4c89ee72c11e441d2c6dced38c5cf51c6a6"
+  },
+  {
+    "path": "server/routes/personbot.test.ts",
+    "bytes": 24303,
+    "sha256": "b1ed97b4d5e88cccf5207f72a62bb19bd1a56bee729dfda97a5d3a54a27803b9"
+  },
+  {
+    "path": "server/routes/personbot.ts",
+    "bytes": 9645,
+    "sha256": "3f4b3e5cc702f9a47df10e3da674b0f533d131dab16c7af224e32cb0923b6a44"
+  },
+  {
+    "path": "server/routes/superagent.test.ts",
+    "bytes": 6783,
+    "sha256": "0266f0e72f1e99ee6c68bc5e89cd6de869eb2eec5085397d447ec66003adb17c"
+  },
+  {
+    "path": "server/routes/superagent.ts",
+    "bytes": 5247,
+    "sha256": "92b3f9ff00c51983bbb67fb775a08e349eab2d5d1917451d0395aad0dcbb8e49"
+  },
+  {
+    "path": "server/routes/tasks.ts",
+    "bytes": 30426,
+    "sha256": "07ea23d571ef1cc77da3a435dc5d4019266e75d162c1b596fc0769151e71913a"
+  },
+  {
+    "path": "server/routines.ts",
+    "bytes": 75220,
+    "sha256": "722cd97a7ffbd4654e4f748a6329bb1726fc45b64bbee27e719c1e0646abd31d"
+  },
+  {
+    "path": "server/superagent-delivery.node-test.ts",
+    "bytes": 5405,
+    "sha256": "0145d224e4bbacde89062be55ad9e36a391d8f0808a019a26e9f0b43083e740f"
+  },
+  {
+    "path": "server/superagent-delivery.ts",
+    "bytes": 2075,
+    "sha256": "b82f4eeca612ce8d612b91224e7c488dbe79d0f0f6ff2e9d86b39ddacb01fe39"
+  },
+  {
+    "path": "server/superagent-driver.test.ts",
+    "bytes": 24767,
+    "sha256": "ac63dc4097f985b66b2488bb5544e0ad9768c365663969e22e23019ad3b8973c"
+  },
+  {
+    "path": "server/superagent-driver.ts",
+    "bytes": 18461,
+    "sha256": "29baef67ed5d630986e903674dd8061297dc3d6f611c6ed4a82172af53ba5b29"
+  },
+  {
+    "path": "server/superagent-memory.node-test.ts",
+    "bytes": 36347,
+    "sha256": "0889db1730abb2eaa700ed1994729853b03f484631f63e9ca78a21b2b2a437ef"
+  },
+  {
+    "path": "server/superagent-memory.ts",
+    "bytes": 19674,
+    "sha256": "080e96c134c4e420dbc70f52eaf90a89069250b5669bfd1dcb82440a22e2ce2c"
+  },
+  {
+    "path": "server/superagent-projection.node-test.ts",
+    "bytes": 4927,
+    "sha256": "903945c214c6bd008dd5081c97193d3dd3514e17e9c0a79c5393ee44d63b90e2"
+  },
+  {
+    "path": "server/superagent-projection.ts",
+    "bytes": 4120,
+    "sha256": "4d19be78b609b56118955e72b7bc4967a4f8ba6bcea003138cb6df7ba588a8cf"
+  },
+  {
+    "path": "server/superagent-task-usage.node-test.ts",
+    "bytes": 6952,
+    "sha256": "ab4efa5edf96d9d7b4225671d33b5582613564ea0e2965fc18a51c2bbaa03106"
+  },
+  {
+    "path": "server/superagent-task-usage.ts",
+    "bytes": 2121,
+    "sha256": "4fe5dc0c6a7c9b54189a39a23df84a3931bbf8acb1bd963f4fa97bb8606f7fea"
+  },
+  {
+    "path": "server/superagent-usage.node-test.ts",
+    "bytes": 9211,
+    "sha256": "c2c7ab7360ed3d3fdc60ada74809f04e4811fcfa78a5b5fd6a21f1a8a1147743"
+  },
+  {
+    "path": "server/superagent-usage.ts",
+    "bytes": 3679,
+    "sha256": "980da4c9790c14e23e02d1a01f1293e60dc1f2a818dde3de3fe20a5e11eb3685"
+  },
+  {
+    "path": "server/usage-ledger.ts",
+    "bytes": 16201,
+    "sha256": "648831748b34b3c3840765cb33275789371f75c448b374bb5dca8b672dc7455d"
+  },
+  {
+    "path": "shared/personbot-legacy.ts",
+    "bytes": 1265,
+    "sha256": "90e88aa5384e81bec4915777a05ca0f1730d7ab647be75f17e6bbdcd3da83f78"
+  },
+  {
+    "path": "shared/personbot-product.ts",
+    "bytes": 1298,
+    "sha256": "a7485d88f586d1c7331ec7d3b550892b7eca7459eb5a24449fbb791cd3dc1df1"
+  },
+  {
+    "path": "shared/runtime-events.ts",
+    "bytes": 10450,
+    "sha256": "c5c83fdbdd4b48fb68433f6106b838d957b7f752b16f16145cf3cdd1c126e591"
+  },
+  {
+    "path": "shared/superagent-capabilities.ts",
+    "bytes": 1676,
+    "sha256": "607434dc15bfe2ed118e1867e1ad353f28d4d26e15f3d27d8ecbec2e1640e113"
+  },
+  {
+    "path": "shared/superagent.ts",
+    "bytes": 6328,
+    "sha256": "685eb679b54a7b87333a843096211b47b078ab0b1b8638c47e0145e4ccc89362"
+  },
+  {
+    "path": "shared/wire.ts",
+    "bytes": 50335,
+    "sha256": "8f7f06c82040f587ee6e73f4eaa7e32b8e53873890f6ec43e68024d222ffb1e6"
+  },
+  {
+    "path": "src/components/SettingsModal.tsx",
+    "bytes": 39757,
+    "sha256": "e9d2ae1aa44679c1c538a6abeb58ae4476957f789dafffb59ea51a88b4433a34"
+  },
+  {
+    "path": "src/components/SidebarPersonbotButton.tsx",
+    "bytes": 1201,
+    "sha256": "54dbcda30973ceb9752063466748ba45d60b2ce64f950faaa4003bfc04027b03"
+  },
+  {
+    "path": "src/components/SuperagentModelSettings.tsx",
+    "bytes": 2077,
+    "sha256": "32a90e92698814f04f7435aafbff2736d8d4cf681d42139294306098ca9bcd21"
+  },
+  {
+    "path": "src/components/SuperagentRuntimeStatus.tsx",
+    "bytes": 4093,
+    "sha256": "42c5d8fcdc8584b777dfd5b889c32ceff6ed16da62e5b94dcd0b04d1b51f555c"
+  },
+  {
+    "path": "src/components/personbot/PersonbotArtifacts.test.ts",
+    "bytes": 1957,
+    "sha256": "8b6dc9bd4597b9e723db62fe884401a6f117f0ed111d7261aa3f656fb2dbb072"
+  },
+  {
+    "path": "src/components/personbot/PersonbotArtifacts.tsx",
+    "bytes": 7899,
+    "sha256": "e3d9a402155ce6aab1537d273e92ce6228f72eefdc7ac1c00a0228690546b012"
+  },
+  {
+    "path": "src/components/personbot/PersonbotIntegrations.test.ts",
+    "bytes": 11116,
+    "sha256": "18cb54eff31804a49f2fbd605d7bce66c33614bbf456b89da0cc88cc84ae51e9"
+  },
+  {
+    "path": "src/components/personbot/PersonbotIntegrations.tsx",
+    "bytes": 27761,
+    "sha256": "32cfd67f183c3a6acb437f525d4020f417e52235e49e707a5583c7000517613c"
+  },
+  {
+    "path": "src/components/personbot/PersonbotLegacy.tsx",
+    "bytes": 10437,
+    "sha256": "ee6f8acc3f27160b10543539548eb3d0fd01c30cb5e29f6609342c839b5be6b1"
+  },
+  {
+    "path": "src/components/personbot/PersonbotPersonal.tsx",
+    "bytes": 11860,
+    "sha256": "289958631903039b115c49de38c81cab11edc3e72cfdb1833d3ec2e64c7591cc"
+  },
+  {
+    "path": "src/components/personbot/PersonbotProduct.test.ts",
+    "bytes": 3304,
+    "sha256": "ec8cea3642132f6939cf052de53842717ffba2cd322969abbe2eedf7ef83d847"
+  },
+  {
+    "path": "src/components/personbot/PersonbotProduct.tsx",
+    "bytes": 6605,
+    "sha256": "3d245067368b4b9bac22915e356ed08b78c86d42bad73b389bc8e1ade483d620"
+  },
+  {
+    "path": "src/components/personbot/PersonbotSetup.tsx",
+    "bytes": 6505,
+    "sha256": "e82d41dcdbf421ca21886ef86f02005b0c875cbd5988b837f569353028cea9ff"
+  },
+  {
+    "path": "src/components/personbot/PersonbotTasks.test.ts",
+    "bytes": 6454,
+    "sha256": "5a41da83c64b2c3840dbe4bde090120c48bca56f1c7a0b1ff806079316360326"
+  },
+  {
+    "path": "src/components/personbot/PersonbotTasks.tsx",
+    "bytes": 12281,
+    "sha256": "0e4cdd23c736eccc8d002f59e1d45071861d48e6f0676c9fcd10027123fbac2b"
+  },
+  {
+    "path": "src/components/personbot/PersonbotView.test.ts",
+    "bytes": 1496,
+    "sha256": "de6e53e1b90707b8aa4843b91764ba9884f9e569176fc91da7b48586c91ebfc9"
+  },
+  {
+    "path": "src/components/personbot/PersonbotView.tsx",
+    "bytes": 26309,
+    "sha256": "cbad172b259f288cb60834cb92913a8bcb5c5395d3c6304e1c981ede606b6b46"
+  },
+  {
+    "path": "src/components/personbot/personbot.css",
+    "bytes": 3371,
+    "sha256": "6ad8dd72cc4a32e7cd3271fb80aab2a8c28a7d0362ccd898a2c964f965b3eb05"
+  },
+  {
+    "path": "src/lib/personbot-client.test.ts",
+    "bytes": 26654,
+    "sha256": "ee02ea98e30e8a71450aaf72dc1545e3c66c275a0e07d8f2795bb25ec5a5009e"
+  },
+  {
+    "path": "src/lib/personbot-client.ts",
+    "bytes": 24002,
+    "sha256": "e56f0b7de7798d65f67a3e734263bb78716343948e03c8ae56c44af8a217e249"
+  },
+  {
+    "path": "src/lib/personbot-product-client.test.ts",
+    "bytes": 2010,
+    "sha256": "21b54b0dbd0cbc988c3c8f82a97e7b26bc38044b1b631d0970cdb85e75aeba0b"
+  },
+  {
+    "path": "src/lib/personbot-product-client.ts",
+    "bytes": 2658,
+    "sha256": "fab7fde8330f11a6b56f66000eb3081f921334392c5b6f0eed3d25f3365cd31d"
+  },
+  {
+    "path": "src/state/store.tsx",
+    "bytes": 159025,
+    "sha256": "eeb06fd47722b5a0e6526a392b52e6189489b656dcd95baaacf5a6b9fea71d2e"
+  },
+  {
+    "path": "tsconfig.json",
+    "bytes": 592,
+    "sha256": "45eb2470265938b4f2b0920b996021d09842013751025a3836cee29a729ac08d"
+  },
+  {
+    "path": "tsconfig.personbot.json",
+    "bytes": 337,
+    "sha256": "c5f553578d6bd5590120e5fcdbe3e572d9f6f8858fdb1b66dae24e0b9c99f909"
+  }
+]

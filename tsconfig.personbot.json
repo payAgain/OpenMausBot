@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.server.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["packages/personbot-*/**/*.ts", "scripts/personbot*.ts"],
+  "exclude": [
+    "packages/personbot-superagent/upstream",
+    "packages/personbot-superagent/src/plugin.ts",
+    "packages/personbot-superagent/test/fixture-plugin.ts"
+  ]
+}

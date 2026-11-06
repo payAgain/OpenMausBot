@@ -1,0 +1,10 @@
+$ pnpm typecheck
+
+> openmausbot@0.1.140 typecheck /Users/yimingd/AI/personbot/OpenMausBot
+> tsc -b && tsc -p tsconfig.server.json
+
+$ pnpm personbot:typecheck
+
+> openmausbot@0.1.140 personbot:typecheck /Users/yimingd/AI/personbot/OpenMausBot
+> tsc -p tsconfig.personbot.json && tsc -p packages/personbot-superagent/tsconfig.runtime.json
+

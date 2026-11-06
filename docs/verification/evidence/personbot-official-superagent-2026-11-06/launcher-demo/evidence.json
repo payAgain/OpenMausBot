@@ -1,0 +1,21 @@
+{
+  "checks": [
+    "dedicated dist-personbot original App served",
+    "official Super Agent setup fixture",
+    "original chat completed through official runtime and native dsh",
+    "owned server and runtime stopped",
+    "demo data removed"
+  ],
+  "launcherPid": 45294,
+  "serverPid": 45295,
+  "runtimePid": 45298,
+  "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/personbot-launcher-GUP9Pj/openmausbot-verify-data-Xa6orD",
+  "url": "http://127.0.0.1:22253",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "serverExited": true,
+  "runtimeExited": true,
+  "dataRemoved": true
+}

@@ -1,0 +1,2393 @@
+{
+  "scenario": "attention",
+  "checks": [
+    "A real official blocked worker report reaches the original thread as one attention message and releases its busy turn.",
+    "A different owner request continues the same native ticket and delivers its final result to the original thread exactly once.",
+    "The same isolated server data preserves original messages and native identity after restart, without replaying attention or result."
+  ],
+  "fixture": {
+    "url": "http://127.0.0.1:21440",
+    "pid": 91462,
+    "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY",
+    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793950783220-91461.log"
+  },
+  "api": [
+    {
+      "method": "POST",
+      "path": "/api/bots",
+      "body": {
+        "name": "Official recovery attention",
+        "memoryUpkeep": false
+      },
+      "status": 201,
+      "result": {
+        "bot": {
+          "id": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+          "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+          "name": "Official recovery attention",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "teal",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950784479,
+          "avatarUrl": null,
+          "autoApprove": false,
+          "approvalMode": "full",
+          "waitingForTeammates": false,
+          "mainThreadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+          "tasks": [
+            {
+              "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+              "title": "New thread",
+              "createdAt": 1793950784479,
+              "updatedAt": 1793950784496,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950784496,
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ],
+          "messages": [
+            {
+              "id": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+              "at": 1793950784496,
+              "parentId": null,
+              "role": "bot",
+              "kind": "text",
+              "text": "Hi, I'm Official recovery attention. What would you like me to do?",
+              "setupOffer": true,
+              "setupChoices": [
+                "Research and digging into topics",
+                "Keeping an eye on things for me",
+                "Email, calendar and messages",
+                "Bookings, shopping and errands",
+                "Data, spreadsheets and reports"
+              ]
+            }
+          ],
+          "activeLeafId": "960fa4fe-cec9-411a-9c79-e469eaea4ddd"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/bots/d6e160ca-b0c4-4282-8799-b434ab3702ff",
+      "body": {
+        "memoryUpkeep": false,
+        "approvalMode": "ask"
+      },
+      "status": 200,
+      "result": {
+        "bot": {
+          "id": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+          "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+          "name": "Official recovery attention",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "teal",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950784479,
+          "avatarUrl": null,
+          "autoApprove": false,
+          "memoryUpkeep": false,
+          "approvalMode": "ask",
+          "waitingForTeammates": false,
+          "mainThreadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+          "tasks": [
+            {
+              "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+              "title": "New thread",
+              "createdAt": 1793950784479,
+              "updatedAt": 1793950784496,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950784496,
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/d6e160ca-b0c4-4282-8799-b434ab3702ff/messages",
+      "body": {
+        "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+        "text": "task attention"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+        "message": {
+          "id": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "at": 1793950784520,
+          "parentId": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+          "role": "user",
+          "kind": "text",
+          "text": "task attention"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/d6e160ca-b0c4-4282-8799-b434ab3702ff/messages",
+      "body": {
+        "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+        "text": "attention answer Mars"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+        "message": {
+          "id": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "at": 1793950786465,
+          "parentId": "ca32edb1-eee0-46dd-af78-71a6742f099b",
+          "role": "user",
+          "kind": "text",
+          "text": "attention answer Mars"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/d6e160ca-b0c4-4282-8799-b434ab3702ff/messages",
+      "body": {
+        "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+        "text": "echo after-attention-restart"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+        "message": {
+          "id": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+          "at": 1793950788102,
+          "parentId": "54ef8c37-c096-4482-aac6-a4d2e7d8a9a1",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-attention-restart"
+        }
+      }
+    }
+  ],
+  "snapshots": {
+    "attention": {
+      "messages": [
+        {
+          "id": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+          "at": 1793950784496,
+          "parentId": null,
+          "role": "bot",
+          "kind": "text",
+          "text": "Hi, I'm Official recovery attention. What would you like me to do?",
+          "setupOffer": true,
+          "setupChoices": [
+            "Research and digging into topics",
+            "Keeping an eye on things for me",
+            "Email, calendar and messages",
+            "Bookings, shopping and errands",
+            "Data, spreadsheets and reports"
+          ]
+        },
+        {
+          "id": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "at": 1793950784520,
+          "parentId": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+          "role": "user",
+          "kind": "text",
+          "text": "task attention",
+          "requestPending": false
+        },
+        {
+          "id": "9ecc61ad-9316-4ff6-a78d-20845310e592",
+          "at": 1793950786105,
+          "parentId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32\",\"title\":\"attention\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+            "itemId": "official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba\"},\"toolCallId\":\"official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"ea567c9ca010f99a765ddd8243a10ad3\\\",\\\"title\\\":\\\"attention\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/ea567c9ca010f99a765ddd8243a10ad3\\\"}}]}\"}],\"isError\":false,\"id\":\"41eefa16-3dac-4720-9d58-f99e99e31d5c\"}"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "2d488f86-d7d7-467a-b97e-22df9a85e14e",
+          "at": 1793950786113,
+          "parentId": "9ecc61ad-9316-4ff6-a78d-20845310e592",
+          "role": "bot",
+          "kind": "activity",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "tool": {
+            "name": "attention: Working",
+            "ok": true
+          }
+        },
+        {
+          "id": "26c2d55e-f0dc-4698-beaf-5fcf9aa36dbf",
+          "at": 1793950786115,
+          "parentId": "2d488f86-d7d7-467a-b97e-22df9a85e14e",
+          "role": "bot",
+          "kind": "text",
+          "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "e53c5473-063c-42d7-84d4-631e7b27de7d",
+          "at": 1793950786267,
+          "parentId": "26c2d55e-f0dc-4698-beaf-5fcf9aa36dbf",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_report",
+            "spoken": "running orchestrator_report",
+            "input": "{\"state\":\"blocked\",\"summary\":\"A destination is required before completing this task.\",\"human_action\":\"Which destination?\"}",
+            "itemId": "official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7\"},\"toolCallId\":\"official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\",\\\"attention\\\":{\\\"id\\\":\\\"1633bdfbdf316d92371d19a5e7c19918\\\",\\\"question\\\":\\\"Which destination?\\\"}}\"}],\"isError\":false,\"id\":\"613aef01-3c2f-4982-911c-57461b6bb01b\"}"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "514a5423-f1cc-457f-a600-61eb2d39a5d0",
+          "at": 1793950786332,
+          "parentId": "e53c5473-063c-42d7-84d4-631e7b27de7d",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_reply",
+            "spoken": "running orchestrator_reply",
+            "input": "{\"purpose\":\"attention\",\"ticket_id\":\"ea567c9ca010f99a765ddd8243a10ad3\",\"text\":\"Which destination?\",\"human_action\":\"Which destination?\"}",
+            "itemId": "official-fixture-2583dd76-db33-412c-9c21-76f80163302f",
+            "ok": true
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "1226d470-4520-444a-a94a-deb6916e2b5c",
+          "at": 1793950786339,
+          "parentId": "514a5423-f1cc-457f-a600-61eb2d39a5d0",
+          "role": "bot",
+          "kind": "text",
+          "text": "Which destination?",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "turnTerminal": true,
+          "turnCompletedAt": 1793950786367,
+          "turnSucceeded": true
+        },
+        {
+          "id": "ca32edb1-eee0-46dd-af78-71a6742f099b",
+          "at": 1793950786369,
+          "parentId": "1226d470-4520-444a-a94a-deb6916e2b5c",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, orchestrator_report ×1, orchestrator_reply ×1 (from tool previews) · reply: Which destination?",
+          "digest": {
+            "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "botId": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "at": 1793950786368,
+            "durationMs": 1840,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_report",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_reply",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 3,
+            "memory": [],
+            "reply": "Which destination?",
+            "hookCoverage": "preview"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "turnSucceeded": true
+        }
+      ],
+      "native": [
+        {
+          "file": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot/official-superagent/d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147/state/orchestrator.sqlite",
+          "triggers": [
+            {
+              "id": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:46.023Z",
+              "text": "task attention",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "meta": {
+                "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+                "sourceMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+                "approvalMode": "ask"
+              }
+            }
+          ],
+          "tickets": [
+            {
+              "id": "ea567c9ca010f99a765ddd8243a10ad3",
+              "title": "attention",
+              "decisionId": "c20905d07f48220c8cb2401d75341d65",
+              "mandate": {
+                "strength": "explicit",
+                "policyVersion": "87338089732da8e207cc6475f730465a",
+                "basis": {
+                  "source": "openmausbot",
+                  "scope": {
+                    "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+                    "sourceMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+                    "approvalMode": "ask"
+                  },
+                  "sender": "owner",
+                  "via": "addressed",
+                  "addressed": "direct"
+                },
+                "actor": {
+                  "source": "openmausbot",
+                  "id": "owner"
+                },
+                "scope": "attention"
+              },
+              "channels": [
+                {
+                  "source": "openmausbot",
+                  "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "address": {
+                    "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                    "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                  }
+                }
+              ],
+              "assignments": [
+                {
+                  "id": "3f746894513a155f7e51a807cb3b94a0",
+                  "state": "running",
+                  "createdAt": "2026-11-06T07:39:46.110Z",
+                  "startedAt": "2026-11-06T07:39:46.226Z",
+                  "report": {
+                    "state": "blocked",
+                    "summary": "A destination is required before completing this task.",
+                    "at": "2026-11-06T07:39:46.271Z"
+                  },
+                  "idleAt": "2026-11-06T07:39:46.318Z"
+                }
+              ],
+              "inputs": [],
+              "undelivered": [],
+              "createdAt": "2026-11-06T07:39:46.110Z",
+              "updatedAt": "2026-11-06T07:39:46.271Z",
+              "origin": {
+                "triggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+                "triggerIds": [
+                  "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32"
+                ]
+              },
+              "execution": {
+                "name": "official-task-ea567c9ca010",
+                "directory": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot-workspace",
+                "assignment": ""
+              },
+              "attention": {
+                "id": "1633bdfbdf316d92371d19a5e7c19918",
+                "question": "Which destination?"
+              }
+            }
+          ],
+          "outbox": [
+            {
+              "id": "c3222fc4cbe0b37a50c21b2c5a9b8064",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+              "kind": "acknowledgement",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "status": "sent"
+            },
+            {
+              "id": "6a29f026a581385f8bf1cd9e8b28d6a2",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "Which destination?",
+              "kind": "reply",
+              "purpose": "attention",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "status": "sent"
+            }
+          ]
+        }
+      ],
+      "bindings": {
+        "bindings": [
+          {
+            "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "bot_id": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "thread_id": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "context_id": "08fa3be1-08bd-4837-bac0-a67cf93839aa",
+            "active": 1
+          }
+        ],
+        "requests": [
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "source_message_id": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+            "status": "completed"
+          }
+        ],
+        "deliveries": [
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "c3222fc4cbe0b37a50c21b2c5a9b8064",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "6a29f026a581385f8bf1cd9e8b28d6a2",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "persisted": 1,
+            "suppressed": 0
+          }
+        ]
+      },
+      "status": {
+        "enabled": true,
+        "state": "ready",
+        "pid": 91464,
+        "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot-workspace",
+        "provider": "personbot-fixture",
+        "model": "fixture"
+      },
+      "children": [
+        {
+          "pid": 91464,
+          "parentPid": 91462,
+          "command": "/opt/homebrew/Cellar/node/26.10.0_1/bin/node --import <repo>/packages/personbot-superagent/src/runtime-loader.mjs <repo>/node_modules/.pnpm/@deepseek-ai+dsh@0.2.2-rc.1_f435452fdc7898341cda17fcf225c75e/node_modules/@deepseek-ai/dsh/lib/bin.js --profile omb-superagent"
+        }
+      ]
+    },
+    "clarified": {
+      "messages": [
+        {
+          "id": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+          "at": 1793950784496,
+          "parentId": null,
+          "role": "bot",
+          "kind": "text",
+          "text": "Hi, I'm Official recovery attention. What would you like me to do?",
+          "setupOffer": true,
+          "setupChoices": [
+            "Research and digging into topics",
+            "Keeping an eye on things for me",
+            "Email, calendar and messages",
+            "Bookings, shopping and errands",
+            "Data, spreadsheets and reports"
+          ]
+        },
+        {
+          "id": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "at": 1793950784520,
+          "parentId": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+          "role": "user",
+          "kind": "text",
+          "text": "task attention",
+          "requestPending": false
+        },
+        {
+          "id": "9ecc61ad-9316-4ff6-a78d-20845310e592",
+          "at": 1793950786105,
+          "parentId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32\",\"title\":\"attention\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+            "itemId": "official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba\"},\"toolCallId\":\"official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"ea567c9ca010f99a765ddd8243a10ad3\\\",\\\"title\\\":\\\"attention\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/ea567c9ca010f99a765ddd8243a10ad3\\\"}}]}\"}],\"isError\":false,\"id\":\"41eefa16-3dac-4720-9d58-f99e99e31d5c\"}"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "2d488f86-d7d7-467a-b97e-22df9a85e14e",
+          "at": 1793950786113,
+          "parentId": "9ecc61ad-9316-4ff6-a78d-20845310e592",
+          "role": "bot",
+          "kind": "activity",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "tool": {
+            "name": "attention: Completed",
+            "ok": true
+          }
+        },
+        {
+          "id": "26c2d55e-f0dc-4698-beaf-5fcf9aa36dbf",
+          "at": 1793950786115,
+          "parentId": "2d488f86-d7d7-467a-b97e-22df9a85e14e",
+          "role": "bot",
+          "kind": "text",
+          "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "e53c5473-063c-42d7-84d4-631e7b27de7d",
+          "at": 1793950786267,
+          "parentId": "26c2d55e-f0dc-4698-beaf-5fcf9aa36dbf",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_report",
+            "spoken": "running orchestrator_report",
+            "input": "{\"state\":\"blocked\",\"summary\":\"A destination is required before completing this task.\",\"human_action\":\"Which destination?\"}",
+            "itemId": "official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7\"},\"toolCallId\":\"official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\",\\\"attention\\\":{\\\"id\\\":\\\"1633bdfbdf316d92371d19a5e7c19918\\\",\\\"question\\\":\\\"Which destination?\\\"}}\"}],\"isError\":false,\"id\":\"613aef01-3c2f-4982-911c-57461b6bb01b\"}"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "514a5423-f1cc-457f-a600-61eb2d39a5d0",
+          "at": 1793950786332,
+          "parentId": "e53c5473-063c-42d7-84d4-631e7b27de7d",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_reply",
+            "spoken": "running orchestrator_reply",
+            "input": "{\"purpose\":\"attention\",\"ticket_id\":\"ea567c9ca010f99a765ddd8243a10ad3\",\"text\":\"Which destination?\",\"human_action\":\"Which destination?\"}",
+            "itemId": "official-fixture-2583dd76-db33-412c-9c21-76f80163302f",
+            "ok": true
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "1226d470-4520-444a-a94a-deb6916e2b5c",
+          "at": 1793950786339,
+          "parentId": "514a5423-f1cc-457f-a600-61eb2d39a5d0",
+          "role": "bot",
+          "kind": "text",
+          "text": "Which destination?",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "turnTerminal": true,
+          "turnCompletedAt": 1793950786367,
+          "turnSucceeded": true
+        },
+        {
+          "id": "ca32edb1-eee0-46dd-af78-71a6742f099b",
+          "at": 1793950786369,
+          "parentId": "1226d470-4520-444a-a94a-deb6916e2b5c",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, orchestrator_report ×1, orchestrator_reply ×1 (from tool previews) · reply: Which destination?",
+          "digest": {
+            "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "botId": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "at": 1793950786368,
+            "durationMs": 1840,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_report",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_reply",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 3,
+            "memory": [],
+            "reply": "Which destination?",
+            "hookCoverage": "preview"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "turnSucceeded": true
+        },
+        {
+          "id": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "at": 1793950786465,
+          "parentId": "ca32edb1-eee0-46dd-af78-71a6742f099b",
+          "role": "user",
+          "kind": "text",
+          "text": "attention answer Mars",
+          "requestPending": false
+        },
+        {
+          "id": "f560d0ca-ece5-4209-9575-5fd6ca73896b",
+          "at": 1793950786520,
+          "parentId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_report",
+            "spoken": "running orchestrator_report",
+            "input": "{\"state\":\"ready\",\"summary\":\"Official attention result: Mars\"}",
+            "itemId": "official-fixture-0a7342a6-90e0-4c66-9dc0-40b2c7a0c630",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-0a7342a6-90e0-4c66-9dc0-40b2c7a0c630\"},\"toolCallId\":\"official-fixture-0a7342a6-90e0-4c66-9dc0-40b2c7a0c630\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\"}\"}],\"isError\":false,\"id\":\"998c25af-03dd-4b09-8569-4cf50afab379\"}"
+          },
+          "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+          "requestMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76"
+        },
+        {
+          "id": "1ca9199b-cb36-42e3-82e7-9e3058dd2c55",
+          "at": 1793950786610,
+          "parentId": "f560d0ca-ece5-4209-9575-5fd6ca73896b",
+          "role": "bot",
+          "kind": "text",
+          "text": "Official attention result: Mars",
+          "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+          "requestMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950786610
+        },
+        {
+          "id": "54ef8c37-c096-4482-aac6-a4d2e7d8a9a1",
+          "at": 1793950786622,
+          "parentId": "1ca9199b-cb36-42e3-82e7-9e3058dd2c55",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_report ×1 (from tool previews) · reply: Official attention result: Mars",
+          "digest": {
+            "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+            "botId": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "at": 1793950786622,
+            "durationMs": 156,
+            "tools": [
+              {
+                "name": "orchestrator_report",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 1,
+            "memory": [],
+            "reply": "Official attention result: Mars",
+            "hookCoverage": "preview"
+          },
+          "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+          "requestMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "turnSucceeded": true
+        }
+      ],
+      "native": [
+        {
+          "file": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot/official-superagent/d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147/state/orchestrator.sqlite",
+          "triggers": [
+            {
+              "id": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:46.023Z",
+              "text": "task attention",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "meta": {
+                "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+                "sourceMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "2d1153f4fb8a9cfafa1e158802c38fa6e42e1105e09bbb72d9732c1b416b0530",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:46.472Z",
+              "text": "attention answer Mars",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "32485797-8326-466e-a2be-208aa6896f63"
+                }
+              },
+              "meta": {
+                "requestId": "32485797-8326-466e-a2be-208aa6896f63",
+                "sourceMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+                "approvalMode": "ask"
+              }
+            }
+          ],
+          "tickets": [
+            {
+              "id": "ea567c9ca010f99a765ddd8243a10ad3",
+              "title": "attention",
+              "decisionId": "c20905d07f48220c8cb2401d75341d65",
+              "mandate": {
+                "strength": "explicit",
+                "policyVersion": "87338089732da8e207cc6475f730465a",
+                "basis": {
+                  "source": "openmausbot",
+                  "scope": {
+                    "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+                    "sourceMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+                    "approvalMode": "ask"
+                  },
+                  "sender": "owner",
+                  "via": "addressed",
+                  "addressed": "direct"
+                },
+                "actor": {
+                  "source": "openmausbot",
+                  "id": "owner"
+                },
+                "scope": "attention"
+              },
+              "channels": [
+                {
+                  "source": "openmausbot",
+                  "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "address": {
+                    "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                    "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                  }
+                }
+              ],
+              "assignments": [
+                {
+                  "id": "3f746894513a155f7e51a807cb3b94a0",
+                  "state": "ended",
+                  "createdAt": "2026-11-06T07:39:46.110Z",
+                  "startedAt": "2026-11-06T07:39:46.226Z",
+                  "report": {
+                    "state": "ready",
+                    "summary": "Official attention result: Mars",
+                    "at": "2026-11-06T07:39:46.529Z"
+                  },
+                  "idleAt": "2026-11-06T07:39:46.318Z",
+                  "deliveredAt": "2026-11-06T07:39:46.489Z",
+                  "endedAt": "2026-11-06T07:39:46.529Z"
+                }
+              ],
+              "inputs": [
+                {
+                  "id": "7557ad37dcb285c0f525e4e390a38546",
+                  "kind": "trigger",
+                  "triggerId": "2d1153f4fb8a9cfafa1e158802c38fa6e42e1105e09bbb72d9732c1b416b0530",
+                  "at": "2026-11-06T07:39:46.472Z",
+                  "human": true,
+                  "readAt": "2026-11-06T07:39:46.497Z",
+                  "deliveredTo": "3f746894513a155f7e51a807cb3b94a0"
+                }
+              ],
+              "undelivered": [],
+              "createdAt": "2026-11-06T07:39:46.110Z",
+              "updatedAt": "2026-11-06T07:39:46.530Z",
+              "origin": {
+                "triggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+                "triggerIds": [
+                  "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32"
+                ]
+              },
+              "execution": {
+                "name": "official-task-ea567c9ca010",
+                "directory": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot-workspace",
+                "assignment": ""
+              },
+              "ended": {
+                "at": "2026-11-06T07:39:46.529Z",
+                "by": "executor",
+                "outcome": "completed"
+              }
+            }
+          ],
+          "outbox": [
+            {
+              "id": "c3222fc4cbe0b37a50c21b2c5a9b8064",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+              "kind": "acknowledgement",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "status": "sent"
+            },
+            {
+              "id": "6a29f026a581385f8bf1cd9e8b28d6a2",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "Which destination?",
+              "kind": "reply",
+              "purpose": "attention",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "status": "sent"
+            },
+            {
+              "id": "910301a857c67e4f6f8d586b42c6e62a",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "Official attention result: Mars",
+              "kind": "reply",
+              "purpose": "result",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "2d1153f4fb8a9cfafa1e158802c38fa6e42e1105e09bbb72d9732c1b416b0530",
+              "status": "sent"
+            }
+          ]
+        }
+      ],
+      "bindings": {
+        "bindings": [
+          {
+            "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "bot_id": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "thread_id": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "context_id": "08fa3be1-08bd-4837-bac0-a67cf93839aa",
+            "active": 1
+          }
+        ],
+        "requests": [
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "source_message_id": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+            "status": "completed"
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "request_id": "32485797-8326-466e-a2be-208aa6896f63",
+            "source_message_id": "b753aaa9-63dc-4268-a956-0768fb450b76",
+            "status": "completed"
+          }
+        ],
+        "deliveries": [
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "c3222fc4cbe0b37a50c21b2c5a9b8064",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "6a29f026a581385f8bf1cd9e8b28d6a2",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "910301a857c67e4f6f8d586b42c6e62a",
+            "request_id": "32485797-8326-466e-a2be-208aa6896f63",
+            "persisted": 1,
+            "suppressed": 0
+          }
+        ]
+      },
+      "status": {
+        "enabled": true,
+        "state": "ready",
+        "pid": 91464,
+        "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot-workspace",
+        "provider": "personbot-fixture",
+        "model": "fixture"
+      },
+      "children": [
+        {
+          "pid": 91464,
+          "parentPid": 91462,
+          "command": "/opt/homebrew/Cellar/node/26.10.0_1/bin/node --import <repo>/packages/personbot-superagent/src/runtime-loader.mjs <repo>/node_modules/.pnpm/@deepseek-ai+dsh@0.2.2-rc.1_f435452fdc7898341cda17fcf225c75e/node_modules/@deepseek-ai/dsh/lib/bin.js --profile omb-superagent"
+        }
+      ]
+    },
+    "restarted": {
+      "messages": [
+        {
+          "id": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+          "at": 1793950784496,
+          "parentId": null,
+          "role": "bot",
+          "kind": "text",
+          "text": "Hi, I'm Official recovery attention. What would you like me to do?",
+          "setupOffer": true,
+          "setupChoices": [
+            "Research and digging into topics",
+            "Keeping an eye on things for me",
+            "Email, calendar and messages",
+            "Bookings, shopping and errands",
+            "Data, spreadsheets and reports"
+          ]
+        },
+        {
+          "id": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "at": 1793950784520,
+          "parentId": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+          "role": "user",
+          "kind": "text",
+          "text": "task attention",
+          "requestPending": false
+        },
+        {
+          "id": "9ecc61ad-9316-4ff6-a78d-20845310e592",
+          "at": 1793950786105,
+          "parentId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32\",\"title\":\"attention\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+            "itemId": "official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba\"},\"toolCallId\":\"official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"ea567c9ca010f99a765ddd8243a10ad3\\\",\\\"title\\\":\\\"attention\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/ea567c9ca010f99a765ddd8243a10ad3\\\"}}]}\"}],\"isError\":false,\"id\":\"41eefa16-3dac-4720-9d58-f99e99e31d5c\"}"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "2d488f86-d7d7-467a-b97e-22df9a85e14e",
+          "at": 1793950786113,
+          "parentId": "9ecc61ad-9316-4ff6-a78d-20845310e592",
+          "role": "bot",
+          "kind": "activity",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "tool": {
+            "name": "attention: Completed",
+            "ok": true
+          }
+        },
+        {
+          "id": "26c2d55e-f0dc-4698-beaf-5fcf9aa36dbf",
+          "at": 1793950786115,
+          "parentId": "2d488f86-d7d7-467a-b97e-22df9a85e14e",
+          "role": "bot",
+          "kind": "text",
+          "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "e53c5473-063c-42d7-84d4-631e7b27de7d",
+          "at": 1793950786267,
+          "parentId": "26c2d55e-f0dc-4698-beaf-5fcf9aa36dbf",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_report",
+            "spoken": "running orchestrator_report",
+            "input": "{\"state\":\"blocked\",\"summary\":\"A destination is required before completing this task.\",\"human_action\":\"Which destination?\"}",
+            "itemId": "official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7\"},\"toolCallId\":\"official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\",\\\"attention\\\":{\\\"id\\\":\\\"1633bdfbdf316d92371d19a5e7c19918\\\",\\\"question\\\":\\\"Which destination?\\\"}}\"}],\"isError\":false,\"id\":\"613aef01-3c2f-4982-911c-57461b6bb01b\"}"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "514a5423-f1cc-457f-a600-61eb2d39a5d0",
+          "at": 1793950786332,
+          "parentId": "e53c5473-063c-42d7-84d4-631e7b27de7d",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_reply",
+            "spoken": "running orchestrator_reply",
+            "input": "{\"purpose\":\"attention\",\"ticket_id\":\"ea567c9ca010f99a765ddd8243a10ad3\",\"text\":\"Which destination?\",\"human_action\":\"Which destination?\"}",
+            "itemId": "official-fixture-2583dd76-db33-412c-9c21-76f80163302f",
+            "ok": true
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "1226d470-4520-444a-a94a-deb6916e2b5c",
+          "at": 1793950786339,
+          "parentId": "514a5423-f1cc-457f-a600-61eb2d39a5d0",
+          "role": "bot",
+          "kind": "text",
+          "text": "Which destination?",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "turnTerminal": true,
+          "turnCompletedAt": 1793950786367,
+          "turnSucceeded": true
+        },
+        {
+          "id": "ca32edb1-eee0-46dd-af78-71a6742f099b",
+          "at": 1793950786369,
+          "parentId": "1226d470-4520-444a-a94a-deb6916e2b5c",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, orchestrator_report ×1, orchestrator_reply ×1 (from tool previews) · reply: Which destination?",
+          "digest": {
+            "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "botId": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "at": 1793950786368,
+            "durationMs": 1840,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_report",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_reply",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 3,
+            "memory": [],
+            "reply": "Which destination?",
+            "hookCoverage": "preview"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "turnSucceeded": true
+        },
+        {
+          "id": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "at": 1793950786465,
+          "parentId": "ca32edb1-eee0-46dd-af78-71a6742f099b",
+          "role": "user",
+          "kind": "text",
+          "text": "attention answer Mars",
+          "requestPending": false
+        },
+        {
+          "id": "f560d0ca-ece5-4209-9575-5fd6ca73896b",
+          "at": 1793950786520,
+          "parentId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_report",
+            "spoken": "running orchestrator_report",
+            "input": "{\"state\":\"ready\",\"summary\":\"Official attention result: Mars\"}",
+            "itemId": "official-fixture-0a7342a6-90e0-4c66-9dc0-40b2c7a0c630",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-0a7342a6-90e0-4c66-9dc0-40b2c7a0c630\"},\"toolCallId\":\"official-fixture-0a7342a6-90e0-4c66-9dc0-40b2c7a0c630\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\"}\"}],\"isError\":false,\"id\":\"998c25af-03dd-4b09-8569-4cf50afab379\"}"
+          },
+          "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+          "requestMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76"
+        },
+        {
+          "id": "1ca9199b-cb36-42e3-82e7-9e3058dd2c55",
+          "at": 1793950786610,
+          "parentId": "f560d0ca-ece5-4209-9575-5fd6ca73896b",
+          "role": "bot",
+          "kind": "text",
+          "text": "Official attention result: Mars",
+          "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+          "requestMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950786610
+        },
+        {
+          "id": "54ef8c37-c096-4482-aac6-a4d2e7d8a9a1",
+          "at": 1793950786622,
+          "parentId": "1ca9199b-cb36-42e3-82e7-9e3058dd2c55",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_report ×1 (from tool previews) · reply: Official attention result: Mars",
+          "digest": {
+            "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+            "botId": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "at": 1793950786622,
+            "durationMs": 156,
+            "tools": [
+              {
+                "name": "orchestrator_report",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 1,
+            "memory": [],
+            "reply": "Official attention result: Mars",
+            "hookCoverage": "preview"
+          },
+          "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+          "requestMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "turnSucceeded": true
+        },
+        {
+          "id": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+          "at": 1793950788102,
+          "parentId": "54ef8c37-c096-4482-aac6-a4d2e7d8a9a1",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-attention-restart",
+          "requestPending": false
+        },
+        {
+          "id": "32a39164-a7df-4849-8ce9-0fdbc681e778",
+          "at": 1793950789377,
+          "parentId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_report",
+            "spoken": "running orchestrator_report",
+            "input": "{\"state\":\"ready\",\"summary\":\"Official worker completed: echo after-attention-restart\"}",
+            "itemId": "official-fixture-0cd419be-cd48-4c65-b018-d73d6102f2d1",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-0cd419be-cd48-4c65-b018-d73d6102f2d1\"},\"toolCallId\":\"official-fixture-0cd419be-cd48-4c65-b018-d73d6102f2d1\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\"}\"}],\"isError\":false,\"id\":\"79087863-929f-49bb-91d5-3e16ec60bed7\"}"
+          },
+          "turnId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+          "requestMessageId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679"
+        },
+        {
+          "id": "0b70ac93-227f-468c-a516-a33b30598a84",
+          "at": 1793950789445,
+          "parentId": "32a39164-a7df-4849-8ce9-0fdbc681e778",
+          "role": "bot",
+          "kind": "text",
+          "text": "Official worker completed: echo after-attention-restart",
+          "turnId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+          "requestMessageId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950789445
+        },
+        {
+          "id": "4cef06a6-3787-46b2-8716-3e4bf272953b",
+          "at": 1793950789480,
+          "parentId": "0b70ac93-227f-468c-a516-a33b30598a84",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_report ×1 (from tool previews) · reply: Official worker completed: echo after-attention-restart",
+          "digest": {
+            "turnId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+            "botId": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "at": 1793950789479,
+            "durationMs": 1367,
+            "tools": [
+              {
+                "name": "orchestrator_report",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 1,
+            "memory": [],
+            "reply": "Official worker completed: echo after-attention-restart",
+            "hookCoverage": "preview"
+          },
+          "turnId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+          "requestMessageId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+          "turnSucceeded": true
+        }
+      ],
+      "native": [
+        {
+          "file": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot/official-superagent/d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147/state/orchestrator.sqlite",
+          "triggers": [
+            {
+              "id": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:46.023Z",
+              "text": "task attention",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "meta": {
+                "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+                "sourceMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "2d1153f4fb8a9cfafa1e158802c38fa6e42e1105e09bbb72d9732c1b416b0530",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:46.472Z",
+              "text": "attention answer Mars",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "32485797-8326-466e-a2be-208aa6896f63"
+                }
+              },
+              "meta": {
+                "requestId": "32485797-8326-466e-a2be-208aa6896f63",
+                "sourceMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "d4cd0d0d8fbd34477d5c80fc28526f31efe6a7b3c570fd24cf013fface399395",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:49.222Z",
+              "text": "echo after-attention-restart",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369"
+                }
+              },
+              "meta": {
+                "requestId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+                "sourceMessageId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+                "approvalMode": "ask"
+              }
+            }
+          ],
+          "tickets": [
+            {
+              "id": "ea567c9ca010f99a765ddd8243a10ad3",
+              "title": "attention",
+              "decisionId": "c20905d07f48220c8cb2401d75341d65",
+              "mandate": {
+                "strength": "explicit",
+                "policyVersion": "87338089732da8e207cc6475f730465a",
+                "basis": {
+                  "source": "openmausbot",
+                  "scope": {
+                    "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+                    "sourceMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+                    "approvalMode": "ask"
+                  },
+                  "sender": "owner",
+                  "via": "addressed",
+                  "addressed": "direct"
+                },
+                "actor": {
+                  "source": "openmausbot",
+                  "id": "owner"
+                },
+                "scope": "attention"
+              },
+              "channels": [
+                {
+                  "source": "openmausbot",
+                  "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "address": {
+                    "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                    "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                  }
+                }
+              ],
+              "assignments": [
+                {
+                  "id": "3f746894513a155f7e51a807cb3b94a0",
+                  "state": "ended",
+                  "createdAt": "2026-11-06T07:39:46.110Z",
+                  "startedAt": "2026-11-06T07:39:46.226Z",
+                  "report": {
+                    "state": "ready",
+                    "summary": "Official attention result: Mars",
+                    "at": "2026-11-06T07:39:46.529Z"
+                  },
+                  "idleAt": "2026-11-06T07:39:46.318Z",
+                  "deliveredAt": "2026-11-06T07:39:46.489Z",
+                  "endedAt": "2026-11-06T07:39:46.529Z"
+                },
+                {
+                  "id": "ad40d1f8a05cf725de11f19a02608c0a",
+                  "state": "ended",
+                  "createdAt": "2026-11-06T07:39:49.224Z",
+                  "startedAt": "2026-11-06T07:39:49.272Z",
+                  "deliveredAt": "2026-11-06T07:39:49.291Z",
+                  "report": {
+                    "state": "ready",
+                    "summary": "Official worker completed: echo after-attention-restart",
+                    "at": "2026-11-06T07:39:49.383Z"
+                  },
+                  "endedAt": "2026-11-06T07:39:49.383Z"
+                }
+              ],
+              "inputs": [
+                {
+                  "id": "7557ad37dcb285c0f525e4e390a38546",
+                  "kind": "trigger",
+                  "triggerId": "2d1153f4fb8a9cfafa1e158802c38fa6e42e1105e09bbb72d9732c1b416b0530",
+                  "at": "2026-11-06T07:39:46.472Z",
+                  "human": true,
+                  "readAt": "2026-11-06T07:39:46.497Z",
+                  "deliveredTo": "3f746894513a155f7e51a807cb3b94a0"
+                },
+                {
+                  "id": "8655743846f4a0d6b62c0c37457d69be",
+                  "kind": "trigger",
+                  "triggerId": "d4cd0d0d8fbd34477d5c80fc28526f31efe6a7b3c570fd24cf013fface399395",
+                  "at": "2026-11-06T07:39:49.223Z",
+                  "human": true,
+                  "readAt": "2026-11-06T07:39:49.356Z",
+                  "deliveredTo": "ad40d1f8a05cf725de11f19a02608c0a"
+                },
+                {
+                  "id": "1d9596b3364077143908454face7b24f",
+                  "kind": "resumed",
+                  "triggerId": "d4cd0d0d8fbd34477d5c80fc28526f31efe6a7b3c570fd24cf013fface399395",
+                  "at": "2026-11-06T07:39:49.224Z"
+                }
+              ],
+              "undelivered": [],
+              "createdAt": "2026-11-06T07:39:46.110Z",
+              "updatedAt": "2026-11-06T07:39:49.383Z",
+              "origin": {
+                "triggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+                "triggerIds": [
+                  "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32"
+                ]
+              },
+              "execution": {
+                "name": "official-task-ea567c9ca010",
+                "directory": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot-workspace",
+                "assignment": ""
+              },
+              "ended": {
+                "at": "2026-11-06T07:39:49.383Z",
+                "by": "executor",
+                "outcome": "completed"
+              }
+            }
+          ],
+          "outbox": [
+            {
+              "id": "c3222fc4cbe0b37a50c21b2c5a9b8064",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+              "kind": "acknowledgement",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "status": "sent"
+            },
+            {
+              "id": "6a29f026a581385f8bf1cd9e8b28d6a2",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "Which destination?",
+              "kind": "reply",
+              "purpose": "attention",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "status": "sent"
+            },
+            {
+              "id": "910301a857c67e4f6f8d586b42c6e62a",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "Official attention result: Mars",
+              "kind": "reply",
+              "purpose": "result",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "2d1153f4fb8a9cfafa1e158802c38fa6e42e1105e09bbb72d9732c1b416b0530",
+              "status": "sent"
+            },
+            {
+              "id": "bafc08064533af370c10d76104a5bc54",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "Official worker completed: echo after-attention-restart",
+              "kind": "reply",
+              "purpose": "result",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "d4cd0d0d8fbd34477d5c80fc28526f31efe6a7b3c570fd24cf013fface399395",
+              "status": "sent"
+            }
+          ]
+        }
+      ],
+      "bindings": {
+        "bindings": [
+          {
+            "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "bot_id": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "thread_id": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "context_id": "08fa3be1-08bd-4837-bac0-a67cf93839aa",
+            "active": 1
+          }
+        ],
+        "requests": [
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "source_message_id": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+            "status": "completed"
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "request_id": "32485797-8326-466e-a2be-208aa6896f63",
+            "source_message_id": "b753aaa9-63dc-4268-a956-0768fb450b76",
+            "status": "completed"
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "request_id": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+            "source_message_id": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+            "status": "completed"
+          }
+        ],
+        "deliveries": [
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "c3222fc4cbe0b37a50c21b2c5a9b8064",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "6a29f026a581385f8bf1cd9e8b28d6a2",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "910301a857c67e4f6f8d586b42c6e62a",
+            "request_id": "32485797-8326-466e-a2be-208aa6896f63",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "bafc08064533af370c10d76104a5bc54",
+            "request_id": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+            "persisted": 1,
+            "suppressed": 0
+          }
+        ]
+      },
+      "status": {
+        "enabled": true,
+        "state": "ready",
+        "pid": 91511,
+        "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot-workspace",
+        "provider": "personbot-fixture",
+        "model": "fixture"
+      },
+      "children": [
+        {
+          "pid": 91511,
+          "parentPid": 91507,
+          "command": "/opt/homebrew/Cellar/node/26.10.0_1/bin/node --import <repo>/packages/personbot-superagent/src/runtime-loader.mjs <repo>/node_modules/.pnpm/@deepseek-ai+dsh@0.2.2-rc.1_f435452fdc7898341cda17fcf225c75e/node_modules/@deepseek-ai/dsh/lib/bin.js --profile omb-superagent"
+        }
+      ]
+    },
+    "final": {
+      "messages": [
+        {
+          "id": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+          "at": 1793950784496,
+          "parentId": null,
+          "role": "bot",
+          "kind": "text",
+          "text": "Hi, I'm Official recovery attention. What would you like me to do?",
+          "setupOffer": true,
+          "setupChoices": [
+            "Research and digging into topics",
+            "Keeping an eye on things for me",
+            "Email, calendar and messages",
+            "Bookings, shopping and errands",
+            "Data, spreadsheets and reports"
+          ]
+        },
+        {
+          "id": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "at": 1793950784520,
+          "parentId": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+          "role": "user",
+          "kind": "text",
+          "text": "task attention",
+          "requestPending": false
+        },
+        {
+          "id": "9ecc61ad-9316-4ff6-a78d-20845310e592",
+          "at": 1793950786105,
+          "parentId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32\",\"title\":\"attention\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+            "itemId": "official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba\"},\"toolCallId\":\"official-fixture-ee8c1123-9d7d-4955-b7d2-abedc44a07ba\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"ea567c9ca010f99a765ddd8243a10ad3\\\",\\\"title\\\":\\\"attention\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/ea567c9ca010f99a765ddd8243a10ad3\\\"}}]}\"}],\"isError\":false,\"id\":\"41eefa16-3dac-4720-9d58-f99e99e31d5c\"}"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "2d488f86-d7d7-467a-b97e-22df9a85e14e",
+          "at": 1793950786113,
+          "parentId": "9ecc61ad-9316-4ff6-a78d-20845310e592",
+          "role": "bot",
+          "kind": "activity",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "tool": {
+            "name": "attention: Completed",
+            "ok": true
+          }
+        },
+        {
+          "id": "26c2d55e-f0dc-4698-beaf-5fcf9aa36dbf",
+          "at": 1793950786115,
+          "parentId": "2d488f86-d7d7-467a-b97e-22df9a85e14e",
+          "role": "bot",
+          "kind": "text",
+          "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "e53c5473-063c-42d7-84d4-631e7b27de7d",
+          "at": 1793950786267,
+          "parentId": "26c2d55e-f0dc-4698-beaf-5fcf9aa36dbf",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_report",
+            "spoken": "running orchestrator_report",
+            "input": "{\"state\":\"blocked\",\"summary\":\"A destination is required before completing this task.\",\"human_action\":\"Which destination?\"}",
+            "itemId": "official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7\"},\"toolCallId\":\"official-fixture-6f27b1c8-c5ce-410d-b014-bc50d87b96c7\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\",\\\"attention\\\":{\\\"id\\\":\\\"1633bdfbdf316d92371d19a5e7c19918\\\",\\\"question\\\":\\\"Which destination?\\\"}}\"}],\"isError\":false,\"id\":\"613aef01-3c2f-4982-911c-57461b6bb01b\"}"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "514a5423-f1cc-457f-a600-61eb2d39a5d0",
+          "at": 1793950786332,
+          "parentId": "e53c5473-063c-42d7-84d4-631e7b27de7d",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_reply",
+            "spoken": "running orchestrator_reply",
+            "input": "{\"purpose\":\"attention\",\"ticket_id\":\"ea567c9ca010f99a765ddd8243a10ad3\",\"text\":\"Which destination?\",\"human_action\":\"Which destination?\"}",
+            "itemId": "official-fixture-2583dd76-db33-412c-9c21-76f80163302f",
+            "ok": true
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c"
+        },
+        {
+          "id": "1226d470-4520-444a-a94a-deb6916e2b5c",
+          "at": 1793950786339,
+          "parentId": "514a5423-f1cc-457f-a600-61eb2d39a5d0",
+          "role": "bot",
+          "kind": "text",
+          "text": "Which destination?",
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "turnTerminal": true,
+          "turnCompletedAt": 1793950786367,
+          "turnSucceeded": true
+        },
+        {
+          "id": "ca32edb1-eee0-46dd-af78-71a6742f099b",
+          "at": 1793950786369,
+          "parentId": "1226d470-4520-444a-a94a-deb6916e2b5c",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, orchestrator_report ×1, orchestrator_reply ×1 (from tool previews) · reply: Which destination?",
+          "digest": {
+            "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "botId": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "at": 1793950786368,
+            "durationMs": 1840,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_report",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_reply",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 3,
+            "memory": [],
+            "reply": "Which destination?",
+            "hookCoverage": "preview"
+          },
+          "turnId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+          "requestMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+          "turnSucceeded": true
+        },
+        {
+          "id": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "at": 1793950786465,
+          "parentId": "ca32edb1-eee0-46dd-af78-71a6742f099b",
+          "role": "user",
+          "kind": "text",
+          "text": "attention answer Mars",
+          "requestPending": false
+        },
+        {
+          "id": "f560d0ca-ece5-4209-9575-5fd6ca73896b",
+          "at": 1793950786520,
+          "parentId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_report",
+            "spoken": "running orchestrator_report",
+            "input": "{\"state\":\"ready\",\"summary\":\"Official attention result: Mars\"}",
+            "itemId": "official-fixture-0a7342a6-90e0-4c66-9dc0-40b2c7a0c630",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-0a7342a6-90e0-4c66-9dc0-40b2c7a0c630\"},\"toolCallId\":\"official-fixture-0a7342a6-90e0-4c66-9dc0-40b2c7a0c630\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\"}\"}],\"isError\":false,\"id\":\"998c25af-03dd-4b09-8569-4cf50afab379\"}"
+          },
+          "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+          "requestMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76"
+        },
+        {
+          "id": "1ca9199b-cb36-42e3-82e7-9e3058dd2c55",
+          "at": 1793950786610,
+          "parentId": "f560d0ca-ece5-4209-9575-5fd6ca73896b",
+          "role": "bot",
+          "kind": "text",
+          "text": "Official attention result: Mars",
+          "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+          "requestMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950786610
+        },
+        {
+          "id": "54ef8c37-c096-4482-aac6-a4d2e7d8a9a1",
+          "at": 1793950786622,
+          "parentId": "1ca9199b-cb36-42e3-82e7-9e3058dd2c55",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_report ×1 (from tool previews) · reply: Official attention result: Mars",
+          "digest": {
+            "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+            "botId": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "at": 1793950786622,
+            "durationMs": 156,
+            "tools": [
+              {
+                "name": "orchestrator_report",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 1,
+            "memory": [],
+            "reply": "Official attention result: Mars",
+            "hookCoverage": "preview"
+          },
+          "turnId": "32485797-8326-466e-a2be-208aa6896f63",
+          "requestMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+          "turnSucceeded": true
+        },
+        {
+          "id": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+          "at": 1793950788102,
+          "parentId": "54ef8c37-c096-4482-aac6-a4d2e7d8a9a1",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-attention-restart",
+          "requestPending": false
+        },
+        {
+          "id": "32a39164-a7df-4849-8ce9-0fdbc681e778",
+          "at": 1793950789377,
+          "parentId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_report",
+            "spoken": "running orchestrator_report",
+            "input": "{\"state\":\"ready\",\"summary\":\"Official worker completed: echo after-attention-restart\"}",
+            "itemId": "official-fixture-0cd419be-cd48-4c65-b018-d73d6102f2d1",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-0cd419be-cd48-4c65-b018-d73d6102f2d1\"},\"toolCallId\":\"official-fixture-0cd419be-cd48-4c65-b018-d73d6102f2d1\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\"}\"}],\"isError\":false,\"id\":\"79087863-929f-49bb-91d5-3e16ec60bed7\"}"
+          },
+          "turnId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+          "requestMessageId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679"
+        },
+        {
+          "id": "0b70ac93-227f-468c-a516-a33b30598a84",
+          "at": 1793950789445,
+          "parentId": "32a39164-a7df-4849-8ce9-0fdbc681e778",
+          "role": "bot",
+          "kind": "text",
+          "text": "Official worker completed: echo after-attention-restart",
+          "turnId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+          "requestMessageId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950789445
+        },
+        {
+          "id": "4cef06a6-3787-46b2-8716-3e4bf272953b",
+          "at": 1793950789480,
+          "parentId": "0b70ac93-227f-468c-a516-a33b30598a84",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_report ×1 (from tool previews) · reply: Official worker completed: echo after-attention-restart",
+          "digest": {
+            "turnId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+            "botId": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "at": 1793950789479,
+            "durationMs": 1367,
+            "tools": [
+              {
+                "name": "orchestrator_report",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 1,
+            "memory": [],
+            "reply": "Official worker completed: echo after-attention-restart",
+            "hookCoverage": "preview"
+          },
+          "turnId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+          "requestMessageId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+          "turnSucceeded": true
+        }
+      ],
+      "native": [
+        {
+          "file": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot/official-superagent/d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147/state/orchestrator.sqlite",
+          "triggers": [
+            {
+              "id": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:46.023Z",
+              "text": "task attention",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "meta": {
+                "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+                "sourceMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "2d1153f4fb8a9cfafa1e158802c38fa6e42e1105e09bbb72d9732c1b416b0530",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:46.472Z",
+              "text": "attention answer Mars",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "32485797-8326-466e-a2be-208aa6896f63"
+                }
+              },
+              "meta": {
+                "requestId": "32485797-8326-466e-a2be-208aa6896f63",
+                "sourceMessageId": "b753aaa9-63dc-4268-a956-0768fb450b76",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "d4cd0d0d8fbd34477d5c80fc28526f31efe6a7b3c570fd24cf013fface399395",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:49.222Z",
+              "text": "echo after-attention-restart",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369"
+                }
+              },
+              "meta": {
+                "requestId": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+                "sourceMessageId": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+                "approvalMode": "ask"
+              }
+            }
+          ],
+          "tickets": [
+            {
+              "id": "ea567c9ca010f99a765ddd8243a10ad3",
+              "title": "attention",
+              "decisionId": "c20905d07f48220c8cb2401d75341d65",
+              "mandate": {
+                "strength": "explicit",
+                "policyVersion": "87338089732da8e207cc6475f730465a",
+                "basis": {
+                  "source": "openmausbot",
+                  "scope": {
+                    "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+                    "sourceMessageId": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+                    "approvalMode": "ask"
+                  },
+                  "sender": "owner",
+                  "via": "addressed",
+                  "addressed": "direct"
+                },
+                "actor": {
+                  "source": "openmausbot",
+                  "id": "owner"
+                },
+                "scope": "attention"
+              },
+              "channels": [
+                {
+                  "source": "openmausbot",
+                  "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "address": {
+                    "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                    "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                  }
+                }
+              ],
+              "assignments": [
+                {
+                  "id": "3f746894513a155f7e51a807cb3b94a0",
+                  "state": "ended",
+                  "createdAt": "2026-11-06T07:39:46.110Z",
+                  "startedAt": "2026-11-06T07:39:46.226Z",
+                  "report": {
+                    "state": "ready",
+                    "summary": "Official attention result: Mars",
+                    "at": "2026-11-06T07:39:46.529Z"
+                  },
+                  "idleAt": "2026-11-06T07:39:46.318Z",
+                  "deliveredAt": "2026-11-06T07:39:46.489Z",
+                  "endedAt": "2026-11-06T07:39:46.529Z"
+                },
+                {
+                  "id": "ad40d1f8a05cf725de11f19a02608c0a",
+                  "state": "ended",
+                  "createdAt": "2026-11-06T07:39:49.224Z",
+                  "startedAt": "2026-11-06T07:39:49.272Z",
+                  "deliveredAt": "2026-11-06T07:39:49.291Z",
+                  "report": {
+                    "state": "ready",
+                    "summary": "Official worker completed: echo after-attention-restart",
+                    "at": "2026-11-06T07:39:49.383Z"
+                  },
+                  "endedAt": "2026-11-06T07:39:49.383Z"
+                }
+              ],
+              "inputs": [
+                {
+                  "id": "7557ad37dcb285c0f525e4e390a38546",
+                  "kind": "trigger",
+                  "triggerId": "2d1153f4fb8a9cfafa1e158802c38fa6e42e1105e09bbb72d9732c1b416b0530",
+                  "at": "2026-11-06T07:39:46.472Z",
+                  "human": true,
+                  "readAt": "2026-11-06T07:39:46.497Z",
+                  "deliveredTo": "3f746894513a155f7e51a807cb3b94a0"
+                },
+                {
+                  "id": "8655743846f4a0d6b62c0c37457d69be",
+                  "kind": "trigger",
+                  "triggerId": "d4cd0d0d8fbd34477d5c80fc28526f31efe6a7b3c570fd24cf013fface399395",
+                  "at": "2026-11-06T07:39:49.223Z",
+                  "human": true,
+                  "readAt": "2026-11-06T07:39:49.356Z",
+                  "deliveredTo": "ad40d1f8a05cf725de11f19a02608c0a"
+                },
+                {
+                  "id": "1d9596b3364077143908454face7b24f",
+                  "kind": "resumed",
+                  "triggerId": "d4cd0d0d8fbd34477d5c80fc28526f31efe6a7b3c570fd24cf013fface399395",
+                  "at": "2026-11-06T07:39:49.224Z"
+                }
+              ],
+              "undelivered": [],
+              "createdAt": "2026-11-06T07:39:46.110Z",
+              "updatedAt": "2026-11-06T07:39:49.383Z",
+              "origin": {
+                "triggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+                "triggerIds": [
+                  "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32"
+                ]
+              },
+              "execution": {
+                "name": "official-task-ea567c9ca010",
+                "directory": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot-workspace",
+                "assignment": ""
+              },
+              "ended": {
+                "at": "2026-11-06T07:39:49.383Z",
+                "by": "executor",
+                "outcome": "completed"
+              }
+            }
+          ],
+          "outbox": [
+            {
+              "id": "c3222fc4cbe0b37a50c21b2c5a9b8064",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+              "kind": "acknowledgement",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "status": "sent"
+            },
+            {
+              "id": "6a29f026a581385f8bf1cd9e8b28d6a2",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "Which destination?",
+              "kind": "reply",
+              "purpose": "attention",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "8cb1d832c0867cd3f2bde8d6aff6918609f832aa59e93a688c06776d1fe6ec32",
+              "status": "sent"
+            },
+            {
+              "id": "910301a857c67e4f6f8d586b42c6e62a",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "Official attention result: Mars",
+              "kind": "reply",
+              "purpose": "result",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "2d1153f4fb8a9cfafa1e158802c38fa6e42e1105e09bbb72d9732c1b416b0530",
+              "status": "sent"
+            },
+            {
+              "id": "bafc08064533af370c10d76104a5bc54",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                "address": {
+                  "bindingId": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+                  "requestId": "2a4d7fdf-5baa-456a-9552-d14e74329266"
+                }
+              },
+              "text": "Official worker completed: echo after-attention-restart",
+              "kind": "reply",
+              "purpose": "result",
+              "ticketId": "ea567c9ca010f99a765ddd8243a10ad3",
+              "sourceTriggerId": "d4cd0d0d8fbd34477d5c80fc28526f31efe6a7b3c570fd24cf013fface399395",
+              "status": "sent"
+            }
+          ]
+        }
+      ],
+      "bindings": {
+        "bindings": [
+          {
+            "id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "bot_id": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+            "thread_id": "9fe1e106-208d-40f0-b845-badcafe091c9",
+            "context_id": "08fa3be1-08bd-4837-bac0-a67cf93839aa",
+            "active": 1
+          }
+        ],
+        "requests": [
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "source_message_id": "2cc6e4bf-99f4-42aa-8d46-ade1a622d72c",
+            "status": "completed"
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "request_id": "32485797-8326-466e-a2be-208aa6896f63",
+            "source_message_id": "b753aaa9-63dc-4268-a956-0768fb450b76",
+            "status": "completed"
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "request_id": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+            "source_message_id": "f513d90c-0bfc-4b8a-8819-757f8a0d8679",
+            "status": "completed"
+          }
+        ],
+        "deliveries": [
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "c3222fc4cbe0b37a50c21b2c5a9b8064",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "6a29f026a581385f8bf1cd9e8b28d6a2",
+            "request_id": "2a4d7fdf-5baa-456a-9552-d14e74329266",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "910301a857c67e4f6f8d586b42c6e62a",
+            "request_id": "32485797-8326-466e-a2be-208aa6896f63",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "d43e81c2bc5f0468af4eb2d13a28d2928eb50e05746849b9c31f204f8c6e3147",
+            "message_id": "bafc08064533af370c10d76104a5bc54",
+            "request_id": "5bb7fef2-afe1-4a7a-aab3-8bb5f7c65369",
+            "persisted": 1,
+            "suppressed": 0
+          }
+        ]
+      },
+      "status": {
+        "enabled": true,
+        "state": "ready",
+        "pid": 91511,
+        "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-ol0nWY/personbot-workspace",
+        "provider": "personbot-fixture",
+        "model": "fixture"
+      },
+      "children": [
+        {
+          "pid": 91511,
+          "parentPid": 91507,
+          "command": "/opt/homebrew/Cellar/node/26.10.0_1/bin/node --import <repo>/packages/personbot-superagent/src/runtime-loader.mjs <repo>/node_modules/.pnpm/@deepseek-ai+dsh@0.2.2-rc.1_f435452fdc7898341cda17fcf225c75e/node_modules/@deepseek-ai/dsh/lib/bin.js --profile omb-superagent"
+        }
+      ]
+    }
+  },
+  "bot": {
+    "id": "d6e160ca-b0c4-4282-8799-b434ab3702ff",
+    "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+    "name": "Official recovery attention",
+    "title": "",
+    "description": "",
+    "soul": "",
+    "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "notifications": true,
+    "color": "teal",
+    "mascotBody": "cursor",
+    "unread": false,
+    "modelSelection": {
+      "instanceId": "dsh-superagent",
+      "model": "fixture"
+    },
+    "createdAt": 1793950784479,
+    "avatarUrl": null,
+    "autoApprove": false,
+    "approvalMode": "full",
+    "waitingForTeammates": false,
+    "mainThreadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+    "tasks": [
+      {
+        "threadId": "9fe1e106-208d-40f0-b845-badcafe091c9",
+        "title": "New thread",
+        "createdAt": 1793950784479,
+        "updatedAt": 1793950784496,
+        "unread": false,
+        "activity": "idle",
+        "busy": false,
+        "lastThreadOrderAt": 1793950784496,
+        "modelSelection": {
+          "instanceId": "dsh-superagent",
+          "model": "fixture"
+        },
+        "followsBotModel": false,
+        "waitingForTeammates": false
+      }
+    ],
+    "messages": [
+      {
+        "id": "960fa4fe-cec9-411a-9c79-e469eaea4ddd",
+        "at": 1793950784496,
+        "parentId": null,
+        "role": "bot",
+        "kind": "text",
+        "text": "Hi, I'm Official recovery attention. What would you like me to do?",
+        "setupOffer": true,
+        "setupChoices": [
+          "Research and digging into topics",
+          "Keeping an eye on things for me",
+          "Email, calendar and messages",
+          "Bookings, shopping and errands",
+          "Data, spreadsheets and reports"
+        ]
+      }
+    ],
+    "activeLeafId": "960fa4fe-cec9-411a-9c79-e469eaea4ddd"
+  }
+}

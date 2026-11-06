@@ -1,0 +1,11 @@
+{
+  "name": "@personbot/protocol",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "test": "node --test test/*.node-test.ts",
+    "typecheck": "tsc --project tsconfig.json"
+  }
+}

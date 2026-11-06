@@ -51,6 +51,7 @@ export type CalendarCallPatch = Partial<CalendarCallInput>;
 export interface CalendarCallManagerOptions {
   file?: string;
   now?: () => number;
+  readOnly?: boolean;
   botExists: (botId: string) => boolean;
   onDue?: (call: CalendarCall, scheduledFor: number) => void | Promise<void>;
 }
@@ -180,8 +181,10 @@ export class CalendarCallManager {
   private calls: CalendarCall[] = [];
   private timer: DueTimer | null = null;
   private ticking = false;
+  private readonly readOnly: boolean;
 
   constructor(options: CalendarCallManagerOptions) {
+    this.readOnly = options.readOnly === true;
     this.file = options.file ?? join(DATA_DIR, "calendar-calls.json");
     this.now = options.now ?? Date.now;
     this.botExists = options.botExists;
@@ -203,7 +206,7 @@ export class CalendarCallManager {
     } catch {
       this.calls = [];
     }
-    if (migrated) {
+    if (migrated && !this.readOnly) {
       try {
         this.save();
       } catch (error) {
@@ -321,7 +324,7 @@ export class CalendarCallManager {
   get isTicking(): boolean { return this.ticking; }
 
   start(): void {
-    if (this.timer) return;
+    if (this.readOnly || this.timer) return;
     this.timer = startDueTimer({
       run: () => this.tick(),
       next: () => this.calls.reduce<number | null>((at, call) => call.nextRunAt == null ? at : Math.min(at ?? Infinity, call.nextRunAt), null),
@@ -336,7 +339,7 @@ export class CalendarCallManager {
   }
 
   async tick(): Promise<void> {
-    if (this.ticking) return;
+    if (this.readOnly || this.ticking) return;
     this.ticking = true;
     try {
       const now = this.now();
@@ -373,6 +376,7 @@ export class CalendarCallManager {
   }
 
   private commit(mutate: () => void): void {
+    if (this.readOnly) throw Object.assign(new Error("Saved calendar calls are read-only in this runtime."), { status: 409 });
     const before = this.calls.map(cloneCall);
     try {
       mutate();

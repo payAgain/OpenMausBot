@@ -1,0 +1,4 @@
+
+> openmausbot@0.1.140 typecheck /Users/yimingd/AI/personbot/OpenMausBot
+> tsc -b && tsc -p tsconfig.server.json
+

@@ -1,0 +1,21 @@
+{
+  "checks": [
+    "built demo served",
+    "primary setup fixture",
+    "actual dsh chat completed",
+    "owned server and runtime stopped",
+    "demo data removed"
+  ],
+  "launcherPid": 79850,
+  "serverPid": 79851,
+  "runtimePid": 79872,
+  "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/personbot-launcher-PEzfp7/openmausbot-verify-data-BNQIaa",
+  "url": "http://127.0.0.1:20547",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "serverExited": true,
+  "runtimeExited": true,
+  "dataRemoved": true
+}

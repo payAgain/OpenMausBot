@@ -1,0 +1,38 @@
+{
+  "checks": [
+    "normal isolated launch serves production UI",
+    "primary mode requires first-use model setup",
+    "no dsh or legacy child automatically launched",
+    "owned server and process group stopped",
+    "normal persistent home retained until test cleanup"
+  ],
+  "launcherPid": 79917,
+  "serverPid": 79918,
+  "url": "http://127.0.0.1:63378",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "setup": {
+    "primary": true,
+    "revision": 0,
+    "provider": "deepseek-official",
+    "model": "deepseek-flash",
+    "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/personbot-launcher-zqxsz9/workspace",
+    "credential": {
+      "configured": false,
+      "source": "missing"
+    },
+    "runtime": {
+      "enabled": true,
+      "state": "stopped",
+      "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/personbot-launcher-zqxsz9/workspace",
+      "provider": "deepseek-official",
+      "model": "deepseek-flash"
+    },
+    "restartRequired": false
+  },
+  "children": [],
+  "serverExited": true,
+  "homeRetained": true
+}

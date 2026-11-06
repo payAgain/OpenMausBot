@@ -1,3 +1,5 @@
+> **Personbot 分支**：个人源码模式保留原 OpenMausBot 界面，接入固定官方 Super Agent 源码与 DSH，复用原记忆服务。执行 `pnpm personbot:start` 启动，或 `pnpm personbot:start --demo` 体验隔离演示。见 [使用说明](docs/personbot-product.zh-CN.md)、[当前架构](docs/personbot-architecture-current.zh-CN.md)、[记忆统一设计](docs/personbot-memory-design.zh-CN.md) 和 [后台任务加固](docs/personbot-review-hardening.zh-CN.md)。下方保留上游项目介绍，其中第三方 Agent、Connected Apps 和电脑工具的说明不代表它们已全部接入新 DSH 路径。
+
 <div align="center">
 
 # OpenMausBot

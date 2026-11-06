@@ -1,0 +1,9 @@
+
+ RUN  v4.1.11 /Users/yimingd/AI/personbot/OpenMausBot/packages/personbot-superagent/upstream
+
+
+ Test Files  4 passed (4)
+      Tests  152 passed (152)
+   Start at  12:42:02
+   Duration  753ms (transform 765ms, setup 0ms, import 1.22s, tests 322ms, environment 0ms)
+

@@ -1,0 +1,58 @@
+
+> openmausbot@0.1.140 personbot:official:test /Users/yimingd/AI/personbot/OpenMausBot
+> node --test packages/personbot-superagent/test/*.node-test.ts server/superagent-memory.node-test.ts server/superagent-delivery.node-test.ts && vitest run server/superagent-driver.test.ts server/personbot-mode.test.ts server/personbot-settings.test.ts scripts/control-omb.test.ts scripts/testing/personbot-start.test.ts
+
+✔ private RPC preserves split UTF-8 frames (1.173084ms)
+▶ official Runtime executes native tasks, memory, decisions, recovery and isolated branches
+  ✔ lazy start and authoritative Chinese source reply (1244.7155ms)
+  ✔ real Engine ticket, native write, report and official Outbox result (259.844166ms)
+  ✔ native worker and router permissions retain Ask instead of upstream full access (0.580375ms)
+  ✔ worker memory bridge uses trusted original bot/thread/context (156.692ms)
+  ✔ graceful restart continues actual official worker Session and source persona (1317.711958ms)
+  ✔ native approval deny/allow and user question return through private RPC (478.744792ms)
+  ✔ tool-free native upkeep and active settings switch rejection (1338.814625ms)
+  ✔ new branch retires old process, rejects old decisions and starts independent native state (1537.795333ms)
+  ✔ official attention survives clarification and delivers final result with its actual source request (1513.312542ms)
+  ✔ pending official Outbox waits for product persistence and retries durably after restart (6395.52875ms)
+  ✔ unexpected process death fails accepted request once and a new request recovers the same binding (2592.703625ms)
+  ✔ stop during asynchronous launch prevents native input admission (1228.80675ms)
+  ✔ process bound rejects saturation and an idle configuration change restarts safely (3922.387666ms)
+✔ official Runtime executes native tasks, memory, decisions, recovery and isolated branches (22063.973625ms)
+✔ persists a source result with its original authority and acknowledges outbox retry only once (55.716083ms)
+✔ recovers a terminal ordinary answer and its receipt without a driver completion across SQLite restart (61.914ms)
+✔ accepts a late task-origin result after attention and a newer input without settling that newer turn (42.477375ms)
+✔ fences stopped, foreign and removed-branch results before writing any original message (62.369167ms)
+✔ writes original notes, reads them through both ports, indexes FTS and records source identity (77.3745ms)
+✔ appends original topic notes and journals main-note archival (88.229542ms)
+✔ searches only this bot and eligible conversations, with agent reports labeled as context (78.494667ms)
+✔ room memory requires an audience opt-in and never grants a room a personal-fact write (43.215541ms)
+✔ reads and searches the original owner profile live without copying it into bot facts (28.617875ms)
+✔ never reads the personal profile for rooms, delegated sources, retired contexts or disabled memory (34.21825ms)
+✔ bounds and redacts live profile output and suppresses forgotten profile lines (36.936708ms)
+✔ rechecks foreign bindings, visibility and memory disabling on every request (34.773125ms)
+✔ rejects delegated and relayed writers using the latest author, including writes after revocation (27.326292ms)
+✔ requires owner source evidence, permits quoted paraphrases and refuses stale or fabricated quotes (37.005875ms)
+✔ preserves native context identity so product callbacks can retire a branch (36.761291ms)
+✔ checks multiword forget tombstones against raw SQLite sources rather than FTS highlight markup (63.324375ms)
+✔ never labels indexed daily logs as durable personal facts (36.786583ms)
+✔ forgets original main, topic and archive notes, About me and stale learned candidates (71.113125ms)
+✔ keeps forget tombstones without About me and clears them only after a valid explicit remember (46.599916ms)
+✔ constrains file paths and refuses symlinks without touching their target (32.949208ms)
+✔ bounds retrieved files, search snippets and queries (359.0765ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22196.014542
+
+ RUN  v4.1.11 /Users/yimingd/AI/personbot/OpenMausBot
+
+
+ Test Files  5 passed (5)
+      Tests  40 passed (40)
+   Start at  12:38:33
+   Duration  10.67s (transform 640ms, setup 822ms, import 536ms, tests 8.67s, environment 0ms)
+

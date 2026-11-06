@@ -218,6 +218,7 @@ export interface RoutineChecks {
 export interface RoutineManagerOptions {
   file?: string;
   now?: () => number;
+  readOnly?: boolean;
   /** Every payload must be `{ kind, … }`: the server numbers and replays frames by it. */
   emit?: (payload: Record<string, unknown>) => void;
   botState: (botId: string) => "ready" | "busy" | "missing";
@@ -354,6 +355,7 @@ export class RoutineManager {
         console.error(`routines: ignoring unreadable ${this.file}: ${reason}`);
       }
     }
+    if (options.readOnly) return;
     const cut: RoutineRun[] = [];
     for (const run of this.runs.filter((candidate) => candidate.status === "running" || candidate.status === "waiting")) {
       settleAsk(run, undefined, this.now());
@@ -939,7 +941,7 @@ export class RoutineManager {
   private tickInBackground(): void { this.tick().catch((error) => console.error("routines: a scheduler pass failed", error)); }
 
   start() {
-    if (this.closing || this.timer) return;
+    if (this.options.readOnly || this.closing || this.timer) return;
     if (!this.startupRunsQueued) this.startupRunsQueued = this.queueStartupRuns();
     this.timer = startDueTimer({ run: () => this.tick(), now: this.now, onError: (error) => console.error("routines: a scheduler pass failed", error),
       next: () => schedulerDueOf(this.routines, this.runs, this.now(), this.bootedAt + CHECK_BOOT_HOLD_MS, (routine) => this.targetState(routine) === "missing") });
@@ -994,7 +996,7 @@ export class RoutineManager {
   }
 
   async tick(): Promise<void> {
-    if (this.closing || this.ticking) return;
+    if (this.options.readOnly || this.closing || this.ticking) return;
     this.ticking = true;
     try {
       const now = this.now();
@@ -1515,11 +1517,13 @@ export class RoutineManager {
   }
 
   private assertWritable(): void {
+    if (this.options.readOnly) throw Object.assign(new Error("Saved routines are read-only in this runtime."), { status: 409 });
     if (this.unreadable) throw Object.assign(new Error("Saved routines could not be read. Repair routines.json before changing them."), { status: 503 });
   }
 
   /** Rolls memory back when the write fails, so a retry never mistakes an uncommitted action for a durable one. */
   private commitMutation(mutate: () => void, rollback?: () => void): void {
+    this.assertWritable();
     const before = {
       routines: this.routines.map(cloneRoutine),
       runs: this.runs.map(cloneRun),
@@ -1539,9 +1543,9 @@ export class RoutineManager {
   }
 
   /** Lands at the end of the running save batch (server/save-batch.ts); what a caller rolls back on failure uses save. */
-  private saveLater() { saveSoon(this, () => this.save()); }
+  private saveLater() { if (!this.options.readOnly) saveSoon(this, () => this.save()); }
   private save() {
-    if (this.unreadable) return;
+    if (this.options.readOnly || this.unreadable) return;
     // Evict only terminal receipts: an active one owns cancellation, timeout and event routing.
     let excess = this.runs.length - MAX_RUNS;
     for (let index = 0; index < this.runs.length && excess > 0;) {

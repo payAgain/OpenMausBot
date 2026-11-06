@@ -1,0 +1,12 @@
+✔ persists a source result with its original authority and acknowledges outbox retry only once (39.605875ms)
+✔ recovers a terminal ordinary answer and its receipt without a driver completion across SQLite restart (35.522792ms)
+✔ accepts a late task-origin result after attention and a newer input without settling that newer turn (29.679708ms)
+✔ fences stopped, foreign and removed-branch results before writing any original message (38.051125ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 405.190292

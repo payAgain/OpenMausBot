@@ -1,0 +1,271 @@
+{
+  "checks": [
+    "root App opens directly into Personbot primary shell without legacy providers, onboarding or engine UI",
+    "new conversation and reply execute through the real native dsh fixture",
+    "model settings replay the same accepted command after response loss; navigating settings keeps the original chat draft",
+    "long-running task creates an independent worker, navigation opens its native history and human acceptance remains explicit",
+    "projects, memory and event management open in dedicated work areas rather than above every chat",
+    "read-only archived conversation imports confirmed goal/progress once, including accepted response loss and retry",
+    "responsive primary shell and settings pass1440/768/390, refresh recovers native history and browser console has0errors",
+    "owned browser, old and primary servers, dsh runtime exited; disposable data removed"
+  ],
+  "fixture": {
+    "url": "http://127.0.0.1:20704",
+    "pid": 74565,
+    "dataDir": "/tmp/openmausbot-verify-data-7SZPZh",
+    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793894411600-74522.log"
+  },
+  "restartedServerPid": 74627,
+  "restartLog": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793894411600-74522.log.primary-ui.log",
+  "previewUrl": "http://127.0.0.1:5173/__personbot-product.html",
+  "sessionId": "2cb5500a-5076-49c8-a919-9d2cdda48ce9",
+  "runtimePid": 74672,
+  "importCommands": [
+    {
+      "body": {
+        "commandId": "a7902e4d-528d-4169-8630-df72d9bc501d",
+        "goal": "Review the collected research evidence.",
+        "importConfiguration": false,
+        "progress": "References are collected; verify the claims before any external action."
+      },
+      "path": "/api/personbot/legacy/threads/9ed15637-7241-4a22-9448-c5b4f23707aa/import",
+      "status": 200
+    },
+    {
+      "body": {
+        "commandId": "a7902e4d-528d-4169-8630-df72d9bc501d",
+        "goal": "Review the collected research evidence.",
+        "importConfiguration": false,
+        "progress": "References are collected; verify the claims before any external action."
+      },
+      "path": "/api/personbot/legacy/threads/9ed15637-7241-4a22-9448-c5b4f23707aa/import",
+      "status": 200
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "layout": {
+        "controls": [
+          {
+            "left": 12,
+            "right": 215
+          },
+          {
+            "left": 12,
+            "right": 215
+          },
+          {
+            "left": 12,
+            "right": 215
+          },
+          {
+            "left": 12,
+            "right": 215
+          },
+          {
+            "left": 12,
+            "right": 215
+          },
+          {
+            "left": 12,
+            "right": 215
+          },
+          {
+            "left": 12,
+            "right": 215
+          },
+          {
+            "left": 1372,
+            "right": 1416
+          },
+          {
+            "left": 252,
+            "right": 1316
+          },
+          {
+            "left": 1324,
+            "right": 1416
+          },
+          {
+            "left": 252,
+            "right": 828
+          },
+          {
+            "left": 840,
+            "right": 1416
+          },
+          {
+            "left": 417,
+            "right": 1251
+          },
+          {
+            "left": 473,
+            "right": 583
+          },
+          {
+            "left": 1089,
+            "right": 1165
+          },
+          {
+            "left": 1173,
+            "right": 1251
+          }
+        ],
+        "page": 1440
+      }
+    },
+    {
+      "width": 768,
+      "layout": {
+        "controls": [
+          {
+            "left": 16,
+            "right": 60
+          },
+          {
+            "left": 700,
+            "right": 744
+          },
+          {
+            "left": 24,
+            "right": 644
+          },
+          {
+            "left": 652,
+            "right": 744
+          },
+          {
+            "left": 24,
+            "right": 378
+          },
+          {
+            "left": 390,
+            "right": 744
+          },
+          {
+            "left": 37,
+            "right": 731
+          },
+          {
+            "left": 93,
+            "right": 203
+          },
+          {
+            "left": 569,
+            "right": 645
+          },
+          {
+            "left": 653,
+            "right": 731
+          }
+        ],
+        "page": 768
+      }
+    },
+    {
+      "width": 390,
+      "layout": {
+        "controls": [
+          {
+            "left": 16,
+            "right": 60
+          },
+          {
+            "left": 330,
+            "right": 374
+          },
+          {
+            "left": 16,
+            "right": 274
+          },
+          {
+            "left": 282,
+            "right": 374
+          },
+          {
+            "left": 16,
+            "right": 189
+          },
+          {
+            "left": 201,
+            "right": 374
+          },
+          {
+            "left": 29,
+            "right": 361
+          },
+          {
+            "left": 85,
+            "right": 195
+          },
+          {
+            "left": 29,
+            "right": 105
+          },
+          {
+            "left": 113,
+            "right": 191
+          }
+        ],
+        "page": 390
+      }
+    }
+  ],
+  "console": {
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 7017236902830675000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    },
+    "messages": [
+      {
+        "args": [
+          {
+            "type": "string",
+            "value": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools"
+          },
+          {
+            "type": "string",
+            "value": "font-weight:bold"
+          }
+        ],
+        "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+        "type": "info"
+      },
+      {
+        "args": [
+          {
+            "type": "string",
+            "value": "[vite] connected."
+          }
+        ],
+        "text": "[vite] connected.",
+        "type": "debug"
+      },
+      {
+        "args": [
+          {
+            "type": "string",
+            "value": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools"
+          },
+          {
+            "type": "string",
+            "value": "font-weight:bold"
+          }
+        ],
+        "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+        "type": "info"
+      }
+    ]
+  },
+  "temporaryDataRemoved": true
+}

@@ -1,0 +1,16 @@
+
+> openmausbot@0.1.140 personbot:official:e2e <repo>
+> vitest run scripts/testing/superagent-product.e2e.test.ts scripts/testing/superagent-recovery.test.ts scripts/testing/superagent-hardening.e2e.test.ts scripts/testing/superagent-lifecycle.e2e.test.ts scripts/testing/superagent-settings.e2e.test.ts
+
+
+ RUN  v4.1.11 <repo>
+
+(node:91971) TimeoutNaNWarning: NaN is not a number.
+Timeout duration was set to 1.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+ Test Files  5 passed (5)
+      Tests  12 passed (12)
+   Start at  16:37:57
+   Duration  147.04s (transform 723ms, setup 872ms, import 1.30s, tests 144.19s, environment 0ms)
+

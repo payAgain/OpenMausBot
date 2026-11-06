@@ -1,0 +1,651 @@
+{
+  "checks": [
+    "project creation survives a lost accepted response; chosen project and frozen role bind the new native session",
+    "project memory correction persists and the next actual native model call receives only its current active value",
+    "agent memory proposals remain inactive until explicit user confirmation in the App",
+    "App publishes immutable file bytes, escapes text markup, previews a safe raster and downloads the original snapshot after source changes",
+    "supplement reaches the original independent worker and execution; task output directory is separate from the project source",
+    "reload restores fixed session binding, corrected memories, task messages and immutable artifact records",
+    "1440, 768 and 390 widths keep personal setup, artifact actions, task controls and the main composer inside the viewport; console has no errors",
+    "owned fixture runtime/browser/server exited and disposable data was removed"
+  ],
+  "fixture": {
+    "url": "http://127.0.0.1:19648",
+    "pid": 35300,
+    "dataDir": "/tmp/openmausbot-verify-data-Lpaas4",
+    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793882709390-35272.log"
+  },
+  "previewUrl": "http://127.0.0.1:5173/__personbot-personal.html",
+  "runtimePid": 35528,
+  "sessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+  "contexts": {
+    "originalContext": "Personbot{\"context\":\"Personbot role f3371b8f-aa45-4258-80b1-8450e0194eb2 (frozen revision 1):\\nROLE_FIXTURE_REVIEWER: quote the current project memory.\\n\\nCurrent Personbot project: 7b20f024-5a85-4cdd-9e5d-d66b8570a002. Session working directory: /private/tmp/openmausbot-verify-data-Lpaas4/personbot-workspace.\\n\\nConfirmed memory snapshot for this input. These current facts supersede conflicting older memory in the conversation. A forgotten fact is omitted from future recall; native history is preserved.\\nRemembered user context (personal and the bound project):\\n{\"key\":\"report-format\",\"projectId\":\"7b20f024-5a85-4cdd-9e5d-d66b8570a002\",\"scope\":\"project\",\"value\":\"FORMAT_ORIGINAL\"}\"}",
+    "correctedContext": "Personbot{\"context\":\"Personbot role f3371b8f-aa45-4258-80b1-8450e0194eb2 (frozen revision 1):\\nROLE_FIXTURE_REVIEWER: quote the current project memory.\\n\\nCurrent Personbot project: 7b20f024-5a85-4cdd-9e5d-d66b8570a002. Session working directory: /private/tmp/openmausbot-verify-data-Lpaas4/personbot-workspace.\\n\\nConfirmed memory snapshot for this input. These current facts supersede conflicting older memory in the conversation. A forgotten fact is omitted from future recall; native history is preserved.\\nRemembered user context (personal and the bound project):\\n{\"key\":\"report-format\",\"projectId\":\"7b20f024-5a85-4cdd-9e5d-d66b8570a002\",\"scope\":\"project\",\"value\":\"FORMAT_CORRECTED\"}\"}"
+  },
+  "objectUrlLifecycle": {
+    "created": [
+      "blob:http://127.0.0.1:5173/47a35520-6432-4b6a-82df-cf30e9fee460"
+    ],
+    "revoked": [
+      "blob:http://127.0.0.1:5173/47a35520-6432-4b6a-82df-cf30e9fee460"
+    ]
+  },
+  "download": {
+    "disposition": "attachment; filename=\"Fixture report.md\"; filename*=UTF-8''Fixture%20report.md",
+    "status": 200,
+    "text": "<script>window.fixtureExecuted=true</script>\nOriginal immutable report\n"
+  },
+  "supplement": {
+    "firstTask": {
+      "context": "",
+      "createdAt": "2026-11-05T12:45:25.242Z",
+      "criteria": [
+        "Receive supplement in the same worker and report it"
+      ],
+      "currentExecutionId": "exec-fabe9bd4-99d1-46e6-8964-644543da57d6-1",
+      "goal": "task-supplement",
+      "id": "fabe9bd4-99d1-46e6-8964-644543da57d6",
+      "lifecycle": "open",
+      "originSessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+      "projectId": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+      "revision": 3,
+      "roleId": "f3371b8f-aa45-4258-80b1-8450e0194eb2",
+      "stage": "waiting_person",
+      "updatedAt": "2026-11-05T12:45:25.319Z",
+      "workerSessionId": "worker-fabe9bd4-99d1-46e6-8964-644543da57d6",
+      "workspace": {
+        "kind": "directory",
+        "path": "/tmp/openmausbot-verify-data-Lpaas4/personbot/workspaces/tasks/fabe9bd4-99d1-46e6-8964-644543da57d6",
+        "projectId": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+        "sourcePath": "/private/tmp/openmausbot-verify-data-Lpaas4/personbot-workspace"
+      }
+    },
+    "supplementedTask": {
+      "context": "",
+      "createdAt": "2026-11-05T12:45:25.242Z",
+      "criteria": [
+        "Receive supplement in the same worker and report it"
+      ],
+      "currentExecutionId": "exec-fabe9bd4-99d1-46e6-8964-644543da57d6-1",
+      "goal": "task-supplement",
+      "id": "fabe9bd4-99d1-46e6-8964-644543da57d6",
+      "lifecycle": "open",
+      "messages": [
+        {
+          "createdAt": "2026-11-05T12:45:25.607Z",
+          "executionId": "exec-fabe9bd4-99d1-46e6-8964-644543da57d6-1",
+          "id": "87e826e2-26e5-4f8b-82e0-a606c3bd2e15",
+          "text": "SUPPLEMENT_STAYS_WITH_ORIGINAL_WORKER"
+        }
+      ],
+      "originSessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+      "projectId": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+      "report": {
+        "evidence": [
+          "fixture:verified"
+        ],
+        "outcome": "review",
+        "summary": "Fixture completed task-supplement.\nPersonbot role f3371b8f-aa45-4258-80b1-8450e0194eb2 (frozen revision 1):\nROLE_FIXTURE_REVIEWER: quote the current project memory.\n\nCurrent Personbot project: 7b20f024-5a85-4cdd-9e5d-d66b8570a002. Session working directory: /private/tmp/openmausbot-verify-data-Lpaas4/personbot/workspaces/tasks/fabe9bd4-99d1-46e6-8964-644543da57d6.\n\nConfirmed memory snapshot for this input. These current facts supersede conflicting older memory in the conversation. A forgotten fact is omitted from future recall; native history is preserved.\nRemembered user context (personal and the bound project):\n{\"key\":\"delivery-style\",\"scope\":\"personal\",\"value\":\"PROPOSAL_REQUIRES_CONFIRMATION\"}\n{\"key\":\"report-format\",\"projectId\":\"7b20f024-5a85-4cdd-9e5d-d66b8570a002\",\"scope\":\"project\",\"value\":\"FORMAT_CORRECTED\"}\nAdditional authorized requirements for the current task:\nSUPPLEMENT_STAYS_WITH_ORIGINAL_WORKER"
+      },
+      "revision": 7,
+      "roleId": "f3371b8f-aa45-4258-80b1-8450e0194eb2",
+      "stage": "awaiting_review",
+      "stopState": "confirmed",
+      "updatedAt": "2026-11-05T12:45:26.285Z",
+      "workerSessionId": "worker-fabe9bd4-99d1-46e6-8964-644543da57d6",
+      "workspace": {
+        "kind": "directory",
+        "path": "/tmp/openmausbot-verify-data-Lpaas4/personbot/workspaces/tasks/fabe9bd4-99d1-46e6-8964-644543da57d6",
+        "projectId": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+        "sourcePath": "/private/tmp/openmausbot-verify-data-Lpaas4/personbot-workspace"
+      }
+    }
+  },
+  "geometry": [
+    {
+      "width": 1440,
+      "controls": [
+        {
+          "left": 1372,
+          "right": 1416
+        },
+        {
+          "left": 344,
+          "right": 1316
+        },
+        {
+          "left": 1324,
+          "right": 1416
+        },
+        {
+          "left": 344,
+          "right": 874
+        },
+        {
+          "left": 886,
+          "right": 1416
+        },
+        {
+          "left": 459,
+          "right": 513
+        },
+        {
+          "left": 521,
+          "right": 575
+        },
+        {
+          "left": 583,
+          "right": 637
+        },
+        {
+          "left": 1211,
+          "right": 1293
+        },
+        {
+          "left": 1239,
+          "right": 1293
+        },
+        {
+          "left": 1239,
+          "right": 1293
+        },
+        {
+          "left": 1216,
+          "right": 1306
+        },
+        {
+          "left": 446,
+          "right": 556
+        },
+        {
+          "left": 564,
+          "right": 674
+        },
+        {
+          "left": 682,
+          "right": 764
+        },
+        {
+          "left": 446,
+          "right": 1306
+        },
+        {
+          "left": 446,
+          "right": 528
+        },
+        {
+          "left": 536,
+          "right": 618
+        },
+        {
+          "left": 519,
+          "right": 644
+        },
+        {
+          "left": 1211,
+          "right": 1293
+        },
+        {
+          "left": 1177,
+          "right": 1231
+        },
+        {
+          "left": 1177,
+          "right": 1231
+        },
+        {
+          "left": 463,
+          "right": 1297
+        },
+        {
+          "left": 519,
+          "right": 629
+        },
+        {
+          "left": 1135,
+          "right": 1211
+        },
+        {
+          "left": 1219,
+          "right": 1297
+        }
+      ],
+      "page": 1440
+    },
+    {
+      "width": 768,
+      "controls": [
+        {
+          "left": 700,
+          "right": 744
+        },
+        {
+          "left": 344,
+          "right": 644
+        },
+        {
+          "left": 652,
+          "right": 744
+        },
+        {
+          "left": 344,
+          "right": 538
+        },
+        {
+          "left": 550,
+          "right": 744
+        },
+        {
+          "left": 357,
+          "right": 411
+        },
+        {
+          "left": 419,
+          "right": 473
+        },
+        {
+          "left": 481,
+          "right": 535
+        },
+        {
+          "left": 641,
+          "right": 723
+        },
+        {
+          "left": 669,
+          "right": 723
+        },
+        {
+          "left": 669,
+          "right": 723
+        },
+        {
+          "left": 646,
+          "right": 736
+        },
+        {
+          "left": 344,
+          "right": 454
+        },
+        {
+          "left": 462,
+          "right": 572
+        },
+        {
+          "left": 580,
+          "right": 662
+        },
+        {
+          "left": 344,
+          "right": 736
+        },
+        {
+          "left": 344,
+          "right": 426
+        },
+        {
+          "left": 434,
+          "right": 516
+        },
+        {
+          "left": 417,
+          "right": 542
+        },
+        {
+          "left": 641,
+          "right": 723
+        },
+        {
+          "left": 607,
+          "right": 661
+        },
+        {
+          "left": 607,
+          "right": 661
+        },
+        {
+          "left": 357,
+          "right": 731
+        },
+        {
+          "left": 413,
+          "right": 523
+        },
+        {
+          "left": 569,
+          "right": 645
+        },
+        {
+          "left": 653,
+          "right": 731
+        }
+      ],
+      "page": 768
+    },
+    {
+      "width": 390,
+      "controls": [
+        {
+          "left": 330,
+          "right": 374
+        },
+        {
+          "left": 16,
+          "right": 274
+        },
+        {
+          "left": 282,
+          "right": 374
+        },
+        {
+          "left": 16,
+          "right": 189
+        },
+        {
+          "left": 201,
+          "right": 374
+        },
+        {
+          "left": 29,
+          "right": 83
+        },
+        {
+          "left": 91,
+          "right": 145
+        },
+        {
+          "left": 153,
+          "right": 207
+        },
+        {
+          "left": 271,
+          "right": 353
+        },
+        {
+          "left": 299,
+          "right": 353
+        },
+        {
+          "left": 299,
+          "right": 353
+        },
+        {
+          "left": 276,
+          "right": 366
+        },
+        {
+          "left": 16,
+          "right": 126
+        },
+        {
+          "left": 134,
+          "right": 244
+        },
+        {
+          "left": 252,
+          "right": 334
+        },
+        {
+          "left": 16,
+          "right": 366
+        },
+        {
+          "left": 16,
+          "right": 98
+        },
+        {
+          "left": 106,
+          "right": 188
+        },
+        {
+          "left": 89,
+          "right": 214
+        },
+        {
+          "left": 271,
+          "right": 353
+        },
+        {
+          "left": 237,
+          "right": 291
+        },
+        {
+          "left": 237,
+          "right": 291
+        },
+        {
+          "left": 29,
+          "right": 361
+        },
+        {
+          "left": 85,
+          "right": 195
+        },
+        {
+          "left": 29,
+          "right": 105
+        },
+        {
+          "left": 113,
+          "right": 191
+        }
+      ],
+      "page": 390
+    }
+  ],
+  "personal": {
+    "projects": [
+      {
+        "createdAt": "2026-11-05T12:45:19.256Z",
+        "id": "default",
+        "kind": "directory",
+        "name": "默认项目",
+        "path": "/private/tmp/openmausbot-verify-data-Lpaas4/personbot-workspace",
+        "revision": 1,
+        "updatedAt": "2026-11-05T12:45:19.256Z"
+      },
+      {
+        "createdAt": "2026-11-05T12:45:19.600Z",
+        "id": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+        "kind": "directory",
+        "name": "Fixture writing project",
+        "path": "/private/tmp/openmausbot-verify-data-Lpaas4/personbot-workspace",
+        "revision": 1,
+        "updatedAt": "2026-11-05T12:45:19.600Z"
+      }
+    ],
+    "roles": [
+      {
+        "createdAt": "2026-11-05T12:45:19.256Z",
+        "id": "assistant",
+        "instructions": "Help the user with their authorized work. Keep their project context and preferences, ask when necessary, and report concrete results.",
+        "name": "个人助手",
+        "revision": 1,
+        "updatedAt": "2026-11-05T12:45:19.256Z"
+      },
+      {
+        "createdAt": "2026-11-05T12:45:20.124Z",
+        "id": "f3371b8f-aa45-4258-80b1-8450e0194eb2",
+        "instructions": "ROLE_FIXTURE_REVIEWER: quote the current project memory.",
+        "name": "Fixture reviewer",
+        "revision": 1,
+        "updatedAt": "2026-11-05T12:45:20.124Z"
+      }
+    ],
+    "memories": [
+      {
+        "createdAt": "2026-11-05T12:45:21.124Z",
+        "id": "e2ffeb16-9080-4e1a-bf44-82048096e177",
+        "key": "report-format",
+        "projectId": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+        "revision": 2,
+        "scope": "project",
+        "source": "user",
+        "status": "active",
+        "updatedAt": "2026-11-05T12:45:21.674Z",
+        "value": "FORMAT_CORRECTED"
+      },
+      {
+        "createdAt": "2026-11-05T12:45:22.124Z",
+        "id": "memory-fc4e8bca74a9b394afa3bae030e7501d1f69c7da",
+        "key": "delivery-style",
+        "revision": 2,
+        "scope": "personal",
+        "source": "agent",
+        "sourceSessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+        "status": "active",
+        "updatedAt": "2026-11-05T12:45:22.790Z",
+        "value": "PROPOSAL_REQUIRES_CONFIRMATION"
+      }
+    ]
+  },
+  "artifacts": {
+    "artifacts": [
+      {
+        "id": "9259d588-b5a2-4c2c-a4b4-6d6881f69465",
+        "name": "Fixture report.md",
+        "mediaType": "text/markdown",
+        "size": 71,
+        "sha256": "a4c6bbede4cc1c5ad4071f6b2f5f4aec3c9d38d95b604f7e634b1870f8498b61",
+        "sessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+        "originSessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+        "projectId": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+        "createdAt": "2026-11-05T12:45:23.495Z"
+      },
+      {
+        "id": "9aa4d43c-c262-4b73-9062-8c809a8a1a87",
+        "name": "Fixture pixel.png",
+        "mediaType": "image/png",
+        "size": 68,
+        "sha256": "98884e721ec2f605f3788f2bc39a61de305ff4f4fcaf26b6f4eabeebcd6c0fb4",
+        "sessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+        "originSessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+        "projectId": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+        "createdAt": "2026-11-05T12:45:24.374Z"
+      }
+    ]
+  },
+  "tasks": {
+    "tasks": [
+      {
+        "context": "",
+        "createdAt": "2026-11-05T12:45:25.242Z",
+        "criteria": [
+          "Receive supplement in the same worker and report it"
+        ],
+        "currentExecutionId": "exec-fabe9bd4-99d1-46e6-8964-644543da57d6-1",
+        "goal": "task-supplement",
+        "id": "fabe9bd4-99d1-46e6-8964-644543da57d6",
+        "lifecycle": "open",
+        "messages": [
+          {
+            "createdAt": "2026-11-05T12:45:25.607Z",
+            "executionId": "exec-fabe9bd4-99d1-46e6-8964-644543da57d6-1",
+            "id": "87e826e2-26e5-4f8b-82e0-a606c3bd2e15",
+            "text": "SUPPLEMENT_STAYS_WITH_ORIGINAL_WORKER"
+          }
+        ],
+        "originSessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+        "projectId": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+        "report": {
+          "evidence": [
+            "fixture:verified"
+          ],
+          "outcome": "review",
+          "summary": "Fixture completed task-supplement.\nPersonbot role f3371b8f-aa45-4258-80b1-8450e0194eb2 (frozen revision 1):\nROLE_FIXTURE_REVIEWER: quote the current project memory.\n\nCurrent Personbot project: 7b20f024-5a85-4cdd-9e5d-d66b8570a002. Session working directory: /private/tmp/openmausbot-verify-data-Lpaas4/personbot/workspaces/tasks/fabe9bd4-99d1-46e6-8964-644543da57d6.\n\nConfirmed memory snapshot for this input. These current facts supersede conflicting older memory in the conversation. A forgotten fact is omitted from future recall; native history is preserved.\nRemembered user context (personal and the bound project):\n{\"key\":\"delivery-style\",\"scope\":\"personal\",\"value\":\"PROPOSAL_REQUIRES_CONFIRMATION\"}\n{\"key\":\"report-format\",\"projectId\":\"7b20f024-5a85-4cdd-9e5d-d66b8570a002\",\"scope\":\"project\",\"value\":\"FORMAT_CORRECTED\"}\nAdditional authorized requirements for the current task:\nSUPPLEMENT_STAYS_WITH_ORIGINAL_WORKER"
+        },
+        "revision": 7,
+        "roleId": "f3371b8f-aa45-4258-80b1-8450e0194eb2",
+        "stage": "awaiting_review",
+        "stopState": "confirmed",
+        "updatedAt": "2026-11-05T12:45:26.285Z",
+        "workerSessionId": "worker-fabe9bd4-99d1-46e6-8964-644543da57d6",
+        "workspace": {
+          "kind": "directory",
+          "path": "/tmp/openmausbot-verify-data-Lpaas4/personbot/workspaces/tasks/fabe9bd4-99d1-46e6-8964-644543da57d6",
+          "projectId": "7b20f024-5a85-4cdd-9e5d-d66b8570a002",
+          "sourcePath": "/private/tmp/openmausbot-verify-data-Lpaas4/personbot-workspace"
+        }
+      }
+    ],
+    "executions": [
+      {
+        "createdAt": "2026-11-05T12:45:25.242Z",
+        "endedAt": "2026-11-05T12:45:26.285Z",
+        "id": "exec-fabe9bd4-99d1-46e6-8964-644543da57d6-1",
+        "inputMessageId": "exec-fabe9bd4-99d1-46e6-8964-644543da57d6-1-input",
+        "outcome": "unknown",
+        "sessionId": "worker-fabe9bd4-99d1-46e6-8964-644543da57d6",
+        "status": "ended",
+        "summary": "Fixture completed task-supplement.\nPersonbot role f3371b8f-aa45-4258-80b1-8450e0194eb2 (frozen revision 1):\nROLE_FIXTURE_REVIEWER: quote the current project memory.\n\nCurrent Personbot project: 7b20f024-5a85-4cdd-9e5d-d66b8570a002. Session working directory: /private/tmp/openmausbot-verify-data-Lpaas4/personbot/workspaces/tasks/fabe9bd4-99d1-46e6-8964-644543da57d6.\n\nConfirmed memory snapshot for this input. These current facts supersede conflicting older memory in the conversation. A forgotten fact is omitted from future recall; native history is preserved.\nRemembered user context (personal and the bound project):\n{\"key\":\"delivery-style\",\"scope\":\"personal\",\"value\":\"PROPOSAL_REQUIRES_CONFIRMATION\"}\n{\"key\":\"report-format\",\"projectId\":\"7b20f024-5a85-4cdd-9e5d-d66b8570a002\",\"scope\":\"project\",\"value\":\"FORMAT_CORRECTED\"}\nAdditional authorized requirements for the current task:\nSUPPLEMENT_STAYS_WITH_ORIGINAL_WORKER",
+        "taskId": "fabe9bd4-99d1-46e6-8964-644543da57d6"
+      }
+    ],
+    "updates": [
+      {
+        "createdAt": "2026-11-05T12:45:26.079Z",
+        "delivered": true,
+        "id": "task-update:fabe9bd4-99d1-46e6-8964-644543da57d6:6",
+        "revision": 6,
+        "sessionId": "043162f1-a519-4119-8a04-f5e47a632594",
+        "taskId": "fabe9bd4-99d1-46e6-8964-644543da57d6",
+        "text": "任务「task-supplement」待验收。\n\nFixture completed task-supplement.\nPersonbot role f3371b8f-aa45-4258-80b1-8450e0194eb2 (frozen revision 1):\nROLE_FIXTURE_REVIEWER: quote the current project memory.\n\nCurrent Personbot project: 7b20f024-5a85-4cdd-9e5d-d66b8570a002. Session working directory: /private/tmp/openmausbot-verify-data-Lpaas4/personbot/workspaces/tasks/fabe9bd4-99d1-46e6-8964-644543da57d6.\n\nConfirmed memory snapshot for this input. These current facts supersede conflicting older memory in the conversation. A forgotten fact is omitted from future recall; native history is preserved.\nRemembered user context (personal and the bound project):\n{\"key\":\"delivery-style\",\"scope\":\"personal\",\"value\":\"PROPOSAL_REQUIRES_CONFIRMATION\"}\n{\"key\":\"report-format\",\"projectId\":\"7b20f024-5a85-4cdd-9e5d-d66b8570a002\",\"scope\":\"project\",\"value\":\"FORMAT_CORRECTED\"}\nAdditional authorized requirements for the current task:\nSUPPLEMENT_STAYS_WITH_ORIGINAL_WORKER\n\n证据：\n- fixture:verified\n\n请根据完成条件验收，或提出修改意见。"
+      }
+    ]
+  },
+  "console": {
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 7017236902830675000
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    },
+    "messages": [
+      {
+        "args": [
+          {
+            "type": "string",
+            "value": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools"
+          },
+          {
+            "type": "string",
+            "value": "font-weight:bold"
+          }
+        ],
+        "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+        "type": "info"
+      },
+      {
+        "args": [
+          {
+            "type": "string",
+            "value": "[vite] connected."
+          }
+        ],
+        "text": "[vite] connected.",
+        "type": "debug"
+      },
+      {
+        "args": [
+          {
+            "type": "string",
+            "value": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools"
+          },
+          {
+            "type": "string",
+            "value": "font-weight:bold"
+          }
+        ],
+        "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+        "type": "info"
+      }
+    ]
+  }
+}

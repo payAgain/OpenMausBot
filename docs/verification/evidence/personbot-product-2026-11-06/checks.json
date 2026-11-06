@@ -1,0 +1,390 @@
+{
+  "date": "2026-11-06",
+  "timezone": "Asia/Tokyo",
+  "branch": "personbot/dsh-foundation",
+  "environment": {
+    "platform": "macOS arm64",
+    "node": "26.10.0",
+    "pnpm": "10.33.0",
+    "dsh": "0.2.2-rc.1"
+  },
+  "checks": [
+    {
+      "name": "Personbot packages and actual native dsh",
+      "command": "pnpm personbot:test",
+      "passed": 202,
+      "failed": 0,
+      "log": "native-tests.txt"
+    },
+    {
+      "name": "client components HTTP mode fixture navigation",
+      "files": 14,
+      "passed": 142,
+      "failed": 0,
+      "log": "client-server-tests.txt"
+    },
+    {
+      "name": "cutover routines calendar and legacy control denial",
+      "files": 4,
+      "passed": 215,
+      "failed": 0,
+      "log": "cutover-tests.txt",
+      "evidence": "cutover-evidence.json"
+    },
+    {
+      "name": "launcher interruption failures built demo and missing-credential source startup",
+      "files": 1,
+      "passed": 5,
+      "failed": 0,
+      "log": "launcher-tests.txt",
+      "evidence": [
+        "launcher-evidence.json",
+        "launcher-interruption.json",
+        "launcher-first-use.json"
+      ]
+    },
+    {
+      "name": "primary product App browser workflow",
+      "passed": 1,
+      "failed": 0,
+      "log": "product-browser-test.txt",
+      "evidence": "product-browser-evidence.json",
+      "widths": [
+        1440,
+        768,
+        390
+      ],
+      "consoleErrors": 0
+    },
+    {
+      "name": "W2-W5 browser and no-App background scheduling regressions",
+      "files": 5,
+      "passed": 7,
+      "failed": 0,
+      "log": "browser-regressions.txt"
+    },
+    {
+      "name": "final production design chat",
+      "result": "passed",
+      "fail": 0,
+      "warn": 0,
+      "widths": [
+        1440,
+        768,
+        390
+      ],
+      "screenshotsVisuallyInspected": true,
+      "log": "design-chat.txt",
+      "evidence": "design-chat/report.json"
+    },
+    {
+      "name": "final production design settings",
+      "result": "passed",
+      "fail": 0,
+      "warn": 0,
+      "widths": [
+        1440,
+        768,
+        390
+      ],
+      "screenshotsVisuallyInspected": true,
+      "log": "design-settings.txt",
+      "evidence": "design-settings/report.json"
+    },
+    {
+      "name": "renderer and server TypeScript",
+      "command": "pnpm typecheck",
+      "result": "passed",
+      "log": "full-typecheck.txt"
+    },
+    {
+      "name": "Personbot TypeScript",
+      "command": "pnpm personbot:typecheck",
+      "result": "passed",
+      "log": "personbot-typecheck.txt"
+    },
+    {
+      "name": "final frontend build",
+      "command": "pnpm exec vite build",
+      "result": "passed",
+      "log": "frontend-build.txt"
+    },
+    {
+      "name": "final bundled server build",
+      "command": "pnpm build:server",
+      "result": "passed",
+      "log": "server-build.txt"
+    },
+    {
+      "name": "focused production and test lint",
+      "result": "passed",
+      "log": "lint.txt"
+    },
+    {
+      "name": "frozen offline installation",
+      "command": "pnpm install --frozen-lockfile --offline",
+      "result": "passed",
+      "log": "frozen-install.txt"
+    },
+    {
+      "name": "verification documentation links commands and routes",
+      "files": 1,
+      "passed": 7,
+      "failed": 0,
+      "log": "documentation-tests.txt"
+    },
+    {
+      "name": "git diff whitespace check",
+      "command": "git diff --check",
+      "result": "passed",
+      "log": "diff-check.txt"
+    }
+  ],
+  "overlap": "Test groups overlap; counts must not be added as unique coverage.",
+  "reviewFindings": [
+    {
+      "finding": "legacy boot recovery mutates archive",
+      "resolution": "fixed",
+      "evidence": "cutover-evidence.json"
+    },
+    {
+      "finding": "legacy upgraded GET controls bypass write gate",
+      "resolution": "fixed",
+      "evidence": "cutover-evidence.json"
+    },
+    {
+      "finding": "build descendants survive cancellation",
+      "resolution": "fixed",
+      "evidence": "launcher-interruption.json"
+    },
+    {
+      "finding": "legacy member setup mode query signs user out",
+      "resolution": "fixed",
+      "evidence": "client-server-tests.txt"
+    },
+    {
+      "finding": "direct-primary demo incorrectly expects legacy starter",
+      "resolution": "fixed",
+      "evidence": "launcher-evidence.json"
+    }
+  ],
+  "cleanup": {
+    "verificationFixtures": "Exact owned processes exited and temporary data removed; see individual evidence.",
+    "userPreview": {
+      "url": "http://127.0.0.1:21366",
+      "sessionId": "product-tour",
+      "taskId": "product-tour-task",
+      "serverPid": 77892,
+      "runtimeState": "ready",
+      "taskStage": "awaiting_review",
+      "taskStopState": "confirmed",
+      "retainedForUser": true,
+      "fixture": true,
+      "syntheticDemoContent": true
+    }
+  },
+  "limitations": [
+    "source App on macOS qualified; desktop installers and other operating systems not qualified",
+    "deterministic real dsh fixture, no real model quality or third-party accounts tested",
+    "runtime model or key changes require explicit service restart",
+    "legacy engine private cursors permissions credentials and automations are not imported"
+  ],
+  "files": {
+    "browser-regressions.txt": {
+      "bytes": 228,
+      "sha256": "e43c7b0f80b8ada855bd9e193007b88519075a87a43140950cf0d5c3cf255309"
+    },
+    "client-server-tests.txt": {
+      "bytes": 235,
+      "sha256": "05a13face253a79a32c3330470cedbe905c9af7c3ae8e2a25dde96b16c7a3c11"
+    },
+    "cutover-evidence.json": {
+      "bytes": 77468,
+      "sha256": "e51752a47476c0ec6b3c1f6a6716a9472493cab7f2dfdac9f82ad41fe0c964b2"
+    },
+    "cutover-fixes.md": {
+      "bytes": 3381,
+      "sha256": "c39f0330c8bd6ab1a5e8a676e20689f47837e57660c17452c88b40ceebb05664"
+    },
+    "cutover-review.md": {
+      "bytes": 6340,
+      "sha256": "a4c8a6e4237960abefb760fc49784f5b7fa8cd2a80e004f608ebea6b477f80f4"
+    },
+    "cutover-tests.txt": {
+      "bytes": 232,
+      "sha256": "34c9dd2d86beca938a4ada7401136cac1fa619497033c7cb5f935fff851a2811"
+    },
+    "design-chat/desktop-fold.jpg": {
+      "bytes": 87251,
+      "sha256": "df7cb3a51778701a6cc1b01bb4000bb5704d121a67c626d41f139401915fef5f"
+    },
+    "design-chat/desktop-page-01.jpg": {
+      "bytes": 32825,
+      "sha256": "d35b707c9c068a890e896161c78fdfb71dc67aed56dfade47a10e0d65a09121e"
+    },
+    "design-chat/mobile-fold.jpg": {
+      "bytes": 43964,
+      "sha256": "0c80364cf687ca24c12325ad1f1f05633c488acb1570b7057739f53ce82ea02d"
+    },
+    "design-chat/mobile-page-01.jpg": {
+      "bytes": 50557,
+      "sha256": "08f33e4f988b2a16c82b326cfec4ba6a0e19c69c2088f2e1c51ae71047e2b1d9"
+    },
+    "design-chat/report.json": {
+      "bytes": 23475,
+      "sha256": "86c2211c128319a6db8a1e00e8e4d546f567e7d7bf4998585ee4bdd93f44f577"
+    },
+    "design-chat/tablet-fold.jpg": {
+      "bytes": 75151,
+      "sha256": "60ac959268200f25f60252569df9e2d221a07c2f68a71a16dd89eab829af303e"
+    },
+    "design-chat/tablet-page-01.jpg": {
+      "bytes": 38085,
+      "sha256": "ab0a317db0ed75d5da747284c2df3ac0705509003a86ed6881b4f2a00dc93bcb"
+    },
+    "design-chat.txt": {
+      "bytes": 1500,
+      "sha256": "e7638c93ebd60b705d59676b23c5eceaab7a6d277543dc57af9468f62b91183f"
+    },
+    "design-settings/desktop-fold.jpg": {
+      "bytes": 53253,
+      "sha256": "e046293b7c6202f7aeaf59df4f79086f0baf158093ca7f9b991f3ea17d20d718"
+    },
+    "design-settings/desktop-page-01.jpg": {
+      "bytes": 21230,
+      "sha256": "24e0a44ea18cec5988160adddb58d894222e88ef3d0eab2fa2662db129359bd1"
+    },
+    "design-settings/mobile-fold.jpg": {
+      "bytes": 34013,
+      "sha256": "23babd0429244fd0b40802148ceaf5d014641861aa896277a7766dd62883f950"
+    },
+    "design-settings/mobile-page-01.jpg": {
+      "bytes": 41110,
+      "sha256": "5c24e1f6f6bc89fe30e94d281dbc397764caa3e3ccfbc9159138595ddf1cc663"
+    },
+    "design-settings/report.json": {
+      "bytes": 20310,
+      "sha256": "60924b891d58c526c20f06ae2f49942953082da7442f2ad1fc3700668ce752b1"
+    },
+    "design-settings/tablet-fold.jpg": {
+      "bytes": 41470,
+      "sha256": "7a4c76ce4a4ee2c9f8afe1ace25a0de6d5b0871950e67d945cd2cdd637bc5edb"
+    },
+    "design-settings/tablet-page-01.jpg": {
+      "bytes": 24153,
+      "sha256": "c9a1f32d34378b3016a987cde07efaef31e3c3beed737c8fcd6a9164e0b49a6e"
+    },
+    "design-settings.txt": {
+      "bytes": 1527,
+      "sha256": "c187a081c02b79053998b2fa957fde6ee53bd17aed00c38d6283afd5ee09b657"
+    },
+    "diff-check.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "documentation-tests.txt": {
+      "bytes": 226,
+      "sha256": "6aad499d53665ba9ca357c4151fd963dc3fc4dc591c61b12d38c6f2d8aec21c4"
+    },
+    "frontend-build.txt": {
+      "bytes": 26951,
+      "sha256": "8fb3ddf186c605dde39cda6415f10c709154a32895805bae2eefedb3258e860f"
+    },
+    "frozen-install.txt": {
+      "bytes": 346,
+      "sha256": "0f673d7aae1fc8b67ff7c9ac4673151e61761e657ce6cf8f21411fa32dc88e1f"
+    },
+    "full-typecheck.txt": {
+      "bytes": 114,
+      "sha256": "a430a54b4d1b61750a9be55be747aa6e14e51bcede92c57541db6e2a50b53368"
+    },
+    "launcher-evidence.json": {
+      "bytes": 521,
+      "sha256": "408a3a744ec0124fea4c8e30a2b5731f3cf6971f407675515c6e8f590f3b7943"
+    },
+    "launcher-first-use.json": {
+      "bytes": 1068,
+      "sha256": "d05a6c87a1aa0a7f39d4541a7ab8e4e9d7dfacd83712e5069d79105a01ac5531"
+    },
+    "launcher-interruption.json": {
+      "bytes": 350,
+      "sha256": "d1111a41a34bbd4ae0eb2a15c5546bc74fbc8a2e9adbec568cb1863ed0e6da61"
+    },
+    "launcher-launcher.log": {
+      "bytes": 397,
+      "sha256": "7aa3a180aa10af8969173dbd4099119319e69f99f891269c412f09b0770b25a8"
+    },
+    "launcher-report.md": {
+      "bytes": 3686,
+      "sha256": "b8a0ace6a6309dcab345d0c05e1ee10270c25782b58764d043ddfd70a40781cb"
+    },
+    "launcher-server.log": {
+      "bytes": 398,
+      "sha256": "c9216289b0e1bd385d683296ae2dad3ec5e3ee0ece1fd6494c9aae4626735307"
+    },
+    "launcher-tests.txt": {
+      "bytes": 226,
+      "sha256": "ec31dade47b3c677f1601c81214515eb8419d2a59d283756eeb0f603759e1248"
+    },
+    "lint.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native-tests.txt": {
+      "bytes": 20998,
+      "sha256": "af200b47b18ac9171aaa0e3404a471dd482863aa9108792bca236feb4788f341"
+    },
+    "personbot-model-settings-1440.png": {
+      "bytes": 72730,
+      "sha256": "026a36514aa94f82aa6a37e50fbbcd4c318870d88b9bbab6c15ed55c1963bd97"
+    },
+    "personbot-model-settings-390.png": {
+      "bytes": 48045,
+      "sha256": "51ccd319f7c1d2d3844b0eb93b3e6bb70e24841fe1f66107a120b2e47cfbe223"
+    },
+    "personbot-model-settings-768.png": {
+      "bytes": 48614,
+      "sha256": "6d086c6ebd26afbe375bea8fbcbe1e1cebd6d1c019a00abb0bd01cc394960858"
+    },
+    "personbot-product-1440.png": {
+      "bytes": 75089,
+      "sha256": "361b1b4cf22056dc3c5acd77b93336da2e5e545d5f41269e607925a8ae7b2a41"
+    },
+    "personbot-product-390.png": {
+      "bytes": 48417,
+      "sha256": "c1ba66c5d9a1fae58ebeba26c1aedc2ac3dae7ae73ea4daab46c8312b61024ba"
+    },
+    "personbot-product-768.png": {
+      "bytes": 51343,
+      "sha256": "a3ccb2d8f449f03923a3e7cf267b0930933e2f8df9f077683fd190ff3b051568"
+    },
+    "personbot-typecheck.txt": {
+      "bytes": 117,
+      "sha256": "7104aed0017a470920cff86c7e6d8238c8ae8a37a44ae1fbbacc7e0396f54acf"
+    },
+    "preview.json": {
+      "bytes": 295,
+      "sha256": "45b24fdb63b2e526ce26dac07dbb2bf36d01bb0c71654df330fc3593e23f4bce"
+    },
+    "product-browser-evidence.json": {
+      "bytes": 6971,
+      "sha256": "8ee937c377214c03106e1889279430bd9fdb22a7ddecfc1f713ee56e6371c216"
+    },
+    "product-browser-test.txt": {
+      "bytes": 228,
+      "sha256": "fd1f74a3bfc8920079a56db4e5f9e28c1a2709e3fb048cebc5b14fd40ecf23dc"
+    },
+    "server-build.txt": {
+      "bytes": 1465,
+      "sha256": "89cb981da30a722223527e0134f82f1137b2ae1f2647a4cc190f292445ccc59c"
+    },
+    "source-files.json": {
+      "bytes": 12187,
+      "sha256": "fb5d42bc6ec5fb0ed6c27fefb8850850a6458fe3abffcb8e9dd36a711cb4f2ff"
+    },
+    "ui-report.md": {
+      "bytes": 8655,
+      "sha256": "5868b5948f31877f6e5bda95f833b3fdc26e4596562256218f5d27bc6c3c8841"
+    }
+  }
+}

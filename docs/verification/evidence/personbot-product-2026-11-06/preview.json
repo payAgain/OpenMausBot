@@ -1,0 +1,12 @@
+{
+  "url": "http://127.0.0.1:21366",
+  "sessionId": "product-tour",
+  "taskId": "product-tour-task",
+  "serverPid": 77892,
+  "runtimeState": "ready",
+  "taskStage": "awaiting_review",
+  "taskStopState": "confirmed",
+  "retainedForUser": true,
+  "fixture": true,
+  "syntheticDemoContent": true
+}

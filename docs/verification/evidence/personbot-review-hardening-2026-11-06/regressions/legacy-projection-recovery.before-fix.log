@@ -1,0 +1,1072 @@
+✖ request Stop fences every consumed routing input of a reused native task and keeps later conversation live after restart (3813.961084ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3951.74825
+
+✖ failing tests:
+
+test at packages/personbot-superagent/test/review-gateway.node-test.ts:326:1
+✖ request Stop fences every consumed routing input of a reused native task and keeps later conversation live after restart (3813.961084ms)
+  Error: Error: Error: Error: Error: Admission fencing requires the exact stopped ticket or a revoked original request selecting its native ticket
+  {
+    "events": [
+      {
+        "type": "completed",
+        "requestId": "allow",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "tool",
+        "requestId": "deny",
+        "callId": "official-fixture-c2f1fecf-c2fb-4559-8361-ff147e304d4a",
+        "name": "orchestrator_reply",
+        "phase": "end",
+        "output": {
+          "role": "tool",
+          "source": {
+            "kind": "tool",
+            "callId": "official-fixture-c2f1fecf-c2fb-4559-8361-ff147e304d4a"
+          },
+          "toolCallId": "official-fixture-c2f1fecf-c2fb-4559-8361-ff147e304d4a",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"status\":\"sent\"}"
+            }
+          ],
+          "isError": false,
+          "id": "6f948449-846f-45d1-89af-71e4ed3cf0f5"
+        },
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "started",
+        "requestId": "question",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "task",
+        "requestId": "question",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "title": "approval",
+        "state": "working/queued",
+        "ended": false,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "sourceMessageId": "owner-question",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "activity",
+        "requestId": "question",
+        "tasks": 1,
+        "pendingDeliveries": 0,
+        "pendingDecisions": 0,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "text",
+        "requestId": "deny",
+        "text": "",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "e2901639-6d46-404a-8def-a6c58089aa7b",
+        "requestId": "deny",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 11,
+        "outputTokens": 3,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "task",
+        "requestId": "question",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "title": "approval",
+        "state": "working",
+        "ended": false,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "sourceMessageId": "owner-question",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "task",
+        "requestId": "question",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "title": "approval",
+        "state": "working",
+        "ended": false,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "sourceMessageId": "owner-question",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "text",
+        "requestId": "allow",
+        "text": "",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "42d638a1-0f7f-450a-b521-c4529a7ac1cc",
+        "requestId": "allow",
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 11,
+        "outputTokens": 3,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "text",
+        "requestId": "question",
+        "text": "",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "1913160a-09d7-4879-8d38-2204dd469aa0",
+        "requestId": "question",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 11,
+        "outputTokens": 3,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "usageId": "41764224-72a3-4e0d-b6bb-131c23913eaf",
+        "requestId": "question",
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 13,
+        "outputTokens": 5,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "tool",
+        "requestId": "question",
+        "callId": "official-fixture-2b27c667-0c62-4bd2-aacb-713e893226a5",
+        "name": "ask_user_question",
+        "phase": "start",
+        "input": "{\"questions\":[{\"id\":\"format\",\"question\":\"Which format?\",\"options\":[{\"label\":\"Markdown\"},{\"label\":\"Text\"}]}]}",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "question",
+        "requestId": "question",
+        "sourceMessageId": "owner-question",
+        "authorizationVersion": 1,
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "decisionId": "18409dbe-1b38-49af-8ba7-8598d13861f6",
+        "prompt": "[{\"id\":\"format\",\"question\":\"Which format?\",\"options\":[{\"label\":\"Markdown\"},{\"label\":\"Text\"}]}]",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "activity",
+        "requestId": "question",
+        "tasks": 1,
+        "pendingDeliveries": 0,
+        "pendingDecisions": 1,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "decision.resolved",
+        "requestId": "question",
+        "sourceMessageId": "owner-question",
+        "authorizationVersion": 1,
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "decisionId": "18409dbe-1b38-49af-8ba7-8598d13861f6",
+        "prompt": "[{\"id\":\"format\",\"question\":\"Which format?\",\"options\":[{\"label\":\"Markdown\"},{\"label\":\"Text\"}]}]",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "kind": "question",
+        "status": "pending",
+        "behavior": "answer"
+      },
+      {
+        "type": "activity",
+        "requestId": "question",
+        "tasks": 1,
+        "pendingDeliveries": 0,
+        "pendingDecisions": 0,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "tool",
+        "requestId": "question",
+        "callId": "official-fixture-2b27c667-0c62-4bd2-aacb-713e893226a5",
+        "name": "ask_user_question",
+        "phase": "end",
+        "output": {
+          "role": "tool",
+          "source": {
+            "kind": "tool",
+            "callId": "official-fixture-2b27c667-0c62-4bd2-aacb-713e893226a5"
+          },
+          "toolCallId": "official-fixture-2b27c667-0c62-4bd2-aacb-713e893226a5",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"answers\":[{\"id\":\"format\",\"selected\":[\"Markdown\"]}]}"
+            }
+          ],
+          "isError": false,
+          "id": "b5a7a905-70e2-4b07-81e2-8211cda0426a"
+        },
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "08ff745c-d312-419a-9549-d38ac357521d",
+        "requestId": "question",
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 13,
+        "outputTokens": 5,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "tool",
+        "requestId": "question",
+        "callId": "official-fixture-dca74dba-2085-4e08-9971-ac685b46d8d0",
+        "name": "orchestrator_report",
+        "phase": "start",
+        "input": "{\"state\":\"ready\",\"summary\":\"Official worker completed: task question\\n{\\\"answers\\\":[{\\\"id\\\":\\\"format\\\",\\\"selected\\\":[\\\"Markdown\\\"]}]}\"}",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "task",
+        "requestId": "question",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "title": "approval",
+        "state": "completed",
+        "ended": true,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "sourceMessageId": "owner-question",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "activity",
+        "requestId": "question",
+        "tasks": 0,
+        "pendingDeliveries": 0,
+        "pendingDecisions": 0,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "tool",
+        "requestId": "question",
+        "callId": "official-fixture-dca74dba-2085-4e08-9971-ac685b46d8d0",
+        "name": "orchestrator_report",
+        "phase": "end",
+        "output": {
+          "role": "tool",
+          "source": {
+            "kind": "tool",
+            "callId": "official-fixture-dca74dba-2085-4e08-9971-ac685b46d8d0"
+          },
+          "toolCallId": "official-fixture-dca74dba-2085-4e08-9971-ac685b46d8d0",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"reported\":true,\"notification\":\"orchestrator\"}"
+            }
+          ],
+          "isError": false,
+          "id": "2dd273d1-4f32-48de-b15b-e8fb15152398"
+        },
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "8d2dc324-fb0a-436b-a5f1-12cd22980d1b",
+        "requestId": "deny",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 13,
+        "outputTokens": 5,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "text",
+        "requestId": "question",
+        "text": "",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "29beaae1-67a9-4fab-8ebb-2f9445d69556",
+        "requestId": "question",
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 11,
+        "outputTokens": 3,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "tool",
+        "requestId": "deny",
+        "callId": "official-fixture-e8e4f8c3-b0eb-4071-9be7-70f27626937a",
+        "name": "orchestrator_reply",
+        "phase": "start",
+        "input": "{\"purpose\":\"result\",\"ticket_id\":\"934713d4edb25bf75a08bcd7842d5fe0\",\"text\":\"Official worker completed: task question\\n{\\\"answers\\\":[{\\\"id\\\":\\\"format\\\",\\\"selected\\\":[\\\"Markdown\\\"]}]}\"}",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "reply",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "requestId": "question",
+        "sourceMessageId": "owner-question",
+        "messageId": "b3e7e1c1a61677ecf0bfc02de97eb0e9",
+        "text": "Official worker completed: task question\n{\"answers\":[{\"id\":\"format\",\"selected\":[\"Markdown\"]}]}",
+        "purpose": "result",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "persisted": false
+      },
+      {
+        "type": "completed",
+        "requestId": "question",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "tool",
+        "requestId": "deny",
+        "callId": "official-fixture-e8e4f8c3-b0eb-4071-9be7-70f27626937a",
+        "name": "orchestrator_reply",
+        "phase": "end",
+        "output": {
+          "role": "tool",
+          "source": {
+            "kind": "tool",
+            "callId": "official-fixture-e8e4f8c3-b0eb-4071-9be7-70f27626937a"
+          },
+          "toolCallId": "official-fixture-e8e4f8c3-b0eb-4071-9be7-70f27626937a",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"status\":\"sent\"}"
+            }
+          ],
+          "isError": false,
+          "id": "e733d5ba-6277-420e-acd2-3c73a038724b"
+        },
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "started",
+        "requestId": "held",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "task",
+        "requestId": "held",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "title": "approval",
+        "state": "working/queued",
+        "ended": false,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "sourceMessageId": "owner-held",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "activity",
+        "requestId": "held",
+        "tasks": 1,
+        "pendingDeliveries": 0,
+        "pendingDecisions": 0,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "text",
+        "requestId": "deny",
+        "text": "",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "733d7ef7-426c-4ce9-beac-ab72b17edc3a",
+        "requestId": "deny",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 11,
+        "outputTokens": 3,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "task",
+        "requestId": "held",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "title": "approval",
+        "state": "working",
+        "ended": false,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "sourceMessageId": "owner-held",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "task",
+        "requestId": "held",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "title": "approval",
+        "state": "working",
+        "ended": false,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "sourceMessageId": "owner-held",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "text",
+        "requestId": "question",
+        "text": "",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "ae8d40df-1d11-48c3-9c62-add7914768c6",
+        "requestId": "question",
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 11,
+        "outputTokens": 3,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "task",
+        "requestId": "held",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "title": "approval",
+        "state": "stopped",
+        "ended": true,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace",
+        "sessionId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "sourceMessageId": "owner-held",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "activity",
+        "requestId": "held",
+        "tasks": 0,
+        "pendingDeliveries": 0,
+        "pendingDecisions": 0,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "started",
+        "requestId": "echo-after-request-stop",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "382994eb-b377-4e3c-b396-3668035a8d00",
+        "requestId": "echo-after-request-stop",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 13,
+        "outputTokens": 5,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "tool",
+        "requestId": "echo-after-request-stop",
+        "callId": "official-fixture-289d7d1a-33d1-43ff-a306-5af5954fd5de",
+        "name": "orchestrator_route",
+        "phase": "start",
+        "input": "{\"decisions\":[{\"kind\":\"ignore\",\"trigger_id\":\"9e9751aab4a8e9ed190390d655981e199e5d572f807352c4017bb3a0c9888e18\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "tool",
+        "requestId": "echo-after-request-stop",
+        "callId": "official-fixture-289d7d1a-33d1-43ff-a306-5af5954fd5de",
+        "name": "orchestrator_route",
+        "phase": "end",
+        "output": {
+          "role": "tool",
+          "source": {
+            "kind": "tool",
+            "callId": "official-fixture-289d7d1a-33d1-43ff-a306-5af5954fd5de"
+          },
+          "toolCallId": "official-fixture-289d7d1a-33d1-43ff-a306-5af5954fd5de",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"results\":[{\"trigger_id\":\"9e9751aab4a8e9ed190390d655981e199e5d572f807352c4017bb3a0c9888e18\",\"kind\":\"ignore\",\"decision\":\"ignore\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}"
+            }
+          ],
+          "isError": false,
+          "id": "fdb8c724-62cb-4774-a1f5-8bfb781b8b36"
+        },
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "activity",
+        "requestId": "echo-after-request-stop",
+        "tasks": 0,
+        "pendingDeliveries": 0,
+        "pendingDecisions": 0,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "279f8f94-5196-459e-86c4-f4514f2973e3",
+        "requestId": "echo-after-request-stop",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 13,
+        "outputTokens": 5,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "tool",
+        "requestId": "echo-after-request-stop",
+        "callId": "official-fixture-b7b2a73c-307a-4afd-bb49-f449a3cb9ba9",
+        "name": "orchestrator_reply",
+        "phase": "start",
+        "input": "{\"purpose\":\"answer\",\"trigger_id\":\"9e9751aab4a8e9ed190390d655981e199e5d572f807352c4017bb3a0c9888e18\",\"text\":\"echo-after-request-stop\"}",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "reply",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "requestId": "echo-after-request-stop",
+        "sourceMessageId": "owner-echo-after-request-stop",
+        "messageId": "fe6f9a243192cd3276aa88ac7f91d4e4",
+        "text": "echo-after-request-stop",
+        "purpose": "answer",
+        "persisted": false
+      },
+      {
+        "type": "completed",
+        "requestId": "echo-after-request-stop",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "tool",
+        "requestId": "echo-after-request-stop",
+        "callId": "official-fixture-b7b2a73c-307a-4afd-bb49-f449a3cb9ba9",
+        "name": "orchestrator_reply",
+        "phase": "end",
+        "output": {
+          "role": "tool",
+          "source": {
+            "kind": "tool",
+            "callId": "official-fixture-b7b2a73c-307a-4afd-bb49-f449a3cb9ba9"
+          },
+          "toolCallId": "official-fixture-b7b2a73c-307a-4afd-bb49-f449a3cb9ba9",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"status\":\"sent\"}"
+            }
+          ],
+          "isError": false,
+          "id": "4881816f-18e9-46f7-bd50-00fbf58acf43"
+        },
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "text",
+        "requestId": "echo-after-request-stop",
+        "text": "",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "ea072f8d-2d9f-4d90-a301-15c3c1622761",
+        "requestId": "echo-after-request-stop",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 11,
+        "outputTokens": 3,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "started",
+        "requestId": "second-echo-after-request-stop",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "a8fb05ef-8aa5-4ef2-bfcf-1e78c420f434",
+        "requestId": "second-echo-after-request-stop",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 13,
+        "outputTokens": 5,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "tool",
+        "requestId": "second-echo-after-request-stop",
+        "callId": "official-fixture-5cbdbb80-8c7b-4e87-b5f9-7e977ba89bd5",
+        "name": "orchestrator_route",
+        "phase": "start",
+        "input": "{\"decisions\":[{\"kind\":\"ignore\",\"trigger_id\":\"c5e40ccda77145e1b9b76c7dca56fb1f38e2246624173fb941ed1dbaeeade0e6\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "tool",
+        "requestId": "second-echo-after-request-stop",
+        "callId": "official-fixture-5cbdbb80-8c7b-4e87-b5f9-7e977ba89bd5",
+        "name": "orchestrator_route",
+        "phase": "end",
+        "output": {
+          "role": "tool",
+          "source": {
+            "kind": "tool",
+            "callId": "official-fixture-5cbdbb80-8c7b-4e87-b5f9-7e977ba89bd5"
+          },
+          "toolCallId": "official-fixture-5cbdbb80-8c7b-4e87-b5f9-7e977ba89bd5",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"results\":[{\"trigger_id\":\"c5e40ccda77145e1b9b76c7dca56fb1f38e2246624173fb941ed1dbaeeade0e6\",\"kind\":\"ignore\",\"decision\":\"ignore\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}"
+            }
+          ],
+          "isError": false,
+          "id": "e6df2817-be07-4d0a-a6de-98bfcac24d03"
+        },
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "2fd9ff77-a134-4c27-a9c1-df269c12564f",
+        "requestId": "second-echo-after-request-stop",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 13,
+        "outputTokens": 5,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "tool",
+        "requestId": "second-echo-after-request-stop",
+        "callId": "official-fixture-a68b64dd-a67e-47c9-b073-3c7131738099",
+        "name": "orchestrator_reply",
+        "phase": "start",
+        "input": "{\"purpose\":\"answer\",\"trigger_id\":\"c5e40ccda77145e1b9b76c7dca56fb1f38e2246624173fb941ed1dbaeeade0e6\",\"text\":\"second-echo-after-request-stop\"}",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "reply",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "requestId": "second-echo-after-request-stop",
+        "sourceMessageId": "owner-second-echo-after-request-stop",
+        "messageId": "86454960bdb864d49cd8ac3582599a01",
+        "text": "second-echo-after-request-stop",
+        "purpose": "answer",
+        "persisted": false
+      },
+      {
+        "type": "completed",
+        "requestId": "second-echo-after-request-stop",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "tool",
+        "requestId": "second-echo-after-request-stop",
+        "callId": "official-fixture-a68b64dd-a67e-47c9-b073-3c7131738099",
+        "name": "orchestrator_reply",
+        "phase": "end",
+        "output": {
+          "role": "tool",
+          "source": {
+            "kind": "tool",
+            "callId": "official-fixture-a68b64dd-a67e-47c9-b073-3c7131738099"
+          },
+          "toolCallId": "official-fixture-a68b64dd-a67e-47c9-b073-3c7131738099",
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"status\":\"sent\"}"
+            }
+          ],
+          "isError": false,
+          "id": "7fe9dbe5-7c50-4b79-b4b9-f93b75139569"
+        },
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "type": "text",
+        "requestId": "second-echo-after-request-stop",
+        "text": "",
+        "sessionId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued"
+      },
+      {
+        "usageId": "e2bd887a-5872-4289-b287-50deddb67e81",
+        "requestId": "second-echo-after-request-stop",
+        "agentId": "orchestrator-55031c7b9b746344ec1980aa61867819",
+        "role": "master",
+        "provider": "official-fixture",
+        "model": "fixture",
+        "inputTokens": 11,
+        "outputTokens": 3,
+        "cacheReadTokens": 2,
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "type": "usage"
+      },
+      {
+        "type": "decision.resolved",
+        "requestId": "deny",
+        "sourceMessageId": "owner-deny",
+        "authorizationVersion": 1,
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "decisionId": "275a3139-0380-4f33-aacd-dce11f2a08e5",
+        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-b5da4920-0b04-4d3d-be60-2ee0ed63c904\"}",
+        "callId": "official-fixture-b5da4920-0b04-4d3d-be60-2ee0ed63c904",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "kind": "approval",
+        "status": "resolved",
+        "reason": "The native approval expired or was already answered"
+      },
+      {
+        "type": "decision.resolved",
+        "requestId": "allow",
+        "sourceMessageId": "owner-allow",
+        "authorizationVersion": 1,
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "decisionId": "e08410bf-bb09-483f-893e-a8212b75dccc",
+        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-854c63cb-d198-4095-9ba3-15e8eff6df40\"}",
+        "callId": "official-fixture-854c63cb-d198-4095-9ba3-15e8eff6df40",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "kind": "approval",
+        "status": "resolved",
+        "reason": "The native approval expired or was already answered"
+      },
+      {
+        "type": "decision.resolved",
+        "requestId": "question",
+        "sourceMessageId": "owner-question",
+        "authorizationVersion": 1,
+        "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+        "role": "worker",
+        "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+        "decisionId": "18409dbe-1b38-49af-8ba7-8598d13861f6",
+        "prompt": "[{\"id\":\"format\",\"question\":\"Which format?\",\"options\":[{\"label\":\"Markdown\"},{\"label\":\"Text\"}]}]",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "kind": "question",
+        "status": "resolved",
+        "reason": "The native approval expired or was already answered"
+      },
+      {
+        "type": "failed",
+        "botId": "bot",
+        "threadId": "chat",
+        "contextId": "continued",
+        "requestId": "echo-after-request-stop-restart",
+        "error": "Error: Error: Error: Admission fencing requires the exact stopped ticket or a revoked original request selecting its native ticket"
+      }
+    ],
+    "snapshot": {
+      "bindings": [
+        {
+          "botId": "bot",
+          "threadId": "chat",
+          "contextId": "continued",
+          "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace",
+          "active": true
+        }
+      ],
+      "tasks": [],
+      "decisions": [
+        {
+          "type": "approval",
+          "requestId": "deny",
+          "sourceMessageId": "owner-deny",
+          "authorizationVersion": 1,
+          "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+          "role": "worker",
+          "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+          "decisionId": "275a3139-0380-4f33-aacd-dce11f2a08e5",
+          "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-b5da4920-0b04-4d3d-be60-2ee0ed63c904\"}",
+          "callId": "official-fixture-b5da4920-0b04-4d3d-be60-2ee0ed63c904",
+          "botId": "bot",
+          "threadId": "chat",
+          "contextId": "continued",
+          "kind": "approval",
+          "status": "resolved"
+        },
+        {
+          "type": "approval",
+          "requestId": "allow",
+          "sourceMessageId": "owner-allow",
+          "authorizationVersion": 1,
+          "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+          "role": "worker",
+          "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+          "decisionId": "e08410bf-bb09-483f-893e-a8212b75dccc",
+          "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/omb-reviewed-native-YDnGKc/workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-854c63cb-d198-4095-9ba3-15e8eff6df40\"}",
+          "callId": "official-fixture-854c63cb-d198-4095-9ba3-15e8eff6df40",
+          "botId": "bot",
+          "threadId": "chat",
+          "contextId": "continued",
+          "kind": "approval",
+          "status": "resolved"
+        },
+        {
+          "type": "question",
+          "requestId": "question",
+          "sourceMessageId": "owner-question",
+          "authorizationVersion": 1,
+          "agentId": "worker-934713d4edb25bf75a08bcd7842d5fe0",
+          "role": "worker",
+          "ticketId": "934713d4edb25bf75a08bcd7842d5fe0",
+          "decisionId": "18409dbe-1b38-49af-8ba7-8598d13861f6",
+          "prompt": "[{\"id\":\"format\",\"question\":\"Which format?\",\"options\":[{\"label\":\"Markdown\"},{\"label\":\"Text\"}]}]",
+          "botId": "bot",
+          "threadId": "chat",
+          "contextId": "continued",
+          "kind": "question",
+          "status": "resolved"
+        }
+      ],
+      "resources": {
+        "activeCalls": 0,
+        "queuedCalls": 0,
+        "maxConcurrentCalls": 4,
+        "inputTokens": 493,
+        "outputTokens": 165,
+        "admittedCalls": 41,
+        "unpricedCalls": 41,
+        "unreportedCalls": 0,
+        "quarantinedWorkspaces": []
+      }
+    },
+    "diagnostics": ""
+  }
+      at file://<repo>/packages/personbot-superagent/test/review-gateway.node-test.ts:389:11
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async isolated (file://<repo>/packages/personbot-superagent/test/review-gateway.node-test.ts:27:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    [cause]: Error: Error: Error: Error: Admission fencing requires the exact stopped ticket or a revoked original request selecting its native ticket
+        at file://<repo>/packages/personbot-superagent/src/index.ts:590:23
+        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+        at async Gateway.submit (file://<repo>/packages/personbot-superagent/src/index.ts:172:49)
+        at async send (file://<repo>/packages/personbot-superagent/test/review-gateway.node-test.ts:339:5)
+        at async file://<repo>/packages/personbot-superagent/test/review-gateway.node-test.ts:385:5
+        at async isolated (file://<repo>/packages/personbot-superagent/test/review-gateway.node-test.ts:27:12)
+        at async Test.run (node:internal/test_runner/test:1409:7)
+        at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  }

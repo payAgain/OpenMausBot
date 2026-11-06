@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-05",
+  "stage": "W3",
+  "environment": {
+    "os": "macOS",
+    "arch": "arm64",
+    "node": "26.10.0",
+    "pnpm": "10.33.0",
+    "dsh": "0.2.2-rc.1"
+  },
+  "checks": [
+    {
+      "command": "pnpm personbot:test",
+      "passed": 121,
+      "failed": 0,
+      "skipped": 0,
+      "log": "native-tests.txt",
+      "includes": {
+        "nativeTaskIntegration": 17,
+        "supervisorStore": 27,
+        "runtimeEffects": 2
+      }
+    },
+    {
+      "command": "pnpm exec vitest run src/lib/personbot-client.test.ts src/components/personbot/PersonbotTasks.test.ts src/components/personbot/PersonbotView.test.ts",
+      "passed": 24,
+      "failed": 0
+    },
+    {
+      "command": "pnpm exec vitest run server/routes/personbot.test.ts scripts/control-omb.test.ts src/components/SidebarFooterNav.test.ts server/verification-fixture.e2e.test.ts scripts/testing/verification-docs.test.ts",
+      "passed": 60,
+      "failed": 0,
+      "log": "routes-fixture-tests.txt"
+    },
+    {
+      "command": "pnpm exec vitest run scripts/testing/personbot-ui.e2e.test.ts scripts/testing/personbot-tasks-ui.e2e.test.ts",
+      "passed": 4,
+      "failed": 0,
+      "includes": {
+        "fullBrowserWorkflows": 2,
+        "fixtureIsolationChecks": 2
+      },
+      "taskEvidence": "evidence.json"
+    },
+    {
+      "command": "pnpm personbot:typecheck",
+      "status": "passed"
+    },
+    {
+      "command": "pnpm build",
+      "status": "passed",
+      "warnings": [
+        "Two existing generated CSS pseudo-element optimization warnings",
+        "Some output chunks exceed 500 kB"
+      ]
+    },
+    {
+      "command": "pnpm build:server",
+      "status": "passed"
+    },
+    {
+      "command": "pnpm exec oxlint --deny-warnings packages/personbot-* scripts/personbot.ts server/routes/personbot.ts server/routes/personbot.test.ts src/components/personbot src/lib/personbot-client.ts src/lib/personbot-client.test.ts scripts/testing/personbot-ui.e2e.test.ts scripts/testing/personbot-tasks-ui.e2e.test.ts",
+      "status": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    }
+  ],
+  "isolation": {
+    "temporaryHomes": true,
+    "deterministicModels": true,
+    "liveProfilesAccessed": false,
+    "realProviderCalls": false
+  }
+}

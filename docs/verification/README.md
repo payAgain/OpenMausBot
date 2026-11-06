@@ -1,5 +1,34 @@
 # Verifying OpenMausBot
 
+The current personal source entry keeps the original OpenMausBot App and memory
+service, and loads the pinned official Super Agent source in managed DSH
+processes. Its [current runtime guide](../personbot-runtime.zh-CN.md) describes
+that path; the [official integration record](personbot-official-superagent-2026-11-06.md)
+separately records its actual checks and limits.
+The [background task hardening record](personbot-review-hardening-2026-11-06.md)
+records the later request/task/decision lifecycle, memory authority, directory
+coordination, automatic recovery and original-ledger checks.
+
+The following W0–W6 records describe the earlier experimental Personbot
+gateway, independent UI and custom supervisor. They remain historical evidence
+and do not establish that the official integration passed.
+The [foundation verification record](personbot-runtime-2026-11-05.md)
+covers that initial runtime and protocol, and the [App verification record](personbot-app-2026-11-05.md)
+records its native runtime, projection, approval, recovery and actual-browser checks.
+The [long-running task record](personbot-tasks-2026-11-05.md) covers independent
+workers, pause/resume, human acceptance, durable result delivery and App controls.
+The [personal system record](personbot-personal-2026-11-05.md) covers project and
+role bindings, confirmed memory, isolated task workspaces, immutable artifacts
+and task supplements. The [event and channel record](personbot-events-2026-11-05.md) covers durable webhook admission, thread subscriptions, scheduled triggers, callback recovery and explicit handling of uncertain remote results.
+The [primary product record](personbot-product-2026-11-06.md) covers the earlier
+Personbot shell, model setup, confirmed legacy import, execution cutover and
+one-command source startup; the [current product guide](../personbot-product.zh-CN.md)
+describes the restored original UI with the official runtime.
+These checks reuse this launcher's disposable server and preview helpers.
+Ordinary fixtures explicitly disable Personbot; only a programmatic boolean
+fixture option enables its deterministic model in a separate temporary home.
+The legacy `control-omb send` verbs below still target the existing bot routes.
+
 OpenMausBot has one development control surface: `pnpm control:omb`. It runs
 the published `openmausbot` verbs (docs/headless-cli.md), which call the MCP
 tools in `scripts/mcp-server.ts`, so verification uses the same URL
@@ -44,6 +73,11 @@ recipe from sending messages to the user's running app by accident.
 Use only mapped, tested commands:
 
 - [The headless command line](headless-cli.md)
+- [Personbot App and native dsh sessions](personbot-app-2026-11-05.md)
+- [Personbot projects, roles, memory and artifacts](personbot-personal-2026-11-05.md)
+- [Personbot events, schedules and external callbacks](personbot-events-2026-11-05.md)
+- [Personbot primary workspace, setup and legacy cutover](personbot-product-2026-11-06.md)
+- [Original App, official Super Agent and unified original memory](personbot-official-superagent-2026-11-06.md)
 - [Chat turns](chat-turns.md)
 - [Conversation context compaction](context-compaction.md)
 - [Work summaries and engine hooks](digests.md)

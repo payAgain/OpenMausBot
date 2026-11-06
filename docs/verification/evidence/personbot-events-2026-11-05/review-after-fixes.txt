@@ -1,0 +1,16 @@
+✔ retained events for paused tasks do not starve a later eligible Source (155.52025ms)
+✔ disabling a source during native drain does not wake its waiting task (12.4785ms)
+✔ disabling a subscription during native drain does not wake its waiting task (10.090292ms)
+✔ shutdown while an event is draining leaves the inbox durable without allocating a new execution (11.210833ms)
+✔ shutdown keeps rejecting tool effects until native execution trees have drained (8.753084ms)
+✔ a delayed report seal cannot stop a newer execution of the same worker Session (22.322125ms)
+✔ a queued supplement reaches the first worker once through its own durable steer effect (9.751375ms)
+✔ a tool-valid report can include forty textual evidence entries and forty owned artifacts (10.445833ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 328.71525

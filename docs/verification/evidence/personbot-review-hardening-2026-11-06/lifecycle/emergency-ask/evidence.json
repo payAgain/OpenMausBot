@@ -1,0 +1,464 @@
+{
+  "fixture": {
+    "url": "http://127.0.0.1:21536",
+    "pid": 90572,
+    "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-Qf0KnT",
+    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793950736516-90569.log"
+  },
+  "scenario": "emergency-ask",
+  "api": [
+    {
+      "method": "POST",
+      "path": "/api/bots",
+      "body": {
+        "name": "Lifecycle emergency-ask",
+        "memoryUpkeep": false
+      },
+      "status": 201,
+      "result": {
+        "bot": {
+          "id": "42202cf9-94bc-4e5c-a9f0-8dbf379fd031",
+          "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+          "name": "Lifecycle emergency-ask",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "red",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950737773,
+          "avatarUrl": null,
+          "autoApprove": false,
+          "approvalMode": "full",
+          "waitingForTeammates": false,
+          "mainThreadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+          "tasks": [
+            {
+              "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+              "title": "New thread",
+              "createdAt": 1793950737773,
+              "updatedAt": 1793950737789,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950737789,
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ],
+          "messages": [
+            {
+              "id": "9a2e122b-d6a3-4f29-9047-e3cbb5fa692f",
+              "at": 1793950737789,
+              "parentId": null,
+              "role": "bot",
+              "kind": "text",
+              "text": "Hi, I'm Lifecycle emergency-ask. What would you like me to do?",
+              "setupOffer": true,
+              "setupChoices": [
+                "Research and digging into topics",
+                "Keeping an eye on things for me",
+                "Email, calendar and messages",
+                "Bookings, shopping and errands",
+                "Data, spreadsheets and reports"
+              ]
+            }
+          ],
+          "activeLeafId": "9a2e122b-d6a3-4f29-9047-e3cbb5fa692f"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/bots/42202cf9-94bc-4e5c-a9f0-8dbf379fd031",
+      "body": {
+        "memoryUpkeep": false,
+        "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-Qf0KnT/lifecycle-workspace",
+        "approvalMode": "full",
+        "applyToAllThreads": true
+      },
+      "status": 200,
+      "result": {
+        "bot": {
+          "id": "42202cf9-94bc-4e5c-a9f0-8dbf379fd031",
+          "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+          "name": "Lifecycle emergency-ask",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "red",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950737773,
+          "avatarUrl": null,
+          "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-Qf0KnT/lifecycle-workspace",
+          "autoApprove": false,
+          "memoryUpkeep": false,
+          "approvalMode": "full",
+          "alwaysAllow": [],
+          "waitingForTeammates": false,
+          "mainThreadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+          "tasks": [
+            {
+              "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+              "title": "New thread",
+              "createdAt": 1793950737773,
+              "updatedAt": 1793950737789,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950737789,
+              "approvalMode": "full",
+              "autoApprove": false,
+              "alwaysAllow": [],
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/42202cf9-94bc-4e5c-a9f0-8dbf379fd031/messages",
+      "body": {
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "text": "echo baseline-emergency-ask"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "message": {
+          "id": "f72353f5-d4b7-4d29-937b-d3ababdb5603",
+          "at": 1793950737817,
+          "parentId": "9a2e122b-d6a3-4f29-9047-e3cbb5fa692f",
+          "role": "user",
+          "kind": "text",
+          "text": "echo baseline-emergency-ask"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/42202cf9-94bc-4e5c-a9f0-8dbf379fd031/messages",
+      "body": {
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "text": "task attention"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "message": {
+          "id": "28b0ceaf-e663-4467-a6ac-d6b8822e0872",
+          "at": 1793950739485,
+          "parentId": "77fc02f1-ca21-4cd4-b182-d91d1adbf53a",
+          "role": "user",
+          "kind": "text",
+          "text": "task attention"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/bots/42202cf9-94bc-4e5c-a9f0-8dbf379fd031",
+      "body": {
+        "approvalMode": "ask",
+        "applyToAllThreads": true
+      },
+      "status": 200,
+      "result": {
+        "bot": {
+          "id": "42202cf9-94bc-4e5c-a9f0-8dbf379fd031",
+          "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+          "name": "Lifecycle emergency-ask",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "red",
+          "mascotBody": "cursor",
+          "unread": true,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950737773,
+          "avatarUrl": null,
+          "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-Qf0KnT/lifecycle-workspace",
+          "autoApprove": false,
+          "memoryUpkeep": false,
+          "approvalMode": "ask",
+          "alwaysAllow": [],
+          "activity": "idle",
+          "busy": false,
+          "rewound": false,
+          "waitingForTeammates": false,
+          "mainThreadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+          "tasks": [
+            {
+              "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+              "title": "echo baseline-emergency-ask",
+              "createdAt": 1793950737773,
+              "updatedAt": 1793950739799,
+              "unread": true,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950739794,
+              "approvalMode": "ask",
+              "autoApprove": false,
+              "alwaysAllow": [],
+              "titleFromFirstMessage": true,
+              "rewound": false,
+              "usage": {
+                "input": 109,
+                "output": 37,
+                "cachedInput": 18,
+                "costUsd": null,
+                "turns": 11,
+                "lastTurn": {
+                  "input": 11,
+                  "output": 3,
+                  "cachedInput": 2,
+                  "costUsd": null
+                }
+              },
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/42202cf9-94bc-4e5c-a9f0-8dbf379fd031/messages",
+      "body": {
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "text": "echo continued-emergency-ask"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "message": {
+          "id": "751e84b2-6a44-480b-b0cd-e61d3cd58095",
+          "at": 1793950743254,
+          "parentId": "ae8d122c-9dcf-4c5f-8ecc-57d7a31f0184",
+          "role": "user",
+          "kind": "text",
+          "text": "echo continued-emergency-ask"
+        }
+      }
+    }
+  ],
+  "checks": [
+    "The original lifecycle route revokes exact persisted grants, invalidates decisions, and ends native tasks after the input turn has completed.",
+    "Restart without any replacement input does not revive stopped/retired native authority, create a native child, or execute the cancelled file operation.",
+    "A new input after startup retirement receives a fresh native context and completes; the retired cursor and its grants are never reactivated."
+  ],
+  "before": {
+    "bindings": [
+      {
+        "id": "5dfdb2b37ef84630d222b38e3a4315ab7415656d45d5fb7eb058e8749fa9c566",
+        "active": 1,
+        "needs_recovery": 1,
+        "next_wake": 0,
+        "stop_pending": 0
+      }
+    ],
+    "requests": [
+      {
+        "request_id": "15af9567-430d-4258-8cab-972aaec01de2",
+        "revoked": 0,
+        "status": "completed",
+        "authorization_version": 1
+      },
+      {
+        "request_id": "9401487a-e2a6-4921-924f-c04f4d37c618",
+        "revoked": 0,
+        "status": "completed",
+        "authorization_version": 1
+      }
+    ],
+    "tasks": [
+      {
+        "type": "task",
+        "requestId": "15af9567-430d-4258-8cab-972aaec01de2",
+        "ticketId": "6cef3c254ce76933e1864a6ec9e20b99",
+        "title": "attention",
+        "state": "working",
+        "ended": false,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-Qf0KnT/lifecycle-workspace",
+        "sessionId": "worker-6cef3c254ce76933e1864a6ec9e20b99",
+        "sourceMessageId": "28b0ceaf-e663-4467-a6ac-d6b8822e0872",
+        "botId": "42202cf9-94bc-4e5c-a9f0-8dbf379fd031",
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "contextId": "5801167b-194f-4f6d-a63a-f95418c845df"
+      }
+    ],
+    "decisions": []
+  },
+  "stopped": {
+    "bindings": [
+      {
+        "id": "5dfdb2b37ef84630d222b38e3a4315ab7415656d45d5fb7eb058e8749fa9c566",
+        "active": 1,
+        "needs_recovery": 0,
+        "next_wake": 0,
+        "stop_pending": 0
+      }
+    ],
+    "requests": [
+      {
+        "request_id": "15af9567-430d-4258-8cab-972aaec01de2",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 2
+      },
+      {
+        "request_id": "9401487a-e2a6-4921-924f-c04f4d37c618",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 2
+      }
+    ],
+    "tasks": [
+      {
+        "ticketId": "6cef3c254ce76933e1864a6ec9e20b99",
+        "title": "attention",
+        "state": "stopped",
+        "ended": true,
+        "requestId": "15af9567-430d-4258-8cab-972aaec01de2",
+        "sourceMessageId": "28b0ceaf-e663-4467-a6ac-d6b8822e0872",
+        "sessionId": "worker-6cef3c254ce76933e1864a6ec9e20b99",
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-Qf0KnT/lifecycle-workspace",
+        "botId": "42202cf9-94bc-4e5c-a9f0-8dbf379fd031",
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "contextId": "5801167b-194f-4f6d-a63a-f95418c845df"
+      }
+    ],
+    "decisions": []
+  },
+  "afterRestart": {
+    "bindings": [
+      {
+        "id": "5dfdb2b37ef84630d222b38e3a4315ab7415656d45d5fb7eb058e8749fa9c566",
+        "active": 0,
+        "needs_recovery": 0,
+        "next_wake": 0,
+        "stop_pending": 0
+      }
+    ],
+    "requests": [
+      {
+        "request_id": "15af9567-430d-4258-8cab-972aaec01de2",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 3
+      },
+      {
+        "request_id": "9401487a-e2a6-4921-924f-c04f4d37c618",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 3
+      }
+    ],
+    "tasks": [
+      {
+        "ticketId": "6cef3c254ce76933e1864a6ec9e20b99",
+        "title": "attention",
+        "state": "stopped",
+        "ended": true,
+        "requestId": "15af9567-430d-4258-8cab-972aaec01de2",
+        "sourceMessageId": "28b0ceaf-e663-4467-a6ac-d6b8822e0872",
+        "sessionId": "worker-6cef3c254ce76933e1864a6ec9e20b99",
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-Qf0KnT/lifecycle-workspace",
+        "botId": "42202cf9-94bc-4e5c-a9f0-8dbf379fd031",
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "contextId": "5801167b-194f-4f6d-a63a-f95418c845df"
+      }
+    ],
+    "decisions": []
+  },
+  "continued": {
+    "bindings": [
+      {
+        "id": "5dfdb2b37ef84630d222b38e3a4315ab7415656d45d5fb7eb058e8749fa9c566",
+        "active": 0,
+        "needs_recovery": 0,
+        "next_wake": 0,
+        "stop_pending": 0
+      },
+      {
+        "id": "df2e5dc33216cb51bbbcb1da0d27f2f3c04d46402034851ede9ec9f154866799",
+        "active": 1,
+        "needs_recovery": 0,
+        "next_wake": 0,
+        "stop_pending": 0
+      }
+    ],
+    "requests": [
+      {
+        "request_id": "15af9567-430d-4258-8cab-972aaec01de2",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 3
+      },
+      {
+        "request_id": "9401487a-e2a6-4921-924f-c04f4d37c618",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 3
+      },
+      {
+        "request_id": "dc3901ab-fdda-4f7c-9b11-d9ffb11e715d",
+        "revoked": 0,
+        "status": "completed",
+        "authorization_version": 1
+      }
+    ],
+    "tasks": [
+      {
+        "ticketId": "6cef3c254ce76933e1864a6ec9e20b99",
+        "title": "attention",
+        "state": "stopped",
+        "ended": true,
+        "requestId": "15af9567-430d-4258-8cab-972aaec01de2",
+        "sourceMessageId": "28b0ceaf-e663-4467-a6ac-d6b8822e0872",
+        "sessionId": "worker-6cef3c254ce76933e1864a6ec9e20b99",
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-Qf0KnT/lifecycle-workspace",
+        "botId": "42202cf9-94bc-4e5c-a9f0-8dbf379fd031",
+        "threadId": "b4b956ad-45b3-409b-a564-0c96d83439f1",
+        "contextId": "5801167b-194f-4f6d-a63a-f95418c845df"
+      }
+    ],
+    "decisions": []
+  }
+}

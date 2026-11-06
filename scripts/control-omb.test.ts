@@ -14,6 +14,18 @@ describe("a fixture driven from a real browser", () => {
     expect(childEnv({}).OMB_DEV_TRUST_LOCAL_BROWSER).toBe("1");
     expect(childEnv({ OMB_DEV_TRUST_LOCAL_BROWSER: "0" })).not.toHaveProperty("OMB_DEV_TRUST_LOCAL_BROWSER");
   });
+
+  it("enables the upstream runtime only for an explicit isolated primary fixture", () => {
+    const parent = { PERSONBOT_SUPERAGENT: "1", DEEPSEEK_API_KEY: "fixture-must-not-cross" };
+    expect(childEnv(parent)).toMatchObject({ PERSONBOT_ENABLED: "0", PERSONBOT_SUPERAGENT: "0" });
+    const official = verificationServerEnvironment(parent, join(tmpdir(), "omb-official-fixture"), 9100, true, true, true);
+    expect(official).toMatchObject({
+      PERSONBOT_ENABLED: "1", PERSONBOT_PRIMARY: "1", PERSONBOT_SUPERAGENT: "1", PERSONBOT_FIXTURE: "1",
+      PERSONBOT_PROVIDER: "personbot-fixture",
+    });
+    expect(official).not.toHaveProperty("DEEPSEEK_API_KEY");
+    expect(verificationServerEnvironment(parent, "/tmp/not-primary", 9100, true, false, true).PERSONBOT_SUPERAGENT).toBe("0");
+  });
 });
 
 describe("the fixture's fake engine knobs", () => {

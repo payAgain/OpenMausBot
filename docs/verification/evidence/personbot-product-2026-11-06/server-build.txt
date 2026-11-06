@@ -1,0 +1,44 @@
+
+> openmausbot@0.1.140 build:server /Users/yimingd/AI/personbot/OpenMausBot
+> tsc -p tsconfig.server.build.json && node scripts/bundle-server.mjs
+
+
+  dist-server/index.js                     14.3mb ⚠️
+  dist-server/openmausbot.js                4.4mb ⚠️
+  dist-server/pair-cli.js                   4.0mb ⚠️
+  dist-server/drivers/agents-proxy.js     814.4kb
+  dist-server/workspace-backup.worker.js  773.6kb
+  dist-server/vps-container-mcp.js        744.8kb
+  dist-server/mcp-gate.js                 723.9kb
+  dist-server/container-mcp.js            693.4kb
+  dist-server/bot-box/box-check.js        624.7kb
+  dist-server/cloud-home-start.js         592.4kb
+  dist-server/mcp-remote-proxy.js         283.7kb
+  dist-server/local-computer-proxy.js      47.0kb
+  dist-server/connector-proxy.js           45.7kb
+  dist-server/permission-proxy.js          15.4kb
+  dist-server/drivers/phone-proxy.js       15.4kb
+  dist-server/harness-mcp-proxy.js         12.2kb
+  dist-server/local-computer.js             9.6kb
+  dist-server/bot-box/box-probe.js          7.4kb
+  dist-server/drivers/dweb-proxy.js         5.2kb
+  dist-server/server-launcher.js            2.6kb
+  ...and 4 more output files...
+
+⚡ Done in 538ms
+
+  dist-server/mcp-server.js  59.3kb
+
+⚡ Done in 3ms
+
+  dist-server/tunnel-guardian.js  12.1kb
+
+⚡ Done in 2ms
+
+  dist-server/prepare-cloudflared.js  10.9kb
+
+⚡ Done in 2ms
+
+  dist-server/enterprise/server/index.js  764.3kb
+
+⚡ Done in 43ms

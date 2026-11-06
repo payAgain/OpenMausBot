@@ -1,0 +1,9 @@
+
+ RUN  v4.1.11 <repo>/packages/personbot-superagent/upstream
+
+
+ Test Files  7 passed (7)
+      Tests  309 passed (309)
+   Start at  16:38:52
+   Duration  8.75s (transform 2.22s, setup 0ms, import 3.15s, tests 12.17s, environment 0ms)
+

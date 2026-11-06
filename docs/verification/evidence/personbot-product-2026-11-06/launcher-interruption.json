@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "interrupted build exits cleanly",
+    "owned runner exits",
+    "TERM-ignoring child exits",
+    "unrelated process remains alive"
+  ],
+  "launcherPid": 79840,
+  "parentPid": 79843,
+  "childPid": 79844,
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "parentExited": true,
+  "childExited": true,
+  "unrelatedExited": false
+}

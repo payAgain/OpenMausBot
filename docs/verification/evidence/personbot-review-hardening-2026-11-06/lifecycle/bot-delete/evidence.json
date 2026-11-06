@@ -1,0 +1,372 @@
+{
+  "fixture": {
+    "url": "http://127.0.0.1:21952",
+    "pid": 91181,
+    "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-dmxI8b",
+    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793950767763-90569.log"
+  },
+  "scenario": "bot-delete",
+  "api": [
+    {
+      "method": "POST",
+      "path": "/api/bots",
+      "body": {
+        "name": "Lifecycle bot-delete",
+        "memoryUpkeep": false
+      },
+      "status": 201,
+      "result": {
+        "bot": {
+          "id": "f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+          "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+          "name": "Lifecycle bot-delete",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "purple",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950769008,
+          "avatarUrl": null,
+          "autoApprove": false,
+          "approvalMode": "full",
+          "waitingForTeammates": false,
+          "mainThreadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+          "tasks": [
+            {
+              "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+              "title": "New thread",
+              "createdAt": 1793950769008,
+              "updatedAt": 1793950769023,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950769023,
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ],
+          "messages": [
+            {
+              "id": "2fda401a-ea10-49a4-a1bc-d85abe1b0fc6",
+              "at": 1793950769023,
+              "parentId": null,
+              "role": "bot",
+              "kind": "text",
+              "text": "Hi, I'm Lifecycle bot-delete. What would you like me to do?",
+              "setupOffer": true,
+              "setupChoices": [
+                "Research and digging into topics",
+                "Keeping an eye on things for me",
+                "Email, calendar and messages",
+                "Bookings, shopping and errands",
+                "Data, spreadsheets and reports"
+              ]
+            }
+          ],
+          "activeLeafId": "2fda401a-ea10-49a4-a1bc-d85abe1b0fc6"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/bots/f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+      "body": {
+        "memoryUpkeep": false,
+        "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-dmxI8b/lifecycle-workspace",
+        "approvalMode": "ask",
+        "applyToAllThreads": true
+      },
+      "status": 200,
+      "result": {
+        "bot": {
+          "id": "f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+          "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+          "name": "Lifecycle bot-delete",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "purple",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950769008,
+          "avatarUrl": null,
+          "cwd": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-dmxI8b/lifecycle-workspace",
+          "autoApprove": false,
+          "memoryUpkeep": false,
+          "approvalMode": "ask",
+          "waitingForTeammates": false,
+          "mainThreadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+          "tasks": [
+            {
+              "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+              "title": "New thread",
+              "createdAt": 1793950769008,
+              "updatedAt": 1793950769023,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950769023,
+              "approvalMode": "ask",
+              "autoApprove": false,
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/f5e33a86-c687-469a-ab15-f9b9f58e0eda/messages",
+      "body": {
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "text": "echo baseline-bot-delete"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "message": {
+          "id": "b18ae8a0-3834-46ae-aa46-9230c4c7946c",
+          "at": 1793950769053,
+          "parentId": "2fda401a-ea10-49a4-a1bc-d85abe1b0fc6",
+          "role": "user",
+          "kind": "text",
+          "text": "echo baseline-bot-delete"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/f5e33a86-c687-469a-ab15-f9b9f58e0eda/messages",
+      "body": {
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "text": "task background approval"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "message": {
+          "id": "aec350a8-def8-4801-93ea-f2f252b50046",
+          "at": 1793950770718,
+          "parentId": "9b02cd93-0a41-4be5-9ce9-74d5dfa84b85",
+          "role": "user",
+          "kind": "text",
+          "text": "task background approval"
+        }
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/bots/f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+      "status": 200,
+      "result": {
+        "ok": true
+      }
+    }
+  ],
+  "checks": [
+    "The original lifecycle route revokes exact persisted grants, invalidates decisions, and ends native tasks after the input turn has completed.",
+    "Restart without any replacement input does not revive stopped/retired native authority, create a native child, or execute the cancelled file operation."
+  ],
+  "before": {
+    "bindings": [
+      {
+        "id": "4789312e480cef4973e6977ce330e4ef6b473bb45b4ae3e623a263c6b88e07a9",
+        "active": 1,
+        "needs_recovery": 1,
+        "next_wake": 0,
+        "stop_pending": 0
+      }
+    ],
+    "requests": [
+      {
+        "request_id": "689007ca-7b1a-4100-8516-4f783e6d168b",
+        "revoked": 0,
+        "status": "completed",
+        "authorization_version": 1
+      },
+      {
+        "request_id": "b04e9b0d-b166-4c39-b97c-8fd908b4ca63",
+        "revoked": 0,
+        "status": "completed",
+        "authorization_version": 1
+      }
+    ],
+    "tasks": [
+      {
+        "type": "task",
+        "requestId": "689007ca-7b1a-4100-8516-4f783e6d168b",
+        "ticketId": "6ae1007a4b61ce432080d29ed0de8476",
+        "title": "background approval",
+        "state": "working",
+        "ended": false,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-dmxI8b/lifecycle-workspace",
+        "sessionId": "worker-6ae1007a4b61ce432080d29ed0de8476",
+        "sourceMessageId": "aec350a8-def8-4801-93ea-f2f252b50046",
+        "botId": "f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "contextId": "a38ef147-e1d8-4b7b-8c90-6b64cc756ea5"
+      }
+    ],
+    "decisions": [
+      {
+        "type": "approval",
+        "requestId": "689007ca-7b1a-4100-8516-4f783e6d168b",
+        "sourceMessageId": "aec350a8-def8-4801-93ea-f2f252b50046",
+        "authorizationVersion": 1,
+        "agentId": "worker-6ae1007a4b61ce432080d29ed0de8476",
+        "role": "worker",
+        "ticketId": "6ae1007a4b61ce432080d29ed0de8476",
+        "decisionId": "bdbf1349-682c-4fba-bd33-1c60b7bad229",
+        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-dmxI8b/lifecycle-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-6b35cca0-32d1-4be1-bb94-8ea1b1cff57a\"}",
+        "callId": "official-fixture-6b35cca0-32d1-4be1-bb94-8ea1b1cff57a",
+        "botId": "f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "contextId": "a38ef147-e1d8-4b7b-8c90-6b64cc756ea5",
+        "kind": "approval",
+        "status": "pending"
+      }
+    ]
+  },
+  "stopped": {
+    "bindings": [
+      {
+        "id": "4789312e480cef4973e6977ce330e4ef6b473bb45b4ae3e623a263c6b88e07a9",
+        "active": 0,
+        "needs_recovery": 0,
+        "next_wake": 0,
+        "stop_pending": 0
+      }
+    ],
+    "requests": [
+      {
+        "request_id": "689007ca-7b1a-4100-8516-4f783e6d168b",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 3
+      },
+      {
+        "request_id": "b04e9b0d-b166-4c39-b97c-8fd908b4ca63",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 3
+      }
+    ],
+    "tasks": [
+      {
+        "ticketId": "6ae1007a4b61ce432080d29ed0de8476",
+        "title": "background approval",
+        "state": "stopped",
+        "ended": true,
+        "requestId": "689007ca-7b1a-4100-8516-4f783e6d168b",
+        "sourceMessageId": "aec350a8-def8-4801-93ea-f2f252b50046",
+        "sessionId": "worker-6ae1007a4b61ce432080d29ed0de8476",
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-dmxI8b/lifecycle-workspace",
+        "botId": "f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "contextId": "a38ef147-e1d8-4b7b-8c90-6b64cc756ea5"
+      }
+    ],
+    "decisions": [
+      {
+        "type": "approval",
+        "requestId": "689007ca-7b1a-4100-8516-4f783e6d168b",
+        "sourceMessageId": "aec350a8-def8-4801-93ea-f2f252b50046",
+        "authorizationVersion": 1,
+        "agentId": "worker-6ae1007a4b61ce432080d29ed0de8476",
+        "role": "worker",
+        "ticketId": "6ae1007a4b61ce432080d29ed0de8476",
+        "decisionId": "bdbf1349-682c-4fba-bd33-1c60b7bad229",
+        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-dmxI8b/lifecycle-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-6b35cca0-32d1-4be1-bb94-8ea1b1cff57a\"}",
+        "callId": "official-fixture-6b35cca0-32d1-4be1-bb94-8ea1b1cff57a",
+        "botId": "f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "contextId": "a38ef147-e1d8-4b7b-8c90-6b64cc756ea5",
+        "kind": "approval",
+        "status": "expired"
+      }
+    ]
+  },
+  "afterRestart": {
+    "bindings": [
+      {
+        "id": "4789312e480cef4973e6977ce330e4ef6b473bb45b4ae3e623a263c6b88e07a9",
+        "active": 0,
+        "needs_recovery": 0,
+        "next_wake": 0,
+        "stop_pending": 0
+      }
+    ],
+    "requests": [
+      {
+        "request_id": "689007ca-7b1a-4100-8516-4f783e6d168b",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 3
+      },
+      {
+        "request_id": "b04e9b0d-b166-4c39-b97c-8fd908b4ca63",
+        "revoked": 1,
+        "status": "stopped",
+        "authorization_version": 3
+      }
+    ],
+    "tasks": [
+      {
+        "ticketId": "6ae1007a4b61ce432080d29ed0de8476",
+        "title": "background approval",
+        "state": "stopped",
+        "ended": true,
+        "requestId": "689007ca-7b1a-4100-8516-4f783e6d168b",
+        "sourceMessageId": "aec350a8-def8-4801-93ea-f2f252b50046",
+        "sessionId": "worker-6ae1007a4b61ce432080d29ed0de8476",
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-dmxI8b/lifecycle-workspace",
+        "botId": "f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "contextId": "a38ef147-e1d8-4b7b-8c90-6b64cc756ea5"
+      }
+    ],
+    "decisions": [
+      {
+        "type": "approval",
+        "requestId": "689007ca-7b1a-4100-8516-4f783e6d168b",
+        "sourceMessageId": "aec350a8-def8-4801-93ea-f2f252b50046",
+        "authorizationVersion": 1,
+        "agentId": "worker-6ae1007a4b61ce432080d29ed0de8476",
+        "role": "worker",
+        "ticketId": "6ae1007a4b61ce432080d29ed0de8476",
+        "decisionId": "bdbf1349-682c-4fba-bd33-1c60b7bad229",
+        "prompt": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-dmxI8b/lifecycle-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-6b35cca0-32d1-4be1-bb94-8ea1b1cff57a\"}",
+        "callId": "official-fixture-6b35cca0-32d1-4be1-bb94-8ea1b1cff57a",
+        "botId": "f5e33a86-c687-469a-ab15-f9b9f58e0eda",
+        "threadId": "e7f267cc-e9d4-4882-97bb-4326f02188f5",
+        "contextId": "a38ef147-e1d8-4b7b-8c90-6b64cc756ea5",
+        "kind": "approval",
+        "status": "expired"
+      }
+    ]
+  }
+}

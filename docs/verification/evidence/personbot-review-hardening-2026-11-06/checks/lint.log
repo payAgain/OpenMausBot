@@ -1,0 +1,4 @@
+
+> openmausbot@0.1.140 lint <repo>
+> oxlint --deny-warnings .
+

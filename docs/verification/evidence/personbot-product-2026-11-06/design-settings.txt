@@ -1,0 +1,23 @@
+TASTESKILL · INSPECT   http://127.0.0.1:21366/#personbot=setup
+
+MEASURED (first viewport listed)
+  hero headline   "模型设置"  1 words · 1 line(s) · 24px (1.7vw) · Geist Variable 600 · tracking 0em · leading 1.5
+  @768px          1 line(s) · 24px
+  @390px          1 line(s) · 24px
+  typefaces       Geist Variable 100%
+  sizes in use    12 / 13 / 14 / 20 / 24 px   body 13px / 1.85
+  colour          page #121212 · sections #121212 · button #202020
+  page            1 screens · 35 words · 0 images · hero media none
+  headings        0 · longest 0 line(s) · median - words
+
+FINDINGS  none. Measurements are clean — now judge the pictures.
+LOOK AT THE RENDER — open these with your image viewer / Read tool before saying anything about quality:
+  desktop 1440px  ../../../../../tmp/personbot-w6-design-final/settings/desktop-fold.jpg
+                  ../../../../../tmp/personbot-w6-design-final/settings/desktop-page-01.jpg
+  tablet 768px    ../../../../../tmp/personbot-w6-design-final/settings/tablet-fold.jpg
+                  ../../../../../tmp/personbot-w6-design-final/settings/tablet-page-01.jpg
+  mobile 390px    ../../../../../tmp/personbot-w6-design-final/settings/mobile-fold.jpg
+                  ../../../../../tmp/personbot-w6-design-final/settings/mobile-page-01.jpg
+
+report: ../../../../../tmp/personbot-w6-design-final/settings/report.json
+RESULT: 0 FAIL, 0 WARN — measurements pass. Passing the meter is the floor, not the grade: score the screenshots with references/critique.md.

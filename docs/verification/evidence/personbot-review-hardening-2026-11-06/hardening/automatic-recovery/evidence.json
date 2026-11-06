@@ -1,0 +1,286 @@
+{
+  "fixture": {
+    "url": "http://127.0.0.1:20512",
+    "pid": 91838,
+    "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-4aziTQ",
+    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793950806220-91642.log"
+  },
+  "scenario": "automatic-recovery",
+  "checks": [
+    "Startup recovery launches the exact unfinished native binding without a new user message and preserves its original task identity.",
+    "Explicit conversation Stop ends restored tasks without manufacturing another chat request."
+  ],
+  "api": [
+    {
+      "method": "POST",
+      "path": "/api/bots",
+      "body": {
+        "name": "Review automatic-recovery",
+        "memoryUpkeep": false
+      },
+      "status": 201,
+      "result": {
+        "bot": {
+          "id": "7cde5a76-afb9-4f1b-91f0-66665a472a21",
+          "threadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+          "name": "Review automatic-recovery",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "coral",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950807645,
+          "avatarUrl": null,
+          "autoApprove": false,
+          "approvalMode": "full",
+          "waitingForTeammates": false,
+          "mainThreadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+          "tasks": [
+            {
+              "threadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+              "title": "New thread",
+              "createdAt": 1793950807645,
+              "updatedAt": 1793950807671,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950807671,
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ],
+          "messages": [
+            {
+              "id": "9bf802c6-04fe-48c4-b1ba-e826d365aa23",
+              "at": 1793950807671,
+              "parentId": null,
+              "role": "bot",
+              "kind": "text",
+              "text": "Hi, I'm Review automatic-recovery. What would you like me to do?",
+              "setupOffer": true,
+              "setupChoices": [
+                "Research and digging into topics",
+                "Keeping an eye on things for me",
+                "Email, calendar and messages",
+                "Bookings, shopping and errands",
+                "Data, spreadsheets and reports"
+              ]
+            }
+          ],
+          "activeLeafId": "9bf802c6-04fe-48c4-b1ba-e826d365aa23"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/bots/7cde5a76-afb9-4f1b-91f0-66665a472a21",
+      "body": {
+        "memoryUpkeep": false,
+        "approvalMode": "ask"
+      },
+      "status": 200,
+      "result": {
+        "bot": {
+          "id": "7cde5a76-afb9-4f1b-91f0-66665a472a21",
+          "threadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+          "name": "Review automatic-recovery",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "coral",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950807645,
+          "avatarUrl": null,
+          "autoApprove": false,
+          "memoryUpkeep": false,
+          "approvalMode": "ask",
+          "waitingForTeammates": false,
+          "mainThreadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+          "tasks": [
+            {
+              "threadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+              "title": "New thread",
+              "createdAt": 1793950807645,
+              "updatedAt": 1793950807671,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950807671,
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/7cde5a76-afb9-4f1b-91f0-66665a472a21/messages",
+      "body": {
+        "threadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+        "text": "task hold"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+        "message": {
+          "id": "eea8eef3-25a2-42d5-831a-75dcfcd613ef",
+          "at": 1793950807709,
+          "parentId": "9bf802c6-04fe-48c4-b1ba-e826d365aa23",
+          "role": "user",
+          "kind": "text",
+          "text": "task hold"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/personbot/threads/2452226d-3d9e-4b50-a83c-b73068f6aad8/stop",
+      "status": 200,
+      "result": {
+        "ok": true
+      }
+    }
+  ],
+  "recoveredTasks": {
+    "tasks": [
+      {
+        "type": "task",
+        "requestId": "c0bb429c-4691-48fb-ac11-d3856475b3e5",
+        "ticketId": "31d8d5e6a8492736ad0c6e0a2b1ed2f7",
+        "title": "hold",
+        "state": "working",
+        "ended": false,
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-4aziTQ/personbot-workspace",
+        "sessionId": "worker-31d8d5e6a8492736ad0c6e0a2b1ed2f7",
+        "sourceMessageId": "eea8eef3-25a2-42d5-831a-75dcfcd613ef",
+        "botId": "7cde5a76-afb9-4f1b-91f0-66665a472a21",
+        "threadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+        "contextId": "9a93ded4-5db3-42e6-bd4c-ea1413a3c023"
+      }
+    ],
+    "decisions": []
+  },
+  "restartedChildren": [
+    91938
+  ],
+  "messages": [
+    {
+      "id": "9bf802c6-04fe-48c4-b1ba-e826d365aa23",
+      "at": 1793950807671,
+      "parentId": null,
+      "role": "bot",
+      "kind": "text",
+      "text": "Hi, I'm Review automatic-recovery. What would you like me to do?",
+      "setupOffer": true,
+      "setupChoices": [
+        "Research and digging into topics",
+        "Keeping an eye on things for me",
+        "Email, calendar and messages",
+        "Bookings, shopping and errands",
+        "Data, spreadsheets and reports"
+      ]
+    },
+    {
+      "id": "eea8eef3-25a2-42d5-831a-75dcfcd613ef",
+      "at": 1793950807709,
+      "parentId": "9bf802c6-04fe-48c4-b1ba-e826d365aa23",
+      "role": "user",
+      "kind": "text",
+      "text": "task hold",
+      "requestPending": true
+    },
+    {
+      "id": "c4f899e8-0d22-4cb3-a7cd-242cc5b63e77",
+      "at": 1793950809537,
+      "parentId": "eea8eef3-25a2-42d5-831a-75dcfcd613ef",
+      "role": "bot",
+      "kind": "activity",
+      "tool": {
+        "name": "orchestrator_route",
+        "spoken": "running orchestrator_route",
+        "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"3771551c39e756980fb0632f1b01aa30f3e8adc9a5778c1333f38eb57ff63596\",\"title\":\"hold\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+        "itemId": "official-fixture-e2b96b13-8c3e-45f1-bbd7-9b0405c36dd5",
+        "ok": true,
+        "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-e2b96b13-8c3e-45f1-bbd7-9b0405c36dd5\"},\"toolCallId\":\"official-fixture-e2b96b13-8c3e-45f1-bbd7-9b0405c36dd5\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"3771551c39e756980fb0632f1b01aa30f3e8adc9a5778c1333f38eb57ff63596\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"31d8d5e6a8492736ad0c6e0a2b1ed2f7\\\",\\\"title\\\":\\\"hold\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/31d8d5e6a8492736ad0c6e0a2b1ed2f7\\\"}}]}\"}],\"isError\":false,\"id\":\"09f5902a-67ca-4f89-bf4e-48dfb8260eb1\"}"
+      },
+      "turnId": "c0bb429c-4691-48fb-ac11-d3856475b3e5",
+      "requestMessageId": "eea8eef3-25a2-42d5-831a-75dcfcd613ef"
+    },
+    {
+      "id": "80ba7a27-2792-4d33-b80a-db7ec16787f9",
+      "at": 1793950809548,
+      "parentId": "c4f899e8-0d22-4cb3-a7cd-242cc5b63e77",
+      "role": "bot",
+      "kind": "activity",
+      "turnId": "c0bb429c-4691-48fb-ac11-d3856475b3e5",
+      "requestMessageId": "eea8eef3-25a2-42d5-831a-75dcfcd613ef",
+      "tool": {
+        "name": "hold: Stopped",
+        "ok": true
+      }
+    },
+    {
+      "id": "82ca0b59-cead-4ff2-a5ee-e69961957ee5",
+      "at": 1793950809563,
+      "parentId": "80ba7a27-2792-4d33-b80a-db7ec16787f9",
+      "role": "bot",
+      "kind": "text",
+      "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+      "turnId": "c0bb429c-4691-48fb-ac11-d3856475b3e5",
+      "requestMessageId": "eea8eef3-25a2-42d5-831a-75dcfcd613ef"
+    }
+  ],
+  "lifecycle": {
+    "tasks": [
+      {
+        "ticketId": "31d8d5e6a8492736ad0c6e0a2b1ed2f7",
+        "title": "hold",
+        "state": "stopped",
+        "ended": true,
+        "requestId": "c0bb429c-4691-48fb-ac11-d3856475b3e5",
+        "sourceMessageId": "eea8eef3-25a2-42d5-831a-75dcfcd613ef",
+        "sessionId": "worker-31d8d5e6a8492736ad0c6e0a2b1ed2f7",
+        "workspace": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-4aziTQ/personbot-workspace",
+        "botId": "7cde5a76-afb9-4f1b-91f0-66665a472a21",
+        "threadId": "2452226d-3d9e-4b50-a83c-b73068f6aad8",
+        "contextId": "9a93ded4-5db3-42e6-bd4c-ea1413a3c023"
+      }
+    ],
+    "decisions": []
+  },
+  "resources": {
+    "activeCalls": 0,
+    "queuedCalls": 0,
+    "maxConcurrentCalls": 4,
+    "inputTokens": 24,
+    "outputTokens": 8,
+    "admittedCalls": 2,
+    "unpricedCalls": 2,
+    "unreportedCalls": 0,
+    "quarantinedWorkspaces": []
+  }
+}

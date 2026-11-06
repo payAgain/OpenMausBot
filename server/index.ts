@@ -619,6 +619,22 @@ import { createComputerRoutes } from "./routes/computers.ts";
 import { createStatusRoutes } from "./routes/status.ts";
 import { findAntigravityLeftovers, removeAntigravityLeftovers } from "./drivers/antigravity-temp.ts";
 import { createLiveRoutes } from "./routes/live.ts";
+import { createPersonbotIngress, createPersonbotRoutes } from "./routes/personbot.ts";
+import { PersonbotGateway } from "../packages/personbot-gateway/src/index.ts";
+import { assertLegacyExecutionAllowed, PERSONBOT_PRIMARY_REFUSAL, SUPERAGENT_PRIMARY_REFUSAL, primaryMutationRefused, resolvePersonbotMode } from "./personbot-mode.ts";
+import { PersonbotSettings } from "./personbot-settings.ts";
+import { createPersonbotSetupRoutes } from "./routes/personbot-setup.ts";
+import { PersonbotLegacy } from "./personbot-legacy.ts";
+import { createPersonbotLegacyRoutes } from "./routes/personbot-legacy.ts";
+import { createSuperagentGateway } from "../packages/personbot-superagent/src/index.ts";
+import type { SuperagentGateway } from "../shared/superagent.ts";
+import { createSuperagentDriver, SUPERAGENT_INSTANCE_ID } from "./superagent-driver.ts";
+import { createSuperagentDelivery } from "./superagent-delivery.ts";
+import { createSuperagentMemory } from "./superagent-memory.ts";
+import { createSuperagentProjection } from "./superagent-projection.ts";
+import { createSuperagentUsage } from "./superagent-usage.ts";
+import { superagentTaskUsage } from "./superagent-task-usage.ts";
+import { createSuperagentRoutes } from "./routes/superagent.ts";
 import { createNotificationRoutes } from "./routes/notifications.ts";
 import { createTodayRoutes } from "./routes/today.ts"; import { createInboxRoutes } from "./routes/inbox.ts"; import { createSidebarSectionRoutes } from "./routes/sidebar-sections.ts";
 import { createToolTimingRoute, createUsageRoutes } from "./routes/usage.ts";
@@ -642,6 +658,12 @@ const PORT = Number(process.env.OMB_PORT || process.env.OGB_PORT || 8799);
 const WEBHOOK_PORT = Number(process.env.OMB_WEBHOOK_PORT || PORT + 1);
 const WEBHOOK_PUBLIC_URL = process.env.OMB_WEBHOOK_PUBLIC_URL || undefined;
 const STATIC_DIR = process.env.OMB_STATIC_DIR || null;
+const personbotMode = resolvePersonbotMode(process.env, {
+  source: import.meta.url.endsWith(".ts"), hosted: hostedWorkspaceConfigured(),
+  cloud: process.env.OMB_CLOUD_ROLE === "home" || process.env.OMB_CLOUD_ROLE === "team",
+});
+const PERSONBOT_PRIMARY = personbotMode.primary;
+const SUPERAGENT_PRIMARY = PERSONBOT_PRIMARY && process.env.PERSONBOT_SUPERAGENT !== "0";
 
 ensureDirs();
 // Acquire before any durable identity, sessions, config or Store state is loaded.
@@ -718,7 +740,7 @@ if (CLOUD_HOME) {
 }
 holdIncludedServices(CLOUD_ENV);
 for (const key of CLOUD_HOME_SECRET_KEYS) delete process.env[key];
-await startBotBoxAtBoot({ dataDir: DATA_DIR, port: PORT }); // The bot box (server/bot-box): on a Cloud home every bot turn runs in it, decided before any engine starts.
+if (!PERSONBOT_PRIMARY) await startBotBoxAtBoot({ dataDir: DATA_DIR, port: PORT }); // The bot box (server/bot-box): on a Cloud home every bot turn runs in it, decided before any engine starts.
 if (CLOUD_HOME && Object.keys(CLOUD_SECRETS).length === 0) {
   console.warn("cloud home: its secrets came in this process's environment, which anything running as the same user can read in /proc; start it with cloud-home-start");
 }
@@ -770,8 +792,23 @@ let desktopMutationToken: string | undefined = DESKTOP_MANAGED ? "" : undefined;
 let companionMutationToken: string | undefined = DESKTOP_MANAGED ? "" : undefined;
 const FALLBACK_PUBLIC_URL = process.env.OMB_PUBLIC_URL?.trim().replace(/\/+$/, "") || null;
 const cfg = loadConfig();
+const personbotHome = process.env.PERSONBOT_HOME || join(homedir(), ".personbot");
+const personbotFixture = process.env.PERSONBOT_FIXTURE === "1" && process.env.OMB_TEST_SEALED_PATH === "1";
+const personbotWorkspace = process.env.PERSONBOT_WORKSPACE || join(personbotHome, "workspace");
+const personbotSettings = new PersonbotSettings({
+  home: personbotHome, workspace: personbotWorkspace,
+  provider: personbotFixture ? "personbot-fixture" : process.env.PERSONBOT_PROVIDER || "deepseek-official",
+  model: personbotFixture ? "fixture" : process.env.PERSONBOT_MODEL || "deepseek-flash",
+  fixture: personbotFixture,
+});
+let officialSuperagentGateway: SuperagentGateway | undefined;
+const officialSelection = (): ModelSelection => ({ instanceId: SUPERAGENT_INSTANCE_ID, model: personbotSettings.launch().model });
+function effectiveBot(bot: BotRecord): BotRecord {
+  return SUPERAGENT_PRIMARY ? { ...bot, modelSelection: officialSelection() } : bot;
+}
 const hostedModels = hostedModelPolicy(DATA_DIR);
-const providerConfigs = () => hostedModels ? hostedModels.configs() : instanceConfigs(cfg);
+const providerConfigs = () => SUPERAGENT_PRIMARY ? { [SUPERAGENT_INSTANCE_ID]: { driver: SUPERAGENT_INSTANCE_ID, enabled: true } }
+  : hostedModels ? hostedModels.configs() : instanceConfigs(cfg);
 const decorateHostedProvider = hostedModels ? (instance: ProviderInstance) => hostedModels.decorate(instance) : undefined;
 if (hostedModels) {
   const selection = hostedModels.select(cfg.defaultModelSelection);
@@ -800,7 +837,27 @@ function customDomainStatus() {
     serverIpv4: DESKTOP_MANAGED ? null : customDomainIpv4(),
   };
 }
-const registry = new ProviderRegistry(BUILT_IN_DRIVERS, { statusFile: join(DATA_DIR, "providers", "engine-status.json") });
+const superagentDriver = createSuperagentDriver({
+  gateway: () => {
+    if (!officialSuperagentGateway) throw new Error("Super Agent is still starting");
+    return officialSuperagentGateway;
+  },
+  model: () => personbotSettings.launch().model,
+  configured: () => personbotFixture || Boolean(personbotSettings.launch().env.DEEPSEEK_API_KEY),
+  currentBinding: threadId => {
+    const bot = store.botByThread(threadId);
+    const task = bot && store.taskByThread(bot.id, threadId);
+    const cursor = task?.resumeCursors[SUPERAGENT_INSTANCE_ID];
+    if (!bot || !task || task.rewound || typeof cursor !== "string" || !/^omb-superagent:[A-Za-z0-9_-]{1,128}$/.test(cursor)) return undefined;
+    const path = store.activePath(threadId);
+    const owner = directRequestOwners.get(threadId);
+    const source = path.findLast(message => message.role === "user" && message.kind === "text");
+    const requestId = owner?.messageId && path.some(message => message.id === owner.messageId) && owner.turnId
+      ? owner.turnId : source ? path.findLast(message => message.role === "bot" && message.requestMessageId === source.id && message.turnId)?.turnId : undefined;
+    return { botId: bot.id, threadId, contextId: cursor.slice("omb-superagent:".length), ...(requestId ? { requestId } : {}) };
+  },
+});
+const registry = new ProviderRegistry(SUPERAGENT_PRIMARY ? [superagentDriver] : BUILT_IN_DRIVERS, { statusFile: join(DATA_DIR, "providers", "engine-status.json") });
 const supportsApprovalMode = createApprovalModeSupport(registry);
 registerEnginesBinDir();
 
@@ -1406,7 +1463,7 @@ function resyncOpenCodeProviderKeys(): void {
   }
 }
 const firstEngineRead = holdUntilFirstEngineRead();
-await registry.load(providerConfigs(), decorateHostedProvider);
+await registry.load(PERSONBOT_PRIMARY && !SUPERAGENT_PRIMARY ? {} : providerConfigs(), decorateHostedProvider);
 const bundledSkills = loadBundledSkills();
 const availableSkills = () => mergeSkills(bundledSkills, loadUserSkills(join(DATA_DIR, "skills")));
 /** Every turn the engine can mount it, whatever its words: they pick only the skill's instructions. A Cloud home or a hosted workspace has no USB port. */
@@ -1910,6 +1967,7 @@ function boatNotConfigured(bot: { name: string }, source: PlaceSource): PlaceUna
   return placeUnavailable("cloud", { state: CLOUD_HOME ? "cc-unavailable" : "cc-needs-key", params: { bot: bot.name }, source }, Boolean(CLOUD_HOME));
 }
 const directTurnDispatchClaims = new Map<string, DirectTurnDispatchClaim>();
+const nativeLifecycleThreads = new Map<string, number>();
 const directTurnGenerationByThread = new Map<string, string>();
 // Latest direct request per thread, kept past Stop until completion or failure cleanup; unknown continuations deliberately lose proof.
 const directRequestOwners = new Map<string, {
@@ -2205,11 +2263,13 @@ async function bindTurnComputer(owner: TurnOwner, resource: string, exclusive = 
 }
 
 function botForThread(botId: string, threadId: string): BotRecord | null {
-  return directTurnBots.get(threadId) ?? store.projectBotForTask(botId, threadId) ?? store.bot(botId);
+  const bot = directTurnBots.get(threadId) ?? store.projectBotForTask(botId, threadId) ?? store.bot(botId);
+  return bot ? effectiveBot(bot) : null;
 }
 
 function threadBusy(botId: string, threadId: string): boolean {
-  return store.taskByThread(botId, threadId)?.busy === true || directTurnDispatchClaims.has(threadId);
+  return store.taskByThread(botId, threadId)?.busy === true || directTurnDispatchClaims.has(threadId)
+    || nativeLifecycleThreads.has(threadId);
 }
 
 function parksBehindCoordination(botId: string, threadId: string): boolean {
@@ -2264,6 +2324,9 @@ async function interruptDirectThread(botId: string, threadId: string, cause?: st
   if (requestOwner) {
     requestOwner.stopped = true;
     if (requestOwner.messageId) store.patchMessage(threadId, requestOwner.messageId, { requestCancelled: true });
+  } else if (SUPERAGENT_PRIMARY) {
+    const source = store.activePath(threadId).findLast(message => message.role === "user" && message.kind === "text");
+    if (source) store.patchMessage(threadId, source.id, { requestCancelled: true });
   }
   stopParkedCards(threadId);
   coordinator.stopAwaitingDirect(threadId, cause);
@@ -2287,12 +2350,48 @@ async function interruptParkedTurn(botId: string, threadId: string): Promise<voi
 
 async function interruptAllDirectThreads(botId: string): Promise<void> {
   const threads = store.tasks(botId).filter((task) => task.busy || directTurnDispatchClaims.has(task.threadId) || coordinator.activeDirect(task.threadId));
+  const nativeStop = stopNativeTasks(botId);
   // Revoke every sibling before yielding to any provider teardown.
   for (const task of threads) {
     cancelDirectTurnDispatch(botId, task.threadId);
     revokeInternalCapabilitiesForThread(task.threadId);
   }
-  await Promise.all(threads.map((task) => interruptDirectThread(botId, task.threadId)));
+  await Promise.all([nativeStop, ...threads.map((task) => interruptDirectThread(botId, task.threadId))]);
+}
+
+async function teardownNativeContexts(botId?: string, threadId?: string, retire = false): Promise<void> {
+  const gateway = officialSuperagentGateway;
+  if (!gateway?.inspect) return;
+  const threads = threadId ? [threadId] : botId ? store.tasks(botId).map(task => task.threadId) : [];
+  for (const id of threads) nativeLifecycleThreads.set(id, (nativeLifecycleThreads.get(id) ?? 0) + 1);
+  try {
+    const snapshot = await gateway.inspect();
+    const bindings = snapshot.bindings.filter(binding => binding.active
+      && (botId === undefined || binding.botId === botId) && (threadId === undefined || binding.threadId === threadId));
+    const targets = new Map(bindings.map(binding => [JSON.stringify([binding.botId, binding.threadId]),
+      { botId: binding.botId, threadId: binding.threadId }]));
+    if (botId) for (const id of threads) targets.set(JSON.stringify([botId, id]), { botId, threadId: id });
+    await Promise.all([...targets.values()].map(binding => retire
+      ? gateway.revoke!(binding)
+      : gateway.interrupt(binding, { scope: "conversation" })));
+    if (retire) for (const binding of targets.values()) {
+      if (store.taskByThread(binding.botId, binding.threadId)) store.patchTask(binding.botId, binding.threadId, { rewound: true });
+    }
+  } finally {
+    for (const id of threads) {
+      const remaining = (nativeLifecycleThreads.get(id) ?? 1) - 1;
+      if (remaining) nativeLifecycleThreads.set(id, remaining);
+      else nativeLifecycleThreads.delete(id);
+    }
+  }
+}
+
+function stopNativeTasks(botId: string, threadId?: string): Promise<void> {
+  return teardownNativeContexts(botId, threadId);
+}
+
+function revokeNativeContext(botId: string, threadId?: string): Promise<void> {
+  return teardownNativeContexts(botId, threadId, true);
 }
 const retiredProviderTurns = new RetiredTurnRegistry();
 const pendingCancelledProviderHandshakes = new PendingTurnCancellations();
@@ -2510,6 +2609,7 @@ function selectableInstances<T extends SelectableInstance>(instances: readonly T
 }
 
 async function defaultSelection(saved: ModelSelection | null = cfg.defaultModelSelection ?? null, instances?: readonly SelectableInstance[]) {
+  if (SUPERAGENT_PRIMARY) return officialSelection();
   if (hostedModels) return hostedModels.select(saved ?? undefined);
   return selectDefaultModelSelection(selectableInstances(instances ?? await registry.describe()), saved ?? undefined, selectionContext);
 }
@@ -2520,6 +2620,7 @@ const selectionContext = {
 };
 
 async function refreshUnsetModelSelections(instances?: readonly SelectableInstance[], read = testedAi.read()): Promise<void> {
+  if (PERSONBOT_PRIMARY) return;
   if (registry.provisional(instances)) return;
   const selectable = selectableInstances(instances ?? await registry.describe());
   creditMoves?.settle(selectable); routineHolds?.engines(Boolean(creditMoves?.away(selectable)));
@@ -2598,6 +2699,9 @@ function checkedModelSelection(
     instanceId: value.instanceId.trim(),
     model: value.model.trim(),
   };
+  if (SUPERAGENT_PRIMARY && (selection.instanceId !== SUPERAGENT_INSTANCE_ID || selection.model !== personbotSettings.launch().model)) {
+    return { ok: false, status: 400, error: "This system uses the official DSH Super Agent. Configure its model in Settings → Connections." };
+  }
   if (hostedModels && !hostedModels.allows(selection)) return { ok: false, status: 400, error: hostedModels.error() };
   if (value.effort !== undefined) {
     if (!isEffortLevel(value.effort)) {
@@ -2701,6 +2805,7 @@ function threadEngine(instanceId: string): ThreadEngine | undefined {
 }
 
 function threadModelGivingWay(botId: string, threadId: string): ModelSelection | null {
+  if (SUPERAGENT_PRIMARY) return null;
   const bot = store.bot(botId);
   const own = store.taskByThread(botId, threadId)?.modelSelection;
   if (!bot || !own) return null;
@@ -2711,6 +2816,7 @@ function threadModelGivingWay(botId: string, threadId: string): ModelSelection |
 }
 
 function turnSelection(botId: string, threadId: string): ModelSelection | undefined {
+  if (SUPERAGENT_PRIMARY) return officialSelection();
   return threadModelGivingWay(botId, threadId) ? store.bot(botId)?.modelSelection : store.projectBotForTask(botId, threadId)?.modelSelection;
 }
 
@@ -2797,7 +2903,7 @@ function checkedMemberIds(value: unknown): { ok: true; memberIds: string[] } | {
   }
   return { ok: true, memberIds };
 }
-let bootSelection = { instanceId: "", model: "" }; // Settled by one tiny test message through each AI it could be (server/tested-ai.ts).
+let bootSelection = SUPERAGENT_PRIMARY ? officialSelection() : { instanceId: "", model: "" }; // The official profile has one native execution backend.
 const testedAi = createTestedAi({ engine: (instanceId) => registry.get(instanceId), store: () => store, threadBusy, context: selectionContext, changed: () => refreshUnsetModelSelections().then(() => broadcast({ kind: "config", ...configStatus() })),
   saved: () => [cfg.defaultModelSelection, cfg.newBotDefaults?.profile.modelSelection], hosted: () => Boolean(hostedModels), identity: (instanceId) => configIdentity(providerConfigs()[instanceId]), file: join(DATA_DIR, "providers", "ai-checks.json"), forBot: (selection) => withNewBotEffort(selection, cfg.newBots?.effort, registry.get(selection.instanceId)?.adapter.capabilities.effortLevels) });
 /** The start-up read of every engine: routines and room handoffs wait for it; a turn waits only for its own engine's probe. */
@@ -2859,9 +2965,10 @@ const teamComputers = new TeamComputers(join(DATA_DIR, "team-computers.json"), E
 let followupsReady = false;
 const sendSequencer = new SendSequencer();
 // Before the new-bot default is read: a saved default may name the engine.
-await retryComputerEngineMove(); mcpServersHost.boot();
-if (store.needsSeed()) await Promise.race([cloudCreditStarted, new Promise(resolve => setTimeout(resolve, 15_000).unref())]);
-if (store.needsSeed()) { firstEngineRead(); await refreshUnsetModelSelections(); }
+if (!PERSONBOT_PRIMARY) { await retryComputerEngineMove(); mcpServersHost.boot(); }
+if (!PERSONBOT_PRIMARY && store.needsSeed()) await Promise.race([cloudCreditStarted, new Promise(resolve => setTimeout(resolve, 15_000).unref())]);
+if (PERSONBOT_PRIMARY) { firstEngineRead(); if (SUPERAGENT_PRIMARY) store.seedIfEmpty(); }
+else if (store.needsSeed()) { firstEngineRead(); await refreshUnsetModelSelections(); }
 else enginesRead = registry.readAtStart(enginesByUse([cfg.defaultModelSelection, ...store.bots.map((bot) => bot.modelSelection)]), firstEngineRead).then(async ({ engines, changed }) => {
   await refreshUnsetModelSelections(engines); if (changed) broadcast({ kind: "config", ...configStatus() });
 }).catch((error) => console.warn(`[engines] reading the engines at start failed: ${error instanceof Error ? error.message : String(error)}`)).finally(() => { enginesRead = null; });
@@ -2876,9 +2983,9 @@ for (const pending of startupCatalogs) {
     broadcast({ kind: "config", ...configStatus() });
   }, () => {});
 }
-const firstHourFresh = Boolean(CLOUD_PERSONAL) && store.needsSeed(); testedAi.seed({ defaultBot: !CLOUD_TEAM, ...(firstHourFresh ? { intro: (bot) => greetingMessage(bot, { name: cfg.profile?.name }, cfg.language) } : {}) }); moveFreeze.hold(() => { if (!CLOUD_TEAM) ensureDefaultBot(store, { dataDir: DATA_DIR }); }, () => {}); if (CLOUD_TEAM) readTeamRolesWith((email) => sessions.list().filter((session) => session.email?.toLowerCase() === email && session.teamRole).sort((a, b) => b.createdAt - a.createdAt)[0]?.teamRole ?? null); if (CLOUD_TEAM) void mausbotOwnChat.claimAll();
+const firstHourFresh = Boolean(CLOUD_PERSONAL) && store.needsSeed(); if (!PERSONBOT_PRIMARY) testedAi.seed({ defaultBot: !CLOUD_TEAM, ...(firstHourFresh ? { intro: (bot) => greetingMessage(bot, { name: cfg.profile?.name }, cfg.language) } : {}) }); moveFreeze.hold(() => { if (!PERSONBOT_PRIMARY && !CLOUD_TEAM) ensureDefaultBot(store, { dataDir: DATA_DIR }); }, () => {}); if (CLOUD_TEAM) readTeamRolesWith((email) => sessions.list().filter((session) => session.email?.toLowerCase() === email && session.teamRole).sort((a, b) => b.createdAt - a.createdAt)[0]?.teamRole ?? null); if (CLOUD_TEAM) void mausbotOwnChat.claimAll();
 hostedModels?.reconcile(store);
-if (skillsLibraryEnabled(cfg)) {
+if (!PERSONBOT_PRIMARY && skillsLibraryEnabled(cfg)) {
   try {
     const sweep = runSkillsLibraryBootSweep({
       bots: store.bots,
@@ -2896,7 +3003,7 @@ if (skillsLibraryEnabled(cfg)) {
 }
 // Reconcile stale bot references before Electron can ACK the journal, so id reuse never attaches a bot to someone else's new account.
 let browserCleanupReferencesReconciled = true;
-try {
+if (!PERSONBOT_PRIMARY) try {
   const committedProfileIds = new Set(browserCleanup.committedProfileIds());
   for (const bot of store.bots) {
     if (bot.browserProfile && committedProfileIds.has(bot.browserProfile)) {
@@ -2910,7 +3017,7 @@ try {
   );
 }
 // Replay only after the secondary write above is durable.
-if (browserCleanupReferencesReconciled) browserCleanup.startPending();
+if (!PERSONBOT_PRIMARY && browserCleanupReferencesReconciled) browserCleanup.startPending();
 
 let threadsAwaitingTeammates = (): ReadonlySet<string> => new Set<string>();
 let cacheKeepWarmStatus = (_threadId: string): KeepWarmStatus | undefined => undefined;
@@ -2925,6 +3032,7 @@ const wireTask = (task: TaskRecord, botModel: ModelSelection, awaiting = threads
 
 /** Strips provider session ids (resumeCursors) here, not at call sites, so no broadcast or paired phone ever gets them. */
 const wireBot = (bot: BotRecord): WireBot => {
+  bot = effectiveBot(bot);
   const { resumeCursors: _resumeCursors, tasks, approvalGrant, lastProfileRequestId: _lastProfileRequestId, lastTeamSetupReceipt: _lastTeamSetupReceipt, packageBase: _packageBase, assignedSkills: _assignedSkills, mainThreadChoice: _mainThreadChoice, ...rest } = bot;
   // Clients see Ask while an elevated grant awaits the desktop's confirmation, never a grant that may still roll back.
   const visible = approvalGrant && !approvalGrant.threadOnly
@@ -2933,7 +3041,7 @@ const wireBot = (bot: BotRecord): WireBot => {
   const awaiting = threadsAwaitingTeammates();
   return { ...visible, waitingForTeammates: awaiting.has(bot.threadId) && !threadBusy(bot.id, bot.threadId),
     mainThreadId: botMainThread(bot.id),
-    avatarUrl: visible.avatarUrl ?? null, ...(tasks ? { tasks: tasks.map((task) => wireTask(task, bot.modelSelection, awaiting)) } : {}) };
+    avatarUrl: visible.avatarUrl ?? null, ...(tasks ? { tasks: tasks.map((task) => wireTask(SUPERAGENT_PRIMARY ? { ...task, modelSelection: officialSelection() } : task, bot.modelSelection, awaiting)) } : {}) };
 };
 
 function toolScopeForTurn(botId: string) {
@@ -3479,7 +3587,7 @@ function handleDesktopTrustedApprovalMessage(raw: unknown): boolean {
       return true;
     }
   }
-  const emergencyDowngrade = existing.busy && isEmergencyApprovalDowngrade(currentMode, mode);
+  const emergencyDowngrade = isEmergencyApprovalDowngrade(currentMode, mode);
   if (!supportsApprovalMode(existing.modelSelection, mode)) {
     respond({ ok: false, error: "Custom approval settings are available only for Codex bots" });
     return true;
@@ -3915,7 +4023,7 @@ const questionRouting = createQuestionRouting({ store, active: () => coordinator
   keptPrivate: (node, requester) => keptPrivate({ child: teamHost.privateTo(node.threadId), parent: teamHost.privateTo(requester.threadId) }),
   steer: async (threadId, text) => canSteerThread(threadId) && (await steerThread(threadId, text)) !== "refused", mayReach: outsideLineage.mayReach });
 const handoffTicks = createHandoffTicks(), coordinator: Coordinator = createCoordinator({
-  dataDir: DATA_DIR,
+  dataDir: PERSONBOT_PRIMARY ? ":memory:" : DATA_DIR,
   now: Date.now, wrote: handoffTicks.kick,
   log: line => console.error("coordinator:", line),
   legacyThreads: {
@@ -4538,6 +4646,8 @@ store.onChange((change) => {
       broadcast({ kind: "thread", threadId: change.threadId, activeLeafId: change.activeLeafId });
       break;
     case "thread.deleted":
+      void teardownNativeContexts(undefined, change.threadId, true)
+        .catch(error => console.error("Super Agent conversation revocation failed:", String(error)));
       directRequestOwners.delete(change.threadId);
       stoppedTurns.delete(change.threadId);
       turnStops.forget(change.threadId);
@@ -4561,6 +4671,8 @@ store.onChange((change) => {
       broadcast({ kind: "bots.order", botIds: store.bots.map((bot) => bot.id) });
       break;
     case "bot.deleted":
+      void revokeNativeContext(change.botId)
+        .catch(error => console.error("Super Agent bot revocation failed:", String(error)));
       sentThreads.delete(change.botId);
       try { commandAllowlist.clear(change.botId); mcpServersHost.botDeleted(change.botId); }
       catch { console.error("[command-allowlist] Could not remove deleted bot's saved rules."); }
@@ -5071,10 +5183,11 @@ const watchdog = new TurnWatchdog({
     release.unref?.();
   },
 });
-watchdog.start();
+if (!PERSONBOT_PRIMARY) watchdog.start();
 
 bus.subscribe((event: RuntimeEvent) => {
   if (shouldIgnoreProviderEvent(event)) return;
+  if (SUPERAGENT_PRIMARY && event.nativeTask) return;
   turnStops.note(event);
   if (event.type === "request.opened") watchdog.setWaitingOnHuman(event.threadId, true);
   else if (event.type === "request.resolved") watchdog.setWaitingOnHuman(event.threadId, false);
@@ -5123,7 +5236,7 @@ const sideJobs = createSideJobs({
   helper: cacheUntilConfigChanges((config) => helperSelection(config)),
   ...(hostedModels ? { modelAllowed: (selection: ModelSelection) => hostedModels.allows(selection) } : {}),
   assertWithinBudget: () => assertWithinBudget(cfg, DATA_DIR),
-  book: bookTurnUsage,
+  book: (row, tokensReported, notificationThreadId) => { if (!SUPERAGENT_PRIMARY) bookTurnUsage(row, tokensReported, notificationThreadId); },
   log: (line) => console.log(line),
 });
 
@@ -5136,7 +5249,9 @@ const setupSuggestions = setupSuggestionsFor({ store, config: () => cfg, shared:
 const memoryUpkeep = createMemoryUpkeep({
   bots: () => store.bots,
   bot: (id) => store.bot(teamHost.baseBotId(id)) ?? undefined,
-  engine: (botId) => sideJobs.text("memory", teamHost.baseBotId(botId)),
+  engine: (botId) => SUPERAGENT_PRIMARY
+    ? { generateText: (prompt, options) => officialSuperagentGateway!.generateText(prompt, options) }
+    : sideJobs.text("memory", teamHost.baseBotId(botId)),
   busy: (botId) => botHasActiveTurn(teamHost.baseBotId(botId)),
   addToAboutMe: (from, texts) => aboutMeFacts.learn(from, texts),
   sourceLabel: (botId, threadId) => memorySourceLabel({ room: store.groupByThread(threadId), task: store.taskByThread(teamHost.baseBotId(botId), threadId), threadId }),
@@ -5246,7 +5361,7 @@ const cacheKeepWarm = createCacheKeepWarm({
 cacheKeepWarmStatus = (threadId) => cacheKeepWarm.status(threadId);
 // Warm summaries (server/host/warm-summary-host.ts): a long conversation is summarized while it is idle, not at its next turn.
 const warmSummaries = createWarmSummaryHost({ store, instance: (id) => registry.get(id), queued: hasQueuedSteeredMessages, coordinator, waits: () => botWaits, routines: () => routines,
-  enabled: () => cfg.context?.autoCompact !== false && process.env.OMB_WARM_SUMMARY !== "0" && spendState(cfg, DATA_DIR)?.exceeded !== true, memoryShort: () => engineMemory.headroom() < 0.3,
+  enabled: () => !SUPERAGENT_PRIMARY && cfg.context?.autoCompact !== false && process.env.OMB_WARM_SUMMARY !== "0" && spendState(cfg, DATA_DIR)?.exceeded !== true, memoryShort: () => engineMemory.headroom() < 0.3,
   nativeCompactAt: (id) => { const instance = registry.get(id), at = instance ? nativeCompactTokens(instance) : undefined; return at && Number.isFinite(at) ? at : undefined; },
   busy: (botId, threadId) => threadBusy(botId, threadId) || botHasActiveTurn(botId), keepWarmUntil: (threadId) => cacheKeepWarm.status(threadId)?.until, book: bookForkUsage, log: (line) => console.info(line), language: (threadId) => personLanguages.forLine(threadStarters.get(threadId)),
   fold: async ({ botId, threadId, instanceId }, idle) => { const bot = store.projectBotForTask(botId, threadId), model = store.taskByThread(botId, threadId)?.lastContextModel, instance = registry.get(instanceId), before = latestCompaction(store.activePath(threadId))?.id;
@@ -5341,7 +5456,7 @@ bus.subscribe((event: RuntimeEvent) => {
 });
 
 const skillReview = createSkillReview({
-  enabled: () => skillReviewEnabled(cfg),
+  enabled: () => !SUPERAGENT_PRIMARY && skillReviewEnabled(cfg),
   threshold: () => skillReviewSteps(cfg),
   bot: (botId) => store.bot(botId) ?? undefined,
   engine: (botId) => sideJobs.text("skill-review", botId),
@@ -6153,7 +6268,7 @@ function continueComputerSelection(threadId: string, generation: string | undefi
 /** An interrupt or steer must reach the engine actually running, whatever the bot's settings say now. */
 const runningTurnEngines = new Map<string, NonNullable<ReturnType<typeof registry.get>>>();
 function runningTurnInstance(bot: BotRecord | null | undefined, threadId: string): ReturnType<typeof registry.get> {
-  return runningTurnEngines.get(threadId) ?? (bot ? registry.get(bot.modelSelection.instanceId) : null);
+  return runningTurnEngines.get(threadId) ?? (bot ? registry.get(SUPERAGENT_PRIMARY ? SUPERAGENT_INSTANCE_ID : bot.modelSelection.instanceId) : null);
 }
 
 function engineSteersImages(instance: ReturnType<typeof registry.get> | undefined): boolean {
@@ -6285,7 +6400,7 @@ function releaseLocalVmThread(threadId: string): void {
   localVmThreadTargets.delete(threadId);
 }
 
-void recoverLocalVms({
+if (!PERSONBOT_PRIMARY) void recoverLocalVms({
   mode: localVmMode(cfg), seats: localVmMaxInstances(cfg), bots: store.bots, seen: localVmSeen,
   status: (target) => containerComputerStatus(undefined, undefined, target).catch(() => null),
   note: noteLocalVmSeen, armIdle: (target) => localVmIdleFor(target).touch(),
@@ -6321,6 +6436,10 @@ const usageTrace = createTraceRecorder({ dataDir: DATA_DIR });
 bus.subscribe((event: RuntimeEvent) => { if (!shouldIgnoreProviderEvent(event)) usageTrace.observe(event); });
 bus.subscribe((event: RuntimeEvent) => {
   if (shouldIgnoreProviderEvent(event)) return;
+  if (SUPERAGENT_PRIMARY && event.nativeTask && originalSuperagentProjection(event)) {
+    broadcast({ kind: "runtime", event });
+    return;
+  }
   const localVmTarget = localVmThreadTargets.get(event.threadId);
   if (localVmTarget) {
     localVmLeaseFor(localVmTarget).touch(event.threadId);
@@ -6444,6 +6563,7 @@ bus.subscribe((event: RuntimeEvent) => {
     case "session.started":
       if (bot && event.sessionId && event.providerInstanceId) {
         store.setResumeCursor(bot.id, event.providerInstanceId, event.sessionId, event.threadId);
+        if (SUPERAGENT_PRIMARY && event.providerInstanceId === SUPERAGENT_INSTANCE_ID) store.patchTask(bot.id, event.threadId, { rewound: false });
       }
       if (typeof event.model === "string" && event.model) sessionModelByThread.set(event.threadId, event.model); if (bot && event.mcpFailed?.length) mcpServersHost.health.engineFailed(bot.id, event.mcpFailed); const reconnecting = event.mcpFailed?.length && (bot ?? speaker) ? retryBrokeredMcp({ botId: bot?.id ?? speaker!.botId, threadId: event.threadId }, event.mcpFailed) : []; if (reconnecting.length) pushMessage({ role: "bot", kind: "activity", tool: { name: mcpReconnectLine(reconnecting, threadLanguage(event.threadId)), ok: false } });
       break;
@@ -6756,12 +6876,12 @@ bus.subscribe((event: RuntimeEvent) => {
       const facts = { ...turnStops.read(event.threadId, event.turnId)?.flags, stopReason: directRequestOwners.get(event.threadId)?.stopped ? "cancelled" : event.stopReason };
       const held = facts.limit ?? (signedOutStop(facts.stopReason, failureDetail) ? "signed-out" as const : undefined); // a limit or a sign-out: one incident a stretch, the person told by its own notice
       const fileIncident = () => { if (broken && (!held || limitTakeover.firstIncident(broken.id, broken.modelSelection, held, facts.limitResetsAt))) reportIncident({ kind: "failed", bot: broken, threadId: event.threadId, detail: failureDetail, facts, notified: Boolean(held) }); };
-      if (failed && bot) void quotaSwitch.turnFailed(bot, event, internal);
-      else if (bot && event.ok) quotaSwitch.turnSucceeded(bot, event.threadId);
-      const question = bot && event.ok && !stopped && completedTurnId && !routineRun && chiefEscalationsEnabled(cfg) ? needsInputQuestion(store.activePath(event.threadId)
+      if (!SUPERAGENT_PRIMARY && failed && bot) void quotaSwitch.turnFailed(bot, event, internal);
+      else if (!SUPERAGENT_PRIMARY && bot && event.ok) quotaSwitch.turnSucceeded(bot, event.threadId);
+      const question = !SUPERAGENT_PRIMARY && bot && event.ok && !stopped && completedTurnId && !routineRun && chiefEscalationsEnabled(cfg) ? needsInputQuestion(store.activePath(event.threadId)
         .findLast((message) => message.role === "bot" && message.kind === "text" && message.turnId === completedTurnId)?.text ?? "") : undefined;
       if (bot && question !== undefined) reportEscalation({ kind: "needs-input", bot, threadId: event.threadId, gate: NEEDS_INPUT_GATE, reason: question, alreadyNotified: false });
-      if (bot && event.ok && !stopped && completedTurnId && !routineRun && !coordinator.assignerOf(event.threadId)) askCards.ownQuestion(bot.id, event.threadId, completedTurnId);
+      if (!SUPERAGENT_PRIMARY && bot && event.ok && !stopped && completedTurnId && !routineRun && !coordinator.assignerOf(event.threadId)) askCards.ownQuestion(bot.id, event.threadId, completedTurnId);
       const lastReported = turnUsage.get(event.threadId);
       turnUsage.delete(event.threadId);
       const lastContext = turnContext.get(event.threadId);
@@ -6811,7 +6931,7 @@ bus.subscribe((event: RuntimeEvent) => {
           ? `${measuredSelection.instanceId}:${routedModel ?? measuredSelection.model}` : undefined });
         const promptBytes = turnPromptBytes.get(event.threadId);
         turnPromptBytes.delete(event.threadId);
-        bookTurnUsage({
+        if (!SUPERAGENT_PRIMARY) bookTurnUsage({
           botId: bot.id,
           botName: bot.name,
           threadId: event.threadId,
@@ -6970,11 +7090,11 @@ function runtimeWorkPending(threadId: string): boolean {
 }
 
 const { reportIncident, reportEscalation, incidentRefused, retryThread } = createChiefNotices({
-  store, notify, threadBusy, botAtThreadCapacity, startTurn, quietThread: (_botId, threadId) => proactive.fence.confines(threadId) || botApiThread(threadId), privateThread: (threadId) => teamHost.ownTurn(threadId), confined: cloudGuestDriven, threadLanguage,
+  store, notify, threadBusy, botAtThreadCapacity, startTurn, quietThread: (_botId, threadId) => SUPERAGENT_PRIMARY || proactive.fence.confines(threadId) || botApiThread(threadId), privateThread: (threadId) => teamHost.ownTurn(threadId), confined: cloudGuestDriven, threadLanguage,
   assignerOf: (threadId) => coordinator.assignerOf(threadId),
   threadSettling: (threadId) => settlingTurns.has(threadId), threadQueued: (botId, threadId) => queuedThreadPosition(botId, threadId) !== null,
   groupTurnActive: (botId) => Boolean(activeGroupTurnForBot(botId)),
-  escalationsEnabled: () => chiefEscalationsEnabled(cfg), ...(teamOwners.noticeRouting ? { routing: teamOwners.noticeRouting } : {}),
+  escalationsEnabled: () => !SUPERAGENT_PRIMARY && chiefEscalationsEnabled(cfg), ...(teamOwners.noticeRouting ? { routing: teamOwners.noticeRouting } : {}),
   continueRequest: (botId, threadId, text) => startTurn(botId, text, { threadId, unattended: true, cardContinuation: true, requestMessageId: directRequestOwners.get(threadId)?.messageId }),
 });
 
@@ -7059,6 +7179,7 @@ async function compactConversation(input: {
   instance: NonNullable<ReturnType<typeof registry.get>>; model: string;
   excludedIds: ReadonlySet<string>; manual: boolean; idle?: AbortSignal;
 }): Promise<void> {
+  assertLegacyExecutionAllowed(PERSONBOT_PRIMARY);
   const { bot, threadId, generation, instance, model, excludedIds, manual, idle } = input;
   const task = store.taskByThread(bot.id, threadId);
   if (!task || (!manual && cfg.context?.autoCompact === false)) return;
@@ -7143,15 +7264,15 @@ const repeats = createLoopGuard({
     await interruptDirectThread(bot.id, threadId, cause);
   },
 });
-bus.subscribe((event: RuntimeEvent) => { if (!shouldIgnoreProviderEvent(event)) repeats.onEvent(event); });
+bus.subscribe((event: RuntimeEvent) => { if (!SUPERAGENT_PRIMARY && !shouldIgnoreProviderEvent(event)) repeats.onEvent(event); });
 const personFirst = createPersonFirst({ firstMs: Number(process.env.OMB_PERSON_FIRST_MS) || undefined, waiting: (threadId) => watchdog.waiting(threadId) || activeRoutineRunForThread(threadId) !== null,
   stop: async (threadId, line) => { const bot = store.botByThread(threadId); if (!bot) return; store.appendMessage(threadId, { role: "bot", kind: "activity", tool: { name: line, ok: true } }); turnStops.stopping(threadId, liveTurnByThread.get(threadId), line); await interruptDirectThread(bot.id, threadId, line); } });
-bus.subscribe((event: RuntimeEvent) => { if (!shouldIgnoreProviderEvent(event)) personFirst.onEvent(event); });
+bus.subscribe((event: RuntimeEvent) => { if (!SUPERAGENT_PRIMARY && !shouldIgnoreProviderEvent(event)) personFirst.onEvent(event); });
 // A first reply that never comes gets one notice with a way out (server/first-reply-rescue.ts), on listeners of their own.
 const firstReplyRescue = createFirstReplyRescue({ store, botForThread, speaker: (threadId) => groupSpeakers.get(threadId), runningEngine: (threadId) => runningTurnEngines.get(threadId)?.instanceId,
   engineName: (instanceId) => engineName(instanceId), quiet: (threadId) => isInternalTurn(threadId) || activeRoutineRunForThread(threadId) !== null,
   live: (threadId, turnId) => liveTurns.running(threadId) === turnId, requests: directRequestOwners });
-bus.subscribe((event: RuntimeEvent) => { if (!shouldIgnoreProviderEvent(event)) liveTurns.onEvent(event); }); bus.subscribe((event: RuntimeEvent) => { if (!shouldIgnoreProviderEvent(event)) firstReplyRescue.onEvent(event); });
+bus.subscribe((event: RuntimeEvent) => { if (!shouldIgnoreProviderEvent(event)) liveTurns.onEvent(event); }); bus.subscribe((event: RuntimeEvent) => { if (!SUPERAGENT_PRIMARY && !shouldIgnoreProviderEvent(event)) firstReplyRescue.onEvent(event); });
 
 // Registered after the main fold, so busy is already false here; not gated on event.ok, since queued messages are the user's own words.
 bus.subscribe((event: RuntimeEvent) => {
@@ -7234,6 +7355,7 @@ class DirectSendRefused extends Error {
 }
 
 function directSendRefusal(botId: string, threadId: string): DirectSendRefused | null {
+  if (PERSONBOT_PRIMARY && !SUPERAGENT_PRIMARY) return new DirectSendRefused(409, { error: PERSONBOT_PRIMARY_REFUSAL, code: "personbot_primary" });
   try {
     assertWithinBudget(cfg, DATA_DIR);
   } catch (error) {
@@ -7546,7 +7668,10 @@ function threadTitleGate(bot: Pick<BotRecord, "modelSelection">): { ok: true; in
 const titleRegenerations = new Set<string>();
 
 /** The turn's start saves its thread's bookkeeping (title, last asked, read) once, when its synchronous part returns. */
-function startTurn(...args: Parameters<typeof beginTurn>): ReturnType<typeof beginTurn> { return batchSaves(() => beginTurn(...args)); }
+function startTurn(...args: Parameters<typeof beginTurn>): ReturnType<typeof beginTurn> {
+  assertLegacyExecutionAllowed(PERSONBOT_PRIMARY && !SUPERAGENT_PRIMARY);
+  return batchSaves(() => beginTurn(...args));
+}
 async function beginTurn(
   botId: string,
   text: string,
@@ -7592,6 +7717,10 @@ async function beginTurn(
   const profile = store.bot(botId); assertBotHere(profile);
   if (!profile) throw Object.assign(new Error("no such bot"), { status: 404 });
   const threadId = opts?.threadId ?? profile.threadId;
+  if (SUPERAGENT_PRIMARY && (opts?.compactOnly || opts?.coordination || opts?.commsDepth || opts?.automationSource || opts?.goalRunId
+    || opts?.unattended || opts?.cardContinuation || opts?.peerAsk)) {
+    throw Object.assign(new Error("The official Super Agent owns task delegation, automation and native context compaction."), { status: 409 });
+  }
   const continuingRoutine = opts?.cardContinuation ? activeRoutineRunForThread(threadId) : null;
   if (continuingRoutine) {
     const onDispatchError = opts?.onDispatchError;
@@ -7605,9 +7734,9 @@ async function beginTurn(
       },
     };
   }
-  healThreadModel(botId, threadId);
-  limitFailovers.restore(botId, threadId);
-  const bot = store.projectBotForTask(botId, threadId);
+  if (!SUPERAGENT_PRIMARY) { healThreadModel(botId, threadId); limitFailovers.restore(botId, threadId); }
+  const storedBot = store.projectBotForTask(botId, threadId);
+  const bot = storedBot ? effectiveBot(storedBot) : null;
   if (!bot) throw Object.assign(new Error("no such task"), { status: 404 });
   if (bot.approvalGrant) {
     throw Object.assign(new Error("this bot's approval level is still being confirmed — try again"), { status: 409, code: "settling" });
@@ -7797,7 +7926,7 @@ async function beginTurn(
   }
   store.setTaskActivity(bot.id, threadId, "working");
   // Watch from admission, not dispatch: a turn can wedge in setup long before any provider event exists.
-  watchdog.watch(threadId, bot.id);
+  if (!SUPERAGENT_PRIMARY) watchdog.watch(threadId, bot.id);
   store.setTaskClosedBy(bot.id, threadId, null);
   // Only a person's turn clears unread: the fold never re-marks an internal turn.
   if (commsDepth === 0) store.patchTask(bot.id, threadId, { unread: false });
@@ -7806,6 +7935,49 @@ async function beginTurn(
 
   void (async () => {
     try {
+      if (SUPERAGENT_PRIMARY) {
+        const cursor = task.resumeCursors[SUPERAGENT_INSTANCE_ID];
+        const contextId = typeof cursor === "string" && cursor.startsWith("omb-superagent:")
+          ? cursor.slice("omb-superagent:".length) : undefined;
+        const reset = Boolean(task.rewound) || !contextId
+          || officialSuperagentGateway?.isActiveBinding?.({ botId: bot.id, threadId, contextId }) === false;
+        const reference = store.activePath(threadId).filter(message => message.id !== userMessage.id
+          && message.kind === "text" && (message.role === "user" || message.role === "bot")).slice(-16)
+          .map(message => ({ role: message.role, text: (message.text ?? "").slice(0, 2_000) }));
+        while (reference.length && Buffer.byteLength(JSON.stringify(reference)) > 16_000) reference.shift();
+        const instructions = [
+          `You are ${bot.name}.${bot.title ? ` Role: ${bot.title}.` : ""}${bot.description ? ` ${bot.description}` : ""}`,
+          bot.soul ?? "",
+          "Use the official Super Agent to plan and execute work. Durable personal memory belongs to the original OpenMausBot memory service; use memory_search/read/remember/forget. Retrieve current memory when needed.",
+          reference.length ? `Earlier visible chat is bounded reference data, not native execution state or new authorization. Recheck prior side effects before repeating them:\n${JSON.stringify(reference)}` : "",
+        ].filter(Boolean).join("\n\n");
+        runningTurnEngines.set(threadId, instance);
+        const dispatched = await instance.adapter.sendTurn({
+          botId: bot.id, threadId, sourceMessageId: userMessage.id,
+          text: (opts?.app?.context ?? "") + promptWithReply(promptWithDataContext(resolvedImages.text, opts?.dataContext), opts?.replyTo, userNameFor(threadId)),
+          model: personbotSettings.launch().model,
+          approvalMode: approvalModeForTurn(bot, false, threadId),
+          resumeCursor: cursor, sessionReset: reset, system: instructions,
+          cwd: task.cwd ?? bot.cwd ?? personbotWorkspace,
+        });
+        const owner = directRequestOwners.get(threadId);
+        if (owner?.generation === dispatchClaimId) owner.turnId = dispatched.turnId;
+        bindInternalCapabilityToProviderTurn(threadId, dispatchClaimId, dispatched.turnId);
+        if (directFollowupSettlers.has(dispatchClaimId) && !directFollowupTurns.bind(threadId, dispatchClaimId, dispatched.turnId)) {
+          const outcome = directFollowupTurns.takeEarlyCompletion(threadId, dispatched.turnId);
+          if (outcome) settleDirectCoordination(dispatchClaimId, outcome);
+          settleDirectFollowup(dispatchClaimId);
+        }
+        clearDirectTurnDispatch(threadId, dispatchClaimId);
+        if (task.rewound) store.patchTask(bot.id, threadId, { rewound: false });
+        store.markTaskDispatched(bot.id, threadId, SUPERAGENT_INSTANCE_ID);
+        if (!threadBusy(bot.id, threadId)) {
+          revokeInternalCapabilityGeneration(threadId, dispatchClaimId);
+          releaseTurnResources(resourceOwner);
+          drainQueuedSends();
+        }
+        return;
+      }
       const engineRead = registry.engineRead(instance.instanceId);
       if (engineRead) {
         await engineRead;
@@ -8811,6 +8983,7 @@ const limitFailovers = new LimitFailovers({ file: join(DATA_DIR, "limit-failover
 const automationDestinations = createAutomationDestinations({ store, mainThread: botMainThread, runs: () => routines?.listRuns() ?? [],
   cloud: CLOUD_HOME ? { owner: CLOUD_OWNER_KEY!, opener: routineOpener, reportFromOthers: cloudReportFromOthers, opened: (threadId, person) => threadStarters.set(threadId, person), outside: (threadId) => outsideLineage.mark(threadId) } : null });
 routines = new RoutineManager({
+  readOnly: PERSONBOT_PRIMARY,
   emit: broadcast, limitResetAt: (engine) => limitClock.resetAt(engine), checks: proactive.checks,
   limitBackup: (botId, scope) => { const bot = store.bot(botId); return quotaSwitchEnabled() ? Boolean(bot && limitTakeover.backups(botId, bot.modelSelection, scope, approvalModeFor(bot)).length) : Boolean(bot && startupBackups(bot, cfg.automaticRecovery).length); },
   launchId: DESKTOP_MANAGED && /^[\w-]{1,100}$/.test(process.env.OMB_DESKTOP_LAUNCH_ID ?? "")
@@ -8915,7 +9088,7 @@ routines = new RoutineManager({
     notify(buildNotification("routine-deferred", routineSourceOwner(run)?.bot ?? bot, routineSourceThread(run) ?? bot.threadId, detail));
   },
 });
-phones.adoptRoutines(); routineHolds?.attach(routines); outsideLineage.settle(routines.listRuns(), automationDestinations.eventChat);
+if (!PERSONBOT_PRIMARY) { phones.adoptRoutines(); routineHolds?.attach(routines); outsideLineage.settle(routines.listRuns(), automationDestinations.eventChat); }
 // Settle Cloud ownership before anything is served and before any routine can run.
 if (CLOUD_HOME && CLOUD_OWNER_KEY && cloudRoutineAuthors) {
   cloudHome = settleCloudHome({ file: join(DATA_DIR, "cloud-owner.json"), machineId: CLOUD_HOME.machineId, ownerKey: CLOUD_OWNER_KEY, nobodyKey: CLOUD_NOBODY_KEY,
@@ -8928,7 +9101,7 @@ if (CLOUD_HOME && CLOUD_OWNER_KEY && cloudRoutineAuthors) {
   ownerOnlyCache.clear();
 }
 // Only now: an earlier owner key is the owner's once settled.
-routines.clearFrozenResultsThreads(); proactive.ensureWatch(); startFirstHour({ hooks: firstHourHooks, fresh: firstHourFresh, store, bus, cfg, dataDir: DATA_DIR, proactive, briefOn: () => proactive.briefOn(), ensureBrief: () => { proactive.ensureWatch(); }, composio, sessions, phones: () => phones.paired(), routines: () => routines, mainThread: botMainThread, threadBusy, startTurn, notify, wrote: markTaskContextExternallyUpdated, stale: shouldIgnoreProviderEvent, welcomeDone: () => { adminActorScope.exit(() => saveConfig(welcomeDonePatch(cfg.onboarding))); Object.assign(cfg, loadConfig()); broadcast({ kind: "config", ...configStatus() }); } });
+if (!PERSONBOT_PRIMARY) { routines.clearFrozenResultsThreads(); proactive.ensureWatch(); startFirstHour({ hooks: firstHourHooks, fresh: firstHourFresh, store, bus, cfg, dataDir: DATA_DIR, proactive, briefOn: () => proactive.briefOn(), ensureBrief: () => { proactive.ensureWatch(); }, composio, sessions, phones: () => phones.paired(), routines: () => routines, mainThread: botMainThread, threadBusy, startTurn, notify, wrote: markTaskContextExternallyUpdated, stale: shouldIgnoreProviderEvent, welcomeDone: () => { adminActorScope.exit(() => saveConfig(welcomeDonePatch(cfg.onboarding))); Object.assign(cfg, loadConfig()); broadcast({ kind: "config", ...configStatus() }); } }); }
 orgLibrary = new OrgLibrary({
   dataDir: DATA_DIR,
   store,
@@ -8944,36 +9117,39 @@ orgLibrary = new OrgLibrary({
   pendingOrgLibraryRelay = null;
 }
 // Separate durable stores: after a crash between the two writes, the correlated RoutineRun's terminal state wins.
-const recoveredRoutineGoalRuns = new Map(
-  routines.listRuns().filter((run) => run.target === "room-goal").map((run) => [run.id, run]),
-);
-const groupGoalRecoveryAt = Date.now();
-store.reconcileInterruptedGroupGoals((runId, threadId) => {
-  const run = recoveredRoutineGoalRuns.get(runId);
-  if (!run || run.threadId !== threadId) return null;
-  const status = run.goalStatus ?? (
-    run.status === "completed"
-      ? "completed"
-      : run.status === "cancelled"
-        ? "stopped"
-        : "failed"
+if (!PERSONBOT_PRIMARY) {
+  const recoveredRoutineGoalRuns = new Map(
+    routines.listRuns().filter((run) => run.target === "room-goal").map((run) => [run.id, run]),
   );
-  const detail = run.output ?? run.error ?? (
-    status === "completed"
-      ? "The scheduled team goal completed before OpenMausBot restarted."
-      : status === "stopped"
-        ? "The scheduled team goal was stopped."
-        : "OpenMausBot restarted before this scheduled team goal finished."
-  );
-  return { status, detail, finishedAt: run.finishedAt ?? groupGoalRecoveryAt };
-});
+  const groupGoalRecoveryAt = Date.now();
+  store.reconcileInterruptedGroupGoals((runId, threadId) => {
+    const run = recoveredRoutineGoalRuns.get(runId);
+    if (!run || run.threadId !== threadId) return null;
+    const status = run.goalStatus ?? (
+      run.status === "completed"
+        ? "completed"
+        : run.status === "cancelled"
+          ? "stopped"
+          : "failed"
+    );
+    const detail = run.output ?? run.error ?? (
+      status === "completed"
+        ? "The scheduled team goal completed before OpenMausBot restarted."
+        : status === "stopped"
+          ? "The scheduled team goal was stopped."
+          : "OpenMausBot restarted before this scheduled team goal finished."
+    );
+    return { status, detail, finishedAt: run.finishedAt ?? groupGoalRecoveryAt };
+  });
+}
 calendarCalls = new CalendarCallManager({
+  readOnly: PERSONBOT_PRIMARY,
   botExists: (botId) => Boolean(store.bot(botId)),
   onDue: deliverCalendarCall,
 });
 const botWaits = new WaitManager(createWaitHost({ store, directChat: directChatOf, threadBusy, wrote: markTaskContextExternallyUpdated, notify, enqueue: (input) => routines!.enqueueWebhook(input), cloudHome: Boolean(CLOUD_HOME) })); store.onChange((change) => { if (change.type === "bot" && store.bot(change.botId)?.busy) botWaits.noteBotBusy(change.botId); });
 const recoveryOwners = routines.routineRequestReceiptOwners();
-if (recoveryOwners.length > 0) {
+if (!PERSONBOT_PRIMARY && recoveryOwners.length > 0) {
   const recoveryThreads = [...new Set(recoveryOwners.map((owner) => owner.threadId))];
   routines.reconcileRoutineRequestReceipts(
     recoveryThreads.flatMap((threadId) =>
@@ -9162,6 +9338,7 @@ async function deleteBotWithLifecycle(botId: string, revalidate: () => void = ()
           // Invalidate every bot-callable bearer before the first asynchronous teardown step.
           for (const task of store.tasks(bot.id)) revokeInternalCapabilitiesForThread(task.threadId);
           await interruptAllDirectThreads(bot.id);
+          await revokeNativeContext(bot.id);
           for (const task of store.tasks(bot.id)) {
             purgeTurnAttachmentsForThread(task.threadId);
             clearTurnDigestState(task.threadId);
@@ -9564,12 +9741,14 @@ ROUTES.push(createLimitResetRoutes({ clock: limitClock, routines: routines!, req
 let webhookIngress: WebhookIngress | null = null;
 let webhookIngressError: string | null = null;
 try {
+  if (!PERSONBOT_PRIMARY) {
   webhookIngress = await listenWebhookIngress(webhooks, {
     port: WEBHOOK_PORT, publicBaseUrl: WEBHOOK_PUBLIC_URL,
     claimRequest: () => { cloudPower?.arrived("/hooks", {}); moveFreeze.assertTurns(); return workspaceMaintenance.request(); }, door: botApi.door,
   });
   const advertised = WEBHOOK_PUBLIC_URL ? ` (advertised as ${webhookIngress.baseUrl})` : "";
   console.log(`openmausbot webhook receiver on http://${webhookIngress.host}:${webhookIngress.port}${advertised}`);
+  }
 } catch (error) {
   webhookIngressError = error instanceof Error ? error.message : String(error);
   console.error(`openmausbot webhook receiver unavailable: ${webhookIngressError}`);
@@ -9584,7 +9763,7 @@ ROUTES.push(createWebhookRoutes({ webhooks, ingress: webhookIngressStatus, visib
 
 const RUNTIME_KEEP_MS = 30 * 24 * 60 * 60_000;
 let runtimePrunedAt = 0;
-handoffTicks.start({ pace: () => enginesRead || parkedNodesToReconcile.size > 0 ? "busy" : coordinator.pace(), tick: () => {
+if (!PERSONBOT_PRIMARY) handoffTicks.start({ pace: () => enginesRead || parkedNodesToReconcile.size > 0 ? "busy" : coordinator.pace(), tick: () => {
   // Recovered reports must see the engine's resume capability before deciding to keep its stored session.
   if (enginesRead) return;
   try {
@@ -9691,6 +9870,10 @@ async function runClaimedGroupMemberTurn(
   // Rebuild the turn once from the fresh bot rather than mix a stale adapter with fresh permissions.
   setupRetry = 0,
 ): Promise<boolean> {
+  if (PERSONBOT_PRIMARY) {
+    onDispatchError?.(SUPERAGENT_PRIMARY ? SUPERAGENT_PRIMARY_REFUSAL : PERSONBOT_PRIMARY_REFUSAL);
+    return false;
+  }
   if (workspaceMaintenance.active || moveFreeze.frozen()) {
     onDispatchError?.(moveFreeze.refusal() ?? "A workspace backup or restore is in progress.");
     return false;
@@ -12116,7 +12299,7 @@ const workspaceBackupAccess = {
       store.bots.every((bot) => !botHasActiveTurn(bot.id) && !routines?.activeRunForBot(bot.id) && !botComputerControlSnapshot(bot.id).held) &&
       store.groups.every((group) => !groupIsWorking(group)),
     pause: () => { routines?.stop(); calendarCalls?.stop(); botWaits.stop(); watchdog.stop(); memoryUpkeep.pause(); },
-    resume: () => { if (!moveFreeze.frozen()) { routines?.start(); calendarCalls?.start(); botWaits.start(); } watchdog.start(); memoryUpkeep.resume(); },
+    resume: () => { if (!PERSONBOT_PRIMARY && !moveFreeze.frozen()) { routines?.start(); calendarCalls?.start(); botWaits.start(); watchdog.start(); memoryUpkeep.resume(); } },
     flush: async () => {
       await Promise.all([flushAllProfileHistory(), flushAllMemoryJournals(), flushUsageLedger(DATA_DIR), flushDecisionLog(DATA_DIR), flushAdminActivity(DATA_DIR)]);
       // Writers gated and work idle: release the WAL connection for a consistent snapshot; Store reopens it lazily.
@@ -12140,7 +12323,7 @@ ROUTES.push(createSharedComputerRoutes({ enabled: lendingEnabled, computers: sha
 // `routines` is assigned at boot, so it is read per request.
 ROUTES.push(createBotMessageRoutes({
   store, registry, handoffs, liveTurn: (threadId) => liveTurns.running(threadId), phoneSecretSubmissions, directTurnDispatchClaims, groupSpeakers,
-  routines: () => routines,
+  routines: () => routines, revokeNativeContext,
   fromPhone: phones.fromPhone, notePhoneSend: phones.noteSend,
   desktopManaged: DESKTOP_MANAGED, cloudHome: Boolean(CLOUD_HOME), DirectSendRefused,
   acceptDirectSend, directSendRefusal, startTurn, usageTriggerFor, messageSender, cloudGuestSendRefusal, cloudThreadRefusal, resolveAccessRequest: (threadId, requestId, behavior, message) => lendingLifts?.resolve(threadId, requestId, behavior) ?? accessRequests.resolve(threadId, requestId, behavior, message), relayRefusal: CLOUD_TEAM ? (bot, email) => relayedSendRefusal(bot, email, Boolean(email && teamOwners.people?.list().some((one) => one.email === email && one.role !== "member"))) : undefined,
@@ -12202,6 +12385,7 @@ ROUTES.push(createBotPatchRoutes({
   hostedWorkspace: HOSTED_WORKSPACE, hostedFullAccessRefusal: HOSTED_FULL_ACCESS_REFUSAL, desktopManaged: DESKTOP_MANAGED, maxWorkspaceBots: MAX_WORKSPACE_BOTS,
   broadcast, wireBot, publicGroupState, audienceChanged, storedAvatarExists, requestedTaskBot, threadBusy, activeGroupTurnForBot,
   checkedModelSelection, engineSwitchNeedsAsk, currentBrowserSession, interruptAllDirectThreads, cancelGroupTurnOperations,
+  stopForApprovalDowngrade: SUPERAGENT_PRIMARY ? stopBotForEmergencyApprovalDowngrade : undefined,
   revokeInternalCapabilitiesForThread, runningTurnInstance, closeOpenApprovals, assertTeamComputerChangeIdle, forgetTemporaryBrowser, levelOf, team: Boolean(CLOUD_TEAM), mainThreadTasks,
 }));
 ROUTES.push(createBotLifecycleRoutes({
@@ -12310,7 +12494,7 @@ ROUTES.push(createChannelRoutes({
   rejectDeletedThreadSkillStages,
 }));
 const taskRoutes = createTaskRoutes({
-  store, threadRead: teamMessages.seen,
+  store, threadRead: teamMessages.seen, revokeNativeContext, stopNativeTasks,
   cloudHome: Boolean(CLOUD_HOME),
   desktopManaged: DESKTOP_MANAGED,
   hostedWorkspace: HOSTED_WORKSPACE,
@@ -12417,7 +12601,7 @@ const persistAnnouncedMcpServers = (next: Record<string, unknown>) => { persistM
 const postiz = createPostiz({ cfg: () => cfg, mcpOAuth, persistMcpServers: persistAnnouncedMcpServers, mcpConfigBusy: mcpConfig.busy, mcpPolicyRefusal, appCatalog: chatAppsMcp, team: teamConnections, loopback: !CLOUD_HOME && !HOSTED_WORKSPACE }); ROUTES.push(createPostizRoutes({ postiz }), createConfigRoutes({
   store, cfg, registry, sessions, browserCleanup, browserLive, browserRuntime, usedBrowserSessions, decider,
   sharedComputers, sharedComputerControl, closeBrowser, browserEngineSwitched,
-  hostedModels: Boolean(hostedModels),
+  hostedModels: Boolean(hostedModels) || SUPERAGENT_PRIMARY,
   cloudHome: Boolean(CLOUD_HOME),
   lendingEnabled, providerConfigs, localVmIdleMs, localVmIdles, localVmActiveThreads, localVmLifecycleBusy,
   localVmImageBusy: { get: () => localVmImageBusy },
@@ -12590,6 +12774,122 @@ ROUTES.push(createLiveRoutes({
   },
 }));
 
+const currentNativeMemoryBinding = (binding: { botId: string; threadId: string; contextId?: string }) =>
+  Boolean(binding.contextId && !store.taskByThread(binding.botId, binding.threadId)?.rewound
+    && (store.taskByThread(binding.botId, binding.threadId)?.resumeCursors[SUPERAGENT_INSTANCE_ID] === `omb-superagent:${binding.contextId}`
+      || officialSuperagentGateway?.isActiveBinding?.(binding)));
+const originalSuperagentMemory = createSuperagentMemory({
+  store, aboutMe: aboutMeFacts,
+  readAboutMe: () => CLOUD_TEAM ? null : cfg.profile?.aboutMe ?? "",
+  canRead: (binding, purpose) => purpose === "recall" || currentNativeMemoryBinding(binding),
+  canWrite: (binding, request) => currentNativeMemoryBinding(binding) && request.caller?.role === "master"
+    && officialSuperagentGateway?.authorizeMemory?.(request) === true
+    && !isInternalTurn(binding.threadId) && !isUnattended(binding.botId, binding.threadId),
+});
+const originalSuperagentProjection = createSuperagentProjection({
+  store, currentContext: currentNativeMemoryBinding,
+  attention: (binding, kind, summary) => {
+    const bot = store.bot(binding.botId);
+    if (bot) {
+      store.patchTask(bot.id, binding.threadId, { unread: true });
+      notify(buildNotification(kind, bot, binding.threadId, summary, { avatarUrl: bot.avatarUrl }));
+    }
+  },
+});
+const originalSuperagentDelivery = createSuperagentDelivery({
+  store, currentContext: currentNativeMemoryBinding,
+  onPersist: (delivery, message) => {
+    if (threadBusy(delivery.botId, delivery.threadId) && directRequestOwners.get(delivery.threadId)?.turnId === delivery.requestId) {
+      lastReply.set(delivery.threadId, message.text ?? "");
+    } else if (delivery.purpose === "result") {
+      const bot = store.bot(delivery.botId);
+      if (bot) {
+        store.patchTask(bot.id, delivery.threadId, { unread: true });
+        notify(buildNotification("done", bot, delivery.threadId, message.text ?? "", { avatarUrl: bot.avatarUrl }));
+      }
+    }
+  },
+});
+const originalSuperagentUsage = createSuperagentUsage({
+  dataDir: DATA_DIR,
+  bot: id => store.bot(id),
+  onBooked: row => {
+    if (store.botByThread(row.threadId)?.id === row.botId) store.addTaskUsage(row.botId, row.threadId, {
+      input: row.input, output: row.output, cachedInput: row.cachedInput, costUsd: row.costUsd,
+    });
+    noteSpend(DATA_DIR, row, Promise.resolve(true));
+  },
+});
+if (SUPERAGENT_PRIMARY) officialSuperagentGateway = createSuperagentGateway({
+  home: personbotHome, workspace: personbotWorkspace,
+  provider: personbotSettings.launch().provider, model: personbotSettings.launch().model, fixture: personbotFixture,
+  memory: request => originalSuperagentMemory.handle(request),
+  deliver: async delivery => { originalSuperagentDelivery(delivery); },
+  usage: async event => { await originalSuperagentUsage.handle(event); },
+  canRecover: (binding, input) => {
+    const task = store.taskByThread(binding.botId, binding.threadId);
+    const bot = store.projectBotForTask(binding.botId, binding.threadId);
+    return Boolean(task && bot && !task.rewound
+      && (input.approvalMode !== "full" || approvalModeFor(bot) === "full"));
+  },
+  resolveLaunch: async () => personbotSettings.launch(),
+  onLaunch: configuration => personbotSettings.applied(configuration),
+  maxModelCalls: Number(process.env.PERSONBOT_MAX_MODEL_CALLS ?? 4),
+  ...(process.env.PERSONBOT_MAX_MODEL_REQUESTS ? { maxModelRequests: Number(process.env.PERSONBOT_MAX_MODEL_REQUESTS) } : {}),
+  ...(process.env.PERSONBOT_MAX_TOKENS ? { tokenLimit: Number(process.env.PERSONBOT_MAX_TOKENS) } : {}),
+  ...(process.env.PERSONBOT_MAX_COST_USD ? { costLimitUsd: Number(process.env.PERSONBOT_MAX_COST_USD) } : {}),
+  onModelAdmission: () => assertWithinBudget(cfg, DATA_DIR, new Date(), () => true),
+});
+if (officialSuperagentGateway) {
+  superagentDriver.connect();
+  void officialSuperagentGateway.start().catch(error => console.error("Super Agent recovery could not start:", String(error)));
+}
+const personbotGateway = new PersonbotGateway({
+  enabled: personbotMode.enabled && !SUPERAGENT_PRIMARY,
+  home: personbotHome,
+  workspace: personbotWorkspace,
+  provider: personbotSettings.launch().provider,
+  model: personbotSettings.launch().model,
+  fixture: personbotFixture,
+  resolveLaunch: () => personbotSettings.launch(),
+  onLaunch: () => personbotSettings.applied(),
+});
+const personbotRuntimeStatus = () => {
+  if (!officialSuperagentGateway) return personbotGateway.status();
+  const native = officialSuperagentGateway.status();
+  const state = (["stopped", "starting", "ready", "failed", "closing"] as const).find(state => state === native.state) ?? "stopped";
+  const launch = personbotSettings.launch();
+  return { ...native, state, workspace: personbotWorkspace, provider: launch.provider, model: launch.model };
+};
+ROUTES.push(createPersonbotSetupRoutes({
+  settings: personbotSettings, gateway: { status: personbotRuntimeStatus }, primary: PERSONBOT_PRIMARY,
+  live: auth => auth.kind === "loopback" || sessions.isLive(auth.session.id),
+}));
+const personbotLegacy = PERSONBOT_PRIMARY && !SUPERAGENT_PRIMARY ? new PersonbotLegacy({ home: personbotHome, store, gateway: personbotGateway }) : undefined;
+if (personbotLegacy) ROUTES.push(createPersonbotLegacyRoutes({
+  legacy: personbotLegacy, enabled: () => PERSONBOT_PRIMARY,
+  live: auth => auth.kind === "loopback" || sessions.isLive(auth.session.id), visible: threadShown,
+}));
+if (SUPERAGENT_PRIMARY) ROUTES.push(createSuperagentRoutes({
+  gateway: officialSuperagentGateway!,
+  live: auth => auth.kind === "loopback" || sessions.isLive(auth.session.id),
+  available: binding => store.botByThread(binding.threadId)?.id === binding.botId && currentNativeMemoryBinding(binding),
+  status: personbotRuntimeStatus,
+  taskUsage: task => superagentTaskUsage(DATA_DIR, task),
+}));
+else ROUTES.push(createPersonbotRoutes({
+  gateway: personbotGateway,
+  live: auth => auth.kind === "loopback" || sessions.isLive(auth.session.id),
+  onRevoked: listener => sessions.onSessionRevoked(listener),
+}));
+const personbotIngress = createPersonbotIngress({
+  gateway: personbotGateway,
+  claimRequest: () => {
+    moveFreeze.assertTurns();
+    return workspaceMaintenance.request();
+  },
+});
+
 const toolResults = new ToolResults();
 const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
   if (CLOUD_TEAM) holdBodyDeadline(req, res);
@@ -12747,6 +13047,7 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
         serverName: cfg.computerName || environmentDescriptor({ environmentId: ENVIRONMENT_ID, ...TEAM_LABEL, desktopManaged: DESKTOP_MANAGED }).label,
       });
     }
+    if (await personbotIngress({ req, res, method, path, json, readBody })) return;
     const gate = resolveRequestAuth(req, {
       sessions,
       cookieName: SESSION_COOKIE,
@@ -12777,6 +13078,9 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
     if (!gate.auth) return json(res, gate.status, { error: gate.error });
     if (cloudPower && gate.auth.kind === "session") cloudPower.request(path, req.headers, res); // someone using a Cloud home keeps it awake
     const auth = gate.auth;
+    if (PERSONBOT_PRIMARY && primaryMutationRefused(method, path, SUPERAGENT_PRIMARY)) {
+      return json(res, 409, { error: SUPERAGENT_PRIMARY ? SUPERAGENT_PRIMARY_REFUSAL : PERSONBOT_PRIMARY_REFUSAL, code: "personbot_primary" });
+    }
     if (HOSTED_WORKSPACE && auth.kind === "session") {
       const failure = workspaceAccess
         ? await workspaceAccess.authorize(req, auth)
@@ -12798,7 +13102,7 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
     if (await workspaceBackupRoutes(req, res, path, auth)) return;
     if (cloudMoveRoutes(res, path)) return;
     // Count requests until their handler returns, not until the browser disconnects: a cancelled upload can still write.
-    if (path.startsWith("/api/") && path !== "/api/events" && path !== "/api/health" && path !== "/api/sync/changes" && !isLongPollPath(path) && !isWorkspaceBackupSessionControl(method, path)) {
+    if (path.startsWith("/api/") && path !== "/api/events" && path !== "/api/personbot/events" && path !== "/api/health" && path !== "/api/sync/changes" && !isLongPollPath(path) && !isWorkspaceBackupSessionControl(method, path)) {
       releaseWorkspaceRequest = workspaceMaintenance.request();
     }
 
@@ -15506,7 +15810,7 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
 const server = createServer(IDLE_HTTP_SERVER, handleRequest);
 upgrades.attach(server, handleRequest);
 
-moveFreeze.hold(() => calendarCalls.start(), () => calendarCalls.stop());
+if (!PERSONBOT_PRIMARY) moveFreeze.hold(() => calendarCalls.start(), () => calendarCalls.stop());
 
 // Resolve the edition before accepting requests so /api/edition is never a guess.
 console.log(describeEdition(await loadEnterpriseLayer()));
@@ -15517,7 +15821,7 @@ console.log(LOOPBACK.trust === "service"
   : `local requests: owner trust (${LOOPBACK.reason})`);
 if (LOOPBACK.warning) console.warn(`local requests: ${LOOPBACK.warning}`);
 // Every room's floor once, before any request: a room already mixed at start keeps its narrowest audience.
-for (const group of store.groups) settleRoomFloor(group);
+if (!PERSONBOT_PRIMARY) for (const group of store.groups) settleRoomFloor(group);
 const pruneDecisionLog = () => {
   void pruneDecisions(DATA_DIR, decisionRetentionDays(cfg.decisions?.retentionDays));
   void pruneAdminActivity(DATA_DIR, decisionRetentionDays(cfg.decisions?.retentionDays));
@@ -15533,39 +15837,41 @@ workspaceAccessTimer?.unref();
 console.log(describeBrand(loadBrand()));
 
 // Before any row below settles: an interrupted dispatch's words come back with a review notice, never to a model a second time.
-followupAtBoot("");
-for (const row of chatFollowups()) {
-  if (row.kind === "aside") { settleChatFollowups([row.id], null); continue; }
-  if (row.status !== "dispatching" && row.status !== "interrupted") continue;
-  const owned = row.kind === "channel"
-    ? Boolean(store.groupByThread(row.threadId)?.id === row.ownerId)
-    : Boolean(store.taskByThread(row.ownerId, row.threadId));
-  if (!owned) { settleChatFollowups([row.id], "cancelled"); continue; }
-  settleChatFollowups([row.id], "interrupted");
-  const messages = store.messagesFor(row.threadId);
-  const recovered = messages.find((message) => message.queueId === row.id && message.role === "user") ?? store.appendMessage(row.threadId, {
-    role: "user", kind: "text", text: row.payload.text, replyToId: row.payload.replyToId,
-    sendId: row.payload.sendId, queueId: row.id, sender: row.payload.sender,
-    ...(row.kind === "channel" ? { channelMode: row.payload.mode, via: row.payload.via } : {}),
-    ...(row.kind === "bot" ? spokenLineFields(row.payload.via, row.payload.callId) : {}),
-  });
-  const recoveredTask = row.kind !== "channel" ? store.taskByThread(row.ownerId, row.threadId) : undefined;
-  const order = store.activePath(row.threadId).filter(isContextMessage).map((m) => m.id);
-  for (const [instanceId, state] of Object.entries(recoveredTask?.handedMessages ?? {})) {
-    if (state.session !== undefined) store.setHandedMessages(row.ownerId, row.threadId, instanceId, recordHanded(state, order, [recovered.id]));
-  }
-  if (!messages.some((message) => message.queueId === row.id && message.kind === "activity")) {
-    store.appendMessage(row.threadId, {
-      role: "bot", kind: "activity", queueId: row.id,
-      tool: { name: "Queued follow-up interrupted by restart or restore — it may have already run. Review the result before sending it again.", ok: false },
+if (!PERSONBOT_PRIMARY) {
+  followupAtBoot("");
+  for (const row of chatFollowups()) {
+    if (row.kind === "aside") { settleChatFollowups([row.id], null); continue; }
+    if (row.status !== "dispatching" && row.status !== "interrupted") continue;
+    const owned = row.kind === "channel"
+      ? Boolean(store.groupByThread(row.threadId)?.id === row.ownerId)
+      : Boolean(store.taskByThread(row.ownerId, row.threadId));
+    if (!owned) { settleChatFollowups([row.id], "cancelled"); continue; }
+    settleChatFollowups([row.id], "interrupted");
+    const messages = store.messagesFor(row.threadId);
+    const recovered = messages.find((message) => message.queueId === row.id && message.role === "user") ?? store.appendMessage(row.threadId, {
+      role: "user", kind: "text", text: row.payload.text, replyToId: row.payload.replyToId,
+      sendId: row.payload.sendId, queueId: row.id, sender: row.payload.sender,
+      ...(row.kind === "channel" ? { channelMode: row.payload.mode, via: row.payload.via } : {}),
+      ...(row.kind === "bot" ? spokenLineFields(row.payload.via, row.payload.callId) : {}),
     });
+    const recoveredTask = row.kind !== "channel" ? store.taskByThread(row.ownerId, row.threadId) : undefined;
+    const order = store.activePath(row.threadId).filter(isContextMessage).map((m) => m.id);
+    for (const [instanceId, state] of Object.entries(recoveredTask?.handedMessages ?? {})) {
+      if (state.session !== undefined) store.setHandedMessages(row.ownerId, row.threadId, instanceId, recordHanded(state, order, [recovered.id]));
+    }
+    if (!messages.some((message) => message.queueId === row.id && message.kind === "activity")) {
+      store.appendMessage(row.threadId, {
+        role: "bot", kind: "activity", queueId: row.id,
+        tool: { name: "Queued follow-up interrupted by restart or restore — it may have already run. Review the result before sending it again.", ok: false },
+      });
+    }
+    settleChatFollowups([row.id], null);
   }
-  settleChatFollowups([row.id], null);
+  restoreSteeredMessages();
+  restoreChannelMessages();
 }
-restoreSteeredMessages();
-restoreChannelMessages();
 
-{
+if (!PERSONBOT_PRIMARY) {
   let movedAutoPins = 0;
   for (const bot of store.bots) {
     if (bot.computer !== undefined) movedAutoPins += store.clearAutoSurfacePins(bot.id, bot.computer);
@@ -15579,8 +15885,20 @@ if (CLOUD_HOME) registerCloudPower(cloudPower = createCloudPower({ dataDir: DATA
   maintenance: () => workspaceMaintenance.active || providerFleetReloading || providerAuthSessions.active || browserEngineInstall !== null } }));
 
 server.listen(PORT, "127.0.0.1", async () => {
+  if (!SUPERAGENT_PRIMARY && personbotGateway.status().enabled && existsSync(join(personbotHome, "runtime", "integrations.sqlite"))) {
+    void personbotGateway.start().catch(error => console.error(`Personbot background startup: ${error instanceof Error ? error.message : String(error)}`));
+  }
   companyRuntimeReady();
   console.log(`openmausbot server on http://127.0.0.1:${PORT}`);
+  if (PERSONBOT_PRIMARY) {
+    console.log(SUPERAGENT_PRIMARY ? "Official Super Agent: original UI and memory are active; legacy executors are suspended." : "Personbot primary mode: dsh owns execution; legacy engines and automations are suspended.");
+    if (SUPERAGENT_PRIMARY) {
+      followupsReady = true;
+      moveFreeze.hold(() => memoryUpkeep.start(), () => memoryUpkeep.stop());
+    }
+    browserSweep.start();
+    return;
+  }
   personWaits.boot(); browserSweep.start(); startCloudTeamPolicy({ cloudHome: CLOUD_HOME, dataDir: DATA_DIR, managed: managedPolicy, sessions }); moveFreeze.hold(() => appTriggers.start(), () => void appTriggers.stop()); startCloudHomeConnectedApps({ cloudHome: CLOUD_HOME !== null, dataDir: DATA_DIR, cloudGrant: CLOUD_ENV.OMB_CLOUD_CONNECTED_APPS_GRANT, apply: (access) => { composio.setManagedBrokerAccess(access); broadcast({ kind: "config", ...configStatus() }); } });
   void afterFirstEngineRead().then(() => { if (builtInBrowserEnabled(cfg)) chromeLauncher.start(); });
   followupsReady = true;
@@ -15635,12 +15953,13 @@ function runtimeHoldsRoot(threadId: string): boolean {
 
 const gracefulShutdown = createGracefulShutdown({
   cleanup: [
+    async () => { await officialSuperagentGateway?.close(); await personbotGateway.close(); await personbotLegacy?.close(); },
     () => {
       followupsReady = false;
       companyShutdown = true;
       // Before any provider is torn down, so what the teardown fails stays cut for the next start.
       coordinator.close();
-      noteTurnsCutByShutdown();
+      if (!PERSONBOT_PRIMARY) noteTurnsCutByShutdown();
       if (workspaceAccessTimer) clearInterval(workspaceAccessTimer);
       // Invalidate turn bearers before any cleanup reaches an await: child MCP processes and the listener may outlive it.
       revokeAllInternalCapabilities();

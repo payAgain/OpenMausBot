@@ -17,6 +17,7 @@ import { AttachmentStorageSettings } from "./AttachmentStorageSettings";
 import { DiagnosticsRow } from "./DiagnosticsRow";
 import { DecisionModelSettings } from "./DecisionModelSettings";
 import { EnginesSettings } from "./EnginesSettings";
+import { SuperagentModelSettings } from "./SuperagentModelSettings";
 import { LocalComputerSection } from "./LocalComputerSection";
 import { CompanionSection } from "./CompanionSection";
 import { ServerPairingCard } from "./ServerPairingCard";
@@ -178,6 +179,7 @@ export const openKeyResult = (entry: KeyEntry) => entry.uses ? openKeySettings(e
 
 export function SettingsModal() {
   const { state, dispatch } = useStore();
+  const officialSuperagent = (state.instances ?? []).some(instance => instance.driverKind === "dsh-superagent");
   const advanced = useAdvancedMode();
   const remoteActive = window.ogb?.remoteClient?.active === true;
   const requested = state.appSettingsSection;
@@ -268,7 +270,9 @@ export function SettingsModal() {
         return;
       }
       // A child editor owns Escape and its focus trap, including while saving.
-      if (event.defaultPrevented || (dialog && [...dialog.querySelectorAll<HTMLElement>('[role="dialog"], [role="alertdialog"]')]
+      const focusedDialog = document.activeElement?.closest('[role="dialog"], [role="alertdialog"]');
+      if (event.defaultPrevented || (focusedDialog && focusedDialog !== dialog)
+        || (dialog && [...dialog.querySelectorAll<HTMLElement>('[role="dialog"], [role="alertdialog"]')]
         .some(child => child.getClientRects().length))) return;
       if (event.key === "Escape") {
         event.preventDefault();
@@ -400,9 +404,9 @@ export function SettingsModal() {
       case "experimental":
         return <ExperimentalFeaturesRow />;
       case "connections":
-        return <AdminOnly><KeysPage /></AdminOnly>;
+        return <AdminOnly>{officialSuperagent ? <SuperagentModelSettings /> : <KeysPage />}</AdminOnly>;
       case "decisionModel": return <AdminOnly><DecisionModelSettings /></AdminOnly>;
-      case "engines": return <AdminOnly><EnginesSettings /></AdminOnly>;
+      case "engines": return <AdminOnly>{officialSuperagent ? <SuperagentModelSettings /> : <EnginesSettings />}</AdminOnly>;
       case "backups": return <AdminOnly><WorkspaceBackupSettings /><CompanyBackupSettings /></AdminOnly>;
       case "import": return <AdminOnly><ImportSettings /></AdminOnly>;
       case "companion":

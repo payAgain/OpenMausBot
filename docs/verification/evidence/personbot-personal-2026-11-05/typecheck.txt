@@ -1,0 +1,4 @@
+
+> openmausbot@0.1.140 personbot:typecheck /Users/yimingd/AI/personbot/OpenMausBot
+> tsc -p tsconfig.personbot.json
+

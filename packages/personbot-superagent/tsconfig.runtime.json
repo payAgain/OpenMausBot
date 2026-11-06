@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.server.json",
+  "compilerOptions": {
+    "erasableSyntaxOnly": false,
+    "jsx": "react-jsx"
+  },
+  "include": ["src/plugin.ts", "src/proper-lockfile.d.ts", "test/fixture-plugin.ts"],
+  "exclude": []
+}

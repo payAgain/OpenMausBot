@@ -81,6 +81,7 @@ export interface BotMessageRouteDeps {
   requestedTaskBot(botId: string, rawThreadId: unknown): BotRecord;
   botForThread(botId: string, threadId: string): BotRecord | null;
   threadBusy(botId: string, threadId: string): boolean;
+  revokeNativeContext?(botId: string, threadId: string): Promise<void>;
   botAtThreadCapacity(botId: string): boolean;
   parksBehindCoordination(botId: string, threadId: string): boolean;
   activeGroupTurnForBot(botId: string): { group: GroupRecord; threadId: string } | null;
@@ -521,7 +522,19 @@ export function createBotMessageRoutes(deps: BotMessageRouteDeps): RouteHandler 
       if (phoneSecretSubmissions.hasThread(bot.threadId)) {
         return json(res, 409, { error: "this task is securely saving a credential — try again when it finishes" });
       }
-      const leaf = store.setActiveLeaf(bot.threadId, String(body.messageId ?? ""));
+      const messageId = String(body.messageId ?? "");
+      if (!store.messagesFor(bot.threadId).some(message => message.id === messageId)) {
+        return json(res, 404, { error: "no such message" });
+      }
+      await deps.revokeNativeContext?.(bot.id, bot.threadId);
+      requestedTaskBot(bot.id, bot.threadId);
+      const changedOwner = cloudThreadRefusal(auth, bot.threadId);
+      if (changedOwner) return json(res, 403, { error: changedOwner });
+      if (threadBusy(bot.id, bot.threadId)) return json(res, 409, { error: "the thread is working — stop it before switching versions" });
+      if (phoneSecretSubmissions.hasThread(bot.threadId)) {
+        return json(res, 409, { error: "this task is securely saving a credential — try again when it finishes" });
+      }
+      const leaf = store.setActiveLeaf(bot.threadId, messageId);
       if (!leaf) return json(res, 404, { error: "no such message" });
       store.patchTask(bot.id, bot.threadId, { rewound: true });
       return json(res, 200, { activeLeafId: leaf });

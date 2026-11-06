@@ -1,0 +1,2628 @@
+{
+  "scenario": "crash",
+  "checks": [
+    "SIGKILL targets the fixture server's exact native child; original busy clears and its old approval expires and cannot be answered.",
+    "Original Stop reaches the persisted native task after the active driver turn has cleared; the same binding accepts new work without a stale approval.",
+    "A server restart preserves the human-stopped ticket and original messages; subsequent input retains the native binding and executes once."
+  ],
+  "fixture": {
+    "url": "http://127.0.0.1:20320",
+    "pid": 91533,
+    "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW",
+    "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793950789732-91461.log"
+  },
+  "api": [
+    {
+      "method": "POST",
+      "path": "/api/bots",
+      "body": {
+        "name": "Official recovery crash",
+        "memoryUpkeep": false
+      },
+      "status": 201,
+      "result": {
+        "bot": {
+          "id": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+          "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+          "name": "Official recovery crash",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "blue",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950790973,
+          "avatarUrl": null,
+          "autoApprove": false,
+          "approvalMode": "full",
+          "waitingForTeammates": false,
+          "mainThreadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+          "tasks": [
+            {
+              "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+              "title": "New thread",
+              "createdAt": 1793950790973,
+              "updatedAt": 1793950790989,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950790989,
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ],
+          "messages": [
+            {
+              "id": "56445bbc-4213-4113-8f58-c47920617bac",
+              "at": 1793950790989,
+              "parentId": null,
+              "role": "bot",
+              "kind": "text",
+              "text": "Hi, I'm Official recovery crash. What would you like me to do?",
+              "setupOffer": true,
+              "setupChoices": [
+                "Research and digging into topics",
+                "Keeping an eye on things for me",
+                "Email, calendar and messages",
+                "Bookings, shopping and errands",
+                "Data, spreadsheets and reports"
+              ]
+            }
+          ],
+          "activeLeafId": "56445bbc-4213-4113-8f58-c47920617bac"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/bots/d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+      "body": {
+        "memoryUpkeep": false,
+        "approvalMode": "ask"
+      },
+      "status": 200,
+      "result": {
+        "bot": {
+          "id": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+          "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+          "name": "Official recovery crash",
+          "title": "",
+          "description": "",
+          "soul": "",
+          "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "notifications": true,
+          "color": "blue",
+          "mascotBody": "cursor",
+          "unread": false,
+          "modelSelection": {
+            "instanceId": "dsh-superagent",
+            "model": "fixture"
+          },
+          "createdAt": 1793950790973,
+          "avatarUrl": null,
+          "autoApprove": false,
+          "memoryUpkeep": false,
+          "approvalMode": "ask",
+          "waitingForTeammates": false,
+          "mainThreadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+          "tasks": [
+            {
+              "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+              "title": "New thread",
+              "createdAt": 1793950790973,
+              "updatedAt": 1793950790989,
+              "unread": false,
+              "activity": "idle",
+              "busy": false,
+              "lastThreadOrderAt": 1793950790989,
+              "modelSelection": {
+                "instanceId": "dsh-superagent",
+                "model": "fixture"
+              },
+              "followsBotModel": false,
+              "waitingForTeammates": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/d829dc22-5b11-4fe1-a5a8-c9aef3aacf20/messages",
+      "body": {
+        "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+        "text": "task approval"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+        "message": {
+          "id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "at": 1793950791012,
+          "parentId": "56445bbc-4213-4113-8f58-c47920617bac",
+          "role": "user",
+          "kind": "text",
+          "text": "task approval"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/threads/e3a04a3f-4173-4ebf-a640-a6480a4f88bb/respond",
+      "body": {
+        "requestId": "09e97556-19b5-40c9-a9c8-4671449b752c",
+        "behavior": "allow"
+      },
+      "status": 200,
+      "result": {
+        "ok": true,
+        "outcome": "unavailable"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/d829dc22-5b11-4fe1-a5a8-c9aef3aacf20/interrupt",
+      "body": {
+        "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb"
+      },
+      "status": 200,
+      "result": {
+        "ok": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/d829dc22-5b11-4fe1-a5a8-c9aef3aacf20/messages",
+      "body": {
+        "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+        "text": "echo after-native-crash-stop"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+        "message": {
+          "id": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "at": 1793950794323,
+          "parentId": "297551f7-d9a3-44e5-a9ec-7c9eb2de55e5",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-native-crash-stop"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/bots/d829dc22-5b11-4fe1-a5a8-c9aef3aacf20/messages",
+      "body": {
+        "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+        "text": "echo after-crash-server-restart"
+      },
+      "status": 202,
+      "result": {
+        "ok": true,
+        "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+        "message": {
+          "id": "76ec111e-b189-4c18-a613-8558e4e4d692",
+          "at": 1793950795948,
+          "parentId": "953fbd1e-6fe6-4241-9b48-c3e041d1d6af",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-crash-server-restart"
+        }
+      }
+    }
+  ],
+  "snapshots": {
+    "pendingApproval": {
+      "messages": [
+        {
+          "id": "56445bbc-4213-4113-8f58-c47920617bac",
+          "at": 1793950790989,
+          "parentId": null,
+          "role": "bot",
+          "kind": "text",
+          "text": "Hi, I'm Official recovery crash. What would you like me to do?",
+          "setupOffer": true,
+          "setupChoices": [
+            "Research and digging into topics",
+            "Keeping an eye on things for me",
+            "Email, calendar and messages",
+            "Bookings, shopping and errands",
+            "Data, spreadsheets and reports"
+          ]
+        },
+        {
+          "id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "at": 1793950791012,
+          "parentId": "56445bbc-4213-4113-8f58-c47920617bac",
+          "role": "user",
+          "kind": "text",
+          "text": "task approval",
+          "requestPending": true
+        },
+        {
+          "id": "235c506c-bbfa-458d-afbe-2870742164af",
+          "at": 1793950792576,
+          "parentId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\",\"title\":\"approval\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+            "itemId": "official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\"},\"toolCallId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"d6f79c058a381b474805dfeada2bc6d2\\\",\\\"title\\\":\\\"approval\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/d6f79c058a381b474805dfeada2bc6d2\\\"}}]}\"}],\"isError\":false,\"id\":\"b9dbe7c0-292b-4382-948a-d290264def79\"}"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "at": 1793950792584,
+          "parentId": "235c506c-bbfa-458d-afbe-2870742164af",
+          "role": "bot",
+          "kind": "activity",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "tool": {
+            "name": "approval: Working",
+            "ok": true
+          }
+        },
+        {
+          "id": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "at": 1793950792587,
+          "parentId": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "role": "bot",
+          "kind": "text",
+          "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "at": 1793950792726,
+          "parentId": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "official_fixture_approval",
+            "spoken": "running official_fixture_approval",
+            "input": "{}",
+            "itemId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "f6b64f88-4b9d-4c50-b6f5-d2e1f4a78c14",
+          "at": 1793950792731,
+          "parentId": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "role": "bot",
+          "kind": "options",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "card": {
+            "title": "Approval needed",
+            "subtitle": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c\"}",
+            "options": [
+              "Allow",
+              "Deny"
+            ],
+            "requestId": "09e97556-19b5-40c9-a9c8-4671449b752c",
+            "requestType": "permission",
+            "tool": "superagent",
+            "allowSession": false,
+            "superagent": {
+              "contextId": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+              "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "agentId": "worker-d6f79c058a381b474805dfeada2bc6d2",
+              "callId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c",
+              "authorizationVersion": 1
+            }
+          }
+        }
+      ],
+      "native": [
+        {
+          "file": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot/official-superagent/f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a/state/orchestrator.sqlite",
+          "triggers": [
+            {
+              "id": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:52.500Z",
+              "text": "task approval",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "meta": {
+                "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                "approvalMode": "ask"
+              }
+            }
+          ],
+          "tickets": [
+            {
+              "id": "d6f79c058a381b474805dfeada2bc6d2",
+              "title": "approval",
+              "decisionId": "4460729e5a9587b949d96bde586b5490",
+              "mandate": {
+                "strength": "explicit",
+                "policyVersion": "87338089732da8e207cc6475f730465a",
+                "basis": {
+                  "source": "openmausbot",
+                  "scope": {
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                    "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                    "approvalMode": "ask"
+                  },
+                  "sender": "owner",
+                  "via": "addressed",
+                  "addressed": "direct"
+                },
+                "actor": {
+                  "source": "openmausbot",
+                  "id": "owner"
+                },
+                "scope": "approval"
+              },
+              "channels": [
+                {
+                  "source": "openmausbot",
+                  "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "address": {
+                    "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                  }
+                }
+              ],
+              "assignments": [
+                {
+                  "id": "fb05e45858cbe55785a7a4688a035491",
+                  "state": "running",
+                  "createdAt": "2026-11-06T07:39:52.582Z",
+                  "startedAt": "2026-11-06T07:39:52.686Z"
+                }
+              ],
+              "inputs": [],
+              "undelivered": [],
+              "createdAt": "2026-11-06T07:39:52.582Z",
+              "updatedAt": "2026-11-06T07:39:52.694Z",
+              "origin": {
+                "triggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+                "triggerIds": [
+                  "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde"
+                ]
+              },
+              "execution": {
+                "name": "official-task-d6f79c058a38",
+                "directory": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+                "assignment": ""
+              }
+            }
+          ],
+          "outbox": [
+            {
+              "id": "48700f75d25e5834e9f3df515126af54",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+              "kind": "acknowledgement",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "sourceTriggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "status": "sent"
+            }
+          ]
+        }
+      ],
+      "bindings": {
+        "bindings": [
+          {
+            "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "bot_id": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "thread_id": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "context_id": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+            "active": 1
+          }
+        ],
+        "requests": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "source_message_id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+            "status": "active"
+          }
+        ],
+        "deliveries": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "48700f75d25e5834e9f3df515126af54",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "persisted": 1,
+            "suppressed": 0
+          }
+        ]
+      },
+      "status": {
+        "enabled": true,
+        "state": "ready",
+        "pid": 91536,
+        "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+        "provider": "personbot-fixture",
+        "model": "fixture"
+      },
+      "children": [
+        {
+          "pid": 91536,
+          "parentPid": 91533,
+          "command": "/opt/homebrew/Cellar/node/26.10.0_1/bin/node --import <repo>/packages/personbot-superagent/src/runtime-loader.mjs <repo>/node_modules/.pnpm/@deepseek-ai+dsh@0.2.2-rc.1_f435452fdc7898341cda17fcf225c75e/node_modules/@deepseek-ai/dsh/lib/bin.js --profile omb-superagent"
+        }
+      ]
+    },
+    "childCrashed": {
+      "messages": [
+        {
+          "id": "56445bbc-4213-4113-8f58-c47920617bac",
+          "at": 1793950790989,
+          "parentId": null,
+          "role": "bot",
+          "kind": "text",
+          "text": "Hi, I'm Official recovery crash. What would you like me to do?",
+          "setupOffer": true,
+          "setupChoices": [
+            "Research and digging into topics",
+            "Keeping an eye on things for me",
+            "Email, calendar and messages",
+            "Bookings, shopping and errands",
+            "Data, spreadsheets and reports"
+          ]
+        },
+        {
+          "id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "at": 1793950791012,
+          "parentId": "56445bbc-4213-4113-8f58-c47920617bac",
+          "role": "user",
+          "kind": "text",
+          "text": "task approval",
+          "requestPending": true
+        },
+        {
+          "id": "235c506c-bbfa-458d-afbe-2870742164af",
+          "at": 1793950792576,
+          "parentId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\",\"title\":\"approval\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+            "itemId": "official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\"},\"toolCallId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"d6f79c058a381b474805dfeada2bc6d2\\\",\\\"title\\\":\\\"approval\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/d6f79c058a381b474805dfeada2bc6d2\\\"}}]}\"}],\"isError\":false,\"id\":\"b9dbe7c0-292b-4382-948a-d290264def79\"}"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "at": 1793950792584,
+          "parentId": "235c506c-bbfa-458d-afbe-2870742164af",
+          "role": "bot",
+          "kind": "activity",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "tool": {
+            "name": "approval: Working",
+            "ok": true
+          }
+        },
+        {
+          "id": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "at": 1793950792587,
+          "parentId": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "role": "bot",
+          "kind": "text",
+          "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "turnTerminal": true,
+          "turnCompletedAt": 1793950793107,
+          "turnSucceeded": false
+        },
+        {
+          "id": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "at": 1793950792726,
+          "parentId": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "official_fixture_approval",
+            "spoken": "running official_fixture_approval",
+            "input": "{}",
+            "itemId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c",
+            "ok": false
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "f6b64f88-4b9d-4c50-b6f5-d2e1f4a78c14",
+          "at": 1793950792731,
+          "parentId": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "role": "bot",
+          "kind": "options",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "card": {
+            "title": "Approval needed",
+            "subtitle": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c\"}",
+            "options": [
+              "Allow",
+              "Deny"
+            ],
+            "requestId": "09e97556-19b5-40c9-a9c8-4671449b752c",
+            "requestType": "permission",
+            "tool": "superagent",
+            "allowSession": false,
+            "superagent": {
+              "contextId": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+              "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "agentId": "worker-d6f79c058a381b474805dfeada2bc6d2",
+              "callId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c",
+              "authorizationVersion": 1
+            },
+            "answered": "deny",
+            "dismissed": true,
+            "expired": true
+          }
+        },
+        {
+          "id": "b12a2436-dbfa-40ee-bdeb-0ff0fddcb3f7",
+          "at": 1793950793091,
+          "parentId": "f6b64f88-4b9d-4c50-b6f5-d2e1f4a78c14",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "error: Super Agent exited (SIGKILL): ",
+            "ok": false,
+            "terminal": true
+          },
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "297551f7-d9a3-44e5-a9ec-7c9eb2de55e5",
+          "at": 1793950793108,
+          "parentId": "b12a2436-dbfa-40ee-bdeb-0ff0fddcb3f7",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, official_fixture_approval ×1 (1 failed) (from tool previews) · reply: 已接收，正在使用官方 Super Agent Worker 执行。",
+          "digest": {
+            "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "botId": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "at": 1793950793108,
+            "durationMs": 2088,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "official_fixture_approval",
+                "count": 1,
+                "failed": 1
+              }
+            ],
+            "toolCalls": 2,
+            "memory": [],
+            "reply": "已接收，正在使用官方 Super Agent Worker 执行。",
+            "hookCoverage": "preview"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "turnSucceeded": false
+        }
+      ],
+      "native": [
+        {
+          "file": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot/official-superagent/f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a/state/orchestrator.sqlite",
+          "triggers": [
+            {
+              "id": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:52.500Z",
+              "text": "task approval",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "meta": {
+                "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                "approvalMode": "ask"
+              }
+            }
+          ],
+          "tickets": [
+            {
+              "id": "d6f79c058a381b474805dfeada2bc6d2",
+              "title": "approval",
+              "decisionId": "4460729e5a9587b949d96bde586b5490",
+              "mandate": {
+                "strength": "explicit",
+                "policyVersion": "87338089732da8e207cc6475f730465a",
+                "basis": {
+                  "source": "openmausbot",
+                  "scope": {
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                    "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                    "approvalMode": "ask"
+                  },
+                  "sender": "owner",
+                  "via": "addressed",
+                  "addressed": "direct"
+                },
+                "actor": {
+                  "source": "openmausbot",
+                  "id": "owner"
+                },
+                "scope": "approval"
+              },
+              "channels": [
+                {
+                  "source": "openmausbot",
+                  "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "address": {
+                    "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                  }
+                }
+              ],
+              "assignments": [
+                {
+                  "id": "fb05e45858cbe55785a7a4688a035491",
+                  "state": "running",
+                  "createdAt": "2026-11-06T07:39:52.582Z",
+                  "startedAt": "2026-11-06T07:39:52.686Z"
+                }
+              ],
+              "inputs": [],
+              "undelivered": [],
+              "createdAt": "2026-11-06T07:39:52.582Z",
+              "updatedAt": "2026-11-06T07:39:52.694Z",
+              "origin": {
+                "triggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+                "triggerIds": [
+                  "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde"
+                ]
+              },
+              "execution": {
+                "name": "official-task-d6f79c058a38",
+                "directory": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+                "assignment": ""
+              }
+            }
+          ],
+          "outbox": [
+            {
+              "id": "48700f75d25e5834e9f3df515126af54",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+              "kind": "acknowledgement",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "sourceTriggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "status": "sent"
+            }
+          ]
+        }
+      ],
+      "bindings": {
+        "bindings": [
+          {
+            "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "bot_id": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "thread_id": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "context_id": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+            "active": 1
+          }
+        ],
+        "requests": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "source_message_id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+            "status": "failed"
+          }
+        ],
+        "deliveries": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "48700f75d25e5834e9f3df515126af54",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "persisted": 1,
+            "suppressed": 0
+          }
+        ]
+      },
+      "status": {
+        "enabled": true,
+        "state": "failed",
+        "error": "Super Agent exited (SIGKILL): ",
+        "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+        "provider": "personbot-fixture",
+        "model": "fixture"
+      },
+      "children": []
+    },
+    "stoppedAndRetried": {
+      "messages": [
+        {
+          "id": "56445bbc-4213-4113-8f58-c47920617bac",
+          "at": 1793950790989,
+          "parentId": null,
+          "role": "bot",
+          "kind": "text",
+          "text": "Hi, I'm Official recovery crash. What would you like me to do?",
+          "setupOffer": true,
+          "setupChoices": [
+            "Research and digging into topics",
+            "Keeping an eye on things for me",
+            "Email, calendar and messages",
+            "Bookings, shopping and errands",
+            "Data, spreadsheets and reports"
+          ]
+        },
+        {
+          "id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "at": 1793950791012,
+          "parentId": "56445bbc-4213-4113-8f58-c47920617bac",
+          "role": "user",
+          "kind": "text",
+          "text": "task approval",
+          "requestPending": true,
+          "requestCancelled": true
+        },
+        {
+          "id": "235c506c-bbfa-458d-afbe-2870742164af",
+          "at": 1793950792576,
+          "parentId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\",\"title\":\"approval\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+            "itemId": "official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\"},\"toolCallId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"d6f79c058a381b474805dfeada2bc6d2\\\",\\\"title\\\":\\\"approval\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/d6f79c058a381b474805dfeada2bc6d2\\\"}}]}\"}],\"isError\":false,\"id\":\"b9dbe7c0-292b-4382-948a-d290264def79\"}"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "at": 1793950792584,
+          "parentId": "235c506c-bbfa-458d-afbe-2870742164af",
+          "role": "bot",
+          "kind": "activity",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "tool": {
+            "name": "approval: Stopped",
+            "ok": true
+          }
+        },
+        {
+          "id": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "at": 1793950792587,
+          "parentId": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "role": "bot",
+          "kind": "text",
+          "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "turnTerminal": true,
+          "turnCompletedAt": 1793950793107,
+          "turnSucceeded": false
+        },
+        {
+          "id": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "at": 1793950792726,
+          "parentId": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "official_fixture_approval",
+            "spoken": "running official_fixture_approval",
+            "input": "{}",
+            "itemId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c",
+            "ok": false
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "f6b64f88-4b9d-4c50-b6f5-d2e1f4a78c14",
+          "at": 1793950792731,
+          "parentId": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "role": "bot",
+          "kind": "options",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "card": {
+            "title": "Approval needed",
+            "subtitle": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c\"}",
+            "options": [
+              "Allow",
+              "Deny"
+            ],
+            "requestId": "09e97556-19b5-40c9-a9c8-4671449b752c",
+            "requestType": "permission",
+            "tool": "superagent",
+            "allowSession": false,
+            "superagent": {
+              "contextId": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+              "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "agentId": "worker-d6f79c058a381b474805dfeada2bc6d2",
+              "callId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c",
+              "authorizationVersion": 1
+            },
+            "answered": "deny",
+            "dismissed": true,
+            "expired": true
+          }
+        },
+        {
+          "id": "b12a2436-dbfa-40ee-bdeb-0ff0fddcb3f7",
+          "at": 1793950793091,
+          "parentId": "f6b64f88-4b9d-4c50-b6f5-d2e1f4a78c14",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "error: Super Agent exited (SIGKILL): ",
+            "ok": false,
+            "terminal": true
+          },
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "297551f7-d9a3-44e5-a9ec-7c9eb2de55e5",
+          "at": 1793950793108,
+          "parentId": "b12a2436-dbfa-40ee-bdeb-0ff0fddcb3f7",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, official_fixture_approval ×1 (1 failed) (from tool previews) · reply: 已接收，正在使用官方 Super Agent Worker 执行。",
+          "digest": {
+            "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "botId": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "at": 1793950793108,
+            "durationMs": 2088,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "official_fixture_approval",
+                "count": 1,
+                "failed": 1
+              }
+            ],
+            "toolCalls": 2,
+            "memory": [],
+            "reply": "已接收，正在使用官方 Super Agent Worker 执行。",
+            "hookCoverage": "preview"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "turnSucceeded": false
+        },
+        {
+          "id": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "at": 1793950794323,
+          "parentId": "297551f7-d9a3-44e5-a9ec-7c9eb2de55e5",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-native-crash-stop",
+          "requestPending": false
+        },
+        {
+          "id": "ad01f97c-327a-4e13-a0dd-e12a3921aa40",
+          "at": 1793950794389,
+          "parentId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"ignore\",\"trigger_id\":\"6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}",
+            "itemId": "official-fixture-584568b9-06ab-4fe8-b79a-09fbfb5570b7",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-584568b9-06ab-4fe8-b79a-09fbfb5570b7\"},\"toolCallId\":\"official-fixture-584568b9-06ab-4fe8-b79a-09fbfb5570b7\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9\\\",\\\"kind\\\":\\\"ignore\\\",\\\"decision\\\":\\\"ignore\\\",\\\"reason\\\":\\\"Ordinary personal conversation, no background ticket required\\\"}]}\"}],\"isError\":false,\"id\":\"2b5b39d8-4739-43f2-815c-0e0266699e32\"}"
+          },
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604"
+        },
+        {
+          "id": "67c9bff3-baae-47ad-ae27-0a0ca806b94f",
+          "at": 1793950794434,
+          "parentId": "ad01f97c-327a-4e13-a0dd-e12a3921aa40",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_reply",
+            "spoken": "running orchestrator_reply",
+            "input": "{\"purpose\":\"answer\",\"trigger_id\":\"6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9\",\"text\":\"after-native-crash-stop\"}",
+            "itemId": "official-fixture-1a194e25-7ea7-41d0-a6a5-d10aad082788",
+            "ok": true
+          },
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604"
+        },
+        {
+          "id": "acd93d8b-cdda-4064-bd53-01af19f98f1c",
+          "at": 1793950794442,
+          "parentId": "67c9bff3-baae-47ad-ae27-0a0ca806b94f",
+          "role": "bot",
+          "kind": "text",
+          "text": "after-native-crash-stop",
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950794442
+        },
+        {
+          "id": "953fbd1e-6fe6-4241-9b48-c3e041d1d6af",
+          "at": 1793950794454,
+          "parentId": "acd93d8b-cdda-4064-bd53-01af19f98f1c",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, orchestrator_reply ×1 (from tool previews) · reply: after-native-crash-stop",
+          "digest": {
+            "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+            "botId": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "at": 1793950794453,
+            "durationMs": 124,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_reply",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 2,
+            "memory": [],
+            "reply": "after-native-crash-stop",
+            "hookCoverage": "preview"
+          },
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "turnSucceeded": true
+        }
+      ],
+      "native": [
+        {
+          "file": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot/official-superagent/f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a/state/orchestrator.sqlite",
+          "triggers": [
+            {
+              "id": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:52.500Z",
+              "text": "task approval",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "meta": {
+                "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:54.336Z",
+              "text": "echo after-native-crash-stop",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb"
+                }
+              },
+              "meta": {
+                "requestId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+                "sourceMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+                "approvalMode": "ask"
+              }
+            }
+          ],
+          "tickets": [
+            {
+              "id": "d6f79c058a381b474805dfeada2bc6d2",
+              "title": "approval",
+              "decisionId": "4460729e5a9587b949d96bde586b5490",
+              "mandate": {
+                "strength": "explicit",
+                "policyVersion": "87338089732da8e207cc6475f730465a",
+                "basis": {
+                  "source": "openmausbot",
+                  "scope": {
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                    "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                    "approvalMode": "ask"
+                  },
+                  "sender": "owner",
+                  "via": "addressed",
+                  "addressed": "direct"
+                },
+                "actor": {
+                  "source": "openmausbot",
+                  "id": "owner"
+                },
+                "scope": "approval"
+              },
+              "channels": [
+                {
+                  "source": "openmausbot",
+                  "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "address": {
+                    "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                  }
+                }
+              ],
+              "assignments": [
+                {
+                  "id": "fb05e45858cbe55785a7a4688a035491",
+                  "state": "ended",
+                  "createdAt": "2026-11-06T07:39:52.582Z",
+                  "startedAt": "2026-11-06T07:39:52.686Z",
+                  "endedAt": "2026-11-06T07:39:54.267Z"
+                }
+              ],
+              "inputs": [],
+              "undelivered": [],
+              "createdAt": "2026-11-06T07:39:52.582Z",
+              "updatedAt": "2026-11-06T07:39:54.267Z",
+              "origin": {
+                "triggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+                "triggerIds": [
+                  "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde"
+                ]
+              },
+              "execution": {
+                "name": "official-task-d6f79c058a38",
+                "directory": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+                "assignment": ""
+              },
+              "ended": {
+                "at": "2026-11-06T07:39:54.267Z",
+                "by": "human",
+                "outcome": "stopped",
+                "reason": "Stopped from the original conversation before recovery"
+              }
+            }
+          ],
+          "outbox": [
+            {
+              "id": "48700f75d25e5834e9f3df515126af54",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+              "kind": "acknowledgement",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "sourceTriggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "status": "sent"
+            },
+            {
+              "id": "7663de590c68d8b206c7593661da68cd",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb"
+                }
+              },
+              "text": "after-native-crash-stop",
+              "kind": "reply",
+              "purpose": "answer",
+              "sourceTriggerId": "6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9",
+              "status": "sent"
+            }
+          ]
+        }
+      ],
+      "bindings": {
+        "bindings": [
+          {
+            "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "bot_id": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "thread_id": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "context_id": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+            "active": 1
+          }
+        ],
+        "requests": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "source_message_id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+            "status": "stopped"
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+            "source_message_id": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+            "status": "completed"
+          }
+        ],
+        "deliveries": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "48700f75d25e5834e9f3df515126af54",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "7663de590c68d8b206c7593661da68cd",
+            "request_id": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+            "persisted": 1,
+            "suppressed": 0
+          }
+        ]
+      },
+      "status": {
+        "enabled": true,
+        "state": "ready",
+        "pid": 91589,
+        "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+        "provider": "personbot-fixture",
+        "model": "fixture"
+      },
+      "children": [
+        {
+          "pid": 91589,
+          "parentPid": 91533,
+          "command": "/opt/homebrew/Cellar/node/26.10.0_1/bin/node --import <repo>/packages/personbot-superagent/src/runtime-loader.mjs <repo>/node_modules/.pnpm/@deepseek-ai+dsh@0.2.2-rc.1_f435452fdc7898341cda17fcf225c75e/node_modules/@deepseek-ai/dsh/lib/bin.js --profile omb-superagent"
+        }
+      ]
+    },
+    "restarted": {
+      "messages": [
+        {
+          "id": "56445bbc-4213-4113-8f58-c47920617bac",
+          "at": 1793950790989,
+          "parentId": null,
+          "role": "bot",
+          "kind": "text",
+          "text": "Hi, I'm Official recovery crash. What would you like me to do?",
+          "setupOffer": true,
+          "setupChoices": [
+            "Research and digging into topics",
+            "Keeping an eye on things for me",
+            "Email, calendar and messages",
+            "Bookings, shopping and errands",
+            "Data, spreadsheets and reports"
+          ]
+        },
+        {
+          "id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "at": 1793950791012,
+          "parentId": "56445bbc-4213-4113-8f58-c47920617bac",
+          "role": "user",
+          "kind": "text",
+          "text": "task approval",
+          "requestPending": true,
+          "requestCancelled": true
+        },
+        {
+          "id": "235c506c-bbfa-458d-afbe-2870742164af",
+          "at": 1793950792576,
+          "parentId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\",\"title\":\"approval\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+            "itemId": "official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\"},\"toolCallId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"d6f79c058a381b474805dfeada2bc6d2\\\",\\\"title\\\":\\\"approval\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/d6f79c058a381b474805dfeada2bc6d2\\\"}}]}\"}],\"isError\":false,\"id\":\"b9dbe7c0-292b-4382-948a-d290264def79\"}"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "at": 1793950792584,
+          "parentId": "235c506c-bbfa-458d-afbe-2870742164af",
+          "role": "bot",
+          "kind": "activity",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "tool": {
+            "name": "approval: Stopped",
+            "ok": true
+          }
+        },
+        {
+          "id": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "at": 1793950792587,
+          "parentId": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "role": "bot",
+          "kind": "text",
+          "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "turnTerminal": true,
+          "turnCompletedAt": 1793950793107,
+          "turnSucceeded": false
+        },
+        {
+          "id": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "at": 1793950792726,
+          "parentId": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "official_fixture_approval",
+            "spoken": "running official_fixture_approval",
+            "input": "{}",
+            "itemId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c",
+            "ok": false
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "f6b64f88-4b9d-4c50-b6f5-d2e1f4a78c14",
+          "at": 1793950792731,
+          "parentId": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "role": "bot",
+          "kind": "options",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "card": {
+            "title": "Approval needed",
+            "subtitle": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c\"}",
+            "options": [
+              "Allow",
+              "Deny"
+            ],
+            "requestId": "09e97556-19b5-40c9-a9c8-4671449b752c",
+            "requestType": "permission",
+            "tool": "superagent",
+            "allowSession": false,
+            "superagent": {
+              "contextId": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+              "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "agentId": "worker-d6f79c058a381b474805dfeada2bc6d2",
+              "callId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c",
+              "authorizationVersion": 1
+            },
+            "answered": "deny",
+            "dismissed": true,
+            "expired": true
+          }
+        },
+        {
+          "id": "b12a2436-dbfa-40ee-bdeb-0ff0fddcb3f7",
+          "at": 1793950793091,
+          "parentId": "f6b64f88-4b9d-4c50-b6f5-d2e1f4a78c14",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "error: Super Agent exited (SIGKILL): ",
+            "ok": false,
+            "terminal": true
+          },
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "297551f7-d9a3-44e5-a9ec-7c9eb2de55e5",
+          "at": 1793950793108,
+          "parentId": "b12a2436-dbfa-40ee-bdeb-0ff0fddcb3f7",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, official_fixture_approval ×1 (1 failed) (from tool previews) · reply: 已接收，正在使用官方 Super Agent Worker 执行。",
+          "digest": {
+            "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "botId": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "at": 1793950793108,
+            "durationMs": 2088,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "official_fixture_approval",
+                "count": 1,
+                "failed": 1
+              }
+            ],
+            "toolCalls": 2,
+            "memory": [],
+            "reply": "已接收，正在使用官方 Super Agent Worker 执行。",
+            "hookCoverage": "preview"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "turnSucceeded": false
+        },
+        {
+          "id": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "at": 1793950794323,
+          "parentId": "297551f7-d9a3-44e5-a9ec-7c9eb2de55e5",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-native-crash-stop",
+          "requestPending": false
+        },
+        {
+          "id": "ad01f97c-327a-4e13-a0dd-e12a3921aa40",
+          "at": 1793950794389,
+          "parentId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"ignore\",\"trigger_id\":\"6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}",
+            "itemId": "official-fixture-584568b9-06ab-4fe8-b79a-09fbfb5570b7",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-584568b9-06ab-4fe8-b79a-09fbfb5570b7\"},\"toolCallId\":\"official-fixture-584568b9-06ab-4fe8-b79a-09fbfb5570b7\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9\\\",\\\"kind\\\":\\\"ignore\\\",\\\"decision\\\":\\\"ignore\\\",\\\"reason\\\":\\\"Ordinary personal conversation, no background ticket required\\\"}]}\"}],\"isError\":false,\"id\":\"2b5b39d8-4739-43f2-815c-0e0266699e32\"}"
+          },
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604"
+        },
+        {
+          "id": "67c9bff3-baae-47ad-ae27-0a0ca806b94f",
+          "at": 1793950794434,
+          "parentId": "ad01f97c-327a-4e13-a0dd-e12a3921aa40",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_reply",
+            "spoken": "running orchestrator_reply",
+            "input": "{\"purpose\":\"answer\",\"trigger_id\":\"6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9\",\"text\":\"after-native-crash-stop\"}",
+            "itemId": "official-fixture-1a194e25-7ea7-41d0-a6a5-d10aad082788",
+            "ok": true
+          },
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604"
+        },
+        {
+          "id": "acd93d8b-cdda-4064-bd53-01af19f98f1c",
+          "at": 1793950794442,
+          "parentId": "67c9bff3-baae-47ad-ae27-0a0ca806b94f",
+          "role": "bot",
+          "kind": "text",
+          "text": "after-native-crash-stop",
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950794442
+        },
+        {
+          "id": "953fbd1e-6fe6-4241-9b48-c3e041d1d6af",
+          "at": 1793950794454,
+          "parentId": "acd93d8b-cdda-4064-bd53-01af19f98f1c",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, orchestrator_reply ×1 (from tool previews) · reply: after-native-crash-stop",
+          "digest": {
+            "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+            "botId": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "at": 1793950794453,
+            "durationMs": 124,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_reply",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 2,
+            "memory": [],
+            "reply": "after-native-crash-stop",
+            "hookCoverage": "preview"
+          },
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "turnSucceeded": true
+        },
+        {
+          "id": "76ec111e-b189-4c18-a613-8558e4e4d692",
+          "at": 1793950795948,
+          "parentId": "953fbd1e-6fe6-4241-9b48-c3e041d1d6af",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-crash-server-restart",
+          "requestPending": false
+        },
+        {
+          "id": "b7d06f5f-dafb-45e3-b041-641751d870f8",
+          "at": 1793950797123,
+          "parentId": "76ec111e-b189-4c18-a613-8558e4e4d692",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"ignore\",\"trigger_id\":\"3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}",
+            "itemId": "official-fixture-ded23e0c-f031-4ed4-b899-4cd7d845bd7b",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-ded23e0c-f031-4ed4-b899-4cd7d845bd7b\"},\"toolCallId\":\"official-fixture-ded23e0c-f031-4ed4-b899-4cd7d845bd7b\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588\\\",\\\"kind\\\":\\\"ignore\\\",\\\"decision\\\":\\\"ignore\\\",\\\"reason\\\":\\\"Ordinary personal conversation, no background ticket required\\\"}]}\"}],\"isError\":false,\"id\":\"7c0903ba-8b0e-4f2e-b843-20e4eff404d8\"}"
+          },
+          "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+          "requestMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692"
+        },
+        {
+          "id": "9e370476-dfb1-42c7-8897-9e1545a37b02",
+          "at": 1793950797161,
+          "parentId": "b7d06f5f-dafb-45e3-b041-641751d870f8",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_reply",
+            "spoken": "running orchestrator_reply",
+            "input": "{\"purpose\":\"answer\",\"trigger_id\":\"3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588\",\"text\":\"after-crash-server-restart\"}",
+            "itemId": "official-fixture-2aaa460c-b87d-42d0-87f9-71ec8ae9afdf",
+            "ok": true
+          },
+          "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+          "requestMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692"
+        },
+        {
+          "id": "57508f9b-c17c-4d65-9e84-184b2f55278a",
+          "at": 1793950797168,
+          "parentId": "9e370476-dfb1-42c7-8897-9e1545a37b02",
+          "role": "bot",
+          "kind": "text",
+          "text": "after-crash-server-restart",
+          "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+          "requestMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950797168
+        },
+        {
+          "id": "29d8ebca-e962-472e-ae27-a9b7626268d5",
+          "at": 1793950797184,
+          "parentId": "57508f9b-c17c-4d65-9e84-184b2f55278a",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, orchestrator_reply ×1 (from tool previews) · reply: after-crash-server-restart",
+          "digest": {
+            "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+            "botId": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "at": 1793950797184,
+            "durationMs": 1227,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_reply",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 2,
+            "memory": [],
+            "reply": "after-crash-server-restart",
+            "hookCoverage": "preview"
+          },
+          "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+          "requestMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692",
+          "turnSucceeded": true
+        }
+      ],
+      "native": [
+        {
+          "file": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot/official-superagent/f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a/state/orchestrator.sqlite",
+          "triggers": [
+            {
+              "id": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:52.500Z",
+              "text": "task approval",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "meta": {
+                "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:54.336Z",
+              "text": "echo after-native-crash-stop",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb"
+                }
+              },
+              "meta": {
+                "requestId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+                "sourceMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:57.057Z",
+              "text": "echo after-crash-server-restart",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48"
+                }
+              },
+              "meta": {
+                "requestId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+                "sourceMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692",
+                "approvalMode": "ask"
+              }
+            }
+          ],
+          "tickets": [
+            {
+              "id": "d6f79c058a381b474805dfeada2bc6d2",
+              "title": "approval",
+              "decisionId": "4460729e5a9587b949d96bde586b5490",
+              "mandate": {
+                "strength": "explicit",
+                "policyVersion": "87338089732da8e207cc6475f730465a",
+                "basis": {
+                  "source": "openmausbot",
+                  "scope": {
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                    "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                    "approvalMode": "ask"
+                  },
+                  "sender": "owner",
+                  "via": "addressed",
+                  "addressed": "direct"
+                },
+                "actor": {
+                  "source": "openmausbot",
+                  "id": "owner"
+                },
+                "scope": "approval"
+              },
+              "channels": [
+                {
+                  "source": "openmausbot",
+                  "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "address": {
+                    "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                  }
+                }
+              ],
+              "assignments": [
+                {
+                  "id": "fb05e45858cbe55785a7a4688a035491",
+                  "state": "ended",
+                  "createdAt": "2026-11-06T07:39:52.582Z",
+                  "startedAt": "2026-11-06T07:39:52.686Z",
+                  "endedAt": "2026-11-06T07:39:54.267Z"
+                }
+              ],
+              "inputs": [],
+              "undelivered": [],
+              "createdAt": "2026-11-06T07:39:52.582Z",
+              "updatedAt": "2026-11-06T07:39:54.267Z",
+              "origin": {
+                "triggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+                "triggerIds": [
+                  "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde"
+                ]
+              },
+              "execution": {
+                "name": "official-task-d6f79c058a38",
+                "directory": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+                "assignment": ""
+              },
+              "ended": {
+                "at": "2026-11-06T07:39:54.267Z",
+                "by": "human",
+                "outcome": "stopped",
+                "reason": "Stopped from the original conversation before recovery"
+              }
+            }
+          ],
+          "outbox": [
+            {
+              "id": "48700f75d25e5834e9f3df515126af54",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+              "kind": "acknowledgement",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "sourceTriggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "status": "sent"
+            },
+            {
+              "id": "7663de590c68d8b206c7593661da68cd",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb"
+                }
+              },
+              "text": "after-native-crash-stop",
+              "kind": "reply",
+              "purpose": "answer",
+              "sourceTriggerId": "6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9",
+              "status": "sent"
+            },
+            {
+              "id": "d61346397d958a84c604dbccbd07b73f",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48"
+                }
+              },
+              "text": "after-crash-server-restart",
+              "kind": "reply",
+              "purpose": "answer",
+              "sourceTriggerId": "3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588",
+              "status": "sent"
+            }
+          ]
+        }
+      ],
+      "bindings": {
+        "bindings": [
+          {
+            "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "bot_id": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "thread_id": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "context_id": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+            "active": 1
+          }
+        ],
+        "requests": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "source_message_id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+            "status": "stopped"
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+            "source_message_id": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+            "status": "completed"
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+            "source_message_id": "76ec111e-b189-4c18-a613-8558e4e4d692",
+            "status": "completed"
+          }
+        ],
+        "deliveries": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "48700f75d25e5834e9f3df515126af54",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "7663de590c68d8b206c7593661da68cd",
+            "request_id": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "d61346397d958a84c604dbccbd07b73f",
+            "request_id": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+            "persisted": 1,
+            "suppressed": 0
+          }
+        ]
+      },
+      "status": {
+        "enabled": true,
+        "state": "ready",
+        "pid": 91614,
+        "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+        "provider": "personbot-fixture",
+        "model": "fixture"
+      },
+      "children": [
+        {
+          "pid": 91614,
+          "parentPid": 91612,
+          "command": "/opt/homebrew/Cellar/node/26.10.0_1/bin/node --import <repo>/packages/personbot-superagent/src/runtime-loader.mjs <repo>/node_modules/.pnpm/@deepseek-ai+dsh@0.2.2-rc.1_f435452fdc7898341cda17fcf225c75e/node_modules/@deepseek-ai/dsh/lib/bin.js --profile omb-superagent"
+        }
+      ]
+    },
+    "final": {
+      "messages": [
+        {
+          "id": "56445bbc-4213-4113-8f58-c47920617bac",
+          "at": 1793950790989,
+          "parentId": null,
+          "role": "bot",
+          "kind": "text",
+          "text": "Hi, I'm Official recovery crash. What would you like me to do?",
+          "setupOffer": true,
+          "setupChoices": [
+            "Research and digging into topics",
+            "Keeping an eye on things for me",
+            "Email, calendar and messages",
+            "Bookings, shopping and errands",
+            "Data, spreadsheets and reports"
+          ]
+        },
+        {
+          "id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "at": 1793950791012,
+          "parentId": "56445bbc-4213-4113-8f58-c47920617bac",
+          "role": "user",
+          "kind": "text",
+          "text": "task approval",
+          "requestPending": true,
+          "requestCancelled": true
+        },
+        {
+          "id": "235c506c-bbfa-458d-afbe-2870742164af",
+          "at": 1793950792576,
+          "parentId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\",\"title\":\"approval\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+            "itemId": "official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\"},\"toolCallId\":\"official-fixture-96b808a4-29ca-46c5-95b4-d78160f8f403\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"d6f79c058a381b474805dfeada2bc6d2\\\",\\\"title\\\":\\\"approval\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/d6f79c058a381b474805dfeada2bc6d2\\\"}}]}\"}],\"isError\":false,\"id\":\"b9dbe7c0-292b-4382-948a-d290264def79\"}"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "at": 1793950792584,
+          "parentId": "235c506c-bbfa-458d-afbe-2870742164af",
+          "role": "bot",
+          "kind": "activity",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "tool": {
+            "name": "approval: Stopped",
+            "ok": true
+          }
+        },
+        {
+          "id": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "at": 1793950792587,
+          "parentId": "24b99329-a77c-43b4-91c9-4f95ba5df4fd",
+          "role": "bot",
+          "kind": "text",
+          "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "turnTerminal": true,
+          "turnCompletedAt": 1793950793107,
+          "turnSucceeded": false
+        },
+        {
+          "id": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "at": 1793950792726,
+          "parentId": "61f655ba-197c-4f3d-a812-e8f5390d2a96",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "official_fixture_approval",
+            "spoken": "running official_fixture_approval",
+            "input": "{}",
+            "itemId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c",
+            "ok": false
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "f6b64f88-4b9d-4c50-b6f5-d2e1f4a78c14",
+          "at": 1793950792731,
+          "parentId": "dcc1a87b-3931-4cac-97a0-7a223a59af8d",
+          "role": "bot",
+          "kind": "options",
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "card": {
+            "title": "Approval needed",
+            "subtitle": "Execution directory: /private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace\n{\"toolName\":\"official_fixture_approval\",\"callId\":\"official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c\"}",
+            "options": [
+              "Allow",
+              "Deny"
+            ],
+            "requestId": "09e97556-19b5-40c9-a9c8-4671449b752c",
+            "requestType": "permission",
+            "tool": "superagent",
+            "allowSession": false,
+            "superagent": {
+              "contextId": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+              "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "agentId": "worker-d6f79c058a381b474805dfeada2bc6d2",
+              "callId": "official-fixture-1309fc8f-fd02-424a-9d5e-8999758c3a0c",
+              "authorizationVersion": 1
+            },
+            "answered": "deny",
+            "dismissed": true,
+            "expired": true
+          }
+        },
+        {
+          "id": "b12a2436-dbfa-40ee-bdeb-0ff0fddcb3f7",
+          "at": 1793950793091,
+          "parentId": "f6b64f88-4b9d-4c50-b6f5-d2e1f4a78c14",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "error: Super Agent exited (SIGKILL): ",
+            "ok": false,
+            "terminal": true
+          },
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5"
+        },
+        {
+          "id": "297551f7-d9a3-44e5-a9ec-7c9eb2de55e5",
+          "at": 1793950793108,
+          "parentId": "b12a2436-dbfa-40ee-bdeb-0ff0fddcb3f7",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, official_fixture_approval ×1 (1 failed) (from tool previews) · reply: 已接收，正在使用官方 Super Agent Worker 执行。",
+          "digest": {
+            "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "botId": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "at": 1793950793108,
+            "durationMs": 2088,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "official_fixture_approval",
+                "count": 1,
+                "failed": 1
+              }
+            ],
+            "toolCalls": 2,
+            "memory": [],
+            "reply": "已接收，正在使用官方 Super Agent Worker 执行。",
+            "hookCoverage": "preview"
+          },
+          "turnId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+          "requestMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+          "turnSucceeded": false
+        },
+        {
+          "id": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "at": 1793950794323,
+          "parentId": "297551f7-d9a3-44e5-a9ec-7c9eb2de55e5",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-native-crash-stop",
+          "requestPending": false
+        },
+        {
+          "id": "ad01f97c-327a-4e13-a0dd-e12a3921aa40",
+          "at": 1793950794389,
+          "parentId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"ignore\",\"trigger_id\":\"6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}",
+            "itemId": "official-fixture-584568b9-06ab-4fe8-b79a-09fbfb5570b7",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-584568b9-06ab-4fe8-b79a-09fbfb5570b7\"},\"toolCallId\":\"official-fixture-584568b9-06ab-4fe8-b79a-09fbfb5570b7\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9\\\",\\\"kind\\\":\\\"ignore\\\",\\\"decision\\\":\\\"ignore\\\",\\\"reason\\\":\\\"Ordinary personal conversation, no background ticket required\\\"}]}\"}],\"isError\":false,\"id\":\"2b5b39d8-4739-43f2-815c-0e0266699e32\"}"
+          },
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604"
+        },
+        {
+          "id": "67c9bff3-baae-47ad-ae27-0a0ca806b94f",
+          "at": 1793950794434,
+          "parentId": "ad01f97c-327a-4e13-a0dd-e12a3921aa40",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_reply",
+            "spoken": "running orchestrator_reply",
+            "input": "{\"purpose\":\"answer\",\"trigger_id\":\"6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9\",\"text\":\"after-native-crash-stop\"}",
+            "itemId": "official-fixture-1a194e25-7ea7-41d0-a6a5-d10aad082788",
+            "ok": true
+          },
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604"
+        },
+        {
+          "id": "acd93d8b-cdda-4064-bd53-01af19f98f1c",
+          "at": 1793950794442,
+          "parentId": "67c9bff3-baae-47ad-ae27-0a0ca806b94f",
+          "role": "bot",
+          "kind": "text",
+          "text": "after-native-crash-stop",
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950794442
+        },
+        {
+          "id": "953fbd1e-6fe6-4241-9b48-c3e041d1d6af",
+          "at": 1793950794454,
+          "parentId": "acd93d8b-cdda-4064-bd53-01af19f98f1c",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, orchestrator_reply ×1 (from tool previews) · reply: after-native-crash-stop",
+          "digest": {
+            "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+            "botId": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "at": 1793950794453,
+            "durationMs": 124,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_reply",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 2,
+            "memory": [],
+            "reply": "after-native-crash-stop",
+            "hookCoverage": "preview"
+          },
+          "turnId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+          "requestMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+          "turnSucceeded": true
+        },
+        {
+          "id": "76ec111e-b189-4c18-a613-8558e4e4d692",
+          "at": 1793950795948,
+          "parentId": "953fbd1e-6fe6-4241-9b48-c3e041d1d6af",
+          "role": "user",
+          "kind": "text",
+          "text": "echo after-crash-server-restart",
+          "requestPending": false
+        },
+        {
+          "id": "b7d06f5f-dafb-45e3-b041-641751d870f8",
+          "at": 1793950797123,
+          "parentId": "76ec111e-b189-4c18-a613-8558e4e4d692",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_route",
+            "spoken": "running orchestrator_route",
+            "input": "{\"decisions\":[{\"kind\":\"ignore\",\"trigger_id\":\"3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}",
+            "itemId": "official-fixture-ded23e0c-f031-4ed4-b899-4cd7d845bd7b",
+            "ok": true,
+            "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-ded23e0c-f031-4ed4-b899-4cd7d845bd7b\"},\"toolCallId\":\"official-fixture-ded23e0c-f031-4ed4-b899-4cd7d845bd7b\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588\\\",\\\"kind\\\":\\\"ignore\\\",\\\"decision\\\":\\\"ignore\\\",\\\"reason\\\":\\\"Ordinary personal conversation, no background ticket required\\\"}]}\"}],\"isError\":false,\"id\":\"7c0903ba-8b0e-4f2e-b843-20e4eff404d8\"}"
+          },
+          "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+          "requestMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692"
+        },
+        {
+          "id": "9e370476-dfb1-42c7-8897-9e1545a37b02",
+          "at": 1793950797161,
+          "parentId": "b7d06f5f-dafb-45e3-b041-641751d870f8",
+          "role": "bot",
+          "kind": "activity",
+          "tool": {
+            "name": "orchestrator_reply",
+            "spoken": "running orchestrator_reply",
+            "input": "{\"purpose\":\"answer\",\"trigger_id\":\"3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588\",\"text\":\"after-crash-server-restart\"}",
+            "itemId": "official-fixture-2aaa460c-b87d-42d0-87f9-71ec8ae9afdf",
+            "ok": true
+          },
+          "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+          "requestMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692"
+        },
+        {
+          "id": "57508f9b-c17c-4d65-9e84-184b2f55278a",
+          "at": 1793950797168,
+          "parentId": "9e370476-dfb1-42c7-8897-9e1545a37b02",
+          "role": "bot",
+          "kind": "text",
+          "text": "after-crash-server-restart",
+          "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+          "requestMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692",
+          "turnTerminal": true,
+          "turnSucceeded": true,
+          "turnCompletedAt": 1793950797168
+        },
+        {
+          "id": "29d8ebca-e962-472e-ae27-a9b7626268d5",
+          "at": 1793950797184,
+          "parentId": "57508f9b-c17c-4d65-9e84-184b2f55278a",
+          "role": "bot",
+          "kind": "digest",
+          "text": "[digest] · tools: orchestrator_route ×1, orchestrator_reply ×1 (from tool previews) · reply: after-crash-server-restart",
+          "digest": {
+            "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+            "botId": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "at": 1793950797184,
+            "durationMs": 1227,
+            "tools": [
+              {
+                "name": "orchestrator_route",
+                "count": 1,
+                "failed": 0
+              },
+              {
+                "name": "orchestrator_reply",
+                "count": 1,
+                "failed": 0
+              }
+            ],
+            "toolCalls": 2,
+            "memory": [],
+            "reply": "after-crash-server-restart",
+            "hookCoverage": "preview"
+          },
+          "turnId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+          "requestMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692",
+          "turnSucceeded": true
+        }
+      ],
+      "native": [
+        {
+          "file": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot/official-superagent/f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a/state/orchestrator.sqlite",
+          "triggers": [
+            {
+              "id": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:52.500Z",
+              "text": "task approval",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "meta": {
+                "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:54.336Z",
+              "text": "echo after-native-crash-stop",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb"
+                }
+              },
+              "meta": {
+                "requestId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+                "sourceMessageId": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+                "approvalMode": "ask"
+              }
+            },
+            {
+              "id": "3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588",
+              "source": "openmausbot",
+              "actor": {
+                "source": "openmausbot",
+                "id": "owner"
+              },
+              "human": true,
+              "addressed": "direct",
+              "at": "2026-11-06T07:39:57.057Z",
+              "text": "echo after-crash-server-restart",
+              "threads": [
+                {
+                  "source": "openmausbot",
+                  "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a"
+                }
+              ],
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48"
+                }
+              },
+              "meta": {
+                "requestId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+                "sourceMessageId": "76ec111e-b189-4c18-a613-8558e4e4d692",
+                "approvalMode": "ask"
+              }
+            }
+          ],
+          "tickets": [
+            {
+              "id": "d6f79c058a381b474805dfeada2bc6d2",
+              "title": "approval",
+              "decisionId": "4460729e5a9587b949d96bde586b5490",
+              "mandate": {
+                "strength": "explicit",
+                "policyVersion": "87338089732da8e207cc6475f730465a",
+                "basis": {
+                  "source": "openmausbot",
+                  "scope": {
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+                    "sourceMessageId": "e209033a-79cb-497a-921b-8b8eec3467e5",
+                    "approvalMode": "ask"
+                  },
+                  "sender": "owner",
+                  "via": "addressed",
+                  "addressed": "direct"
+                },
+                "actor": {
+                  "source": "openmausbot",
+                  "id": "owner"
+                },
+                "scope": "approval"
+              },
+              "channels": [
+                {
+                  "source": "openmausbot",
+                  "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "address": {
+                    "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                    "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                  }
+                }
+              ],
+              "assignments": [
+                {
+                  "id": "fb05e45858cbe55785a7a4688a035491",
+                  "state": "ended",
+                  "createdAt": "2026-11-06T07:39:52.582Z",
+                  "startedAt": "2026-11-06T07:39:52.686Z",
+                  "endedAt": "2026-11-06T07:39:54.267Z"
+                }
+              ],
+              "inputs": [],
+              "undelivered": [],
+              "createdAt": "2026-11-06T07:39:52.582Z",
+              "updatedAt": "2026-11-06T07:39:54.267Z",
+              "origin": {
+                "triggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+                "triggerIds": [
+                  "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde"
+                ]
+              },
+              "execution": {
+                "name": "official-task-d6f79c058a38",
+                "directory": "/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+                "assignment": ""
+              },
+              "ended": {
+                "at": "2026-11-06T07:39:54.267Z",
+                "by": "human",
+                "outcome": "stopped",
+                "reason": "Stopped from the original conversation before recovery"
+              }
+            }
+          ],
+          "outbox": [
+            {
+              "id": "48700f75d25e5834e9f3df515126af54",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "883816b8-adcf-4b8a-9c87-dc703ff8c691"
+                }
+              },
+              "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+              "kind": "acknowledgement",
+              "ticketId": "d6f79c058a381b474805dfeada2bc6d2",
+              "sourceTriggerId": "bcdab1a5560b9539cdb67d620148e7849218171871023454c979efb2f1940dde",
+              "status": "sent"
+            },
+            {
+              "id": "7663de590c68d8b206c7593661da68cd",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "e9fe29b0-81ee-4dee-b225-70a4061cccfb"
+                }
+              },
+              "text": "after-native-crash-stop",
+              "kind": "reply",
+              "purpose": "answer",
+              "sourceTriggerId": "6946dde27b31d03e81e22191639a1ea64b22dd9dffff24f60c061f51b184bbb9",
+              "status": "sent"
+            },
+            {
+              "id": "d61346397d958a84c604dbccbd07b73f",
+              "channel": {
+                "source": "openmausbot",
+                "thread": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                "address": {
+                  "bindingId": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+                  "requestId": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48"
+                }
+              },
+              "text": "after-crash-server-restart",
+              "kind": "reply",
+              "purpose": "answer",
+              "sourceTriggerId": "3f7fa4a9a6d59cd7ce84e292bbe5c45e304734b321e8e7fb23ff3181d64cb588",
+              "status": "sent"
+            }
+          ]
+        }
+      ],
+      "bindings": {
+        "bindings": [
+          {
+            "id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "bot_id": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+            "thread_id": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+            "context_id": "0f42868f-ae24-4206-9daf-816cfd8bd6ee",
+            "active": 1
+          }
+        ],
+        "requests": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "source_message_id": "e209033a-79cb-497a-921b-8b8eec3467e5",
+            "status": "stopped"
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+            "source_message_id": "f9c47cd5-ed53-44b6-bc22-39124f266604",
+            "status": "completed"
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "request_id": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+            "source_message_id": "76ec111e-b189-4c18-a613-8558e4e4d692",
+            "status": "completed"
+          }
+        ],
+        "deliveries": [
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "48700f75d25e5834e9f3df515126af54",
+            "request_id": "883816b8-adcf-4b8a-9c87-dc703ff8c691",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "7663de590c68d8b206c7593661da68cd",
+            "request_id": "e9fe29b0-81ee-4dee-b225-70a4061cccfb",
+            "persisted": 1,
+            "suppressed": 0
+          },
+          {
+            "binding_id": "f2c5c5a1e0579afd2c9c47778e44735233141b6debb644f610b711de2525918a",
+            "message_id": "d61346397d958a84c604dbccbd07b73f",
+            "request_id": "67b98dba-aeb7-4085-94cb-e4fcaa85ee48",
+            "persisted": 1,
+            "suppressed": 0
+          }
+        ]
+      },
+      "status": {
+        "enabled": true,
+        "state": "ready",
+        "pid": 91614,
+        "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-e3poqW/personbot-workspace",
+        "provider": "personbot-fixture",
+        "model": "fixture"
+      },
+      "children": [
+        {
+          "pid": 91614,
+          "parentPid": 91612,
+          "command": "/opt/homebrew/Cellar/node/26.10.0_1/bin/node --import <repo>/packages/personbot-superagent/src/runtime-loader.mjs <repo>/node_modules/.pnpm/@deepseek-ai+dsh@0.2.2-rc.1_f435452fdc7898341cda17fcf225c75e/node_modules/@deepseek-ai/dsh/lib/bin.js --profile omb-superagent"
+        }
+      ]
+    }
+  },
+  "bot": {
+    "id": "d829dc22-5b11-4fe1-a5a8-c9aef3aacf20",
+    "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+    "name": "Official recovery crash",
+    "title": "",
+    "description": "",
+    "soul": "",
+    "soulHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "notifications": true,
+    "color": "blue",
+    "mascotBody": "cursor",
+    "unread": false,
+    "modelSelection": {
+      "instanceId": "dsh-superagent",
+      "model": "fixture"
+    },
+    "createdAt": 1793950790973,
+    "avatarUrl": null,
+    "autoApprove": false,
+    "approvalMode": "full",
+    "waitingForTeammates": false,
+    "mainThreadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+    "tasks": [
+      {
+        "threadId": "e3a04a3f-4173-4ebf-a640-a6480a4f88bb",
+        "title": "New thread",
+        "createdAt": 1793950790973,
+        "updatedAt": 1793950790989,
+        "unread": false,
+        "activity": "idle",
+        "busy": false,
+        "lastThreadOrderAt": 1793950790989,
+        "modelSelection": {
+          "instanceId": "dsh-superagent",
+          "model": "fixture"
+        },
+        "followsBotModel": false,
+        "waitingForTeammates": false
+      }
+    ],
+    "messages": [
+      {
+        "id": "56445bbc-4213-4113-8f58-c47920617bac",
+        "at": 1793950790989,
+        "parentId": null,
+        "role": "bot",
+        "kind": "text",
+        "text": "Hi, I'm Official recovery crash. What would you like me to do?",
+        "setupOffer": true,
+        "setupChoices": [
+          "Research and digging into topics",
+          "Keeping an eye on things for me",
+          "Email, calendar and messages",
+          "Bookings, shopping and errands",
+          "Data, spreadsheets and reports"
+        ]
+      }
+    ],
+    "activeLeafId": "56445bbc-4213-4113-8f58-c47920617bac"
+  }
+}

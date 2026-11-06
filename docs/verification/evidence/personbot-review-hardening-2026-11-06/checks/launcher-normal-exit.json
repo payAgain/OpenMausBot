@@ -1,0 +1,8 @@
+{
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "stdout": "openmausbot open-source edition (enterprise layer present but OMB_LICENSE_KEY is not set)\nlocal requests: owner trust (self-hosted default)\nbrand: default\nopenmausbot server on http://127.0.0.1:53421\nOfficial Super Agent: original UI and memory are active; legacy executors are suspended.\n\nOpenMausBot + Super Agent is ready\nhttp://127.0.0.1:53421\nConfigure the model in App settings. Ctrl-C stops this server.\n\n",
+  "stderr": "local requests: OMB_DEV_TRUST_LOCAL_BROWSER=1: browsers on this machine act as the owner (development only)\n"
+}

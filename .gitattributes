@@ -39,3 +39,7 @@ shared/app-frame/app-host.html text eol=lf
 
 # Imported by a vitest test: a CRLF checkout of its first lines broke the import on Windows.
 scripts/tighten-ratchets.mjs text eol=lf
+
+# Process transcripts and this pinned upstream input retain their original whitespace.
+docs/verification/evidence/** whitespace=-blank-at-eof,-blank-at-eol
+packages/personbot-superagent/upstream/skills/dsh-superagent-github/SKILL.md whitespace=-blank-at-eol

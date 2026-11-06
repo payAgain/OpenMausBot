@@ -1,0 +1,323 @@
+{
+  "url": "http://127.0.0.1:21380",
+  "pid": 45442,
+  "dataDir": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-tnpnDF",
+  "logPath": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verification-evidence/server-1793936669650-45432.log",
+  "bot": {
+    "id": "e9fb199f-c40f-4ce6-abed-ec24122c5d24",
+    "threadId": "56de4999-91f2-480f-b59c-8f818fdc607d"
+  },
+  "staticDir": "/Users/yimingd/AI/personbot/OpenMausBot/dist-personbot",
+  "entry": "node scripts/personbot-start.ts --demo --skip-build --port 21380",
+  "model": "deterministic fixture",
+  "runtime": "official Super Agent + native DSH",
+  "htmlSha256": "52294a90dd78e947dd1bfd130bb67ab7b7b61f0ca629fc0a8e038008accb26e5",
+  "htmlMatchesDedicatedBuild": true,
+  "proof": {
+    "path": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-tnpnDF/personbot-workspace/official-preview.txt",
+    "text": "Official Super Agent worker executed a native DSH file tool.\n"
+  },
+  "state": {
+    "enabled": true,
+    "state": "ready",
+    "pid": 45566,
+    "workspace": "/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-tnpnDF/personbot-workspace",
+    "provider": "personbot-fixture",
+    "model": "fixture"
+  },
+  "messages": {
+    "messages": [
+      {
+        "id": "f125c593-7a21-45fd-9f62-bed329b91314",
+        "at": 1793936729194,
+        "parentId": null,
+        "role": "bot",
+        "kind": "text",
+        "text": "Hi 演示用户, I'm Super Agent. What would you like me to do?",
+        "setupOffer": true,
+        "setupChoices": [
+          "Research and digging into topics",
+          "Keeping an eye on things for me",
+          "Email, calendar and messages",
+          "Bookings, shopping and errands",
+          "Data, spreadsheets and reports"
+        ]
+      },
+      {
+        "id": "2299640f-b3b5-42b9-854f-371d0ca61a03",
+        "at": 1793936729228,
+        "parentId": "f125c593-7a21-45fd-9f62-bed329b91314",
+        "role": "user",
+        "kind": "text",
+        "text": "echo 官方 Super Agent 已接入。原聊天界面、会话管理和记忆管理继续使用。这是隔离演示，模型使用确定性 fixture。",
+        "requestPending": false
+      },
+      {
+        "id": "0f51b96d-7f40-4d1b-b819-1a47f2692d3c",
+        "at": 1793936731454,
+        "parentId": "2299640f-b3b5-42b9-854f-371d0ca61a03",
+        "role": "bot",
+        "kind": "activity",
+        "tool": {
+          "name": "orchestrator_route",
+          "spoken": "running orchestrator_route",
+          "input": "{\"decisions\":[{\"kind\":\"ignore\",\"trigger_id\":\"147df4d6321a31205778875b7b9c8f4727d4f34e61319bfa651d9daf27a8da12\",\"reason\":\"Ordinary personal conversation, no background ticket required\"}]}",
+          "itemId": "official-fixture-9421fe77-dbf4-4b6d-a15d-997df4201315",
+          "ok": true,
+          "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-9421fe77-dbf4-4b6d-a15d-997df4201315\"},\"toolCallId\":\"official-fixture-9421fe77-dbf4-4b6d-a15d-997df4201315\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"147df4d6321a31205778875b7b9c8f4727d4f34e61319bfa651d9daf27a8da12\\\",\\\"kind\\\":\\\"ignore\\\",\\\"decision\\\":\\\"ignore\\\",\\\"reason\\\":\\\"Ordinary personal conversation, no background ticket required\\\"}]}\"}],\"isError\":false,\"id\":\"153c3612-39fb-4abf-90c7-82fbb617928c\"}"
+        },
+        "turnId": "f703b736-2063-4325-9f5a-2407d0611f78",
+        "requestMessageId": "2299640f-b3b5-42b9-854f-371d0ca61a03"
+      },
+      {
+        "id": "56537f5c-f566-4719-93fc-23a54b40bbac",
+        "at": 1793936731482,
+        "parentId": "0f51b96d-7f40-4d1b-b819-1a47f2692d3c",
+        "role": "bot",
+        "kind": "activity",
+        "tool": {
+          "name": "orchestrator_reply",
+          "spoken": "running orchestrator_reply",
+          "input": "{\"purpose\":\"answer\",\"trigger_id\":\"147df4d6321a31205778875b7b9c8f4727d4f34e61319bfa651d9daf27a8da12\",\"text\":\"官方 Super Agent 已接入。原聊天界面、会话管理和记忆管理继续使用。这是隔离演示，模型使用确定性 fixture。\"}",
+          "itemId": "official-fixture-7a585300-ca64-4e09-a1e3-6b4f7d9d2b9f",
+          "ok": true
+        },
+        "turnId": "f703b736-2063-4325-9f5a-2407d0611f78",
+        "requestMessageId": "2299640f-b3b5-42b9-854f-371d0ca61a03"
+      },
+      {
+        "id": "8de726f4-f813-4a9e-bcec-62856d32a4fd",
+        "at": 1793936731489,
+        "parentId": "56537f5c-f566-4719-93fc-23a54b40bbac",
+        "role": "bot",
+        "kind": "text",
+        "text": "官方 Super Agent 已接入。原聊天界面、会话管理和记忆管理继续使用。这是隔离演示，模型使用确定性 fixture。",
+        "turnId": "f703b736-2063-4325-9f5a-2407d0611f78",
+        "requestMessageId": "2299640f-b3b5-42b9-854f-371d0ca61a03",
+        "turnTerminal": true,
+        "turnSucceeded": true,
+        "turnCompletedAt": 1793936731489
+      },
+      {
+        "id": "da0dc159-cff2-4f87-a3c2-83818636d075",
+        "at": 1793936731506,
+        "parentId": "8de726f4-f813-4a9e-bcec-62856d32a4fd",
+        "role": "bot",
+        "kind": "digest",
+        "text": "[digest] · tools: orchestrator_route ×1, orchestrator_reply ×1 (from tool previews) · reply: 官方 Super Agent 已接入。原聊天界面、会话管理和记忆管理继续使用。这是隔离演示，模型使用确定性 fixture。",
+        "digest": {
+          "turnId": "f703b736-2063-4325-9f5a-2407d0611f78",
+          "botId": "e9fb199f-c40f-4ce6-abed-ec24122c5d24",
+          "threadId": "56de4999-91f2-480f-b59c-8f818fdc607d",
+          "at": 1793936731505,
+          "durationMs": 2269,
+          "tools": [
+            {
+              "name": "orchestrator_route",
+              "count": 1,
+              "failed": 0
+            },
+            {
+              "name": "orchestrator_reply",
+              "count": 1,
+              "failed": 0
+            }
+          ],
+          "toolCalls": 2,
+          "memory": [],
+          "reply": "官方 Super Agent 已接入。原聊天界面、会话管理和记忆管理继续使用。这是隔离演示，模型使用确定性 fixture。",
+          "hookCoverage": "preview"
+        },
+        "turnId": "f703b736-2063-4325-9f5a-2407d0611f78",
+        "requestMessageId": "2299640f-b3b5-42b9-854f-371d0ca61a03",
+        "turnSucceeded": true
+      },
+      {
+        "id": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff",
+        "at": 1793936843101,
+        "parentId": "da0dc159-cff2-4f87-a3c2-83818636d075",
+        "role": "user",
+        "kind": "text",
+        "text": "task write official-preview.txt",
+        "sendId": "c377c87d-be5e-4bf0-8e6c-ec09f61e1234",
+        "requestPending": false
+      },
+      {
+        "id": "a62aa8e5-d721-4cd6-9b7b-f5efbf00a3a6",
+        "at": 1793936843140,
+        "parentId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff",
+        "role": "bot",
+        "kind": "activity",
+        "tool": {
+          "name": "orchestrator_route",
+          "spoken": "running orchestrator_route",
+          "input": "{\"decisions\":[{\"kind\":\"accept\",\"trigger_id\":\"741ef4b707573e1606f0c3668ab14e1966650fa896c26aac82f9bd878456dbba\",\"title\":\"write official-preview.txt\",\"worktree_name\":\"official-task\",\"acknowledgement\":\"已接收，正在使用官方 Super Agent Worker 执行。\"}]}",
+          "itemId": "official-fixture-b20892f7-db05-4f1c-9f03-1d20ac0ed959",
+          "ok": true,
+          "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-b20892f7-db05-4f1c-9f03-1d20ac0ed959\"},\"toolCallId\":\"official-fixture-b20892f7-db05-4f1c-9f03-1d20ac0ed959\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"results\\\":[{\\\"trigger_id\\\":\\\"741ef4b707573e1606f0c3668ab14e1966650fa896c26aac82f9bd878456dbba\\\",\\\"kind\\\":\\\"accept\\\",\\\"decision\\\":\\\"accept\\\",\\\"reason\\\":\\\"Explicit request from an allowed sender routed by the orchestrator\\\",\\\"ticket\\\":{\\\"ticket_id\\\":\\\"6987fdb7cde259a3f09d98c3cef1cc75\\\",\\\"title\\\":\\\"write official-preview.txt\\\",\\\"state\\\":\\\"working/queued\\\",\\\"strength\\\":\\\"explicit\\\",\\\"preview\\\":\\\"\\\",\\\"read\\\":\\\"ticket/6987fdb7cde259a3f09d98c3cef1cc75\\\"}}]}\"}],\"isError\":false,\"id\":\"ecda1bc6-a52e-4777-8df0-09348b531c25\"}"
+        },
+        "turnId": "a040df45-b211-4023-9e47-d838ff7f9d5e",
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff"
+      },
+      {
+        "id": "39ad0bce-c202-49a9-ab04-738c2f2e2c44",
+        "at": 1793936843150,
+        "parentId": "a62aa8e5-d721-4cd6-9b7b-f5efbf00a3a6",
+        "role": "bot",
+        "kind": "activity",
+        "tool": {
+          "name": "notice: write official-preview.txt: Queued",
+          "ok": true
+        },
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff"
+      },
+      {
+        "id": "1775a280-4779-4c46-9b57-6fe7279eb4cb",
+        "at": 1793936843151,
+        "parentId": "39ad0bce-c202-49a9-ab04-738c2f2e2c44",
+        "role": "bot",
+        "kind": "text",
+        "text": "已接收，正在使用官方 Super Agent Worker 执行。",
+        "turnId": "a040df45-b211-4023-9e47-d838ff7f9d5e",
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff"
+      },
+      {
+        "id": "0f60349f-0567-4c8d-b657-b076d18cd29b",
+        "at": 1793936843256,
+        "parentId": "1775a280-4779-4c46-9b57-6fe7279eb4cb",
+        "role": "bot",
+        "kind": "activity",
+        "tool": {
+          "name": "notice: write official-preview.txt: Working",
+          "ok": true
+        },
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff"
+      },
+      {
+        "id": "63de1d95-fa1f-43bc-bdd9-428e8999af18",
+        "at": 1793936843282,
+        "parentId": "0f60349f-0567-4c8d-b657-b076d18cd29b",
+        "role": "bot",
+        "kind": "activity",
+        "tool": {
+          "name": "write",
+          "spoken": "writing a file",
+          "step": {
+            "activity": "write",
+            "target": "official-preview.txt"
+          },
+          "input": "{\"file_path\":\"official-preview.txt\",\"content\":\"Official Super Agent worker executed a native DSH file tool.\\n\"}",
+          "itemId": "official-fixture-48271c4c-a697-4b8c-8d0e-395ec9d7e2ed",
+          "ok": true,
+          "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-48271c4c-a697-4b8c-8d0e-395ec9d7e2ed\"},\"toolCallId\":\"official-fixture-48271c4c-a697-4b8c-8d0e-395ec9d7e2ed\",\"content\":[{\"type\":\"text\",\"text\":\"<path>/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-tnpnDF/personbot-workspace/official-preview.txt</path>\\n<type>file</type>\\n<content>\\nCreated file\\n</content>\"}],\"isError\":false,\"id\":\"dd4e2469-c701-4ec0-b8de-029cb73ed007\"}"
+        },
+        "turnId": "a040df45-b211-4023-9e47-d838ff7f9d5e",
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff"
+      },
+      {
+        "id": "f5c8ef09-fbfd-4d56-8088-c29ae0cbf6c4",
+        "at": 1793936843335,
+        "parentId": "63de1d95-fa1f-43bc-bdd9-428e8999af18",
+        "role": "bot",
+        "kind": "activity",
+        "tool": {
+          "name": "orchestrator_report",
+          "spoken": "running orchestrator_report",
+          "input": "{\"state\":\"ready\",\"summary\":\"Official worker completed: task write official-preview.txt\\n<path>/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-tnpnDF/personbot-workspace/official-preview.txt</path>\\n<type>file</type>\\n<content>\\nCreated file\\n</content>\"}",
+          "itemId": "official-fixture-27850bb6-babf-4ab5-baba-f02151e84705",
+          "ok": true,
+          "output": "{\"role\":\"tool\",\"source\":{\"kind\":\"tool\",\"callId\":\"official-fixture-27850bb6-babf-4ab5-baba-f02151e84705\"},\"toolCallId\":\"official-fixture-27850bb6-babf-4ab5-baba-f02151e84705\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"reported\\\":true,\\\"notification\\\":\\\"orchestrator\\\"}\"}],\"isError\":false,\"id\":\"d6768147-97b0-452d-bb89-ed3cef558e5a\"}"
+        },
+        "turnId": "a040df45-b211-4023-9e47-d838ff7f9d5e",
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff"
+      },
+      {
+        "id": "eaba4cc7-0597-44f9-92b9-5f1a5ec017cc",
+        "at": 1793936843341,
+        "parentId": "f5c8ef09-fbfd-4d56-8088-c29ae0cbf6c4",
+        "role": "bot",
+        "kind": "activity",
+        "tool": {
+          "name": "notice: write official-preview.txt: Completed",
+          "ok": true
+        },
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff"
+      },
+      {
+        "id": "e394b66b-cbe1-47fb-947b-5658142f5178",
+        "at": 1793936843378,
+        "parentId": "eaba4cc7-0597-44f9-92b9-5f1a5ec017cc",
+        "role": "bot",
+        "kind": "activity",
+        "tool": {
+          "name": "orchestrator_reply",
+          "spoken": "running orchestrator_reply",
+          "input": "{\"purpose\":\"result\",\"ticket_id\":\"6987fdb7cde259a3f09d98c3cef1cc75\",\"text\":\"Official worker completed: task write official-preview.txt\\n<path>/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-tnpnDF/personbot-workspace/official-preview.txt</path>\\n<type>file</type>\\n<content>\\nCreated file\\n</content>\"}",
+          "itemId": "official-fixture-db09e84a-cfa6-4ab2-93ad-090269e21801",
+          "ok": true
+        },
+        "turnId": "a040df45-b211-4023-9e47-d838ff7f9d5e",
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff"
+      },
+      {
+        "id": "e385e783-df07-4449-8cc2-c0eec275b222",
+        "at": 1793936843390,
+        "parentId": "e394b66b-cbe1-47fb-947b-5658142f5178",
+        "role": "bot",
+        "kind": "text",
+        "text": "Official worker completed: task write official-preview.txt\n<path>/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-tnpnDF/personbot-workspace/official-preview.txt</path>\n<type>file</type>\n<content>\nCreated file\n</content>",
+        "turnId": "a040df45-b211-4023-9e47-d838ff7f9d5e",
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff",
+        "turnTerminal": true,
+        "turnSucceeded": true,
+        "turnCompletedAt": 1793936843390
+      },
+      {
+        "id": "05002bd3-24e7-4da7-b448-9bffe5b6c429",
+        "at": 1793936843408,
+        "parentId": "e385e783-df07-4449-8cc2-c0eec275b222",
+        "role": "bot",
+        "kind": "digest",
+        "text": "[digest] · tools: orchestrator_route ×1, write ×1, orchestrator_report ×1, orchestrator_reply ×1 (from tool previews) · reply: Official worker completed: task write official-preview.txt <path>/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-tnpnDF/personbot-workspace/official-preview.txt</path>",
+        "digest": {
+          "turnId": "a040df45-b211-4023-9e47-d838ff7f9d5e",
+          "botId": "e9fb199f-c40f-4ce6-abed-ec24122c5d24",
+          "threadId": "56de4999-91f2-480f-b59c-8f818fdc607d",
+          "at": 1793936843408,
+          "durationMs": 304,
+          "tools": [
+            {
+              "name": "orchestrator_route",
+              "count": 1,
+              "failed": 0
+            },
+            {
+              "name": "write",
+              "count": 1,
+              "failed": 0
+            },
+            {
+              "name": "orchestrator_report",
+              "count": 1,
+              "failed": 0
+            },
+            {
+              "name": "orchestrator_reply",
+              "count": 1,
+              "failed": 0
+            }
+          ],
+          "toolCalls": 4,
+          "memory": [],
+          "reply": "Official worker completed: task write official-preview.txt <path>/private/var/folders/3l/0349g8494hb2yltn7j0yj23r0000gn/T/openmausbot-verify-data-tnpnDF/personbot-workspace/official-preview.txt</path>",
+          "hookCoverage": "preview"
+        },
+        "turnId": "a040df45-b211-4023-9e47-d838ff7f9d5e",
+        "requestMessageId": "a98fd691-451f-454e-b86d-e4fc6ad2a0ff",
+        "turnSucceeded": true
+      }
+    ],
+    "hasMore": false,
+    "activeLeafId": "05002bd3-24e7-4da7-b448-9bffe5b6c429"
+  }
+}

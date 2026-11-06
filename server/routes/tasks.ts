@@ -1,4 +1,4 @@
-import { approvalModeFor, approvalModeWidens, isApprovalMode, type ApprovalMode } from "../../shared/approval-mode.ts";
+import { approvalModeFor, approvalModeWidens, isApprovalMode, isEmergencyApprovalDowngrade, type ApprovalMode } from "../../shared/approval-mode.ts";
 import { threadLinkUrl } from "../../shared/thread-link.ts";
 import type { WireBot, WireTask } from "../../shared/wire.ts";
 import { validateBotCwd } from "../bot-cwd.ts";
@@ -49,6 +49,8 @@ export interface TaskRouteDeps {
   sharedWorkspaceFullAccessEnabled(): boolean;
   supportsApprovalMode(selection: ModelSelection, mode: ApprovalMode): boolean;
   threadBusy(botId: string, threadId: string): boolean;
+  revokeNativeContext?(botId: string, threadId: string): Promise<void>;
+  stopNativeTasks?(botId: string, threadId?: string): Promise<void>;
   broadcast(payload: Record<string, unknown>): void;
   publicBot(bot: BotRecord): WireBot;
   wireBot(bot: BotRecord): WireBot;
@@ -211,7 +213,14 @@ export function createTaskRoutes(deps: TaskRouteDeps): RouteHandler & { deleteTa
         if (!refusal) allowed.push(threadId);
         else refused.push({ threadId, reason: refusal.status === 409 ? "busy" : "not-found" });
       }
-      const result = deleteTasks(bot.id, allowed);
+      await Promise.all(allowed.map(threadId => deps.revokeNativeContext?.(bot.id, threadId)));
+      const rechecked = allowed.filter(threadId => {
+        const refusal = deleteRefusal(auth, bot.id, threadId);
+        if (!refusal) return true;
+        refused.push({ threadId, reason: refusal.status === 409 ? "busy" : "not-found" });
+        return false;
+      });
+      const result = deleteTasks(bot.id, rechecked);
       if (!result) return json(res, 404, { error: "no such bot" });
       for (const threadId of result.missing) refused.push({ threadId, reason: "not-found" });
       return json(res, 200, { bot: publicBot(result.bot), deleted: result.deleted, refused });
@@ -301,7 +310,13 @@ export function createTaskRoutes(deps: TaskRouteDeps): RouteHandler & { deleteTa
         }
         const task = store.refreshTaskPermissions(profile.id, m[2]);
         if (!task) return json(res, 404, { error: "no such task" });
-        return json(res, 200, { task: wireTask(task, store.bot(profile.id)!.modelSelection), bot: publicBot(store.bot(profile.id)!) });
+        if (isEmergencyApprovalDowngrade(approvalModeFor(current), approvalModeFor(store.projectBotForTask(profile.id, m[2]) ?? task))) {
+          await deps.stopNativeTasks?.(profile.id, m[2]);
+        }
+        const updated = store.bot(profile.id);
+        const refreshed = store.taskByThread(profile.id, m[2]);
+        if (!updated || !refreshed) return json(res, 404, { error: "no such task" });
+        return json(res, 200, { task: wireTask(refreshed, updated.modelSelection), bot: publicBot(updated) });
       }
       const patch: Parameters<typeof store.patchTask>[2] = {};
       if (body.projectId !== undefined) {
@@ -386,13 +401,22 @@ export function createTaskRoutes(deps: TaskRouteDeps): RouteHandler & { deleteTa
         ? store.switchTaskModel(m[1], m[2], patch.modelSelection, body.updateBotDefault === true, body.resetApprovalToAsk === true,
           { ...patch, ...hostedModels?.resetTask(current.modelSelection, patch.modelSelection) })!
         : store.patchTask(m[1], m[2], patch)!;
-      return json(res, 200, { task: wireTask(task, store.bot(m[1])!.modelSelection), bot: publicBot(store.bot(m[1])!) });
+      if (isEmergencyApprovalDowngrade(approvalModeFor(current), approvalModeFor(store.projectBotForTask(current.id, current.threadId) ?? task))) {
+        await deps.stopNativeTasks?.(current.id, current.threadId);
+      }
+      const updated = store.bot(m[1]);
+      const refreshed = store.taskByThread(m[1], m[2]);
+      if (!updated || !refreshed) return json(res, 404, { error: "no such task" });
+      return json(res, 200, { task: wireTask(refreshed, updated.modelSelection), bot: publicBot(updated) });
     }
     if (m && method === "DELETE") {
       const bot = store.bot(m[1]);
       if (!bot) return json(res, 404, { error: "no such task" });
       const refusal = deleteRefusal(auth, bot.id, m[2]);
       if (refusal) return json(res, refusal.status, { error: refusal.error });
+      await deps.revokeNativeContext?.(bot.id, m[2]);
+      const changedRefusal = deleteRefusal(auth, bot.id, m[2]);
+      if (changedRefusal) return json(res, changedRefusal.status, { error: changedRefusal.error });
       const updated = deleteTasks(bot.id, [m[2]]);
       if (!updated?.deleted.length) return json(res, 404, { error: "no such task" });
       return json(res, 200, { bot: publicBot(updated.bot) });

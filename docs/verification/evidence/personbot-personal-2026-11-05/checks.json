@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-05",
+  "branch": "personbot/dsh-foundation",
+  "environment": {
+    "platform": "macOS arm64",
+    "node": "26.10.0",
+    "pnpm": "10.33.0",
+    "dsh": "0.2.2-rc.1"
+  },
+  "checks": [
+    {
+      "name": "personbot packages and real native runtime",
+      "command": "pnpm personbot:test",
+      "passed": 155,
+      "failed": 0,
+      "log": "native-tests.txt"
+    },
+    {
+      "name": "client components routes navigation fixture and documentation",
+      "command": "pnpm exec vitest run src/lib/personbot-client.test.ts src/components/personbot/PersonbotTasks.test.ts src/components/personbot/PersonbotArtifacts.test.ts src/components/personbot/PersonbotView.test.ts server/routes/personbot.test.ts scripts/control-omb.test.ts src/components/SidebarFooterNav.test.ts scripts/testing/verification-docs.test.ts",
+      "passed": 95,
+      "failed": 0,
+      "log": "client-routes-fixture-tests.txt"
+    },
+    {
+      "name": "W2 and W3 browser compatibility",
+      "command": "pnpm exec vitest run scripts/testing/personbot-ui.e2e.test.ts scripts/testing/personbot-tasks-ui.e2e.test.ts",
+      "passed": 4,
+      "failed": 0,
+      "log": "browser-compatibility-tests.txt"
+    },
+    {
+      "name": "W4 complete personal workflow browser",
+      "command": "pnpm exec vitest run scripts/testing/personbot-personal-ui.e2e.test.ts",
+      "passed": 1,
+      "failed": 0,
+      "evidence": "evidence.json"
+    },
+    {
+      "name": "Personbot TypeScript",
+      "command": "pnpm personbot:typecheck",
+      "result": "passed",
+      "log": "typecheck.txt"
+    },
+    {
+      "name": "frontend and server TypeScript plus Vite build",
+      "command": "pnpm build",
+      "result": "passed",
+      "log": "frontend-build.txt"
+    },
+    {
+      "name": "packaged server build",
+      "command": "pnpm build:server",
+      "result": "passed",
+      "log": "server-build.txt"
+    },
+    {
+      "name": "focused lint",
+      "result": "passed",
+      "log": "lint.txt"
+    },
+    {
+      "name": "frozen offline dependency install",
+      "command": "pnpm install --frozen-lockfile --ignore-scripts --offline",
+      "result": "passed",
+      "log": "frozen-install.txt"
+    },
+    {
+      "name": "documentation after final evidence links",
+      "command": "pnpm exec vitest run scripts/testing/verification-docs.test.ts",
+      "passed": 7,
+      "failed": 0,
+      "log": "documentation-final.txt"
+    },
+    {
+      "name": "whitespace validation",
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "reviewRemediations": [
+    "atomic accepted input and frozen context",
+    "frozen project source and role revision",
+    "queued supplement delivered once",
+    "artifact child cwd resolution and commit admission fence",
+    "1 MiB task input budget",
+    "up to 40 text evidence plus 40 artifact references"
+  ],
+  "limits": [
+    "deterministic model only; no real model quality or real account tests",
+    "cwd isolation is not OS sandboxing",
+    "forget excludes future recall and does not rewrite native history",
+    "full snapshots are not yet paginated",
+    "existing CSS highlight optimization and large chunk warnings remain"
+  ],
+  "files": {
+    "artifact-preview.png": "363332987494f91a3d6638e298b8dcd3ac1f3bb22da91abcff2c8a1cfafa3394",
+    "browser-compatibility-tests.txt": "0b062b814baf95ba9828dbbc6336ef746df1a9fcbfdbe4529c37b25ec55baf06",
+    "client-routes-fixture-tests.txt": "b87b4e86e3b68cc568d738decfe50b0367940b094ec1cc4be0c69adc63eb7109",
+    "documentation-final.txt": "16e27919996d9fe6f1006bd5e65763283c83a5f4c17bb823c42ef2326472cad5",
+    "evidence.json": "dd350af13b43f4a3ac84b9e465071ec50d14918df3dcc7572de882db2f332171",
+    "frontend-build.txt": "7ccf4c0177c7adca7e2198b2b34e2800a978463f22d693e5a8ad9ca059c409e2",
+    "frozen-install.txt": "f27ffb02fddb8b3576e18e2b317d2293a23fb83144689b8fcf0036e8a86ca2f1",
+    "lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "memory-confirmed.png": "5778c0ba1ffb2e523ddd33b5ac45a71527c93802e7fbe7c631396c87524cbde3",
+    "native-tests.txt": "bdcf66761a5d3c4006d6e99964a7bfd6f55cf2350e67da9782042527560d42d9",
+    "native-workflow-notes.md": "cbb9177452dfb7b52a21dba152b1c2554ae35678ef1342072e61636c2b021bad",
+    "personbot-personal-1440.png": "9d746ea041b0a2b0a6697fc55bb18876ca4026c491b364ae84b2b4f12f09250f",
+    "personbot-personal-390.png": "b47a4c98f5147710e6b9193ece29c6695147bf7d91f8a3cc2ad9060cd94153ca",
+    "personbot-personal-768.png": "d3b1901225ccf6ea97feee0ffb196b7d03a06560e13f57ba02975a2fd9aa1b38",
+    "server-build.txt": "b6dae165a5aa694ea0a90677edfe9b13b88073b70dbb57c264fc2777d556b001",
+    "typecheck.txt": "7104aed0017a470920cff86c7e6d8238c8ae8a37a44ae1fbbacc7e0396f54acf"
+  },
+  "cleanup": {
+    "dataDirectoryRemoved": true,
+    "fixtureServerExited": true,
+    "nativeRuntimeExited": true
+  }
+}
